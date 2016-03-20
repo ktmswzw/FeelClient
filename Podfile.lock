@@ -1,0 +1,86 @@
+PODS:
+  - Alamofire (3.2.1)
+  - AlamofireObjectMapper (2.1.2):
+    - Alamofire (~> 3.2)
+    - ObjectMapper (~> 1.0)
+  - CryptoSwift (0.0.14)
+  - Eureka (1.4.1)
+  - IBAnimatable (1.2)
+  - ImagePickerSheetController (0.9.1)
+  - JSONWebToken (1.4.1):
+    - CryptoSwift (= 0.0.14)
+  - MOBFoundation_IDFA (1.3.1)
+  - ObjectMapper (1.1.4)
+  - SMSSDK (2.0.2)
+  - SQLite.swift (0.9.2)
+  - SwiftyJSON (2.3.2)
+  - Toucan (0.5.0)
+  - Whisper (2.0.2)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire`)
+  - AlamofireObjectMapper (~> 2.1)
+  - CryptoSwift
+  - Eureka (from `https://github.com/xmartlabs/Eureka`)
+  - IBAnimatable
+  - ImagePickerSheetController (from `https://github.com/larcus94/ImagePickerSheetController.git`)
+  - JSONWebToken
+  - MOBFoundation_IDFA
+  - ObjectMapper
+  - SMSSDK
+  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - Toucan (from `https://github.com/gavinbunney/Toucan`)
+  - Whisper
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire
+  Eureka:
+    :git: https://github.com/xmartlabs/Eureka
+  ImagePickerSheetController:
+    :git: https://github.com/larcus94/ImagePickerSheetController.git
+  SQLite.swift:
+    :git: https://github.com/stephencelis/SQLite.swift.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  Toucan:
+    :git: https://github.com/gavinbunney/Toucan
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 5b6155ca2d3b584b5f0360068a02f978950dd18c
+    :git: https://github.com/Alamofire/Alamofire
+  Eureka:
+    :commit: 67969e16dae91d024268325b2fd57c9c0b8fee6a
+    :git: https://github.com/xmartlabs/Eureka
+  ImagePickerSheetController:
+    :commit: 974f16b23a29811a4d56bf0357cecdfdde0ab77e
+    :git: https://github.com/larcus94/ImagePickerSheetController.git
+  SQLite.swift:
+    :commit: fd946aced295808b7592eee8b903485849e05f49
+    :git: https://github.com/stephencelis/SQLite.swift.git
+  SwiftyJSON:
+    :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  Toucan:
+    :commit: 4ed2ffa9840f737a8bf6baf63ffd57840c392fa9
+    :git: https://github.com/gavinbunney/Toucan
+
+SPEC CHECKSUMS:
+  Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
+  AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
+  CryptoSwift: 5a6b725e2ad65a789f5f435dd434d38eb2c40b46
+  Eureka: 531df27d4af7bdcbf99d7f42907445b71b9b0fb8
+  IBAnimatable: bcebfaf34b041949da5ed668ac5ab2e28a4b2357
+  ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
+  JSONWebToken: cf8b58850dc4cf38ce777a08753a2ea1620d960e
+  MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
+  ObjectMapper: 09ff2ad156bb0e103d9dde9bfe10fbde78affeb2
+  SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
+  SQLite.swift: 5dca22dbf6634fdb9c3270fae9491830804e9b2d
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40
+  Whisper: 49abcba82d23dd20f0a9a025797cacd09c8aa3bb
+
+COCOAPODS: 0.39.0

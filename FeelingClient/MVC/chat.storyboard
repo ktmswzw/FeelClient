@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XgY-6Z-pPg">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--消息-->
+        <scene sceneID="q18-xy-sps">
+            <objects>
+                <viewController storyboardIdentifier="chat" id="XgY-6Z-pPg" customClass="ChatViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XFN-w8-Dkx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Snu-jY-ocJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Trd-kY-nmW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-ZG-BHC">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="UIa-4O-r2d"/>
+                                </constraints>
+                                <state key="normal" title="chat"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6h2-ZG-BHC" firstAttribute="centerX" secondItem="Trd-kY-nmW" secondAttribute="centerX" id="0sT-Xy-13Q"/>
+                            <constraint firstItem="6h2-ZG-BHC" firstAttribute="centerY" secondItem="Trd-kY-nmW" secondAttribute="centerY" id="AY8-oF-nrQ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="1" title="消息" image="chat" id="Vge-vN-mcQ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="lightStatusBar" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6z-Sg-yrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="414"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chat" width="22" height="22"/>
+    </resources>
+</document>
