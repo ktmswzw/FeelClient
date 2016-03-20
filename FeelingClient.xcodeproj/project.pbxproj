@@ -290,7 +290,7 @@
 				BF45B6A11C6C4E730027F63D /* Common */,
 				BF45B6881C6C4C490027F63D /* resource */,
 				BF45B6871C6C4C310027F63D /* Other */,
-				BF45B6861C6C4C100027F63D /* MVC */,
+				BF45B6861C6C4C100027F63D /* MVVM */,
 				BF45B6851C6C4B890027F63D /* ThirdParty */,
 			);
 			path = FeelingClient;
@@ -305,7 +305,7 @@
 			name = ThirdParty;
 			sourceTree = "<group>";
 		};
-		BF45B6861C6C4C100027F63D /* MVC */ = {
+		BF45B6861C6C4C100027F63D /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
 				BF17103F1C6F664900003D6B /* VM */,
@@ -313,7 +313,7 @@
 				BF45B68A1C6C4C7D0027F63D /* V */,
 				BF45B6891C6C4C780027F63D /* M */,
 			);
-			name = MVC;
+			name = MVVM;
 			sourceTree = "<group>";
 		};
 		BF45B6871C6C4C310027F63D /* Other */ = {

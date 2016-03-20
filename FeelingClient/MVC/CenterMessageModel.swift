@@ -84,7 +84,7 @@ public class MessageViewModel {
                     
                     oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x)
                     oneAnnotation.title = msg.to
-                    oneAnnotation.subtitle = msg.content
+                    oneAnnotation.subtitle = msg.question
                     oneAnnotation.id = msg.id
                     
                     self.annotationArray.append(oneAnnotation)

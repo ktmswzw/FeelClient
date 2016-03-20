@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class OpenMessageModel:BaseApi {
+public class OpenMessageModel {
     
-    let msg: MessageBean = MessageBean()
+    let msg: MessageApi = MessageApi.defaultMessages
     
     //id
     var id: String = ""
@@ -31,12 +31,44 @@ public class OpenMessageModel:BaseApi {
     //阅后即焚
     var burnAfterReading: Bool = false
     
+    //问题
+    var question: String?
+    //答案
+    var answer: String?
+    
     var x:Double = 0.0
     var y:Double = 0.0
     
-    func verifyAnswer()
+    var msgscrent = MessagesSecret()// 内容
+    var msgscrentId = "";//解密后的id
+    
+    func verifyAnswer(view:UIView)
     {
-        
+        msg.verifyMsg(self.id, answer: self.answer!) { (r: BaseApi.Result) -> Void in
+            switch (r) {
+            case .Success(let r):
+                self.msgscrentId = r as! String;
+                break;
+            case .Failure(let msg):
+                view.makeToast(msg as! String, duration: 1, position: .Top)
+                break;
+            }
+            
+        }
+    }
+    
+    func arrival(view:UIView)
+    {
+        msg.arrival(msgscrentId, x: "\(x)", y: "\(y)") { (r:BaseApi.Result) -> Void in
+            switch (r) {
+            case .Success(let r):
+                self.msgscrent = r as! MessagesSecret;
+                break;
+            case .Failure(let msg):
+                view.makeToast(msg as! String, duration: 1, position: .Top)
+                break;
+            }
+        }
     }
     
 }

@@ -10,7 +10,6 @@ import Foundation
 import Photos
 import UIKit
 import ObjectMapper
-import Whisper
 
 
 func getAssetThumbnail(asset: PHAsset) -> UIImage {

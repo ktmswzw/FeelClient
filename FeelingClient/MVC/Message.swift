@@ -16,8 +16,6 @@ import Alamofire
 public class Messages:BaseApi {
     static let defaultMessages = Messages()
     var msgs = [MessageBean]()
-    var msgscrent = MessagesSecret()// 内容
-    var msgscrentId = "";//解密后的id
     var loader = PhotoUpLoader.init()
     
     var jwt = JWTTools()
@@ -89,16 +87,32 @@ public class Messages:BaseApi {
         }
     }
     
-//    /arrival/{x}/{y}/{id}
-//    validate/{id}/{answer}
-    func verifyMsg(id: String,x: String,y:String,answer:String,completeHander: CompletionHandlerType)
+}
+
+class MessageApi:BaseApi{
+    
+    static let defaultMessages = MessageApi()
+    //    /arrival/{x}/{y}/{id}
+    //    validate/{id}/{answer}
+    func verifyMsg(id: String,answer:String,completeHander: CompletionHandlerType)
     {
         let params = [:]
-        NetApi().makeCallArray(Alamofire.Method.POST, section: "validate/\(id)/\(answer)", headers: [:], params: params as? [String:AnyObject]) { (response: Response<[MessageBean], NSError>) -> Void in
-            switch (response.result) {
+        NetApi().makeCall(Alamofire.Method.POST, section: "validate/\(id)/\(answer)", headers: [:], params: params as? [String:AnyObject]) {
+            (result:BaseApi.Result) -> Void in
+            
+            switch (result) {
             case .Success(let value):
-                self.msgs = value
-                completeHander(Result.Success(self.msgs))
+                if let json = value {
+                    let myJosn = JSON(json)
+                    let code:Int = Int(myJosn["status"].stringValue)!
+                    let id:String = myJosn.dictionary!["message"]!.stringValue
+                    if code != 200 {
+                        completeHander(Result.Success(id))
+                    }
+                    else{
+                        completeHander(Result.Failure(id))
+                    }
+                }
                 break;
             case .Failure(let error):
                 print("\(error)")
@@ -107,6 +121,33 @@ public class Messages:BaseApi {
         }
     }
     
+    func arrival(id: String,x: String,y:String,completeHander: CompletionHandlerType)
+    {
+        let params = [:]
+        NetApi().makeCall(Alamofire.Method.POST, section: "arrival/\(y)/\(x)/\(id)", headers: [:], params: params as? [String:AnyObject]) {
+            (result:BaseApi.Result) -> Void in
+            
+            switch (result) {
+            case .Success(let value):
+                if let json = value {
+                    let myJosn = JSON(json)
+                    let code:Int = Int(myJosn["status"].stringValue)!
+                    if code != 200 {
+                        let bean:MessagesSecret =  json["message"] as! MessagesSecret
+                        completeHander(Result.Success(bean))
+                    }
+                    else{
+                        completeHander(Result.Failure(""))
+                    }
+                }
+                break;
+            case .Failure(let error):
+                print("\(error)")
+                break;
+            }
+        }
+        
+    }
 }
 
 class MessageBean: BaseModel {
@@ -129,6 +170,7 @@ class MessageBean: BaseModel {
         burnAfterReading <- map["burn_after_reading"]
         x <- map["x"]
         y <- map["y"]
+        question <- map["question"]
         distance <- map["distance"]
         point <- map["point"]
         
@@ -158,6 +200,8 @@ class MessageBean: BaseModel {
     //距离
     var distance: Double = 0.0
     
+    //问题
+    var question: String?
     var point: GeoJsonPoint?
     
 }
@@ -194,8 +238,6 @@ class MessagesSecret:BaseModel {
     var sound: String?
     //阅后即焚
     var burnAfterReading: Bool = false
-    //问题
-    var question: String?
     //答案
     var answer: String?
     
@@ -210,7 +252,6 @@ class MessagesSecret:BaseModel {
         content <- map["content"]
         photos <- map["photos"]
         video <- map["videoPath"]
-        question <- map["question"]
         sound <- map["soundPath"]
         answer <- map["answer"]
         burnAfterReading <- map["burn_after_reading"]
