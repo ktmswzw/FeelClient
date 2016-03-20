@@ -15,7 +15,6 @@ PODS:
   - SQLite.swift (0.9.2)
   - SwiftyJSON (2.3.2)
   - Toucan (0.5.0)
-  - Whisper (2.0.2)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire`)
@@ -31,7 +30,6 @@ DEPENDENCIES:
   - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - Toucan (from `https://github.com/gavinbunney/Toucan`)
-  - Whisper
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -81,6 +79,5 @@ SPEC CHECKSUMS:
   SQLite.swift: 5dca22dbf6634fdb9c3270fae9491830804e9b2d
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40
-  Whisper: 49abcba82d23dd20f0a9a025797cacd09c8aa3bb
 
 COCOAPODS: 0.39.0
