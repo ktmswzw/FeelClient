@@ -50,7 +50,7 @@ public class OpenMessageModel {
                 self.msgscrentId = r as! String;
                 break;
             case .Failure(let msg):
-                view.makeToast(msg as! String, duration: 1, position: .Top)
+                view.makeToast(msg as! String, duration: 1, position: .Center)
                 break;
             }
             
@@ -65,7 +65,7 @@ public class OpenMessageModel {
                 self.msgscrent = r as! MessagesSecret;
                 break;
             case .Failure(let msg):
-                view.makeToast(msg as! String, duration: 1, position: .Top)
+                view.makeToast(msg as! String, duration: 1, position: .Center)
                 break;
             }
         }

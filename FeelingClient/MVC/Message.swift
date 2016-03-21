@@ -28,41 +28,50 @@ public class Messages:BaseApi {
     func saveMsg(msg: MessageBean, imags:[UIImage],completeHander: CompletionHandlerType)
     {
         
-        let newDict = Dictionary<String,String>()
-        let headers = jwt.getHeader(jwt.token, myDictionary: newDict)
-        loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
-            switch (r) {
-            case .Success(let pathIn):
-                let params = ["to": msg.to,"limitDate":msg.limitDate,"content":msg.content, "photos":pathIn as!String,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
-                NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: { (result:BaseApi.Result) -> Void in
-                    switch (result) {
-                    case .Success(let r):
-                        if let json = r {
-                            let myJosn = JSON(json)
-                            let code:Int = Int(myJosn["status"].stringValue)!
-                            let result = myJosn.dictionary!["message"]!.stringValue
-                            if code != 200 {
-                                completeHander(Result.Success(result))
-                            }
-                            else{
-                                msg.id = result
-                                completeHander(Result.Failure(result))
-                            }
-                        }
-                        self.msgs.append(msg)
-                        break;
-                    case .Failure(let error):
-                        print("\(error)")
-                        break;
+        if imags.count==0 {
+            self.sendSelf(msg, path: "",complete: completeHander)
+        }
+        else
+        {
+            loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
+                switch (r) {
+                case .Success(let pathIn):
+                    self.sendSelf(msg, path: pathIn as!String,complete: completeHander)
+                    break;
+                case .Failure(let error):
+                    completeHander(Result.Failure(error))
+                    break;
+                }
+            }
+        }
+    }
+    
+    private func sendSelf(msg: MessageBean,path: String,complete: CompletionHandlerType)
+    {
+        let headers = self.jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
+        let params = ["to": msg.to,"limitDate":msg.limitDate,"content":msg.content, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
+        NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: { (result:BaseApi.Result) -> Void in
+            switch (result) {
+            case .Success(let r):
+                if let json = r {
+                    let myJosn = JSON(json)
+                    let code:Int = Int(myJosn["status"].stringValue)!
+                    let result = myJosn.dictionary!["message"]!.stringValue
+                    if code != 200 {
+                        complete(Result.Failure(result))
                     }
-                })
-                
+                    else{
+                        msg.id = result
+                        complete(Result.Success(result))
+                    }
+                }
+                self.msgs.append(msg)
                 break;
             case .Failure(let error):
                 print("\(error)")
                 break;
             }
-        }
+        })
     }
     
     //    * @param to   接受人
@@ -70,7 +79,7 @@ public class Messages:BaseApi {
     //    * @param y    维度
     //    * @param page
     //    * @param size
-    //    
+    //
     func searchMsg(to: String,x: String,y:String,page:Int,size:Int,completeHander: CompletionHandlerType)
     {
         let params = ["to": to,"x": y, "y":x, "page": page,"size":size]

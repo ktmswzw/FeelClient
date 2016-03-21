@@ -12,12 +12,40 @@ import JWT
 
 class JWTTools {
     
-    let SECERT: String = "FEELING_ME007";
-    let JWTDEMOTOKEN: String = "JWTDEMOTOKEN";
-    let JWTDEMOTEMP: String = "JWTDEMOTEMP";
-    let JWTSIGN: String = "JWTSIGN";
-    let AUTHORIZATION_STR: String = "Authorization";
+    let SECERT: String = "FEELING_ME007"
+    let JWTDEMOTOKEN: String = "JWTDEMOTOKEN"
+    let FEELINGUSERNAME: String = "FEELINGUSERNAME"
+    let FEELINGPSWORD: String = "FEELINGPSWORD"
+    let JWTDEMOTEMP: String = "JWTDEMOTEMP"
+    let JWTSIGN: String = "JWTSIGN"
+    let AUTHORIZATION_STR: String = "Authorization"
     
+    var appUsername: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(FEELINGUSERNAME) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: FEELINGUSERNAME)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    var appPwd: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(FEELINGPSWORD) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: FEELINGPSWORD)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
     var token: String {
         get {
             if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTDEMOTOKEN) as? String {

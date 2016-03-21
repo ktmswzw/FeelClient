@@ -37,10 +37,6 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }
     
-    func sendMessage(){}
-    
-    
-    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
         if annotationView == nil {
@@ -126,14 +122,13 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     var selectedView: MKAnnotationView?
     
     @IBAction func searchMsg(sender: AnyObject) {
-        
-        searchMessage()
-    }
-    
-    func searchMessage(){
         viewModel.longitude = self.longitude
         viewModel.latitude = self.latitude
-        viewModel.searchMessage(self.mapView)    }
+        viewModel.searchMessage(self.mapView)
+    }
+    
+    
+    func sendMsg(sender:AnyObject){}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

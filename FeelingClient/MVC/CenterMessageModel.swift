@@ -14,6 +14,8 @@ public class MessageViewModel {
     public let msgs: Messages = Messages.defaultMessages
     
     
+    var selfSendMsgs = [MessageBean]()
+    
     //id
     var id: String = ""
     //接受对象
@@ -52,7 +54,7 @@ public class MessageViewModel {
     }
     
     
-    func sendMessage() {
+    func sendMessage(se:AnyObject?) {
         let msg = MessageBean()
         msg.burnAfterReading = burnAfterReading
         msg.to = to
@@ -62,31 +64,45 @@ public class MessageViewModel {
         msg.content = content
         msg.x = latitude
         msg.y = longitude
-        msgs.saveMsg(msg, imags: imageData) { (r:BaseApi.Result) -> Void in
-            switch (r) {
-            case .Success(let r):
-                self.id = r as! String
-                break;
-            case .Failure(_):
+        
+        se!.view!!.addSubview(HUD!)
+        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
+                switch (r) {
+                case .Success(let r):
+                    self.id = r as! String
+                    self.selfSendMsgs.append(msg)
+                    se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
+                    break;
+                case .Failure(let e):
+                    NSLog("\(e)")
+                    se!.view!!.makeToast("登陆失效", duration: 2, position: .Center)
+                    break;
+                }
                 
-                break;
+                HUD!.removeFromSuperview()
+                
+                se!.navigationController?!.popViewControllerAnimated(true)
             }
+            
+            }) { () -> Void in
+                
         }
+        
+        
     }
+    
     
     func searchMessage(map: MKMapView) {
         msgs.searchMsg("", x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
                 for msg in r as! [MessageBean] {
-                    
                     let oneAnnotation = MyAnnotation()
-                    
                     oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x)
                     oneAnnotation.title = msg.to
                     oneAnnotation.subtitle = msg.question
                     oneAnnotation.id = msg.id
-                    
                     self.annotationArray.append(oneAnnotation)
                 }
                 map.addAnnotations(self.annotationArray)
@@ -102,6 +118,6 @@ public class MessageViewModel {
 }
 
 public protocol MessageViewModelDelegate: class {
-    func sendMessage()
-    func searchMessage()
+    func sendMsg(sender:AnyObject)
+    func searchMsg(sender: AnyObject)
 }

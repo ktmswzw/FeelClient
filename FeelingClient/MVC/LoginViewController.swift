@@ -53,6 +53,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         
         HUD = MBProgressHUD(view: self.view)
         self.view.addSubview(HUD!)
+        HUD!.mode = .AnnularIndeterminate
         
     }
     
@@ -75,12 +76,11 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func login(sender: AnyObject) {
-        //                self.performSegueWithIdentifier("login", sender: self)
-        //        return
+        
         if username.text != "" && password.text != ""
         {
             if !self.password.validatePassword() {
-                self.view.makeToast("密码必选大于6位数小于18的数字或字符", duration: 2, position: .Top)
+                self.view.makeToast("密码必选大于6位数小于18的数字或字符", duration: 2, position: .Center)
                 return
             }
             else{
@@ -88,38 +88,45 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
                 //123456
                 let userNameText = username.text
                 let passwordText = password.text!.md5()
-                HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
-                    NetApi().makeCall(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userNameText!,"password":passwordText!,"device":"APP"], completionHandler: { (result:BaseApi.Result) -> Void in
-                        switch (result) {
-                        case .Success(let r):
-                            if let json = r {
-                                let myJosn = JSON(json)
-                                let code:Int = Int(myJosn["status"].stringValue)!
-                                if code != 200 {
-                                    self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Top)
-                                }
-                                else{
-                                    self.jwt.jwtTemp = myJosn.dictionary!["message"]!.stringValue
-                                    self.view.makeToast("登陆成功", duration: 1, position: .Top)
-                                    self.performSegueWithIdentifier("login", sender: self)
-                                }
-                            }
-                            break;
-                        case .Failure(let error):
-                            print("\(error)")
-                            break;
-                        }
-                    })
-                    }) { () -> Void in
-                        HUD!.removeFromSuperview()
-                }
+                selfLogin(userNameText!, password: passwordText!)
             }
             
         }
         else
         {
-            //self.alertStatusBarMsg("帐号或密码为空");
-            self.view.makeToast("帐号或密码为空", duration: 2, position: .Top)
+            self.view.makeToast("帐号或密码为空", duration: 2, position: .Center)
+        }
+        
+    }
+    
+    private func selfLogin(userName:String,password:String){
+        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
+            NetApi().makeCall(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userName,"password":password,"device":"APP"], completionHandler: { (result:BaseApi.Result) -> Void in
+                switch (result) {
+                case .Success(let r):
+                    if let json = r {
+                        let myJosn = JSON(json)
+                        let code:Int = Int(myJosn["status"].stringValue)!
+                        if code != 200 {
+                            self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
+                        }
+                        else{
+                            self.jwt.jwtTemp = myJosn.dictionary!["message"]!.stringValue
+                            self.jwt.appUsername = userName
+                            self.jwt.appPwd = password
+                            self.view.makeToast("登陆成功", duration: 1, position: .Center)
+                            self.performSegueWithIdentifier("login", sender: self)
+                        }
+                    }
+                    break;
+                case .Failure(let error):
+                    print("\(error)")
+                    break;
+                }
+                
+                HUD!.removeFromSuperview()
+            })
+            }) { () -> Void in
         }
         
     }
@@ -127,10 +134,10 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if !jwt.jwtTemp.isEmpty {            
-            self.view.makeToast("登陆成功", duration: 1, position: .Top)
-            self.performSegueWithIdentifier("login", sender: self)
+        if !jwt.appUsername.isEmpty {
+            username.text = jwt.appUsername
+            password.text = jwt.appPwd
+            selfLogin(jwt.appUsername, password: jwt.appPwd)
         }
         
     }

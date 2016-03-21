@@ -78,7 +78,6 @@ extension UIViewController:MBProgressHUDDelegate {
     // MARK: - MBProgressHUDDelegate
     func hudWasHidden(hud: MBProgressHUD) {
         HUD!.removeFromSuperview()
-        HUD = nil
     }
     
 }

@@ -80,7 +80,7 @@ class PhotoUpLoader:BaseApi {
                     
                     break;
                 case .Failure(let error):
-                    print("\(error)")
+                    finishDo(Result.Failure(error))
                     break;
                 }
             })

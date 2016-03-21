@@ -49,7 +49,7 @@
                                             <constraint firstAttribute="height" constant="1" id="iXJ-d4-YHk"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-dj-LsK" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-dj-LsK" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="61" width="560" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="eS1-uT-OiR"/>

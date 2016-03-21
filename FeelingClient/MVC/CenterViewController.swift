@@ -76,6 +76,9 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         
         self.photoCollectionView.delegate = self
         self.photoCollectionView.dataSource = self
+        HUD = MBProgressHUD(view: self.navigationController!.view)
+        //HUD!.mode = .AnnularIndeterminate
+        HUD!.dimBackground = true
     }
     
     //这样将避免约束错误
@@ -85,10 +88,10 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         
     }
     @IBAction func sendMsg(sender: AnyObject) {
-        //        if !self.address.notEmpty {
-        //            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Top)
-        //            return
-        //        }
+        if !self.address.notEmpty {
+            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
+            return
+        }
         
         if !self.openUser.notEmpty {
             self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
@@ -104,16 +107,12 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.content = self.textView.text!
         viewModel.burnAfterReading = readFire.on
         
+        viewModel.sendMessage(self)
         
-        sendMessage()
         
     }
     
-    func sendMessage()
-    {
-        viewModel.sendMessage()
-    }
-    func searchMessage(){}
+    func searchMsg(sender: AnyObject){}
     
     func hiddenView(flag:Bool){
         hidden0.hidden = flag
