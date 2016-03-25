@@ -33,6 +33,7 @@ public class Messages:BaseApi {
         }
         else
         {
+            
             loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
                 switch (r) {
                 case .Success(let pathIn):
@@ -50,28 +51,7 @@ public class Messages:BaseApi {
     {
         let headers = self.jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
         let params = ["to": msg.to,"limitDate":msg.limitDate,"content":msg.content, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
-        NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: { (result:BaseApi.Result) -> Void in
-            switch (result) {
-            case .Success(let r):
-                if let json = r {
-                    let myJosn = JSON(json)
-                    let code:Int = Int(myJosn["status"].stringValue)!
-                    let result = myJosn.dictionary!["message"]!.stringValue
-                    if code != 200 {
-                        complete(Result.Failure(result))
-                    }
-                    else{
-                        msg.id = result
-                        complete(Result.Success(result))
-                    }
-                }
-                self.msgs.append(msg)
-                break;
-            case .Failure(let error):
-                print("\(error)")
-                break;
-            }
-        })
+        NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: complete)
     }
     
     //    * @param to   接受人

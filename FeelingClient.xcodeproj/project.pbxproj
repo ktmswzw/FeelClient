@@ -10,6 +10,7 @@
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
 		BF01B87C1C7B566A0049627E /* NetReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01B8741C7B566A0049627E /* NetReachability.swift */; };
 		BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */; };
+		BF164D951CA59560008EF56F /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF164D941CA59560008EF56F /* MapHelper.swift */; };
 		BF1710361C6EF1E000003D6B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710351C6EF1E000003D6B /* LoginViewController.swift */; };
 		BF1710391C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */; };
 		BF17103A1C6EFBDC00003D6B /* Image-GaussianBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710381C6EFBDC00003D6B /* Image-GaussianBlur.swift */; };
@@ -85,6 +86,7 @@
 		BF01B8731C7B566A0049627E /* NetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetReachability.h; sourceTree = "<group>"; };
 		BF01B8741C7B566A0049627E /* NetReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetReachability.swift; sourceTree = "<group>"; };
 		BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = MVC/CustomAnnotation.swift; sourceTree = "<group>"; };
+		BF164D941CA59560008EF56F /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapHelper.swift; path = common/MapHelper.swift; sourceTree = "<group>"; };
 		BF1710351C6EF1E000003D6B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MVC/LoginViewController.swift; sourceTree = "<group>"; };
 		BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Accelerate-GaussianBlur.swift"; sourceTree = "<group>"; };
 		BF1710381C6EFBDC00003D6B /* Image-GaussianBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image-GaussianBlur.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				BF45B6AA1C6C4FA20027F63D /* JWTTools.swift */,
 				BF45B6A21C6C4E820027F63D /* ImageUtils.swift */,
 				BFD18E341C7073E8002CF499 /* SqListUtils.swift */,
+				BF164D941CA59560008EF56F /* MapHelper.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				BF45B6A01C6C4E5F0027F63D /* Toucan.swift in Sources */,
 				BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */,
 				BF45B6931C6C4E440027F63D /* UIButtonType.swift in Sources */,
+				BF164D951CA59560008EF56F /* MapHelper.swift in Sources */,
 				BF45B6AB1C6C4FA20027F63D /* Toast.swift in Sources */,
 				BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */,
 				BF45B6941C6C4E440027F63D /* UICircleImageView.swift in Sources */,

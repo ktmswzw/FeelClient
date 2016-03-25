@@ -69,13 +69,11 @@ public class MessageViewModel {
         HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
-                case .Success(let r):
-                    self.id = r as! String
+                case .Success(_):
                     self.selfSendMsgs.append(msg)
                     se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
                     break;
-                case .Failure(let e):
-                    NSLog("\(e)")
+                case .Failure(_):
                     se!.view!!.makeToast("登陆失效", duration: 2, position: .Center)
                     break;
                 }
@@ -97,9 +95,11 @@ public class MessageViewModel {
         msgs.searchMsg("", x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
+                
                 for msg in r as! [MessageBean] {
                     let oneAnnotation = MyAnnotation()
-                    oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x)
+                    
+                    oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()
                     oneAnnotation.title = msg.to
                     oneAnnotation.subtitle = msg.question
                     oneAnnotation.id = msg.id

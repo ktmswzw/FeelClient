@@ -14,8 +14,8 @@ import ObjectMapper
 class NetApi:BaseApi {
     
     //    var apiUrl = "http://192.168.1.117/"
-    //    var apiUrl = "http://192.168.1.141/"
-    var apiUrl = "http://192.168.1.105/"
+        var apiUrl = "http://192.168.1.107:8080/"
+//    var apiUrl = "http://192.168.1.105/"
     
     
     //简单数据
