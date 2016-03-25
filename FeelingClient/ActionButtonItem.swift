@@ -80,7 +80,7 @@ public class ActionButtonItem: NSObject {
         self.button.layer.shadowRadius = 2
         self.button.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.button.layer.shadowColor = UIColor.grayColor().CGColor
-        self.button.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+        self.button.addTarget(self, action: #selector(ActionButtonItem.buttonPressed(_:)), forControlEvents: .TouchUpInside)
 
         if let unwrappedImage = image {
             self.button.setImage(unwrappedImage, forState: .Normal)
@@ -92,7 +92,7 @@ public class ActionButtonItem: NSObject {
             self.label.textColor = UIColor.darkGrayColor()
             self.label.textAlignment = .Right
             self.label.text = text
-            self.label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("labelTapped:")))
+            self.label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ActionButtonItem.labelTapped(_:))))
             self.label.sizeToFit()
             
             self.labelBackground = UIView()
@@ -116,7 +116,7 @@ public class ActionButtonItem: NSObject {
             self.labelBackground.addSubview(self.label)
             
             // Add Tap Gestures Recognizer
-            let tap = UITapGestureRecognizer(target: self, action: Selector("labelTapped:"))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(ActionButtonItem.labelTapped(_:)))
             self.view.addGestureRecognizer(tap)
             
             self.view.addSubview(self.labelBackground)

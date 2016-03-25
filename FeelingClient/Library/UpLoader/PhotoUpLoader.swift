@@ -84,7 +84,7 @@ class PhotoUpLoader:BaseApi {
                     break;
                 }
             })
-            count++
+            count += 1
         }
     }
     

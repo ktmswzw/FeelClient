@@ -211,7 +211,7 @@ class MBProgressHUD: UIView {
         assert(NSThread.isMainThread(), "MBProgressHUD needs to be accessed on the main thread.")
         useAnimation = animated
         if graceTime > 0.0 {
-            let newGraceTimer: NSTimer = NSTimer(timeInterval: graceTime, target: self, selector: "handleGraceTimer:", userInfo: nil, repeats: false)
+            let newGraceTimer: NSTimer = NSTimer(timeInterval: graceTime, target: self, selector: Selector("handleGraceTimer:"), userInfo: nil, repeats: false)
             NSRunLoop.currentRunLoop().addTimer(newGraceTimer, forMode: NSRunLoopCommonModes)
             graceTimer = newGraceTimer
         }
@@ -229,7 +229,7 @@ class MBProgressHUD: UIView {
         if let showStarted = showStarted where minShowTime > 0.0 {
             let interv: NSTimeInterval = NSDate().timeIntervalSinceDate(showStarted)
             guard interv >= minShowTime else {
-                minShowTimer = NSTimer(timeInterval: minShowTime - interv, target: self, selector: "handleMinShowTimer:", userInfo: nil, repeats: false)
+                minShowTimer = NSTimer(timeInterval: minShowTime - interv, target: self, selector: Selector("handleMinShowTimer:"), userInfo: nil, repeats: false)
                 return
             }
         }
@@ -303,7 +303,7 @@ class MBProgressHUD: UIView {
             UIView.beginAnimations(nil, context: nil)
             UIView.setAnimationDuration(0.30)
             UIView.setAnimationDelegate(self)
-            UIView.setAnimationDidStopSelector(Selector("animationFinished:finished:context:"))
+            UIView.setAnimationDidStopSelector(#selector(MBProgressHUD.animationFinished(_:finished:context:)))
             // 0.02 prevents the hud from passing through touches during the animation the hud will get completely hidden
             // in the done method
             if animationType == .ZoomIn {
@@ -348,7 +348,7 @@ class MBProgressHUD: UIView {
         taskInprogress = true
         closureForExecution = closures
         
-        NSThread.detachNewThreadSelector("launchExecution", toTarget: self, withObject: nil)
+        NSThread.detachNewThreadSelector(#selector(MBProgressHUD.launchExecution), toTarget: self, withObject: nil)
         
         // Show HUD view
         self.show(animated)
@@ -515,7 +515,7 @@ class MBProgressHUD: UIView {
     
     // MARK: - Notificaiton
     private func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "statusBarOrientationDidChange:", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationDidChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
     }
     
     private func unregisterFromNotifications() {

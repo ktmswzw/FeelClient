@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import SQLite
-
-class SQLUtils{
-    
-    let db = try! Connection("path/to/db.sqlite3")
-
-    func CreateUsersTable(sql: String) {
-        try! db.execute(sql)
-    }
-    
-    
-}
+//import SQLite
+//
+//class SQLUtils{
+//    
+//    let db = try! Connection("path/to/db.sqlite3")
+//
+//    func CreateUsersTable(sql: String) {
+//        try! db.execute(sql)
+//    }
+//    
+//    
+//}

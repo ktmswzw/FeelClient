@@ -69,19 +69,7 @@ public extension Int {
         (self...limit).each(function)
     }
     
-    /**
-        Iterates function, passing in integer values from self down to and including limit.
-        
-        - parameter limit: Last value to pass
-        - parameter function: Function to invoke
-    */
-    func downTo (limit: Int, function: (Int) -> ()) {
-        if limit > self {
-            return
-        }
 
-        Array(Array(limit...self).reverse()).each(function)
-    }
 
     /**
         Clamps self to a specified range.

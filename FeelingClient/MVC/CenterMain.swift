@@ -47,7 +47,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
                 let button = UIButton(type: .InfoLight)
                 button.userInteractionEnabled = false
                 annotationView!.rightCalloutAccessoryView = button
-                annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "didSelectAnnotationView:"))
+                annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
             }
             
             

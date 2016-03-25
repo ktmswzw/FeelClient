@@ -41,51 +41,7 @@ internal extension Dictionary {
 
     }
 
-    /**
-        Union of self and the input dictionaries.
-    
-        - parameter dictionaries: Dictionaries to join
-        - returns: Union of self and the input dictionaries
-    */
-    func union (dictionaries: Dictionary...) -> Dictionary {
 
-        var result = self
-
-        dictionaries.each { (dictionary) -> Void in
-            dictionary.each { (key, value) -> Void in
-                _ = result.updateValue(value, forKey: key)
-            }
-        }
-
-        return result
-
-    }
-
-    /**
-        Intersection of self and the input dictionaries.
-        Two dictionaries are considered equal if they contain the same [key: value] copules.
-    
-        - parameter values: Dictionaries to intersect
-        - returns: Dictionary of [key: value] couples contained in all the dictionaries and self
-    */
-    func intersection <K, V where K: Equatable, V: Equatable> (dictionaries: [K: V]...) -> [K: V] {
-
-        //  Casts self from [Key: Value] to [K: V]
-        let filtered = mapFilter { (item, value) -> (K, V)? in
-            if (item is K) && (value is V) {
-                return (item as! K, value as! V)
-            }
-            
-            return nil
-        }
-
-        //  Intersection
-        return filtered.filter({ (key: K, value: V) -> Bool in
-            //  check for [key: value] in all the dictionaries
-            dictionaries.all { $0.has(key) && $0[key] == value }
-        })
-
-    }
 
     /**
         Checks if a key exists in the dictionary.
@@ -275,7 +231,7 @@ internal extension Dictionary {
 
             // If element has already been added to dictionary, append to it. If not, create one.
             if result.has(groupKey) {
-                result[groupKey]!++
+                result[groupKey]! += 1
             } else {
                 result[groupKey] = 1
             }
@@ -333,7 +289,7 @@ internal extension Dictionary {
 
         for (key, value) in self {
             if test(key, value) {
-                result++
+                result += 1
             }
         }
 
@@ -406,16 +362,3 @@ public func - <K, V: Equatable> (first: [K: V], second: [K: V]) -> [K: V] {
     return first.difference(second)
 }
 
-/**
-    Intersection operator
-*/
-public func & <K, V: Equatable> (first: [K: V], second: [K: V]) -> [K: V] {
-    return first.intersection(second)
-}
-
-/**
-    Union operator
-*/
-public func | <K: Hashable, V> (first: [K: V], second: [K: V]) -> [K: V] {
-    return first.union(second)
-}

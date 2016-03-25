@@ -56,7 +56,6 @@
 		BFF74EE01C9D45D2005B8BC9 /* MBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF74EDF1C9D45D2005B8BC9 /* MBProgressHUD.swift */; };
 		BFF89E0D1C78A67D00A38D16 /* libTXYUploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */; };
 		BFFCEAAC1C7887F60042EF11 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAAA1C7887F60042EF11 /* AccountModel.swift */; };
-		BFFCEAF81C789ED40042EF11 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAEB1C789ED40042EF11 /* Array.swift */; };
 		BFFCEAF91C789ED40042EF11 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAEC1C789ED40042EF11 /* Bool.swift */; };
 		BFFCEAFA1C789ED40042EF11 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAED1C789ED40042EF11 /* Character.swift */; };
 		BFFCEAFB1C789ED40042EF11 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAEE1C789ED40042EF11 /* Dictionary.swift */; };
@@ -142,7 +141,6 @@
 		BFF89E0B1C78A67D00A38D16 /* TXYBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYBase.h; sourceTree = "<group>"; };
 		BFF89E0C1C78A67D00A38D16 /* TXYUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYUploadManager.h; sourceTree = "<group>"; };
 		BFFCEAAA1C7887F60042EF11 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
-		BFFCEAEB1C789ED40042EF11 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		BFFCEAEC1C789ED40042EF11 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
 		BFFCEAED1C789ED40042EF11 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		BFFCEAEE1C789ED40042EF11 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 		BF01B8691C7B56130049627E /* extension */ = {
 			isa = PBXGroup;
 			children = (
-				BFFCEAEB1C789ED40042EF11 /* Array.swift */,
 				BFFCEAEC1C789ED40042EF11 /* Bool.swift */,
 				BFFCEAED1C789ED40042EF11 /* Character.swift */,
 				BFFCEAEE1C789ED40042EF11 /* Dictionary.swift */,
@@ -608,7 +605,6 @@
 				BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */,
 				BFEA23D61C9021B30037A691 /* Message.swift in Sources */,
 				BFEA23D81C914C030037A691 /* CenterMessageModel.swift in Sources */,
-				BFFCEAF81C789ED40042EF11 /* Array.swift in Sources */,
 				BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */,
 				BF45B6A01C6C4E5F0027F63D /* Toucan.swift in Sources */,
 				BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */,
@@ -761,6 +757,8 @@
 			baseConfigurationReference = 37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FeelingClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -770,6 +768,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
 			};
 			name = Debug;
@@ -779,6 +778,8 @@
 			baseConfigurationReference = DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FeelingClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -788,6 +789,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
 			};
 			name = Release;

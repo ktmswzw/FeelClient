@@ -31,59 +31,13 @@ public extension String {
             return nil
         }
         
-        let range = Range(start: startIndex.advancedBy(range.startIndex), end: startIndex.advancedBy(range.endIndex))
+        let range = startIndex.advancedBy(range.startIndex) ..< startIndex.advancedBy(range.endIndex)
         
         return self[range]
     }
+
     
-    /**
-     Equivalent to at. Takes a list of indexes and returns an Array
-     containing the elements at the given indexes in self.
-     
-     - parameter firstIndex:
-     - parameter secondIndex:
-     - parameter restOfIndexes:
-     - returns: Charaters at the specified indexes (converted to String)
-     */
-    subscript (firstIndex: Int, secondIndex: Int, restOfIndexes: Int...) -> [String] {
-        return at([firstIndex, secondIndex] + restOfIndexes)
-    }
-    
-    /**
-     Gets the character at the specified index as String.
-     If index is negative it is assumed to be relative to the end of the String.
-     
-     - parameter index: Position of the character to get
-     - returns: Character as String or nil if the index is out of bounds
-     */
-    subscript (index: Int) -> String? {
-        if let char = Array(self.characters).get(index) {
-            return String(char)
-        }
-        
-        return nil
-    }
-    
-    /**
-     Takes a list of indexes and returns an Array containing the elements at the given indexes in self.
-     
-     - parameter indexes: Positions of the elements to get
-     - returns: Array of characters (as String)
-     */
-    func at (indexes: Int...) -> [String] {
-        return indexes.map { self[$0]! }
-    }
-    
-    /**
-     Takes a list of indexes and returns an Array containing the elements at the given indexes in self.
-     
-     - parameter indexes: Positions of the elements to get
-     - returns: Array of characters (as String)
-     */
-    func at (indexes: [Int]) -> [String] {
-        return indexes.map { self[$0]! }
-    }
-    
+
     /**
      Returns an array of strings, each of which is a substring of self formed by splitting it on separator.
      
@@ -207,30 +161,7 @@ public extension String {
         return trimmedLeft().trimmedRight()
     }
     
-    /**
-     Costructs a string using random chars from a given set.
-     
-     - parameter length: String length. If < 1, it's randomly selected in the range 0..16
-     - parameter charset: Chars to use in the random string
-     - returns: Random string
-     */
-    static func random (var length len: Int = 0, charset: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") -> String {
-        
-        if len < 1 {
-            len = Int.random(max: 16)
-        }
-        
-        var result = String()
-        let max = charset.length - 1
-        
-        len.times {
-            result += charset[Int.random(0, max: max)]!
-        }
-        
-        return result
-        
-    }
-    
+
     
     /**
      Parses a string containing a double numerical value into an optional double if the string is a well formed number.
@@ -374,35 +305,6 @@ public func =~ (string: String, options: (pattern: String, ignoreCase: Bool)) ->
     
 }
 
-//  Match against all the alements in an array of String
-public func =~ (strings: [String], pattern: String) -> Bool {
-    
-    let regex = ExSwift.regex(pattern, ignoreCase: false)!
-    
-    return strings.all { $0 =~ regex }
-    
-}
-
-public func =~ (strings: [String], options: (pattern: String, ignoreCase: Bool)) -> Bool {
-    
-    return strings.all { $0 =~ options }
-    
-}
-
-//  Match against any element in an array of String
-public func |~ (strings: [String], pattern: String) -> Bool {
-    
-    let regex = ExSwift.regex(pattern, ignoreCase: false)!
-    
-    return strings.any { $0 =~ regex }
-    
-}
-
-public func |~ (strings: [String], options: (pattern: String, ignoreCase: Bool)) -> Bool {
-    
-    return strings.any { $0 =~ options }
-    
-}
 
 
 extension String {

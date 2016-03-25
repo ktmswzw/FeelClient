@@ -97,8 +97,8 @@ public class ActionButton: NSObject {
         self.floatButton.userInteractionEnabled = true
         self.floatButton.translatesAutoresizingMaskIntoConstraints = false
         
-        self.floatButton.addTarget(self, action: Selector("buttonTapped:"), forControlEvents: .TouchUpInside)
-        self.floatButton.addTarget(self, action: Selector("buttonTouchDown:"), forControlEvents: .TouchDown)
+        self.floatButton.addTarget(self, action: #selector(ActionButton.buttonTapped(_:)), forControlEvents: .TouchUpInside)
+        self.floatButton.addTarget(self, action: #selector(ActionButton.buttonTouchDown(_:)), forControlEvents: .TouchDown)
         self.parentView.addSubview(self.floatButton)
 
         self.contentView = UIView(frame: bounds)
@@ -106,7 +106,7 @@ public class ActionButton: NSObject {
         self.blurVisualEffect.frame = self.contentView.frame
         self.contentView.addSubview(self.blurVisualEffect)
         
-        let tap = UITapGestureRecognizer(target: self, action: Selector("backgroundTapped:"))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ActionButton.backgroundTapped(_:)))
         self.contentView.addGestureRecognizer(tap)
         
         self.installConstraints()
