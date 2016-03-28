@@ -69,6 +69,7 @@
 		BFFCEB021C789ED40042EF11 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF61C789ED40042EF11 /* Sequence.swift */; };
 		BFFCEB031C789ED40042EF11 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF71C789ED40042EF11 /* String.swift */; };
 		BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEB041C789F240042EF11 /* BaseModel.swift */; };
+		BFFF14261CA6408400B90A9A /* RxAlamofireSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		BFFCEAF61C789ED40042EF11 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		BFFCEAF71C789ED40042EF11 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BFFCEB041C789F240042EF11 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Library/UpLoader/BaseModel.swift; sourceTree = "<group>"; };
+		BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxAlamofireSelf.swift; sourceTree = "<group>"; };
 		DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2F433E2F3517659A39AEF6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -408,6 +410,7 @@
 		BFE8903F1C782ABB00429E9E /* updateSelf */ = {
 			isa = PBXGroup;
 			children = (
+				BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */,
 				BF17103B1C6F58D500003D6B /* ActionButton.swift */,
 				BF17103C1C6F58D500003D6B /* ActionButtonItem.swift */,
 				BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */,
@@ -639,6 +642,7 @@
 				BFFCEAFD1C789ED40042EF11 /* ExSwift.swift in Sources */,
 				BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */,
 				BFFCEAFE1C789ED40042EF11 /* Float.swift in Sources */,
+				BFFF14261CA6408400B90A9A /* RxAlamofireSelf.swift in Sources */,
 				BF45B6AC1C6C4FA20027F63D /* JWTTools.swift in Sources */,
 				BF17103D1C6F58D600003D6B /* ActionButton.swift in Sources */,
 				BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */,
