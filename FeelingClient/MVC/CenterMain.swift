@@ -19,6 +19,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     let locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
+    var msgId = ""
     var isOk = false
     var viewModel: MessageViewModel!
     @IBOutlet var mapView: MKMapView!
@@ -111,13 +112,12 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             NSLog(title)
             let id = pin.id as String
             NSLog(id)
-            
-            
+            viewModel.msgId = id;
+            viewModel.question = title;
             self.performSegueWithIdentifier("open", sender: self)
             
         }
     }
-    
     
     var selectedView: MKAnnotationView?
     
@@ -127,20 +127,23 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         viewModel.searchMessage(self.mapView)
     }
     
-    
     func sendMsg(sender:AnyObject){}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "send"{
+        if segue.identifier == "send" {
             let bottomBar = segue.destinationViewController as! CenterViewController
             bottomBar.hidesBottomBarWhenPushed = true
             //bottomBar.navigationItem.hidesBackButton = true
+        }
+        else if segue.identifier == "open" {
+            let viewController = segue.destinationViewController as! OpenMessageViewController
+            viewController.viewModel = self.viewModel
         }
     }
     

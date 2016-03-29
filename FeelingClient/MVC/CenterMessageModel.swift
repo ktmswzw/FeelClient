@@ -18,6 +18,10 @@ public class MessageViewModel {
     
     //id
     var id: String = ""
+    //msgId
+    var msgId = ""
+    //问题
+    var question = ""
     //接受对象
     var to: String = ""
     //期限

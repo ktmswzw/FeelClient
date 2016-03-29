@@ -76,4 +76,5 @@ public class OpenMessageModel {
 
 public protocol OpenMessageModelDelegate: class {
     func verifyAnswer()
+    func arrival()
 }

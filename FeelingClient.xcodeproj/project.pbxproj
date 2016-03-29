@@ -10,7 +10,7 @@
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
 		BF01B87C1C7B566A0049627E /* NetReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01B8741C7B566A0049627E /* NetReachability.swift */; };
 		BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */; };
-		BF143BDC1CAA6A69000AF72A /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */; };
+		BF0F5C891CAAB79000FA9C91 /* BindingExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */; };
 		BF164D951CA59560008EF56F /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF164D941CA59560008EF56F /* MapHelper.swift */; };
 		BF1710361C6EF1E000003D6B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710351C6EF1E000003D6B /* LoginViewController.swift */; };
 		BF1710391C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */; };
@@ -87,7 +87,7 @@
 		BF01B8731C7B566A0049627E /* NetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetReachability.h; sourceTree = "<group>"; };
 		BF01B8741C7B566A0049627E /* NetReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetReachability.swift; sourceTree = "<group>"; };
 		BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = MVC/CustomAnnotation.swift; sourceTree = "<group>"; };
-		BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageModel.swift; path = MVC/OpenMessageModel.swift; sourceTree = "<group>"; };
+		BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BindingExtensions.swift; path = common/BindingExtensions.swift; sourceTree = "<group>"; };
 		BF164D941CA59560008EF56F /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapHelper.swift; path = common/MapHelper.swift; sourceTree = "<group>"; };
 		BF1710351C6EF1E000003D6B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MVC/LoginViewController.swift; sourceTree = "<group>"; };
 		BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Accelerate-GaussianBlur.swift"; sourceTree = "<group>"; };
@@ -244,6 +244,7 @@
 				BF45B6A21C6C4E820027F63D /* ImageUtils.swift */,
 				BFD18E341C7073E8002CF499 /* SqListUtils.swift */,
 				BF164D941CA59560008EF56F /* MapHelper.swift */,
+				BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -262,7 +263,6 @@
 			children = (
 				BFEA23D71C914C030037A691 /* CenterMessageModel.swift */,
 				BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */,
-				BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */,
 			);
 			name = VM;
 			sourceTree = "<group>";
@@ -605,6 +605,7 @@
 				BFFCEAFA1C789ED40042EF11 /* Character.swift in Sources */,
 				BF45B6951C6C4E440027F63D /* UIImageColors.swift in Sources */,
 				BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */,
+				BF0F5C891CAAB79000FA9C91 /* BindingExtensions.swift in Sources */,
 				BFFCEAFB1C789ED40042EF11 /* Dictionary.swift in Sources */,
 				BFFCEAFF1C789ED40042EF11 /* Int.swift in Sources */,
 				BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */,
@@ -617,7 +618,6 @@
 				BF45B6931C6C4E440027F63D /* UIButtonType.swift in Sources */,
 				BF164D951CA59560008EF56F /* MapHelper.swift in Sources */,
 				BF45B6AB1C6C4FA20027F63D /* Toast.swift in Sources */,
-				BF143BDC1CAA6A69000AF72A /* OpenMessageModel.swift in Sources */,
 				BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */,
 				BF45B6941C6C4E440027F63D /* UICircleImageView.swift in Sources */,
 				BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */,
