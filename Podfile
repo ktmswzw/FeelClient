@@ -34,7 +34,6 @@ pod 'Toucan’, :git => 'https://github.com/gavinbunney/Toucan'
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxBlocking'
-pod 'RxTests'
 pod 'RxAlamofire'
 
 post_install do |installer|

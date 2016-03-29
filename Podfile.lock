@@ -21,8 +21,6 @@ PODS:
   - RxCocoa (2.3.1):
     - RxSwift (~> 2.3.1)
   - RxSwift (2.3.1)
-  - RxTests (2.3.1):
-    - RxSwift (~> 2.3.1)
   - SMSSDK (2.0.2)
   - SwiftyJSON (2.3.2)
   - Toucan (0.5.0)
@@ -41,7 +39,6 @@ DEPENDENCIES:
   - RxBlocking
   - RxCocoa
   - RxSwift
-  - RxTests
   - SMSSDK
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - Toucan (from `https://github.com/gavinbunney/Toucan`)
@@ -89,7 +86,6 @@ SPEC CHECKSUMS:
   RxBlocking: 84fd81865a641a3843b33bae7b8315e78ddbd383
   RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
   RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
-  RxTests: 86e059f7257a92be9baf124975c71297555daf53
   SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40

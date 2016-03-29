@@ -211,7 +211,7 @@ class MBProgressHUD: UIView {
         assert(NSThread.isMainThread(), "MBProgressHUD needs to be accessed on the main thread.")
         useAnimation = animated
         if graceTime > 0.0 {
-            let newGraceTimer: NSTimer = NSTimer(timeInterval: graceTime, target: self, selector: Selector("handleGraceTimer:"), userInfo: nil, repeats: false)
+            let newGraceTimer: NSTimer = NSTimer(timeInterval: graceTime, target: self, selector: #selector(MBProgressHUD.handleGraceTimer), userInfo: nil, repeats: false)
             NSRunLoop.currentRunLoop().addTimer(newGraceTimer, forMode: NSRunLoopCommonModes)
             graceTimer = newGraceTimer
         }
@@ -229,7 +229,7 @@ class MBProgressHUD: UIView {
         if let showStarted = showStarted where minShowTime > 0.0 {
             let interv: NSTimeInterval = NSDate().timeIntervalSinceDate(showStarted)
             guard interv >= minShowTime else {
-                minShowTimer = NSTimer(timeInterval: minShowTime - interv, target: self, selector: Selector("handleMinShowTimer:"), userInfo: nil, repeats: false)
+                minShowTimer = NSTimer(timeInterval: minShowTime - interv, target: self, selector: #selector(MBProgressHUD.handleMinShowTimer), userInfo: nil, repeats: false)
                 return
             }
         }
@@ -255,14 +255,14 @@ class MBProgressHUD: UIView {
     }
     
     // MARK: - Timer callbacks
-    private func handleGraceTimer(theTimer: NSTimer) {
+    @objc private func handleGraceTimer(theTimer: NSTimer) {
         // Show the HUD only if the task is still running
         if taskInprogress {
             self.showUsingAnimation(useAnimation)
         }
     }
     
-    private func handleMinShowTimer(theTimer: NSTimer) {
+    @objc private func handleMinShowTimer(theTimer: NSTimer) {
         self.hideUsingAnimation(useAnimation)
     }
     
@@ -475,54 +475,18 @@ class MBProgressHUD: UIView {
         default:
             break
         }
-        
-        //        if mode == MBProgressHUDMode.Indeterminate {
-        //            if !isActivityIndicator {
-        //                indicator?.removeFromSuperview()
-        //                indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        //                (indicator as! UIActivityIndicatorView).startAnimating()
-        //                self.addSubview(indicator!)
-        //            }
-        //            (indicator as! UIActivityIndicatorView).color = activityIndicatorColor
-        //        } else if mode == MBProgressHUDMode.AnnularIndeterminate {
-        //            if !isIndeterminatedRoundIndicator {
-        //                indicator?.removeFromSuperview()
-        //                indicator = MBIndeterminatedRoundProgressView()
-        //                self.addSubview(indicator!)
-        //            }
-        //        } else if mode == MBProgressHUDMode.DeterminateHorizontalBar {
-        //            indicator?.removeFromSuperview()
-        //            indicator = MBBarProgressView()
-        //            self.addSubview(indicator!)
-        //        } else if mode == MBProgressHUDMode.Determinate || mode == MBProgressHUDMode.AnnularDeterminate {
-        //            if !isRoundIndicator {
-        //                indicator?.removeFromSuperview()
-        //                indicator = MBRoundProgressView()
-        //                self.addSubview(indicator!)
-        //            }
-        //            if mode == MBProgressHUDMode.AnnularDeterminate {
-        //                (indicator as! MBRoundProgressView).annular = true
-        //            }
-        //        } else if mode == MBProgressHUDMode.CustomView && customView != indicator {
-        //            indicator?.removeFromSuperview()
-        //            self.indicator = customView
-        //            self.addSubview(indicator!)
-        //        } else if mode == MBProgressHUDMode.Text {
-        //            indicator?.removeFromSuperview()
-        //            indicator = nil
-        //        }
     }
     
     // MARK: - Notificaiton
     private func registerForNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("statusBarOrientationDidChange:"), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MBProgressHUD.statusBarOrientationDidChange), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
     }
     
     private func unregisterFromNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
     }
     
-    private func statusBarOrientationDidChange(notification: NSNotification) {
+    @objc private func statusBarOrientationDidChange(notification: NSNotification) {
         if let _ = self.superview {
             self.updateForCurrentOrientationAnimaged(true)
         }

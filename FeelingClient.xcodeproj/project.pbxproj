@@ -10,6 +10,7 @@
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
 		BF01B87C1C7B566A0049627E /* NetReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01B8741C7B566A0049627E /* NetReachability.swift */; };
 		BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */; };
+		BF143BDC1CAA6A69000AF72A /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */; };
 		BF164D951CA59560008EF56F /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF164D941CA59560008EF56F /* MapHelper.swift */; };
 		BF1710361C6EF1E000003D6B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710351C6EF1E000003D6B /* LoginViewController.swift */; };
 		BF1710391C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */; };
@@ -69,7 +70,6 @@
 		BFFCEB021C789ED40042EF11 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF61C789ED40042EF11 /* Sequence.swift */; };
 		BFFCEB031C789ED40042EF11 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF71C789ED40042EF11 /* String.swift */; };
 		BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEB041C789F240042EF11 /* BaseModel.swift */; };
-		BFFF14261CA6408400B90A9A /* RxAlamofireSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +87,7 @@
 		BF01B8731C7B566A0049627E /* NetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetReachability.h; sourceTree = "<group>"; };
 		BF01B8741C7B566A0049627E /* NetReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetReachability.swift; sourceTree = "<group>"; };
 		BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomAnnotation.swift; path = MVC/CustomAnnotation.swift; sourceTree = "<group>"; };
+		BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageModel.swift; path = MVC/OpenMessageModel.swift; sourceTree = "<group>"; };
 		BF164D941CA59560008EF56F /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapHelper.swift; path = common/MapHelper.swift; sourceTree = "<group>"; };
 		BF1710351C6EF1E000003D6B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = MVC/LoginViewController.swift; sourceTree = "<group>"; };
 		BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Accelerate-GaussianBlur.swift"; sourceTree = "<group>"; };
@@ -157,7 +158,6 @@
 		BFFCEAF61C789ED40042EF11 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		BFFCEAF71C789ED40042EF11 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BFFCEB041C789F240042EF11 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Library/UpLoader/BaseModel.swift; sourceTree = "<group>"; };
-		BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxAlamofireSelf.swift; sourceTree = "<group>"; };
 		DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2F433E2F3517659A39AEF6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -262,6 +262,7 @@
 			children = (
 				BFEA23D71C914C030037A691 /* CenterMessageModel.swift */,
 				BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */,
+				BF143BDB1CAA6A69000AF72A /* OpenMessageModel.swift */,
 			);
 			name = VM;
 			sourceTree = "<group>";
@@ -410,7 +411,6 @@
 		BFE8903F1C782ABB00429E9E /* updateSelf */ = {
 			isa = PBXGroup;
 			children = (
-				BFFF14251CA6408400B90A9A /* RxAlamofireSelf.swift */,
 				BF17103B1C6F58D500003D6B /* ActionButton.swift */,
 				BF17103C1C6F58D500003D6B /* ActionButtonItem.swift */,
 				BF1710371C6EFBDC00003D6B /* Accelerate-GaussianBlur.swift */,
@@ -617,6 +617,7 @@
 				BF45B6931C6C4E440027F63D /* UIButtonType.swift in Sources */,
 				BF164D951CA59560008EF56F /* MapHelper.swift in Sources */,
 				BF45B6AB1C6C4FA20027F63D /* Toast.swift in Sources */,
+				BF143BDC1CAA6A69000AF72A /* OpenMessageModel.swift in Sources */,
 				BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */,
 				BF45B6941C6C4E440027F63D /* UICircleImageView.swift in Sources */,
 				BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */,
@@ -642,7 +643,6 @@
 				BFFCEAFD1C789ED40042EF11 /* ExSwift.swift in Sources */,
 				BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */,
 				BFFCEAFE1C789ED40042EF11 /* Float.swift in Sources */,
-				BFFF14261CA6408400B90A9A /* RxAlamofireSelf.swift in Sources */,
 				BF45B6AC1C6C4FA20027F63D /* JWTTools.swift in Sources */,
 				BF17103D1C6F58D600003D6B /* ActionButton.swift in Sources */,
 				BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */,
