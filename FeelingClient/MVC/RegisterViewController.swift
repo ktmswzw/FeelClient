@@ -19,7 +19,6 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     @IBOutlet var password: AnimatableTextField!
     @IBOutlet var registerButton: AnimatableButton!
     
-    let jwt = JWTTools()
     
     var realPhone: String = ""
     
@@ -97,7 +96,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
                                 self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
                             }
                             else{
-                                self.jwt.token = myJosn.dictionary!["message"]!.stringValue
+                                jwt.token = myJosn.dictionary!["message"]!.stringValue
                                 self.view.makeToast("登陆成功", duration: 1, position: .Center)
                                 self.performSegueWithIdentifier("registerIn", sender: self)
                             }

@@ -48,6 +48,7 @@ public class OpenMessageModel {
             switch (r) {
             case .Success(let r):
                 self.msgscrentId = r as! String;
+                view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
                 break;
             case .Failure(let msg):
                 view.makeToast(msg as! String, duration: 1, position: .Center)
@@ -70,6 +71,15 @@ public class OpenMessageModel {
             }
         }
     }
+    
+    
+    public weak var delegate: OpenMessageModelDelegate?
+    
+    // new initializer
+    public init(delegate: OpenMessageModelDelegate) {
+        self.delegate = delegate
+    }
+    
     
 }
 

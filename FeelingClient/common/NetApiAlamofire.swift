@@ -19,6 +19,19 @@ class NetApi:BaseApi {
     
     
     //简单数据
+    func makeCallString(method: Alamofire.Method, section: String, headers: [String: String]?, params: [String: AnyObject]?, completionHandler: CompletionHandlerType) {
+        Alamofire.request(method, apiUrl+section,headers: headers, parameters: params)
+            .responseString { response in
+                switch response.result {
+                case .Success(let value):
+                    completionHandler(Result.Success(value))
+                case .Failure(let error):
+                    completionHandler(Result.Failure(error))
+                }
+        }
+    }
+    
+    //JSON数据
     func makeCall(method: Alamofire.Method, section: String, headers: [String: String]?, params: [String: AnyObject]?, completionHandler: CompletionHandlerType) {
         Alamofire.request(method, apiUrl+section,headers: headers, parameters: params)
             .responseJSON { response in

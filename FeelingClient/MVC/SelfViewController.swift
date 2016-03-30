@@ -6,16 +6,48 @@
 //  Copyright © 2016 xecoder. All rights reserved.
 //
 
-import UIKit
-
 import IBAnimatable
+import UIKit
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
 
 class SelfViewController: DesignableViewController {
 
+    @IBOutlet weak var exitApp: UIButton!
+    var disposeBag = DisposeBag()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let image = UIImage(named: "horse")//lonely-children
+        let blurredImage = image!.imageByApplyingBlurWithRadius(15)
+        self.view.layer.contents = blurredImage.CGImage
         // Do any additional setup after loading the view.
+        
+        
+        
+        exitApp.rx_tap
+            .subscribeNext { [weak self] in self?.exitAppAction() }
+            .addDisposableTo(disposeBag)
+        
+        
+    }
+    
+    func exitAppAction()
+    {
+        jwt.jwtTemp = ""
+        jwt.appUsername = ""
+        jwt.appPwd = ""
+        
+        //self.performSegueWithIdentifier("logout", sender: self)
+        
+        navigationController!.pushViewController(storyboard!.instantiateViewControllerWithIdentifier("login") as UIViewController, animated: true)
+
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

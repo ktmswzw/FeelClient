@@ -48,6 +48,7 @@
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
 		BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */; };
 		BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */; };
+		BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD27271CAC31640064C364 /* OpenMapViewController.swift */; };
 		BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E341C7073E8002CF499 /* SqListUtils.swift */; };
 		BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
@@ -130,6 +131,7 @@
 		BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageViewController.swift; path = MVC/OpenMessageViewController.swift; sourceTree = "<group>"; };
 		BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMessageModel.swift; sourceTree = "<group>"; };
 		BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterMain.swift; path = MVC/CenterMain.swift; sourceTree = "<group>"; };
+		BFCD27271CAC31640064C364 /* OpenMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMapViewController.swift; path = MVC/OpenMapViewController.swift; sourceTree = "<group>"; };
 		BFD18E341C7073E8002CF499 /* SqListUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SqListUtils.swift; path = common/SqListUtils.swift; sourceTree = "<group>"; };
 		BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterViewController.swift; path = MVC/CenterViewController.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -376,6 +378,7 @@
 				BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */,
 				BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */,
 				BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */,
+				BFCD27271CAC31640064C364 /* OpenMapViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				BFF74EE01C9D45D2005B8BC9 /* MBProgressHUD.swift in Sources */,
 				BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */,
 				BFFCEAAC1C7887F60042EF11 /* AccountModel.swift in Sources */,
+				BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */,
 				BFFCEB021C789ED40042EF11 /* Sequence.swift in Sources */,
 				BF1A83521C784CD0006B0377 /* PhotoUpLoader.swift in Sources */,
 				BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */,

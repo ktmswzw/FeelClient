@@ -17,7 +17,6 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
-    let jwt = JWTTools()
     var actionButton: ActionButton!
     
     override func viewDidLoad() {
@@ -111,9 +110,9 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
                             self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
                         }
                         else{
-                            self.jwt.jwtTemp = myJosn.dictionary!["message"]!.stringValue
-                            self.jwt.appUsername = userName
-                            self.jwt.appPwd = password
+                            jwt.jwtTemp = myJosn.dictionary!["message"]!.stringValue
+                            jwt.appUsername = userName
+                            jwt.appPwd = password
                             self.view.makeToast("登陆成功", duration: 1, position: .Center)
                             self.performSegueWithIdentifier("login", sender: self)
                         }
@@ -134,7 +133,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if !jwt.appUsername.isEmpty {
+        if jwt.appUsername.length > 0 && jwt.appPwd.length > 0 {
             username.text = jwt.appUsername
             password.text = jwt.appPwd
             selfLogin(jwt.appUsername, password: jwt.appPwd)

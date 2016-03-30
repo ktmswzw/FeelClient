@@ -11,7 +11,6 @@ import IBAnimatable
 import SwiftyJSON
 import Alamofire
 import Foundation
-import UIKit
 #if !RX_NO_MODULE
     import RxSwift
     import RxCocoa
@@ -36,6 +35,7 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         let blurredImage = image!.imageByApplyingBlurWithRadius(15)
         self.view.layer.contents = blurredImage.CGImage
         
+        msgModel = OpenMessageModel(delegate: self)
         alertLable.text = "TA设置了密码，提示"
         
         questionLabel.text = self.viewModel.question
@@ -64,11 +64,6 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         
     }
     
-    func showAlert() {
-        
-        //self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,6 +73,7 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
     {
         msgModel.id = self.viewModel.msgId
         msgModel.question = self.viewModel.question
+        msgModel.answer = self.answerLabel.text
         msgModel.verifyAnswer(self.view)
     }
     

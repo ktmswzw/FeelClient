@@ -12,13 +12,12 @@ import ObjectMapper
 import SwiftyJSON
 import Alamofire
 
+var jwt = JWTTools()
 
 public class Messages:BaseApi {
     static let defaultMessages = Messages()
     var msgs = [MessageBean]()
     var loader = PhotoUpLoader.init()
-    
-    var jwt = JWTTools()
     var imagesData: [UIImage]?
     
     func addMsg(msg: MessageBean, imags:[UIImage]) {
@@ -49,7 +48,7 @@ public class Messages:BaseApi {
     
     private func sendSelf(msg: MessageBean,path: String,complete: CompletionHandlerType)
     {
-        let headers = self.jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
+        let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
         let params = ["to": msg.to,"limitDate":msg.limitDate,"content":msg.content, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
         NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: complete)
     }
@@ -81,12 +80,13 @@ public class Messages:BaseApi {
 class MessageApi:BaseApi{
     
     static let defaultMessages = MessageApi()
-    //    /arrival/{x}/{y}/{id}
-    //    validate/{id}/{answer}
+    //    /messages/arrival/{x}/{y}/{id}
+    //    /messages/validate/{id}/{answer}
     func verifyMsg(id: String,answer:String,completeHander: CompletionHandlerType)
     {
         let params = [:]
-        NetApi().makeCall(Alamofire.Method.POST, section: "validate/\(id)/\(answer)", headers: [:], params: params as? [String:AnyObject]) {
+        let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
+        NetApi().makeCall(Alamofire.Method.GET, section: "messages/validate/\(id)/\(answer)", headers: headers, params: params as? [String:AnyObject]) {
             (result:BaseApi.Result) -> Void in
             
             switch (result) {
@@ -96,10 +96,10 @@ class MessageApi:BaseApi{
                     let code:Int = Int(myJosn["status"].stringValue)!
                     let id:String = myJosn.dictionary!["message"]!.stringValue
                     if code != 200 {
-                        completeHander(Result.Success(id))
+                        completeHander(Result.Failure(id))
                     }
                     else{
-                        completeHander(Result.Failure(id))
+                        completeHander(Result.Success(id))
                     }
                 }
                 break;
