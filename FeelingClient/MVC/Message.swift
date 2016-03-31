@@ -110,10 +110,10 @@ class MessageApi:BaseApi{
         }
     }
     
-    func arrival(id: String,x: String,y:String,completeHander: CompletionHandlerType)
+    func arrival(id: String,completeHander: CompletionHandlerType)
     {
         let params = [:]
-        NetApi().makeCall(Alamofire.Method.POST, section: "arrival/\(y)/\(x)/\(id)", headers: [:], params: params as? [String:AnyObject]) {
+        NetApi().makeCallString(Alamofire.Method.GET, section: "messages/openOver/\(id)", headers: [:], params: params as? [String:AnyObject]) {
             (result:BaseApi.Result) -> Void in
             
             switch (result) {
@@ -122,6 +122,7 @@ class MessageApi:BaseApi{
                     let myJosn = JSON(json)
                     let code:Int = Int(myJosn["status"].stringValue)!
                     if code != 200 {
+                        print(json["message"] )
                         let bean:MessagesSecret =  json["message"] as! MessagesSecret
                         completeHander(Result.Success(bean))
                     }

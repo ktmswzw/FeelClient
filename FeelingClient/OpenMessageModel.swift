@@ -7,6 +7,10 @@
 //
 
 import Foundation
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
 
 public class OpenMessageModel {
     
@@ -31,6 +35,7 @@ public class OpenMessageModel {
     //阅后即焚
     var burnAfterReading: Bool = false
     
+    
     //问题
     var question: String?
     //答案
@@ -42,28 +47,33 @@ public class OpenMessageModel {
     var msgscrent = MessagesSecret()// 内容
     var msgscrentId = "";//解密后的id
     
-    func verifyAnswer(view:UIView)
+    func verifyAnswer(view:UIView,uc:UIViewController)
     {
         msg.verifyMsg(self.id, answer: self.answer!) { (r: BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
                 self.msgscrentId = r as! String;
                 view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+                
+                
+                uc.performSegueWithIdentifier("openOver", sender: uc)
+                
+                sleep(2)
                 break;
             case .Failure(let msg):
                 view.makeToast(msg as! String, duration: 1, position: .Center)
                 break;
             }
-            
         }
     }
     
     func arrival(view:UIView)
     {
-        msg.arrival(msgscrentId, x: "\(x)", y: "\(y)") { (r:BaseApi.Result) -> Void in
+        msg.arrival(msgscrentId) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
                 self.msgscrent = r as! MessagesSecret;
+                print(self.msgscrent)
                 break;
             case .Failure(let msg):
                 view.makeToast(msg as! String, duration: 1, position: .Center)

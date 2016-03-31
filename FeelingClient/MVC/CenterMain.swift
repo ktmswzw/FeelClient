@@ -109,11 +109,13 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let pin = pinView.annotation! as! MyAnnotation
             
             let title = pin.title! as String
-            NSLog(title)
+            let subtitle = pin.subtitle! as String
+//            NSLog(title)
             let id = pin.id as String
-            NSLog(id)
+//            NSLog(id)
             viewModel.msgId = id;
-            viewModel.question = title;
+            viewModel.question = subtitle;
+            viewModel.to = title;
             self.performSegueWithIdentifier("open", sender: self)
             
         }

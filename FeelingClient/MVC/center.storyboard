@@ -28,7 +28,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="寻觅">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -39,6 +39,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -636,7 +639,7 @@
                                                 <rect key="frame" x="0.0" y="58" width="560" height="61"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="answer"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
@@ -727,7 +730,7 @@
                         <outlet property="answerLabel" destination="CF7-VZ-PcB" id="kE8-uf-YWd"/>
                         <outlet property="questionLabel" destination="cg2-6J-e6C" id="QF4-z1-ADD"/>
                         <outlet property="verifyButton" destination="QL3-DM-iEM" id="EAf-e6-rcY"/>
-                        <segue destination="Uzy-mh-CyE" kind="show" identifier="open" id="6Fb-iF-29D"/>
+                        <segue destination="Uzy-mh-CyE" kind="show" identifier="openOver" id="6Fb-iF-29D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FZ-Xx-npe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -750,13 +753,13 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cir-Ax-tMo" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="273" y="317" width="55" height="30"/>
+                                <rect key="frame" x="273" y="72" width="55" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="rNI-S2-nLj"/>
+                                    <constraint firstAttribute="width" constant="55" id="DRi-w2-7Bd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="开启">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -768,20 +771,41 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99999" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="he0-Yo-nzo" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                <rect key="frame" x="276" y="110" width="48" height="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="borderSide" value="Buttom"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="leading" secondItem="c2W-lX-Scb" secondAttribute="leading" id="Nk1-G8-dtl"/>
-                            <constraint firstItem="Cir-Ax-tMo" firstAttribute="centerY" secondItem="Tv7-sd-7Ez" secondAttribute="centerY" id="WfD-aw-rRh"/>
-                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="bottom" secondItem="VhH-aJ-CxU" secondAttribute="top" id="YQo-y6-H7J"/>
-                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" id="ZSe-Je-oOP"/>
-                            <constraint firstAttribute="trailing" secondItem="Tv7-sd-7Ez" secondAttribute="trailing" id="ek1-21-lTH"/>
-                            <constraint firstItem="Cir-Ax-tMo" firstAttribute="centerX" secondItem="Tv7-sd-7Ez" secondAttribute="centerX" id="vkM-u9-RsG"/>
+                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="leading" secondItem="c2W-lX-Scb" secondAttribute="leading" id="A1H-PK-zb3"/>
+                            <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="Cir-Ax-tMo" secondAttribute="bottom" constant="8" symbolic="YES" id="Ee2-ht-h2C"/>
+                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="bottom" secondItem="VhH-aJ-CxU" secondAttribute="top" id="Gd2-DD-8XT"/>
+                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" id="O5h-rZ-czV"/>
+                            <constraint firstItem="Cir-Ax-tMo" firstAttribute="centerX" secondItem="he0-Yo-nzo" secondAttribute="centerX" id="TB8-vJ-ohm"/>
+                            <constraint firstItem="Tv7-sd-7Ez" firstAttribute="centerX" secondItem="Cir-Ax-tMo" secondAttribute="centerX" id="aiY-Ww-QFr"/>
+                            <constraint firstItem="Cir-Ax-tMo" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" constant="8" symbolic="YES" id="h7k-zS-5G5"/>
+                            <constraint firstAttribute="trailing" secondItem="Tv7-sd-7Ez" secondAttribute="trailing" id="ogn-wb-Nft"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="distinctText" destination="he0-Yo-nzo" id="ARZ-32-zF9"/>
                         <outlet property="mapView" destination="Tv7-sd-7Ez" id="JhU-BI-fyy"/>
                         <outlet property="openButton" destination="Cir-Ax-tMo" id="Gyi-pd-hND"/>
                     </connections>

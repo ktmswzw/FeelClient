@@ -496,6 +496,7 @@
 				TargetAttributes = {
 					BF45B66C1C6C38760027F63D = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = Y2WV2W9E5J;
 					};
 					BF5D8B3C1C705916002964D8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -778,7 +779,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FeelingClient/Library/QCloudUploadSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
@@ -799,7 +800,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FeelingClient/Library/QCloudUploadSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";

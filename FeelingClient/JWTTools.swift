@@ -75,7 +75,7 @@ class JWTTools {
     var jwtTemp: String {
         get {
             if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTDEMOTEMP) as? String {
-                NSLog("\(returnValue)")
+//                NSLog("\(returnValue)")
                 
                 return returnValue
             } else {
@@ -96,14 +96,14 @@ class JWTTools {
                 }
                 builder["token"] = tokenNew
             }
-            NSLog("\(jwt)")
+//            NSLog("\(jwt)")
             if !myDictionary.isEmpty && tokenNew == self.token {//不填充新数据
                 jwtTemp = jwt
             }
             return [ AUTHORIZATION_STR : jwt ]
         }
         else {
-            NSLog("\(jwtTemp)")
+//            NSLog("\(jwtTemp)")
             return [ AUTHORIZATION_STR : jwtTemp ]
         }
     }

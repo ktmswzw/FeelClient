@@ -10,6 +10,8 @@ import UIKit
 import IBAnimatable
 import SwiftyJSON
 import Alamofire
+import MapKit
+import CoreLocation
 import Foundation
 #if !RX_NO_MODULE
     import RxSwift
@@ -27,7 +29,6 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
     @IBOutlet weak var verifyButton: AnimatableButton!
     @IBOutlet weak var alertLable: AnimatableLabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -36,9 +37,23 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         self.view.layer.contents = blurredImage.CGImage
         
         msgModel = OpenMessageModel(delegate: self)
-        alertLable.text = "TA设置了密码，提示"
         
-        questionLabel.text = self.viewModel.question
+        var name = viewModel.to
+        if(name.isEmpty){
+            name = "TA"
+        }
+        var title = "设置了密码"
+        if(viewModel.question.isEmpty)
+        {
+            title = "没有设置密码"
+            sleep(3)
+            self.performSegueWithIdentifier("openOver", sender: self)
+        }
+        
+        alertLable.text = name + title
+        
+        
+        questionLabel.text = viewModel.question
         
         let questionValid = questionLabel.rx_text
             .map { $0.characters.count >= 1 }
@@ -64,6 +79,15 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "openOver" {
+            let viewController = segue.destinationViewController as! OpenMapViewController
+            viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
+            viewController.msgModel = self.msgModel
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -74,14 +98,12 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         msgModel.id = self.viewModel.msgId
         msgModel.question = self.viewModel.question
         msgModel.answer = self.answerLabel.text
-        msgModel.verifyAnswer(self.view)
+        msgModel.verifyAnswer(self.view,uc: self)
     }
     
     func arrival()
     {
-        msgModel.x = viewModel.latitude
-        msgModel.y = viewModel.longitude
-        msgModel.arrival(self.view)
+        
     }
     
 }

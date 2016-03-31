@@ -73,6 +73,13 @@ func gcj2wgs(coordinate: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
     return CLLocationCoordinate2DMake(2 * coordinate.latitude - c2.latitude, 2 * coordinate.longitude - c2.longitude)
 }
 
+// 计算两点距离
+func getDistinct(currentLocation:CLLocation,targetLocation:CLLocation) -> Double
+{
+    let distance:CLLocationDistance = currentLocation.distanceFromLocation(targetLocation)
+    return distance
+}
+
 extension CLLocationCoordinate2D {
     func toMars() -> CLLocationCoordinate2D {
         return wgs2gcj(self)
