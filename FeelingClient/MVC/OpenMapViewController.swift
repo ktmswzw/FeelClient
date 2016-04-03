@@ -16,6 +16,7 @@ import MobileCoreServices
     import RxCocoa
 #endif
 
+import Haneke
 
 class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -27,11 +28,13 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var latitude = 0.0
     var longitude = 0.0
     
+    @IBOutlet weak var imageCollection: UICollectionView!
     var isOk = false
     let locationManager = CLLocationManager()
     var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点
     var distance = 0.0 //两点距离
     
+    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         //msgModel = OpenMessageModel(delegate: self)
@@ -43,7 +46,10 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
         
+        self.imageCollection.delegate = self
+        self.imageCollection.dataSource = self
         
+        imageCollection!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "photo")
         let everythingValid = distinctText.rx_text
             .map { (Double($0) ?? 0.0 ) > 100 }
             .shareReplay(1)
@@ -54,8 +60,12 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
             .addDisposableTo(disposeBag)
         
         openButton.rx_tap
-            .subscribeNext { [weak self] in self?.arrival() }
+            .subscribeNext { [weak self] in
+                self?.arrival()
+            }
             .addDisposableTo(disposeBag)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +106,41 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     
     func arrival()
     {
-        msgModel.arrival(self.view);
+        msgModel.arrival(self.view) { (m:MessagesSecret) in
+            self.textView.text = m.content
+            if(m.photos.count>0){
+                self.msgModel.photos = m.photos
+            }            
+            self.imageCollection.reloadData()
+        }
     }
 
+}
+
+
+
+extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.msgModel.photos.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //pickerImage()
+        viewBigImages()
+        //self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    func viewBigImages()
+    {
+        
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let CellIdentifier = "photo"
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! CollectionViewCell
+        let URLString = self.msgModel.photos[indexPath.row]
+        let URL = NSURL(string:URLString)!
+        cell.imageView.hnk_setImageFromURL(URL)
+        return cell
+    }
 }

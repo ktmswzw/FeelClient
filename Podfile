@@ -29,7 +29,8 @@ pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 #图片压缩
 pod 'Toucan’, :git => 'https://github.com/gavinbunney/Toucan'
-
+#网络图片获取及缓存
+pod 'HanekeSwift'
 
 pod 'RxSwift'
 pod 'RxCocoa'

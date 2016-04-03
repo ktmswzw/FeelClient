@@ -11,6 +11,7 @@ import Foundation
     import RxSwift
     import RxCocoa
 #endif
+typealias CompletionHandler = (MessagesSecret) -> Void
 
 public class OpenMessageModel {
     
@@ -33,9 +34,7 @@ public class OpenMessageModel {
     //音频地址
     var sound: String = ""
     //阅后即焚
-    var burnAfterReading: Bool = false
-    
-    
+    var burnAfterReading: Bool = false    
     //问题
     var question: String?
     //答案
@@ -43,7 +42,6 @@ public class OpenMessageModel {
     
     var x:Double = 0.0
     var y:Double = 0.0
-    
     var msgscrent = MessagesSecret()// 内容
     var msgscrentId = "";//解密后的id
     
@@ -54,10 +52,7 @@ public class OpenMessageModel {
             case .Success(let r):
                 self.msgscrentId = r as! String;
                 view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-                
-                
                 uc.performSegueWithIdentifier("openOver", sender: uc)
-                
                 sleep(2)
                 break;
             case .Failure(let msg):
@@ -67,13 +62,20 @@ public class OpenMessageModel {
         }
     }
     
-    func arrival(view:UIView)
+    
+    
+    
+    func arrival(view:UIView,completeHander: CompletionHandler)
     {
         msg.arrival(msgscrentId) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
                 self.msgscrent = r as! MessagesSecret;
                 print(self.msgscrent)
+                
+                
+                
+                completeHander(self.msgscrent)
                 break;
             case .Failure(let msg):
                 view.makeToast(msg as! String, duration: 1, position: .Center)
@@ -89,7 +91,6 @@ public class OpenMessageModel {
     public init(delegate: OpenMessageModelDelegate) {
         self.delegate = delegate
     }
-    
     
 }
 

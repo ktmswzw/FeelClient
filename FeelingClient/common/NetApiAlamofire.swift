@@ -11,10 +11,12 @@ import Alamofire
 import AlamofireObjectMapper
 import ObjectMapper
 
+import SwiftyJSON
+
 class NetApi:BaseApi {
     
     //    var apiUrl = "http://192.168.1.117/"
-        var apiUrl = "http://192.168.1.107:8080/"
+        var apiUrl = "http://192.168.1.103:8080/"
 //    var apiUrl = "http://192.168.1.105/"
     
     
@@ -24,7 +26,6 @@ class NetApi:BaseApi {
             .responseJSON { response in
                 switch response.result {
                 case .Success(let value):
-                    print(value)
                     completionHandler(Result.Success(value))
                 case .Failure(let error):
                     completionHandler(Result.Failure(error))

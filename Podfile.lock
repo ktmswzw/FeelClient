@@ -5,6 +5,7 @@ PODS:
     - ObjectMapper (~> 1.0)
   - CryptoSwift (0.0.14)
   - Eureka (1.4.1)
+  - HanekeSwift (0.10.1)
   - IBAnimatable (1.2)
   - ImagePickerSheetController (0.9.1)
   - JSONWebToken (1.4.1):
@@ -30,6 +31,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 2.1)
   - CryptoSwift
   - Eureka (from `https://github.com/xmartlabs/Eureka`)
+  - HanekeSwift
   - IBAnimatable
   - ImagePickerSheetController (from `https://github.com/larcus94/ImagePickerSheetController.git`)
   - JSONWebToken
@@ -77,6 +79,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
   CryptoSwift: 5a6b725e2ad65a789f5f435dd434d38eb2c40b46
   Eureka: 531df27d4af7bdcbf99d7f42907445b71b9b0fb8
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   IBAnimatable: bcebfaf34b041949da5ed668ac5ab2e28a4b2357
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   JSONWebToken: cf8b58850dc4cf38ce777a08753a2ea1620d960e
