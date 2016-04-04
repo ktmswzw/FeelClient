@@ -57,32 +57,27 @@ class UserInfo : BaseModel, NSCopying {
     override func mapping(map: Map) {
         
         super.mapping(map)
-        face_image <- map["face_image"]
-        mobile <- map["mobile"]
+        avatar <- map["face_image"]
+        phone <- map["phone"]
         nickname <- map["nickname"]
         region <- map["region"]
-        score <- map["score"]
         sex <- map["sex"]
         user_id <- map["user_id"]
 
     }
     
     /// 头像图片地址
-    var face_image = ""
+    var avatar = ""
     /// 手机号
-    var mobile : String = ""
+    var phone : String = ""
     /// 昵称
     var nickname = ""
     /// 地区
     var region = ""
-    /// 用户积分
-    var score = ""
     /// 性别(1：男，2：女)
     var sex = ""
     /// 用户id
     var user_id = ""
-    /// 用户头像
-    var face_image_entity : UIImage! = UIImage(named: "default_user_head")
     
     /**
     不覆盖原有对象的情况下更新用户
@@ -102,11 +97,10 @@ class UserInfo : BaseModel, NSCopying {
             NSLog("用户id不一致 : user_id \(user_id) newUser.user_id \(newUser!.user_id)")
         }
         
-        face_image = newUser!.face_image
-        mobile = newUser!.mobile
+        avatar = newUser!.avatar
+        phone = newUser!.phone
         nickname = newUser!.nickname
         region = newUser!.region
-        score = newUser!.score
         sex = newUser!.sex
     }
     //MARK: - private
@@ -131,13 +125,11 @@ class UserInfo : BaseModel, NSCopying {
         
         let newUser = UserInfo()
         
-        newUser.face_image = face_image
-        newUser.mobile = mobile
+        newUser.avatar = avatar
+        newUser.phone = phone
         newUser.nickname = nickname
         newUser.region = region
-        newUser.score = score
         newUser.sex = sex
-        newUser.face_image_entity = face_image_entity.copy() as! UIImage
         
         return newUser
     }

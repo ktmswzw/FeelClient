@@ -12,7 +12,6 @@ import ObjectMapper
 import SwiftyJSON
 import Alamofire
 
-var jwt = JWTTools()
 
 public class Messages:BaseApi {
     static let defaultMessages = Messages()

@@ -8,9 +8,12 @@
 
 import UIKit
 import CoreData
+
+var jwt = JWTTools()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     let cacheDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
@@ -23,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //初始化SMS－SDK ,在MOB后台注册应用并获得AppKey 和AppSecret
         SMSSDK.registerApp("f7b6d783cb00", withSecret: "164aabea58f5eb4723f366eafb0eadf0")
         
-        
+        RCIM.sharedRCIM().initWithAppKey("25wehl3uwkppw")
+
         return true
     }
 

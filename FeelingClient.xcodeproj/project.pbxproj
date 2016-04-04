@@ -47,11 +47,13 @@
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
 		BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */; };
+		BFB7BCBB1CB2B5610075BAD6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB7BCBA1CB2B5610075BAD6 /* LoginViewModel.swift */; };
 		BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */; };
 		BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD27271CAC31640064C364 /* OpenMapViewController.swift */; };
 		BFD0D79E1CB0D58900B3FF35 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */; };
 		BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E341C7073E8002CF499 /* SqListUtils.swift */; };
 		BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */; };
+		BFE486B21CB28A0C00EE9A8A /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
 		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
@@ -131,11 +133,13 @@
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
 		BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageViewController.swift; path = MVC/OpenMessageViewController.swift; sourceTree = "<group>"; };
 		BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMessageModel.swift; sourceTree = "<group>"; };
+		BFB7BCBA1CB2B5610075BAD6 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = MVC/LoginViewModel.swift; sourceTree = "<group>"; };
 		BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterMain.swift; path = MVC/CenterMain.swift; sourceTree = "<group>"; };
 		BFCD27271CAC31640064C364 /* OpenMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMapViewController.swift; path = MVC/OpenMapViewController.swift; sourceTree = "<group>"; };
 		BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		BFD18E341C7073E8002CF499 /* SqListUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SqListUtils.swift; path = common/SqListUtils.swift; sourceTree = "<group>"; };
 		BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterViewController.swift; path = MVC/CenterViewController.swift; sourceTree = "<group>"; };
+		BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewModel.swift; path = MVC/UserInfoViewModel.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -268,6 +272,8 @@
 			children = (
 				BFEA23D71C914C030037A691 /* CenterMessageModel.swift */,
 				BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */,
+				BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */,
+				BFB7BCBA1CB2B5610075BAD6 /* LoginViewModel.swift */,
 			);
 			name = VM;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 			files = (
 				BFFCEAFC1C789ED40042EF11 /* Double.swift in Sources */,
 				BF17103A1C6EFBDC00003D6B /* Image-GaussianBlur.swift in Sources */,
+				BFE486B21CB28A0C00EE9A8A /* UserInfoViewModel.swift in Sources */,
 				BFFCEAFA1C789ED40042EF11 /* Character.swift in Sources */,
 				BF45B6951C6C4E440027F63D /* UIImageColors.swift in Sources */,
 				BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */,
@@ -644,6 +651,7 @@
 				BFFCEB001C789ED40042EF11 /* NSArray.swift in Sources */,
 				BF1710361C6EF1E000003D6B /* LoginViewController.swift in Sources */,
 				BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */,
+				BFB7BCBB1CB2B5610075BAD6 /* LoginViewModel.swift in Sources */,
 				BFFCEB031C789ED40042EF11 /* String.swift in Sources */,
 				BFFCEAF91C789ED40042EF11 /* Bool.swift in Sources */,
 				BF17103E1C6F58D600003D6B /* ActionButtonItem.swift in Sources */,

@@ -19,6 +19,7 @@ class JWTTools {
     let JWTDEMOTEMP: String = "JWTDEMOTEMP"
     let JWTSIGN: String = "JWTSIGN"
     let AUTHORIZATION_STR: String = "Authorization"
+    let IMTOKENTEMP: String = "IMTOKENTEMP"
     
     var appUsername: String {
         get {
@@ -84,6 +85,20 @@ class JWTTools {
         }
         set {
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTDEMOTEMP)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    var imToken: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(IMTOKENTEMP) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: IMTOKENTEMP)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }

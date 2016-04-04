@@ -7,10 +7,6 @@
 //
 
 import Foundation
-#if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
-#endif
 typealias CompletionHandler = (MessagesSecret) -> Void
 
 public class OpenMessageModel {
