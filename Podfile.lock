@@ -12,6 +12,7 @@ PODS:
     - CryptoSwift (= 0.0.14)
   - MOBFoundation_IDFA (1.3.1)
   - ObjectMapper (1.1.4)
+  - RongCloudIMKit (2.4.10)
   - RxAlamofire (2.2):
     - RxAlamofire/Core (= 2.2)
   - RxAlamofire/Core (2.2):
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - JSONWebToken
   - MOBFoundation_IDFA
   - ObjectMapper
+  - RongCloudIMKit (= 2.4.10)
   - RxAlamofire
   - RxBlocking
   - RxCocoa
@@ -85,6 +87,7 @@ SPEC CHECKSUMS:
   JSONWebToken: cf8b58850dc4cf38ce777a08753a2ea1620d960e
   MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
   ObjectMapper: 09ff2ad156bb0e103d9dde9bfe10fbde78affeb2
+  RongCloudIMKit: 916cb342e81639cfe9e1204e2b93a7fe71644e11
   RxAlamofire: 250b7846cedbd189d6190e4f83caa01ee1f1eceb
   RxBlocking: 84fd81865a641a3843b33bae7b8315e78ddbd383
   RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa

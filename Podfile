@@ -32,6 +32,8 @@ pod 'Toucan’, :git => 'https://github.com/gavinbunney/Toucan'
 #网络图片获取及缓存
 pod 'HanekeSwift'
 
+pod 'RongCloudIMKit', '2.4.10'
+
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxBlocking'
