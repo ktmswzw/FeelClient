@@ -48,7 +48,7 @@ class AccountModel : BaseModel {
     用户信息
 
 */
-class UserInfo : BaseModel, NSCopying {
+class UserInfo : BaseModel {
     
     override static func newInstance() -> Mappable {
         return UserInfo();
@@ -62,7 +62,9 @@ class UserInfo : BaseModel, NSCopying {
         nickname <- map["nickname"]
         region <- map["region"]
         sex <- map["sex"]
-        user_id <- map["user_id"]
+        id <- map["id"]
+        IMToken <- map["imtoken"]
+        JWTToken <- map["jwttoken"]
 
     }
     
@@ -77,32 +79,13 @@ class UserInfo : BaseModel, NSCopying {
     /// 性别(1：男，2：女)
     var sex = ""
     /// 用户id
-    var user_id = ""
+    var id = ""
     
-    /**
-    不覆盖原有对象的情况下更新用户
-        保证信息完整性
+    var IMToken = ""
     
-    :param: newUser newUser description
-    */
-    func update(newUser : UserInfo?) {
-        
-        if newUser == nil {
-            
-            NSLog("newUser is nil")
-            return
-        }
-        if user_id != newUser!.user_id {
-            
-            NSLog("用户id不一致 : user_id \(user_id) newUser.user_id \(newUser!.user_id)")
-        }
-        
-        avatar = newUser!.avatar
-        phone = newUser!.phone
-        nickname = newUser!.nickname
-        region = newUser!.region
-        sex = newUser!.sex
-    }
+    var JWTToken = ""
+    
+    
     //MARK: - private
     /**
     修改资料成功,发送一个广播通知
@@ -120,81 +103,4 @@ class UserInfo : BaseModel, NSCopying {
             })
         }
     }
-    
-    func copyWithZone(zone: NSZone) -> AnyObject {
-        
-        let newUser = UserInfo()
-        
-        newUser.avatar = avatar
-        newUser.phone = phone
-        newUser.nickname = nickname
-        newUser.region = region
-        newUser.sex = sex
-        
-        return newUser
-    }
-}
-
-/**
-    请求 data 返回模型
-
-**/
-class AccountResponseModel : BaseModel {
-    
-    var accountModel: AccountModel!
-    
-    override static func newInstance() -> Mappable {
-        
-        return AccountResponseModel();
-    }
-    
-    override func mapping(map: Map) {
-        
-        super.mapping(map)
-        accountModel <- map["data"]
-    }
-}
-
-/**
-
-    获取用户信息响应模型
-
-*/
-class UserInfoResponse : BaseModel {
-    
-    var user_info : UserInfo!
-    
-    override static func newInstance() -> Mappable {
-        
-        return UserInfoResponse();
-    }
-    
-    override func mapping(map: Map) {
-        
-        super.mapping(map)
-        user_info <- map["data"]
-    }
-
-}
-
-/**
-
-更新用户信息响应模型
-
-*/
-class UserInfoUpdateResponse : BaseModel {
-    
-    var user_info : UserInfo!
-    
-    override static func newInstance() -> Mappable {
-        
-        return UserInfoUpdateResponse();
-    }
-    
-    override func mapping(map: Map) {
-        
-        super.mapping(map)
-        user_info <- map["user_info"]
-    }
-    
 }

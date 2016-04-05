@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XgY-6Z-pPg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9x7-ZC-qCi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -31,13 +31,39 @@
                             <constraint firstItem="6h2-ZG-BHC" firstAttribute="centerY" secondItem="Trd-kY-nmW" secondAttribute="centerY" id="AY8-oF-nrQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="消息" image="chat" id="Vge-vN-mcQ"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="chat" id="Pdz-Wu-zwA"/>
+                    <navigationItem key="navigationItem" id="Sv4-Yu-fbd"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="lightStatusBar" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6z-Sg-yrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940" y="414"/>
+        </scene>
+        <!--消息-->
+        <scene sceneID="Hjw-e3-cPc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9x7-ZC-qCi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="1" title="消息" image="chat" id="Vge-vN-mcQ"/>
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Of-np-WNE" customClass="DesignableNavigationBar" customModule="IBAnimatable">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.4784313738" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XgY-6Z-pPg" kind="relationship" relationship="rootViewController" id="slD-yo-wyX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vVC-QN-XoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128" y="414"/>
         </scene>

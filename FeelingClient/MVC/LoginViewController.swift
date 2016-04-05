@@ -19,6 +19,10 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     var actionButton: ActionButton!
     
+    var viewModel:LoginUserInfoViewModel!
+    
+    var userinfo: UserInfo!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,18 +34,9 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         register.action = { item in
             self.performSegueWithIdentifier("register", sender: self)
         }
-        //        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "new")!)
-        //        forget.action = { item in }
-        //        let wechatLogin = ActionButtonItem(title: "微信登录", image: UIImage(named: "wechat")!)
-        //        wechatLogin.action = { item in   }
-        //        let qqLogin = ActionButtonItem(title: "QQ登录", image: UIImage(named: "qq")!)
-        //        qqLogin.action = { item in }
-        //        let weiboLogin = ActionButtonItem(title: "微博登录", image: UIImage(named: "weibo")!)
-        //        weiboLogin.action = { item in  }
-        //        let taobaoLogin = ActionButtonItem(title: "淘宝登录", image: UIImage(named: "taobao")!)
-        //        taobaoLogin.action = { item in
-        //        }
-        //        actionButton = ActionButton(attachedToView: self.view, items: [register, forget, wechatLogin, qqLogin, weiboLogin, taobaoLogin])
+        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "new")!)
+        forget.action = { item in }
+        
         actionButton = ActionButton(attachedToView: self.view, items: [register])
         actionButton.action = { button in button.toggleMenu() }
         actionButton.setImage(UIImage(named: "new"), forState: .Normal)
@@ -49,6 +44,9 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         
         username.delegate = self
         password.delegate = self
+        
+        viewModel = LoginUserInfoViewModel(delegate: self)
+        
         
         HUD = MBProgressHUD(view: self.view)
         self.view.addSubview(HUD!)
@@ -87,7 +85,10 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
                 //123456
                 let userNameText = username.text
                 let passwordText = password.text!.md5()
-                selfLogin(userNameText!, password: passwordText!)
+                
+                viewModel.userName = userNameText!
+                viewModel.password = passwordText!
+                loginDelegate()
             }
             
         }
@@ -98,47 +99,74 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         
     }
     
-    private func selfLogin(userName:String,password:String){
-        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
-            NetApi().makeCall(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userName,"password":password,"device":"APP"], completionHandler: { (result:BaseApi.Result) -> Void in
-                switch (result) {
-                case .Success(let r):
-                    if let json = r {
-                        let myJosn = JSON(json)
-                        let code:Int = Int(myJosn["status"].stringValue)!
-                        if code != 200 {
-                            self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
-                        }
-                        else{
-                            jwt.jwtTemp = myJosn.dictionary!["message"]!.stringValue
-                            jwt.appUsername = userName
-                            jwt.appPwd = password
-                            self.view.makeToast("登陆成功", duration: 1, position: .Center)
-                            self.performSegueWithIdentifier("login", sender: self)
-                        }
-                    }
-                    break;
-                case .Failure(let error):
-                    print("\(error)")
-                    break;
-                }
-                
-                HUD!.removeFromSuperview()
-            })
-            }) { () -> Void in
-        }
-        
-    }
-    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if jwt.appUsername.length > 0 && jwt.appPwd.length > 0 {
             username.text = jwt.appUsername
-            password.text = jwt.appPwd
-            selfLogin(jwt.appUsername, password: jwt.appPwd)
+//            password.text = jwt.appPwd
+            viewModel.userName = jwt.appUsername
+            viewModel.password = jwt.appPwd
+            loginDelegate()
+            
         }
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        if jwt.appUsername.length == 0 {
+//            username.text = ""
+            password.text = ""
+        }
+
+    }
+    
+    
+    
 }
+
+extension LoginViewController: LoginUserModelDelegate {
+    func loginDelegate(){
+        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.viewModel.loginDelegate({ (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(let r):
+                    if let userInfo = r as? UserInfo {
+                        self.userinfo = userInfo
+                        jwt.jwtTemp = userInfo.JWTToken
+                        jwt.imToken = userInfo.IMToken
+                        jwt.appUsername = self.viewModel.userName
+                        jwt.appPwd = self.viewModel.password
+                        self.view.makeToast("登陆成功", duration: 1, position: .Center)
+                        self.performSegueWithIdentifier("login", sender: self)
+                    }
+                    if jwt.imToken.length != 0 {
+                        RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+                            success: { (userId) -> Void in
+                                print("登陆成功。当前登录的用户ID：\(userId)")
+                            }, error: { (status) -> Void in
+                                print("登陆的错误码为:\(status.rawValue)")
+                            }, tokenIncorrect: {
+                                //token过期或者不正确。
+                                //如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
+                                //如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
+                                print("token错误")
+                        })
+                    }
+                    break;
+                case .Failure(let msg):
+                    print("\(msg)")
+                    break;
+                }
+
+            })
+            HUD!.removeFromSuperview()
+        }) { () -> Void in
+        }
+
+    }
+    func getToken(){
+    }
+}
+

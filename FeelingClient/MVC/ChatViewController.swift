@@ -26,13 +26,26 @@ class ChatViewController: RCConversationListViewController {
         //设置需要将哪些类型的会话在会话列表中聚合显示
         self.setCollectionConversationType([RCConversationType.ConversationType_DISCUSSION.rawValue,
             RCConversationType.ConversationType_GROUP.rawValue])
-
-        let chatList = ChatViewController()
-        self.navigationController?.pushViewController(chatList, animated: true)
         
+        self.navigationItem.title = "会话列表"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "聊天", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ChatViewController.privateChat))
+        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
-
+    
+    func privateChat() {
+        //打开会话界面
+        let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "me")
+        chat.title = "想显示的会话标题"
+        
+        chat.hidesBottomBarWhenPushed = true
+        
+        //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.pushViewController(chat, animated: true)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,6 +56,9 @@ class ChatViewController: RCConversationListViewController {
         //打开会话界面
         let chat = RCConversationViewController(conversationType: model.conversationType, targetId: model.targetId)
         chat.title = "想显示的会话标题"
+        chat.hidesBottomBarWhenPushed = true
+        
+        //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.pushViewController(chat, animated: true)
     }
     

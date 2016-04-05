@@ -13,7 +13,7 @@ import UIKit
     import RxCocoa
 #endif
 
-class SelfViewController: DesignableViewController {
+class SelfViewController: UIViewController {
 
     @IBOutlet weak var exitApp: UIButton!
     var disposeBag = DisposeBag()
@@ -42,13 +42,18 @@ class SelfViewController: DesignableViewController {
         jwt.appUsername = ""
         jwt.appPwd = ""
         
-        //self.performSegueWithIdentifier("logout", sender: self)
         
-        navigationController!.pushViewController(storyboard!.instantiateViewControllerWithIdentifier("login") as UIViewController, animated: true)
-
+        //断开连接并设置不再接收推送消息
+        RCIM.sharedRCIM().disconnect(false)
         
         
+        //let navigationController:UINavigationController? = self.tabBarController?.presentingViewController as? UINavigationController
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            //navigationController!.popToRootViewControllerAnimated(false)
+        })
     }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
