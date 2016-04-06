@@ -21,26 +21,16 @@
                                 <rect key="frame" x="276" y="285" width="48" height="30"/>
                                 <state key="normal" title="friends"/>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Uu-Jw-hwS">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JRw-Ps-v9X" firstAttribute="centerX" secondItem="bks-8t-uuQ" secondAttribute="centerX" id="1OM-2D-Hgk"/>
                             <constraint firstItem="JRw-Ps-v9X" firstAttribute="centerY" secondItem="bks-8t-uuQ" secondAttribute="centerY" id="8LK-bv-Uq9"/>
-                            <constraint firstItem="2Uu-Jw-hwS" firstAttribute="centerX" secondItem="JRw-Ps-v9X" secondAttribute="centerX" id="9zr-sE-P5R"/>
-                            <constraint firstItem="2Uu-Jw-hwS" firstAttribute="leading" secondItem="bks-8t-uuQ" secondAttribute="leading" id="L5p-1O-z4q"/>
-                            <constraint firstItem="2Uu-Jw-hwS" firstAttribute="bottom" secondItem="u0j-aK-qDl" secondAttribute="top" id="bTB-jv-SUQ"/>
-                            <constraint firstItem="2Uu-Jw-hwS" firstAttribute="top" secondItem="bks-8t-uuQ" secondAttribute="top" id="yzY-HR-5th"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="好友" image="friends" id="FF8-Yy-LFo"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="mapView" destination="2Uu-Jw-hwS" id="tjA-O7-4kl"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Is9-H4-PFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

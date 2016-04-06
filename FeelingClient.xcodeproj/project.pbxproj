@@ -42,6 +42,8 @@
 		BF8CCAD01C6DEF7C00C266B8 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */; };
 		BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */; };
 		BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */; };
+		BF9D34C31CB5617200B63925 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D34C21CB5617200B63925 /* Friend.swift */; };
+		BF9D34C51CB562D700B63925 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D34C41CB562D700B63925 /* FriendViewModel.swift */; };
 		BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */; };
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
@@ -126,6 +128,8 @@
 		BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = main.storyboard; path = MVC/main.storyboard; sourceTree = "<group>"; };
 		BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = MVC/FriendsViewController.swift; sourceTree = "<group>"; };
 		BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfViewController.swift; path = MVC/SelfViewController.swift; sourceTree = "<group>"; };
+		BF9D34C21CB5617200B63925 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = MVC/Friend.swift; sourceTree = "<group>"; };
+		BF9D34C41CB562D700B63925 /* FriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewModel.swift; path = MVC/FriendViewModel.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = MVC/RegisterViewController.swift; sourceTree = "<group>"; };
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */,
 				BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */,
 				BFCE832E1CB3F0C900E67256 /* LoginUserInfoViewModel.swift */,
+				BF9D34C41CB562D700B63925 /* FriendViewModel.swift */,
 			);
 			name = VM;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				BFFCEAAA1C7887F60042EF11 /* AccountModel.swift */,
 				BFEA23D51C9021B30037A691 /* Message.swift */,
 				BF033C0F1C970AEF00993EF0 /* CustomAnnotation.swift */,
+				BF9D34C21CB5617200B63925 /* Friend.swift */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */,
 				BFFCEB031C789ED40042EF11 /* String.swift in Sources */,
 				BFFCEAF91C789ED40042EF11 /* Bool.swift in Sources */,
+				BF9D34C51CB562D700B63925 /* FriendViewModel.swift in Sources */,
 				BF17103E1C6F58D600003D6B /* ActionButtonItem.swift in Sources */,
 				BF45B6A31C6C4E820027F63D /* ImageUtils.swift in Sources */,
 				BFCE83311CB3F94800E67256 /* MessageViewModel.swift in Sources */,
@@ -651,6 +658,7 @@
 				BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */,
 				BFFCEAFE1C789ED40042EF11 /* Float.swift in Sources */,
 				BF45B6AC1C6C4FA20027F63D /* JWTTools.swift in Sources */,
+				BF9D34C31CB5617200B63925 /* Friend.swift in Sources */,
 				BF17103D1C6F58D600003D6B /* ActionButton.swift in Sources */,
 				BF033C101C970AEF00993EF0 /* CustomAnnotation.swift in Sources */,
 			);
