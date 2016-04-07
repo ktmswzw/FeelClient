@@ -18,4 +18,5 @@ class MuseumInfo : MKPointAnnotation {
 
 class MyAnnotation: MKPointAnnotation {
     var id = ""
+    var url : String?
 }

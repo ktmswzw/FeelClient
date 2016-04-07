@@ -61,7 +61,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         self.openUser.text = viewModel.to 
         
         let image = UIImage(named: "lonely-children")//lonely-children
-        let blurredImage = image!.imageByApplyingBlurWithRadius(15)
+        let blurredImage = image!.imageByApplyingBlurWithRadius(35)
         self.view.layer.contents = blurredImage.CGImage
         //地图初始化
         self.locationManager.delegate = self

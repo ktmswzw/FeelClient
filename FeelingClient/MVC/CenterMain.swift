@@ -105,17 +105,11 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         
         // Show Safari if pinView == selectedView and has a valid HTTP URL string
         if pinView == selectedView {
-            
             let pin = pinView.annotation! as! MyAnnotation
-            
-            let title = pin.title! as String
-            let subtitle = pin.subtitle! as String
-//            NSLog(title)
-            let id = pin.id as String
-//            NSLog(id)
-            viewModel.msgId = id;
-            viewModel.question = subtitle;
-            viewModel.to = title;
+            viewModel.msgId = pin.id as String
+            //TODO
+            viewModel.question = pin.subtitle! as String
+            viewModel.to = pin.title! as String
             self.performSegueWithIdentifier("open", sender: self)
             
         }

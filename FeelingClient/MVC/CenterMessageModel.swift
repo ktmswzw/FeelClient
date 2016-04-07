@@ -107,6 +107,8 @@ public class MessageViewModel {
                     oneAnnotation.title = msg.to
                     oneAnnotation.subtitle = msg.question
                     oneAnnotation.id = msg.id
+                    oneAnnotation.url = msg.avatar
+                    
                     self.annotationArray.append(oneAnnotation)
                 }
                 map.addAnnotations(self.annotationArray)

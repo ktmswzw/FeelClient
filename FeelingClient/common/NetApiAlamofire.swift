@@ -16,7 +16,8 @@ import SwiftyJSON
 class NetApi:BaseApi {
     
     //    var apiUrl = "http://192.168.1.117/"
-        var apiUrl = "http://192.168.1.103:8080/"
+    var apiUrl = "http://192.168.1.159:8080/"
+//    var apiUrl = "http://192.168.1.103:8080/"
 //    var apiUrl = "http://192.168.1.105/"
     
     
