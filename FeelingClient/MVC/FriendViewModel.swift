@@ -67,7 +67,8 @@ public class FriendViewModel:BaseApi {
     
     func searchMsg(name: String,completeHander: CompletionHandlerType)
     {
-        NetApi().makeCallArray(Alamofire.Method.GET, section: "/\(self.remark)", headers: headers, params: params as? [String:AnyObject]) { (response: Response<[FriendBean], NSError>) -> Void in
+        let params2 = ["name":name]
+        NetApi().makeCallArray(Alamofire.Method.GET, section: "friend", headers: headers, params: params2) { (response: Response<[FriendBean], NSError>) -> Void in
             switch (response.result) {
             case .Success(let value):
                 self.friends = value

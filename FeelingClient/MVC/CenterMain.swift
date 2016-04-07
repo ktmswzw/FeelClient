@@ -13,6 +13,7 @@ import CoreLocation
 import IBAnimatable
 import MobileCoreServices
 
+import Haneke
 import IBAnimatable
 
 class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -22,6 +23,8 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     var msgId = ""
     var isOk = false
     var viewModel: MessageViewModel!
+    let cache = Shared.imageCache
+    
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +56,19 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             
             
             let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
-            leftIconView.image = UIImage(named: "girl")
+            if let pin = annotation as? MyAnnotation {
+                if let url:String = pin.url! as String {
+                    let URL = NSURL(string: url)!
+                    let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                        leftIconView.image = image
+                    }
+                    
+                }
+            }
+            else{
+                leftIconView.image = UIImage(named: "girl")
+            }
             annotationView!.leftCalloutAccessoryView = leftIconView
             
             annotationView!.pinTintColor = UIColor.redColor()
@@ -85,11 +100,11 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
-        calloutAccessoryControlTapped control: UIControl) {
-            print("点击注释视图按钮")
-            
-            selectedView = view;
-            
+                 calloutAccessoryControlTapped control: UIControl) {
+        print("点击注释视图按钮")
+        
+        selectedView = view;
+        
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
@@ -108,10 +123,13 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let pin = pinView.annotation! as! MyAnnotation
             viewModel.msgId = pin.id as String
             //TODO
-            viewModel.question = pin.subtitle! as String
-            viewModel.to = pin.title! as String
+            if let q:String = pin.subtitle! as String {
+                viewModel.question = q
+            }
+            if let t:String = pin.title! as String {
+                viewModel.to = t
+            }
             self.performSegueWithIdentifier("open", sender: self)
-            
         }
     }
     
@@ -129,7 +147,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "send" {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import MapKit
 import Haneke
 
@@ -19,23 +18,21 @@ class FriendsViewController: UITableViewController {
         super.viewDidLoad()
         
         viewModel = FriendViewModel(delegate: self)
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        moveToSeoul()
-    }
-    
-    func moveToSeoul() {
         
+        self.navigationItem.title = "好友列表"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FriendsViewController.edit))
+        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillAppear(animated: Bool) {
-        if viewModel.friends.count != 0 {
-            viewModel.friends.removeAll()
-        }
         super.viewWillAppear(true)
         self.refreshData()
+    }
+    
+    func edit()
+    {
+        
     }
     
     func refreshData()
@@ -49,16 +46,23 @@ class FriendsViewController: UITableViewController {
     func getFriends()
     {
         viewModel.searchMsg("") { (r: BaseApi.Result) in
-            
+            switch (r) {
+            case .Success(let value):
+                self.viewModel.friends =  value as! [FriendBean]
+                self.tableView.reloadData()
+                break;
+            case .Failure(let msg):
+                print("\(msg)")
+                break;
+            }
         }
     }
-    
-    func refresh(sender: AnyObject) {
-        
-        viewModel.friends.removeAll()
+    @IBAction func refresh(sender: AnyObject) {
+        if viewModel.friends.count != 0 {
+            viewModel.friends.removeAll()
+        }
         getFriends()
         refreshControl!.endRefreshing()
-
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -80,7 +84,6 @@ class FriendsViewController: UITableViewController {
         cell.id.text = friendCell.id
         cell.motto.text = friendCell.motto
         cell.avatar.hnk_setImageFromURL(NSURL(string:friendCell.avatar)!)
-        
         return cell
     }
     
@@ -94,7 +97,7 @@ class FriendsViewController: UITableViewController {
         }
     }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

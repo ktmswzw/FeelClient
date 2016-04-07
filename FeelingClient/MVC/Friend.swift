@@ -18,6 +18,10 @@ class FriendBean: BaseModel {
     override func mapping(map: Map) {
         super.mapping(map)
         id <- map["id"]
+        keyUserId <- map["key_user_id"]
+        remark <- map["remark"]
+        avatar <- map["avatar"]
+        motto <- map["motto"]
         
     }
     

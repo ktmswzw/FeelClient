@@ -16,7 +16,7 @@ pod 'CryptoSwift’#, :git => 'https://github.com/krzyzanowskim/CryptoSwift'
 pod 'JSONWebToken’#, :git => 'https://github.com/kylef/JSONWebToken.swift'
 #动态效果框架
 pod 'IBAnimatable’#, :git => 'https://github.com/JakeLin/IBAnimatable'
-#照片提起
+#照片获取
 pod 'ImagePickerSheetController’, :git => 'https://github.com/larcus94/ImagePickerSheetController.git'
 #sqlist数据库操作
 #pod 'SQLite.swift’, :git => 'https://github.com/stephencelis/SQLite.swift.git'

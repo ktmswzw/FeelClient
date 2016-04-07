@@ -44,6 +44,7 @@
 		BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */; };
 		BF9D34C31CB5617200B63925 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D34C21CB5617200B63925 /* Friend.swift */; };
 		BF9D34C51CB562D700B63925 /* FriendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D34C41CB562D700B63925 /* FriendViewModel.swift */; };
+		BFA5507B1CB6B67F0097B06C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */; };
 		BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */; };
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
@@ -132,6 +133,7 @@
 		BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfViewController.swift; path = MVC/SelfViewController.swift; sourceTree = "<group>"; };
 		BF9D34C21CB5617200B63925 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = MVC/Friend.swift; sourceTree = "<group>"; };
 		BF9D34C41CB562D700B63925 /* FriendViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewModel.swift; path = MVC/FriendViewModel.swift; sourceTree = "<group>"; };
+		BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewController.swift; path = MVC/UserInfoViewController.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = MVC/RegisterViewController.swift; sourceTree = "<group>"; };
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				BFCD27271CAC31640064C364 /* OpenMapViewController.swift */,
 				BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */,
 				BFFD12591CB63FBA001AA9B3 /* FriendViewController.swift */,
+				BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -507,7 +510,6 @@
 				TargetAttributes = {
 					BF45B66C1C6C38760027F63D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = Y2WV2W9E5J;
 					};
 					BF5D8B3C1C705916002964D8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -642,6 +644,7 @@
 				BFFD125A1CB63FBA001AA9B3 /* FriendViewController.swift in Sources */,
 				BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */,
 				BFF74EE01C9D45D2005B8BC9 /* MBProgressHUD.swift in Sources */,
+				BFA5507B1CB6B67F0097B06C /* UserInfoViewController.swift in Sources */,
 				BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */,
 				BFFCEAAC1C7887F60042EF11 /* AccountModel.swift in Sources */,
 				BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */,
