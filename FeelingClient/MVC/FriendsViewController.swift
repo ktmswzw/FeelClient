@@ -60,48 +60,28 @@ class FriendsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return books.count
+        return viewModel.friends.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BookInfo", forIndexPath: indexPath) as! BookTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FriendInfo", forIndexPath: indexPath) as! FriendTableViewCell
         
         // Configure the cell...
-        let bookCell = books[indexPath.row] as Book
-        cell.title.text = bookCell.title
-        cell.id.text = bookCell.id
+        let friendCell = viewModel.friends[indexPath.row] as FriendBean
+        //cell.title.text = friendCell.remark
+        //cell.id.text = friendCell.id
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        cell.content.text = dateFormatter.stringFromDate(bookCell.publicDate)
+        //cell.content.text = dateFormatter.stringFromDate(friendCell.motto)
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            let bookCell = books[indexPath.row] as Book
-            books.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            let jwt = JWTTools()
-            let newDict: [String: String] = [:]//["id": bookCell.id]
-            let headers = jwt.getHeader(jwt.token, myDictionary: newDict)
-            Alamofire.request(.DELETE, "http://192.168.137.1:80/book/pathDelete/\(bookCell.id)",headers:headers)
-                .responseJSON { response in
-                    
-            }
-            
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showBook" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = books[indexPath.row] as Book
-                (segue.destinationViewController as! BookViewController).detailItem = object
+                let object = viewModel.friends[indexPath.row] as FriendBean
+                (segue.destinationViewController as! FriendViewController).friend = object
             }
         }
     }

@@ -76,6 +76,8 @@
 		BFFCEB021C789ED40042EF11 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF61C789ED40042EF11 /* Sequence.swift */; };
 		BFFCEB031C789ED40042EF11 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEAF71C789ED40042EF11 /* String.swift */; };
 		BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCEB041C789F240042EF11 /* BaseModel.swift */; };
+		BFFD12581CB63DC0001AA9B3 /* FriendTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */; };
+		BFFD125A1CB63FBA001AA9B3 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFD12591CB63FBA001AA9B3 /* FriendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		BFFCEAF61C789ED40042EF11 /* Sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		BFFCEAF71C789ED40042EF11 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BFFCEB041C789F240042EF11 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = Library/UpLoader/BaseModel.swift; sourceTree = "<group>"; };
+		BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTabelViewCell.swift; path = MVC/FriendTabelViewCell.swift; sourceTree = "<group>"; };
+		BFFD12591CB63FBA001AA9B3 /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendViewController.swift; path = MVC/FriendViewController.swift; sourceTree = "<group>"; };
 		DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2F433E2F3517659A39AEF6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -384,6 +388,8 @@
 				BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */,
 				BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */,
 				BFCD27271CAC31640064C364 /* OpenMapViewController.swift */,
+				BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */,
+				BFFD12591CB63FBA001AA9B3 /* FriendViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -622,6 +628,7 @@
 				BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */,
 				BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */,
 				BFEA23D61C9021B30037A691 /* Message.swift in Sources */,
+				BFFD12581CB63DC0001AA9B3 /* FriendTabelViewCell.swift in Sources */,
 				BFEA23D81C914C030037A691 /* CenterMessageModel.swift in Sources */,
 				BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */,
 				BF45B6A01C6C4E5F0027F63D /* Toucan.swift in Sources */,
@@ -632,6 +639,7 @@
 				BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */,
 				BF45B6941C6C4E440027F63D /* UICircleImageView.swift in Sources */,
 				BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */,
+				BFFD125A1CB63FBA001AA9B3 /* FriendViewController.swift in Sources */,
 				BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */,
 				BFF74EE01C9D45D2005B8BC9 /* MBProgressHUD.swift in Sources */,
 				BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */,

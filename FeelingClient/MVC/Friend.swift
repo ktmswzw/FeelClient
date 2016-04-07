@@ -40,4 +40,8 @@ class FriendBean: BaseModel {
      * 备注
      */
     var remark = "";
+    
+    var avatar = "";
+    
+    var motto = "";
 }
