@@ -137,6 +137,9 @@
                             <constraint firstItem="X5P-vE-Twd" firstAttribute="centerY" secondItem="k7i-wJ-jOk" secondAttribute="centerY" id="vy2-Se-m6e"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userId" destination="X5P-vE-Twd" id="QMe-bj-mtx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btt-fH-muv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

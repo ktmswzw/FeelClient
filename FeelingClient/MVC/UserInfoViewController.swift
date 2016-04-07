@@ -11,6 +11,7 @@ import UIKit
 class UserInfoViewController: UIViewController {
     
     
+    @IBOutlet weak var userId: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,16 @@ class UserInfoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func privateChat(id: String) -> void {
+    func privateChat() {
         
+        //打开会话界面
+        let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: self.userId.text)
+        chat.title = "想显示的会话标题"
+        
+        chat.hidesBottomBarWhenPushed = true
+        
+        //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.pushViewController(chat, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
