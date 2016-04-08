@@ -10,28 +10,24 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     
+    var friend:FriendBean = FriendBean()
     
     @IBOutlet weak var userId: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userId.text = friend.user
         self.navigationItem.title = "用户信息"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "聊天", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.privateChat))
-        
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
     
     func privateChat() {
-        
         //打开会话界面
-        let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: self.userId.text)
+        let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: self.friend.user)
         chat.title = "想显示的会话标题"
-        
         chat.hidesBottomBarWhenPushed = true
-        
-        //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.pushViewController(chat, animated: true)
     }
     

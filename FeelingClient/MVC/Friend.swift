@@ -22,6 +22,7 @@ class FriendBean: BaseModel {
         remark <- map["remark"]
         avatar <- map["avatar"]
         motto <- map["motto"]
+        user <- map["user"]
         
     }
     

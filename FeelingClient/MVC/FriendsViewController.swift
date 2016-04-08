@@ -92,7 +92,7 @@ class FriendsViewController: UITableViewController {
         if segue.identifier == "showInfo" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let object = viewModel.friends[indexPath.row] as FriendBean
-                (segue.destinationViewController as! FriendViewController).friend = object
+                (segue.destinationViewController as! UserInfoViewController).friend = object
             }
         }
     }
