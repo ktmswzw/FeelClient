@@ -25,7 +25,6 @@ PODS:
   - RxSwift (2.3.1)
   - SMSSDK (2.0.2)
   - SwiftyJSON (2.3.2)
-  - Toucan (0.5.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire`)
@@ -45,7 +44,6 @@ DEPENDENCIES:
   - RxSwift
   - SMSSDK
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
-  - Toucan (from `https://github.com/gavinbunney/Toucan`)
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -56,8 +54,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/larcus94/ImagePickerSheetController.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-  Toucan:
-    :git: https://github.com/gavinbunney/Toucan
 
 CHECKOUT OPTIONS:
   Alamofire:
@@ -72,9 +68,6 @@ CHECKOUT OPTIONS:
   SwiftyJSON:
     :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-  Toucan:
-    :commit: 4ed2ffa9840f737a8bf6baf63ffd57840c392fa9
-    :git: https://github.com/gavinbunney/Toucan
 
 SPEC CHECKSUMS:
   Alamofire: f11d8624a05f5d39e0c99309b3e600a3ba64298a
@@ -94,6 +87,5 @@ SPEC CHECKSUMS:
   RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
   SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  Toucan: 0519c341148252ae114c5a657d2a85bb9ada9e40
 
 COCOAPODS: 0.39.0
