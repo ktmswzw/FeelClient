@@ -1,9 +1,8 @@
 
 import UIKit
-
 import ObjectMapper
 
-public class BaseModel: NSObject,Mappable {
+public class BaseModel: NSObject,  Mappable {
     
     var errorCode:String = "0"
     override init() {}

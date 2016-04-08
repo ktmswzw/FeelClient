@@ -57,7 +57,7 @@ class UserInfo : BaseModel {
     override func mapping(map: Map) {
         
         super.mapping(map)
-        avatar <- map["face_image"]
+        avatar <- map["avatar"]
         phone <- map["phone"]
         nickname <- map["nickname"]
         region <- map["region"]
@@ -67,6 +67,8 @@ class UserInfo : BaseModel {
         JWTToken <- map["jwttoken"]
 
     }
+    
+    static let TABLE_NAME = "USER_INFO"
     
     /// 头像图片地址
     var avatar = ""

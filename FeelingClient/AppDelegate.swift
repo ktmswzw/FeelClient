@@ -39,6 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         //设置群组信息提供者，需要提供正确的群组信息，否则SDK无法显示群组头像、群名称和本地通知
         RCIM.sharedRCIM().groupInfoDataSource = self
         
+        RCIM.sharedRCIM().enableReadReceipt = true
+        
+        
+        RCIM.sharedRCIM().enableTypingStatus = true
         
         //推送处理1
             //注册推送,用于iOS8以上系统

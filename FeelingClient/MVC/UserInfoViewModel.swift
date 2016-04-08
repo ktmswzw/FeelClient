@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
+import SQLite
 
 public class UserInfoViewModel:BaseApi {
     /// 头像图片地址
@@ -28,10 +29,13 @@ public class UserInfoViewModel:BaseApi {
      /// id
     var id = ""
     
+    
     public weak var delegate: UserInfoModelDelegate?
     
     public init(delegate: UserInfoModelDelegate) {
         self.delegate = delegate
+        
+        
     }
     
     /**

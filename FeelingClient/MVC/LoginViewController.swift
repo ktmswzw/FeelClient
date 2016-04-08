@@ -145,6 +145,18 @@ extension LoginViewController: LoginUserModelDelegate {
                         RCIM.sharedRCIM().connectWithToken(jwt.imToken,
                             success: { (userId) -> Void in
                                 print("登陆成功。当前登录的用户ID：\(userId)")
+                                
+                                
+                                //设置当前登陆用户的信息
+                                RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
+                                
+//                                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+//                                    //打开会话列表
+//                                    let chatListView = ChatViewController()
+//                                    self.navigationController?.pushViewController(chatListView, animated: true)
+//                                })
+
+                                
                             }, error: { (status) -> Void in
                                 print("登陆的错误码为:\(status.rawValue)")
                             }, tokenIncorrect: {
