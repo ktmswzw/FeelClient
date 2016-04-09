@@ -28,7 +28,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         super.viewDidLoad()
         
         let image = UIImage(named: "lonely-children")
-        let blurredImage = image!.imageByApplyingBlurWithRadius(3)
+        let blurredImage = image!.imageByApplyingBlurWithRadius(8)
         self.view.layer.contents = blurredImage.CGImage
         
         let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "new")!)
@@ -139,8 +139,9 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.imToken = userInfo.IMToken
                         jwt.appUsername = self.viewModel.userName
                         jwt.appPwd = self.viewModel.password
+                        jwt.userId = userInfo.id
                         self.database.addObject(userInfo, update: true)
-                                                
+                        
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         self.performSegueWithIdentifier("login", sender: self)
                     }

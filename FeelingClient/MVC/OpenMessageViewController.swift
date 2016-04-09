@@ -73,7 +73,9 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         
         
         verifyButton.rx_tap
-            .subscribeNext { [weak self] in self?.verifyAnswer() }
+            .subscribeNext { [weak self] in
+                self?.verifyAnswer()
+            }
             .addDisposableTo(disposeBag)
         
         
@@ -98,7 +100,28 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         msgModel.id = self.viewModel.msgId
         msgModel.question = self.viewModel.question
         msgModel.answer = self.answerLabel.text
-        msgModel.verifyAnswer(self.view,uc: self)
+        //        msgModel.verifyAnswer(self.view,uc: self)
+        
+        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
+            self.msgModel.verifyAnswer2(self.view) { (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(let r):
+                    self.msgModel.msgscrentId = r as! String;
+                    self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+                    sleep(1)
+                    self.performSegueWithIdentifier("openOver", sender: self)
+                    
+                    HUD!.removeFromSuperview()
+                    break;
+                case .Failure(let msg):
+                    self.view.makeToast(msg as! String, duration: 1, position: .Center)
+                    break;
+                }
+            }
+        }) { () -> Void in
+        }
+        
+        
     }
     
     func arrival()

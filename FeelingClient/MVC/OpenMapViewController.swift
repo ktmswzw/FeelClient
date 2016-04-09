@@ -22,7 +22,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     
     @IBOutlet weak var distinctText: AnimatableTextField!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var openButton: AnimatableButton!
+    //    @IBOutlet weak var openButton: AnimatableButton!
     var msgModel: OpenMessageModel!
     var disposeBag = DisposeBag()
     var latitude = 0.0
@@ -50,24 +50,24 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         self.imageCollection.dataSource = self
         
         imageCollection!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "photo")
-        let everythingValid = distinctText.rx_text
-            .map { (Double($0) ?? 0.0 ) > 100 }
-            .shareReplay(1)
-        
-        
-        everythingValid
-            .bindTo(openButton.rx_enabled)
-            .addDisposableTo(disposeBag)
-        
-        openButton.rx_tap
-            .subscribeNext { [weak self] in
-                self?.arrival()
-            }
-            .addDisposableTo(disposeBag)
+        //        let everythingValid = distinctText.rx_text
+        //            .map { (Double($0) ?? 0.0 ) > 100 }
+        //            .shareReplay(1)
+        //        
+        //        
+        //        everythingValid
+        //            .bindTo(openButton.rx_enabled)
+        //            .addDisposableTo(disposeBag)
+        //        
+        //        openButton.rx_tap
+        //            .subscribeNext { [weak self] in
+        //                self?.arrival()
+        //            }
+        //            .addDisposableTo(disposeBag)
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -90,9 +90,11 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                 let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)
                 
                 self.distance = getDistinct(currentLocation, targetLocation: self.targetLocation)
-                self.distinctText.text = "\(self.distance)"
+                self.distinctText.text = "距离开启地点约： \(Int(self.distance)) 米"
                 if(self.distance<100){
-                self.isOk = true
+                    self.isOk = true
+                    self.arrival()
+                    self.distinctText.text = "已开启"
                 }
             })
         }
@@ -114,7 +116,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
             self.imageCollection.reloadData()
         }
     }
-
+    
 }
 
 
@@ -125,14 +127,12 @@ extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //pickerImage()
-        viewBigImages()
-        //self.presentViewController(picker, animated: true, completion: nil)
+        viewBigImages(self.msgModel.photos[indexPath.row] )        
     }
     
-    func viewBigImages()
+    func viewBigImages(url: String)
     {
-        
+        self.performSegueWithIdentifier("showImage", sender: url)
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -142,5 +142,13 @@ extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDel
         let URL = NSURL(string:URLString)!
         cell.imageView.hnk_setImageFromURL(URL)
         return cell
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showImage" {
+            let viewController = segue.destinationViewController as! ViewImageViewController
+            viewController.imageUrl = sender as! String
+        }
     }
 }

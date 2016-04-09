@@ -49,9 +49,9 @@
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
 		BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */; };
-		BFBB3A041CB88AEB00847DF0 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */; };
 		BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */; };
 		BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD27271CAC31640064C364 /* OpenMapViewController.swift */; };
+		BFCDC0561CB9501B00373E63 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDC0551CB9501B00373E63 /* ViewImageViewController.swift */; };
 		BFCE832F1CB3F0C900E67256 /* LoginUserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE832E1CB3F0C900E67256 /* LoginUserInfoViewModel.swift */; };
 		BFCE83311CB3F94800E67256 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE83301CB3F94800E67256 /* MessageViewModel.swift */; };
 		BFD0D79E1CB0D58900B3FF35 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */; };
@@ -138,9 +138,9 @@
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
 		BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageViewController.swift; path = MVC/OpenMessageViewController.swift; sourceTree = "<group>"; };
 		BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMessageModel.swift; sourceTree = "<group>"; };
-		BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataUtils.swift; path = common/DataUtils.swift; sourceTree = "<group>"; };
 		BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterMain.swift; path = MVC/CenterMain.swift; sourceTree = "<group>"; };
 		BFCD27271CAC31640064C364 /* OpenMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMapViewController.swift; path = MVC/OpenMapViewController.swift; sourceTree = "<group>"; };
+		BFCDC0551CB9501B00373E63 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewImageViewController.swift; path = MVC/ViewImageViewController.swift; sourceTree = "<group>"; };
 		BFCE832E1CB3F0C900E67256 /* LoginUserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginUserInfoViewModel.swift; path = MVC/LoginUserInfoViewModel.swift; sourceTree = "<group>"; };
 		BFCE83301CB3F94800E67256 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewModel.swift; path = MVC/MessageViewModel.swift; sourceTree = "<group>"; };
 		BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -259,7 +259,6 @@
 				BF45B6A21C6C4E820027F63D /* ImageUtils.swift */,
 				BF164D941CA59560008EF56F /* MapHelper.swift */,
 				BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */,
-				BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -390,6 +389,7 @@
 				BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */,
 				BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */,
 				BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */,
+				BFCDC0551CB9501B00373E63 /* ViewImageViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -617,11 +617,11 @@
 				BFFCEAFC1C789ED40042EF11 /* Double.swift in Sources */,
 				BF17103A1C6EFBDC00003D6B /* Image-GaussianBlur.swift in Sources */,
 				BFE486B21CB28A0C00EE9A8A /* UserInfoViewModel.swift in Sources */,
+				BFCDC0561CB9501B00373E63 /* ViewImageViewController.swift in Sources */,
 				BFFCEAFA1C789ED40042EF11 /* Character.swift in Sources */,
 				BF45B6951C6C4E440027F63D /* UIImageColors.swift in Sources */,
 				BFCE832F1CB3F0C900E67256 /* LoginUserInfoViewModel.swift in Sources */,
 				BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */,
-				BFBB3A041CB88AEB00847DF0 /* DataUtils.swift in Sources */,
 				BF0F5C891CAAB79000FA9C91 /* BindingExtensions.swift in Sources */,
 				BFFCEAFB1C789ED40042EF11 /* Dictionary.swift in Sources */,
 				BFFCEAFF1C789ED40042EF11 /* Int.swift in Sources */,

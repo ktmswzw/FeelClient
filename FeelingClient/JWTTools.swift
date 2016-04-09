@@ -20,6 +20,7 @@ class JWTTools {
     let JWTSIGN: String = "JWTSIGN"
     let AUTHORIZATION_STR: String = "Authorization"
     let IMTOKENTEMP: String = "IMTOKENTEMP"
+    let USERID: String = "FEELING_USERID"
     
     var appUsername: String {
         get {
@@ -103,6 +104,22 @@ class JWTTools {
         }
     }
     
+    
+    
+    var userId: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERID) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERID)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
     func getHeader(tokenNew: String, myDictionary: Dictionary<String, String> ) -> [String : String] {
         if jwtTemp.isEmpty || !myDictionary.isEmpty {//重复使用上次计算结果
             let jwt = JWT.encode(.HS256(SECERT)) { builder in
@@ -111,14 +128,12 @@ class JWTTools {
                 }
                 builder["token"] = tokenNew
             }
-//            NSLog("\(jwt)")
             if !myDictionary.isEmpty && tokenNew == self.token {//不填充新数据
                 jwtTemp = jwt
             }
             return [ AUTHORIZATION_STR : jwt ]
         }
         else {
-//            NSLog("\(jwtTemp)")
             return [ AUTHORIZATION_STR : jwtTemp ]
         }
     }

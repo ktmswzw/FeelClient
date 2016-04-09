@@ -27,7 +27,6 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         viewModel = FriendViewModel(delegate: self)
         
         self.navigationItem.title = "好友列表"
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FriendsViewController.edit))
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.search.rx_text

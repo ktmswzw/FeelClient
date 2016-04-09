@@ -34,12 +34,12 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-//        self.mapView.delegate = self
-//        self.mapView.showsUserLocation = true
+        self.mapView.delegate = self
+        //        self.mapView.showsUserLocation = true
         viewModel = MessageViewModel(delegate: self)
         
         
-
+        
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }
@@ -126,10 +126,10 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let pin = pinView.annotation! as! MyAnnotation
             viewModel.msgId = pin.id as String
             //TODO
-            if let q:String = pin.subtitle! as String {
+            if let q:String = pin.subtitle  {
                 viewModel.question = q
             }
-            if let t:String = pin.title! as String {
+            if let t:String = pin.title {
                 viewModel.to = t
             }
             self.performSegueWithIdentifier("open", sender: self)

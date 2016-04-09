@@ -12,28 +12,55 @@ import UIKit
     import RxSwift
     import RxCocoa
 #endif
-
-class SelfViewController: UIViewController {
-
+import SwiftyDB
+class SelfViewController: DesignableViewController {
+    
     @IBOutlet weak var exitApp: UIButton!
     var disposeBag = DisposeBag()
+    
+    
+    @IBOutlet weak var imageView: AnimatableImageView!
+    @IBOutlet weak var name: AnimatableTextField!
+    @IBOutlet weak var motto: AnimatableTextField!
+    @IBOutlet weak var adress: AnimatableTextField!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let image = UIImage(named: "horse")//lonely-children
-        let blurredImage = image!.imageByApplyingBlurWithRadius(15)
+        let blurredImage = image!.imageByApplyingBlurWithRadius(30)
         self.view.layer.contents = blurredImage.CGImage
         // Do any additional setup after loading the view.
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.save))
         
+        
+        let database = SwiftyDB(databaseName: "UserInfo")
+        
+        let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": jwt.userId]).value!
+        
+        if list.count > 0 {
+            let userinfo = list[0]
+            
+            self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
+            self.name.text = userinfo.nickname
+            self.motto.text = userinfo.phone
+            self.adress.text = userinfo.region
+        }
         
         exitApp.rx_tap
             .subscribeNext { [weak self] in self?.exitAppAction() }
             .addDisposableTo(disposeBag)
         
         
+    }
+    
+    func save()
+    {
+        
+        self.view.makeToast("error", duration: 1, position: .Center)
     }
     
     func exitAppAction()
@@ -53,8 +80,8 @@ class SelfViewController: UIViewController {
         })
     }
     
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,13 +92,13 @@ class SelfViewController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

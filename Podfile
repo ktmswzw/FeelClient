@@ -2,40 +2,30 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 #json格式处理
-pod 'SwiftyJSON’, :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'SwiftyJSON’
 #网络
-pod 'Alamofire’, :git => 'https://github.com/Alamofire/Alamofire'
-#form快速架构
-pod 'Eureka’, :git => 'https://github.com/xmartlabs/Eureka'
+pod 'Alamofire’
 #json对象映射
-pod 'ObjectMapper’#, :git => 'https://github.com/Hearst-DD/ObjectMapper'
-pod 'AlamofireObjectMapper', '~> 2.1'
+pod 'ObjectMapper’
+pod 'AlamofireObjectMapper'
 #加密类
-pod 'CryptoSwift’#, :git => 'https://github.com/krzyzanowskim/CryptoSwift'
+pod 'CryptoSwift’
 #jwt加密传输
-pod 'JSONWebToken’#, :git => 'https://github.com/kylef/JSONWebToken.swift'
+pod 'JSONWebToken’
 #动态效果框架
-pod 'IBAnimatable’#, :git => 'https://github.com/JakeLin/IBAnimatable'
+pod 'IBAnimatable’
 #照片获取
-pod 'ImagePickerSheetController’, :git => 'https://github.com/larcus94/ImagePickerSheetController.git'
+pod 'ImagePickerSheetController’
 #sqlist数据库操作
-#pod 'SQLite.swift’, :git => 'https://github.com/stephencelis/SQLite.swift.git'
 pod 'SwiftyDB'
-#表单
-#pod 'Former’, :git => 'https://github.com/ra1028/Former'
-
 #Mob产品公共库
 pod 'MOBFoundation_IDFA'
 #SMSSDK必须
 pod 'SMSSDK'
-#图片压缩
-#pod 'Toucan’, :git => 'https://github.com/gavinbunney/Toucan'
 #网络图片获取及缓存
 pod 'HanekeSwift'
-
 #IMCHAT
-pod 'RongCloudIMKit', '2.4.10'
-
+pod 'RongCloudIMKit', '2.4.11'
 #响应编程
 pod 'RxSwift'
 pod 'RxCocoa'

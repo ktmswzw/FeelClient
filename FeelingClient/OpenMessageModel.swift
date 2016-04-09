@@ -7,9 +7,9 @@
 //
 
 import Foundation
-typealias CompletionHandler = (MessagesSecret) -> Void
+typealias CompletionHandler2 = (MessagesSecret) -> Void
 
-public class OpenMessageModel {
+public class OpenMessageModel:BaseApi {
     
     let msg: MessageApi = MessageApi.defaultMessages
     
@@ -58,10 +58,16 @@ public class OpenMessageModel {
         }
     }
     
+    func verifyAnswer2(view:UIView,completeHander: CompletionHandlerType)
+    {
+        msg.verifyMsg(self.id, answer: self.answer!) { (r:BaseApi.Result) in
+            completeHander(r)
+        }
+    }
     
     
     
-    func arrival(view:UIView,completeHander: CompletionHandler)
+    func arrival(view:UIView,completeHander: CompletionHandler2)
     {
         msg.arrival(msgscrentId) { (r:BaseApi.Result) -> Void in
             switch (r) {

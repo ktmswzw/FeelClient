@@ -129,20 +129,170 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5P-vE-Twd">
-                                <rect key="frame" x="20" y="285" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-an-bPw">
+                                <rect key="frame" x="20" y="72" width="560" height="314"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkt-3x-FEr" customClass="AnimatableView" customModule="IBAnimatable">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="130"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Uq-Nz-MyX" customClass="AnimatableImageView" customModule="IBAnimatable">
+                                                <rect key="frame" x="220" y="5" width="120" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="cn1-PP-ELw"/>
+                                                    <constraint firstAttribute="height" constant="120" id="eUh-fC-WBg"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Shake"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="60"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="9Uq-Nz-MyX" firstAttribute="centerX" secondItem="rkt-3x-FEr" secondAttribute="centerX" id="1bo-U8-lOk"/>
+                                            <constraint firstItem="9Uq-Nz-MyX" firstAttribute="centerY" secondItem="rkt-3x-FEr" secondAttribute="centerY" id="dk0-bO-hTc"/>
+                                            <constraint firstItem="9Uq-Nz-MyX" firstAttribute="top" secondItem="rkt-3x-FEr" secondAttribute="top" constant="5" id="fk5-63-cqZ"/>
+                                            <constraint firstItem="9Uq-Nz-MyX" firstAttribute="top" secondItem="rkt-3x-FEr" secondAttribute="top" constant="5" id="ump-hq-PXr"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fk5-63-cqZ"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5P-vE-Twd" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                        <rect key="frame" x="0.0" y="130" width="560" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="dpe-M5-NSB"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="self"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="borderSide" value="Bottom"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P74-hb-ZXD">
+                                        <rect key="frame" x="0.0" y="190" width="560" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="wig-7T-Raz"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="座右铭" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H2H-vK-sIr" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                        <rect key="frame" x="0.0" y="192" width="560" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ocq-0k-UMI"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="center"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63v-g9-SVo">
+                                        <rect key="frame" x="0.0" y="252" width="560" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="sh7-Ur-g2e"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="地区" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-5d-PFI" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                        <rect key="frame" x="0.0" y="254" width="560" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="eXp-Nj-NSS"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="address"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="314" id="29i-i0-u30"/>
+                                    <constraint firstItem="H2H-vK-sIr" firstAttribute="top" secondItem="X5P-vE-Twd" secondAttribute="bottom" constant="1" id="ISO-pw-ZVR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ISO-pw-ZVR"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="X5P-vE-Twd" firstAttribute="leading" secondItem="k7i-wJ-jOk" secondAttribute="leadingMargin" id="BVL-L2-gid"/>
-                            <constraint firstItem="X5P-vE-Twd" firstAttribute="trailing" secondItem="k7i-wJ-jOk" secondAttribute="trailingMargin" id="vRh-EJ-VqH"/>
-                            <constraint firstItem="X5P-vE-Twd" firstAttribute="centerY" secondItem="k7i-wJ-jOk" secondAttribute="centerY" id="vy2-Se-m6e"/>
+                            <constraint firstItem="VWF-an-bPw" firstAttribute="leading" secondItem="k7i-wJ-jOk" secondAttribute="leadingMargin" id="Rmd-85-zHq"/>
+                            <constraint firstItem="VWF-an-bPw" firstAttribute="top" secondItem="30V-AK-IFT" secondAttribute="bottom" constant="8" symbolic="YES" id="jU6-Fh-EUy"/>
+                            <constraint firstItem="Axj-PF-Sza" firstAttribute="top" secondItem="VWF-an-bPw" secondAttribute="bottom" constant="167" id="rx2-sP-uOx"/>
+                            <constraint firstItem="VWF-an-bPw" firstAttribute="trailing" secondItem="k7i-wJ-jOk" secondAttribute="trailingMargin" id="zxp-tE-BPj"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rx2-sP-uOx"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="address" destination="KfR-5d-PFI" id="suZ-Ad-bqp"/>
+                        <outlet property="avatar" destination="9Uq-Nz-MyX" id="e7X-ia-lyC"/>
+                        <outlet property="motto" destination="H2H-vK-sIr" id="7rv-jt-wW7"/>
                         <outlet property="userId" destination="X5P-vE-Twd" id="QMe-bj-mtx"/>
                     </connections>
                 </viewController>
@@ -175,6 +325,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="address" width="22" height="22"/>
+        <image name="center" width="22" height="22"/>
         <image name="friends" width="22" height="22"/>
+        <image name="self" width="22" height="22"/>
     </resources>
 </document>
