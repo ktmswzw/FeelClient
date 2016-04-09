@@ -19,7 +19,8 @@ pod 'IBAnimatable’#, :git => 'https://github.com/JakeLin/IBAnimatable'
 #照片获取
 pod 'ImagePickerSheetController’, :git => 'https://github.com/larcus94/ImagePickerSheetController.git'
 #sqlist数据库操作
-pod 'SQLite.swift’, :git => 'https://github.com/stephencelis/SQLite.swift.git'
+#pod 'SQLite.swift’, :git => 'https://github.com/stephencelis/SQLite.swift.git'
+pod 'SwiftyDB'
 #表单
 #pod 'Former’, :git => 'https://github.com/ra1028/Former'
 
@@ -32,8 +33,10 @@ pod 'SMSSDK'
 #网络图片获取及缓存
 pod 'HanekeSwift'
 
+#IMCHAT
 pod 'RongCloudIMKit', '2.4.10'
 
+#响应编程
 pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxBlocking'

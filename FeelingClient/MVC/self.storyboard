@@ -8,7 +8,7 @@
         <!--我-->
         <scene sceneID="9k6-vh-PLq">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="25T-P7-b6Q" customClass="SelfViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="25T-P7-b6Q" customClass="SelfViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aOU-Na-HYi"/>
                         <viewControllerLayoutGuide type="bottom" id="5e7-8b-qoX"/>

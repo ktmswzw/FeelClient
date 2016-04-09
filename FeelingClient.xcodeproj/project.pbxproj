@@ -19,8 +19,6 @@
 		BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710481C6F75AB00003D6B /* NetApiAlamofire.swift */; };
 		BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17104C1C6F809800003D6B /* ChatViewController.swift */; };
 		BF1A83521C784CD0006B0377 /* PhotoUpLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1A83441C784CD0006B0377 /* PhotoUpLoader.swift */; };
-		BF4305D01CB807CB0026A047 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4305CF1CB807CB0026A047 /* DataLayer.swift */; };
-		BF4305D21CB807E80026A047 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4305D11CB807E80026A047 /* DateUtil.swift */; };
 		BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6701C6C38760027F63D /* AppDelegate.swift */; };
 		BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */; };
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
@@ -51,12 +49,12 @@
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
 		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
 		BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */; };
+		BFBB3A041CB88AEB00847DF0 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */; };
 		BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */; };
 		BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD27271CAC31640064C364 /* OpenMapViewController.swift */; };
 		BFCE832F1CB3F0C900E67256 /* LoginUserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE832E1CB3F0C900E67256 /* LoginUserInfoViewModel.swift */; };
 		BFCE83311CB3F94800E67256 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE83301CB3F94800E67256 /* MessageViewModel.swift */; };
 		BFD0D79E1CB0D58900B3FF35 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */; };
-		BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E341C7073E8002CF499 /* SqListUtils.swift */; };
 		BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */; };
 		BFE486B21CB28A0C00EE9A8A /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
@@ -105,8 +103,6 @@
 		BF1710481C6F75AB00003D6B /* NetApiAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetApiAlamofire.swift; path = common/NetApiAlamofire.swift; sourceTree = "<group>"; };
 		BF17104C1C6F809800003D6B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = MVC/ChatViewController.swift; sourceTree = "<group>"; };
 		BF1A83441C784CD0006B0377 /* PhotoUpLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUpLoader.swift; path = Library/UpLoader/PhotoUpLoader.swift; sourceTree = "<group>"; };
-		BF4305CF1CB807CB0026A047 /* DataLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
-		BF4305D11CB807E80026A047 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		BF45B66D1C6C38760027F63D /* FeelingClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF45B6701C6C38760027F63D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF45B6781C6C38760027F63D /* FeelingClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelingClient.xcdatamodel; sourceTree = "<group>"; };
@@ -142,12 +138,12 @@
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
 		BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageViewController.swift; path = MVC/OpenMessageViewController.swift; sourceTree = "<group>"; };
 		BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMessageModel.swift; sourceTree = "<group>"; };
+		BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataUtils.swift; path = common/DataUtils.swift; sourceTree = "<group>"; };
 		BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterMain.swift; path = MVC/CenterMain.swift; sourceTree = "<group>"; };
 		BFCD27271CAC31640064C364 /* OpenMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMapViewController.swift; path = MVC/OpenMapViewController.swift; sourceTree = "<group>"; };
 		BFCE832E1CB3F0C900E67256 /* LoginUserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginUserInfoViewModel.swift; path = MVC/LoginUserInfoViewModel.swift; sourceTree = "<group>"; };
 		BFCE83301CB3F94800E67256 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageViewModel.swift; path = MVC/MessageViewModel.swift; sourceTree = "<group>"; };
 		BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		BFD18E341C7073E8002CF499 /* SqListUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SqListUtils.swift; path = common/SqListUtils.swift; sourceTree = "<group>"; };
 		BFD18E3A1C70A9F7002CF499 /* CenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterViewController.swift; path = MVC/CenterViewController.swift; sourceTree = "<group>"; };
 		BFE486B11CB28A0C00EE9A8A /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewModel.swift; path = MVC/UserInfoViewModel.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -257,15 +253,13 @@
 		BF01B86A1C7B56240049627E /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				BF4305D11CB807E80026A047 /* DateUtil.swift */,
-				BF4305CF1CB807CB0026A047 /* DataLayer.swift */,
 				BF1A83441C784CD0006B0377 /* PhotoUpLoader.swift */,
 				BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */,
 				BF45B6AA1C6C4FA20027F63D /* JWTTools.swift */,
 				BF45B6A21C6C4E820027F63D /* ImageUtils.swift */,
-				BFD18E341C7073E8002CF499 /* SqListUtils.swift */,
 				BF164D941CA59560008EF56F /* MapHelper.swift */,
 				BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */,
+				BFBB3A031CB88AEB00847DF0 /* DataUtils.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -627,13 +621,13 @@
 				BF45B6951C6C4E440027F63D /* UIImageColors.swift in Sources */,
 				BFCE832F1CB3F0C900E67256 /* LoginUserInfoViewModel.swift in Sources */,
 				BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */,
+				BFBB3A041CB88AEB00847DF0 /* DataUtils.swift in Sources */,
 				BF0F5C891CAAB79000FA9C91 /* BindingExtensions.swift in Sources */,
 				BFFCEAFB1C789ED40042EF11 /* Dictionary.swift in Sources */,
 				BFFCEAFF1C789ED40042EF11 /* Int.swift in Sources */,
 				BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */,
 				BFFCEB051C789F240042EF11 /* BaseModel.swift in Sources */,
 				BFEA23D61C9021B30037A691 /* Message.swift in Sources */,
-				BF4305D21CB807E80026A047 /* DateUtil.swift in Sources */,
 				BFFD12581CB63DC0001AA9B3 /* FriendTabelViewCell.swift in Sources */,
 				BFEA23D81C914C030037A691 /* CenterMessageModel.swift in Sources */,
 				BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */,
@@ -657,11 +651,9 @@
 				BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */,
 				BF45B6921C6C4E440027F63D /* DatePickerDialog.swift in Sources */,
 				BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */,
-				BF4305D01CB807CB0026A047 /* DataLayer.swift in Sources */,
 				BFFCEB011C789ED40042EF11 /* Range.swift in Sources */,
 				BFFCEB001C789ED40042EF11 /* NSArray.swift in Sources */,
 				BF1710361C6EF1E000003D6B /* LoginViewController.swift in Sources */,
-				BFD18E351C7073E8002CF499 /* SqListUtils.swift in Sources */,
 				BFFCEB031C789ED40042EF11 /* String.swift in Sources */,
 				BFFCEAF91C789ED40042EF11 /* Bool.swift in Sources */,
 				BF9D34C51CB562D700B63925 /* FriendViewModel.swift in Sources */,

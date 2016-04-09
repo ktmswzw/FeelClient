@@ -1,11 +1,12 @@
 
 import UIKit
 import ObjectMapper
+import SwiftyDB
 
-public class BaseModel: NSObject,  Mappable {
+public class BaseModel: NSObject,Storable ,Mappable {
     
     var errorCode:String = "0"
-    override init() {}
+    override required public init() {}
     required public init?(_ map: Map) {
         super.init()
         mapping(map)
@@ -23,7 +24,6 @@ public class BaseModel: NSObject,  Mappable {
         
         return Mapper().toJSON(self)
     }
-    
 }
 
 public class BaseApi:NSObject {
@@ -38,4 +38,5 @@ public class BaseApi:NSObject {
     enum Error: ErrorType {
         case AuthenticationFailure
     }
+    
 }

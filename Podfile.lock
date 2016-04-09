@@ -24,8 +24,14 @@ PODS:
     - RxSwift (~> 2.3.1)
   - RxSwift (2.3.1)
   - SMSSDK (2.0.2)
-  - SQLite.swift (0.10.1)
+  - sqlite3 (3.11.1):
+    - sqlite3/common (= 3.11.1)
+  - sqlite3/common (3.11.1)
+  - SwiftyDB (1.0.0):
+    - TinySQLite (~> 0.3.0)
   - SwiftyJSON (2.3.2)
+  - TinySQLite (0.3.1):
+    - sqlite3
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire`)
@@ -44,7 +50,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - SMSSDK
-  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`)
+  - SwiftyDB
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -54,8 +60,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/xmartlabs/Eureka
   ImagePickerSheetController:
     :git: https://github.com/larcus94/ImagePickerSheetController.git
-  SQLite.swift:
-    :git: https://github.com/stephencelis/SQLite.swift.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
@@ -69,9 +73,6 @@ CHECKOUT OPTIONS:
   ImagePickerSheetController:
     :commit: 974f16b23a29811a4d56bf0357cecdfdde0ab77e
     :git: https://github.com/larcus94/ImagePickerSheetController.git
-  SQLite.swift:
-    :commit: ccf43925aacf9fcc6130639247b3e7578a1c727a
-    :git: https://github.com/stephencelis/SQLite.swift.git
   SwiftyJSON:
     :commit: 42bdb102d2624b143c07850ebdc1537d5b6579b6
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -93,7 +94,9 @@ SPEC CHECKSUMS:
   RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
   RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
   SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
-  SQLite.swift: 6a6e4b034efc317ce4e203b6af2d3024fee2b570
+  sqlite3: 999671531811b14e0e9dc98e065e3a1e7727df55
+  SwiftyDB: 9a5cf6461c086ef54d12a1980a47fa234d654cad
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  TinySQLite: b27a26c4676a41f045f56e0d94ccc4bce9a1a87f
 
 COCOAPODS: 0.39.0

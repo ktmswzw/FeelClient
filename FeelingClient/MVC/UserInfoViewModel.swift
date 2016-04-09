@@ -9,7 +9,6 @@
 import Foundation
 import SwiftyJSON
 import Alamofire
-import SQLite
 
 public class UserInfoViewModel:BaseApi {
     /// 头像图片地址

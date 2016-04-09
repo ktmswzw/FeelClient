@@ -23,6 +23,7 @@ public class LoginUserInfoViewModel: BaseApi{
     }
     
     
+    
     func loginDelegate(completeHander:CompletionHandlerType){
         
         NetApi().makeCallBean(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userName,"password":password,"device":"APP"]) { (res:Response<UserInfo, NSError>) in

@@ -10,6 +10,7 @@ import UIKit
 import IBAnimatable
 import SwiftyJSON
 import Alamofire
+import SwiftyDB
 
 class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
@@ -18,7 +19,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     @IBOutlet var password: AnimatableTextField!
     
     var actionButton: ActionButton!
-    
+    let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
     
     var userinfo: UserInfo!
@@ -104,7 +105,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         super.viewDidAppear(animated)
         if jwt.appUsername.length > 0 && jwt.appPwd.length > 0 {
             username.text = jwt.appUsername
-//            password.text = jwt.appPwd
+            //            password.text = jwt.appPwd
             viewModel.userName = jwt.appUsername
             viewModel.password = jwt.appPwd
             loginDelegate()
@@ -116,10 +117,10 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     override func viewWillAppear(animated: Bool) {
         
         if jwt.appUsername.length == 0 {
-//            username.text = ""
+            //            username.text = ""
             password.text = ""
         }
-
+        
     }
     
     
@@ -138,6 +139,8 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.imToken = userInfo.IMToken
                         jwt.appUsername = self.viewModel.userName
                         jwt.appPwd = self.viewModel.password
+                        self.database.addObject(userInfo, update: true)
+                                                
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         self.performSegueWithIdentifier("login", sender: self)
                     }
@@ -150,12 +153,7 @@ extension LoginViewController: LoginUserModelDelegate {
                                 //设置当前登陆用户的信息
                                 RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
                                 
-//                                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-//                                    //打开会话列表
-//                                    let chatListView = ChatViewController()
-//                                    self.navigationController?.pushViewController(chatListView, animated: true)
-//                                })
-
+                                
                                 
                             }, error: { (status) -> Void in
                                 print("登陆的错误码为:\(status.rawValue)")
@@ -171,12 +169,12 @@ extension LoginViewController: LoginUserModelDelegate {
                     print("\(msg)")
                     break;
                 }
-
+                
             })
             HUD!.removeFromSuperview()
         }) { () -> Void in
         }
-
+        
     }
     func getToken(){
     }

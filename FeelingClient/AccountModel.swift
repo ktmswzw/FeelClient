@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import SwiftyDB
 /**
     
     账号登录信息
@@ -67,6 +68,7 @@ class UserInfo : BaseModel {
         JWTToken <- map["jwttoken"]
 
     }
+
     
     static let TABLE_NAME = "USER_INFO"
     
@@ -104,5 +106,14 @@ class UserInfo : BaseModel {
                 NSNotificationCenter.defaultCenter().postNotificationName(notifyKey, object: nil)
             })
         }
+    }
+}
+
+extension UserInfo: PrimaryKeys {
+    class func primaryKeys() -> Set<String> {
+        return ["id"]
+    }
+    class func ignoredProperties() -> Set<String> {
+        return ["name","IMToken","JWTToken"]
     }
 }
