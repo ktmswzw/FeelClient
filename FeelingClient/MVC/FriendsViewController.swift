@@ -10,25 +10,40 @@ import UIKit
 import MapKit
 import Haneke
 
-class FriendsViewController: UITableViewController {
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
+
+class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
+    var disposeBag = DisposeBag()
     var viewModel: FriendViewModel!
-    
+    var searchName = ""
+        @IBOutlet weak var search: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel = FriendViewModel(delegate: self)
         
         self.navigationItem.title = "好友列表"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FriendsViewController.edit))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FriendsViewController.edit))
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.search.rx_text
+            .debounce(0.5, scheduler: MainScheduler.asyncInstance)
+            .subscribeNext { searchText in
+                self.searchName = searchText
+                self.refresh(searchText)
+            }
+            .addDisposableTo(disposeBag)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.refreshData()
     }
+    
     
     func edit()
     {
@@ -45,11 +60,12 @@ class FriendsViewController: UITableViewController {
     
     func getFriends()
     {
-        viewModel.searchMsg("") { (r: BaseApi.Result) in
+        viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
             switch (r) {
             case .Success(let value):
                 self.viewModel.friends =  value as! [FriendBean]
                 self.tableView.reloadData()
+                self.search.endEditing(true)
                 break;
             case .Failure(let msg):
                 print("\(msg)")

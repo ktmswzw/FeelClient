@@ -30,13 +30,16 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         super.viewDidLoad()
         //地图初始化
         locationManager.delegate = self
-        //locationManager.distanceFilter = 1;
+        locationManager.distanceFilter = 1;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        self.mapView.delegate = self
-        //self.mapView.showsUserLocation = true
+//        self.mapView.delegate = self
+//        self.mapView.showsUserLocation = true
         viewModel = MessageViewModel(delegate: self)
+        
+        
+
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
     }

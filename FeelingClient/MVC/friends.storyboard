@@ -17,7 +17,11 @@
                         <searchBar key="tableHeaderView" contentMode="redraw" id="p5j-t1-sEl">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendInfo" rowHeight="50" id="c7H-gT-3Vl" customClass="FriendTableViewCell" customModule="FeelingClient" customModuleProvider="target">
@@ -105,6 +109,9 @@
                             <action selector="refresh:" destination="VJR-Pg-D6y" eventType="valueChanged" id="qe3-QT-qkF"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="search" destination="p5j-t1-sEl" id="cb2-Oh-P7L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hrv-fI-t3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

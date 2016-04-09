@@ -8,6 +8,7 @@
 
 import UIKit
 
+import SwiftyDB
 import IBAnimatable
 
 class ChatViewController: RCConversationListViewController {
@@ -28,21 +29,9 @@ class ChatViewController: RCConversationListViewController {
             RCConversationType.ConversationType_GROUP.rawValue])
         
         self.navigationItem.title = "会话列表"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "聊天", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ChatViewController.privateChat))
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
-    }
-    
-    func privateChat() {
-        //打开会话界面
-        let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: "me")
-        chat.title = "想显示的会话标题"
-        
-        chat.hidesBottomBarWhenPushed = true
-        
-        //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.pushViewController(chat, animated: true)
     }
     
     
@@ -53,9 +42,15 @@ class ChatViewController: RCConversationListViewController {
     
     //重写RCConversationListViewController的onSelectedTableRow事件
     override func onSelectedTableRow(conversationModelType: RCConversationModelType, conversationModel model: RCConversationModel!, atIndexPath indexPath: NSIndexPath!) {
+        
         //打开会话界面
         let chat = RCConversationViewController(conversationType: model.conversationType, targetId: model.targetId)
-        chat.title = "想显示的会话标题"
+        let database = SwiftyDB(databaseName: "UserInfo")
+        let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": model.targetId]).value!
+        if list.count > 0 {
+            let userinfo = list[0]
+            chat.title = "\(userinfo.nickname)"
+        }
         chat.hidesBottomBarWhenPushed = true
         
         //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
