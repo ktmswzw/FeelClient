@@ -33,6 +33,7 @@ class MessageBean: BaseModel {
         question <- map["question"]
         distance <- map["distance"]
         point <- map["point"]
+        fromId <- map["fromId"]
         avatar <- map["avatar"]
         
     }
@@ -60,7 +61,7 @@ class MessageBean: BaseModel {
     var y: Double = 0.0
     //距离
     var distance: Double = 0.0
-    
+    var fromId = ""
     var avatar = "" //头像地址
     
     //问题

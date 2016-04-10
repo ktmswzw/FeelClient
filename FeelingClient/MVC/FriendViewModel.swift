@@ -34,11 +34,11 @@ public class FriendViewModel:BaseApi {
     }
     
     
-    let params = [:]
+    var params = [:]
     let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
     
-    func save(completeHander:CompletionHandlerType){
-        NetApi().makeCallBean(Alamofire.Method.POST, section: "friend/\(self.user)", headers: headers, params: params as? [String:AnyObject]) { (res:Response<UserInfo, NSError>) in
+    func save(id:String, completeHander:CompletionHandlerType){
+        NetApi().makeCallBean(Alamofire.Method.POST, section: "friend/\(id)/friend", headers: headers, params: params as? [String:AnyObject]) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))
@@ -51,8 +51,8 @@ public class FriendViewModel:BaseApi {
         }
     }
     
-    func black(completeHander:CompletionHandlerType){
-        NetApi().makeCallBean(Alamofire.Method.DELETE, section: "friend/\(self.user)", headers: headers, params: params as? [String:AnyObject]) { (res:Response<UserInfo, NSError>) in
+    func black(id:String,completeHander:CompletionHandlerType){
+        NetApi().makeCallBean(Alamofire.Method.DELETE, section: "friend/\(id)", headers: headers, params: params as? [String:AnyObject]) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))
@@ -82,11 +82,5 @@ public class FriendViewModel:BaseApi {
     }
     
 }
-
-
-
 public protocol FriendModelDelegate: class {
-    func save()
-    func black()
-    func search(name:String)
 }

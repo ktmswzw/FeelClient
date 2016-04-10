@@ -28,6 +28,8 @@ public class UserInfoViewModel:BaseApi {
      /// id
     var id = ""
     
+    var motto = ""
+    
     
     public weak var delegate: UserInfoModelDelegate?
     
@@ -47,7 +49,7 @@ public class UserInfoViewModel:BaseApi {
     {
         let params = [:]
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCallBean(Alamofire.Method.GET, section: "\(self.id)", headers: headers, params: (params as! [String : AnyObject])) { (res:Response<UserInfo, NSError>) in
+        NetApi().makeCallBean(Alamofire.Method.GET, section: "\(jwt.userId)", headers: headers, params: (params as! [String : AnyObject])) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))
@@ -67,9 +69,9 @@ public class UserInfoViewModel:BaseApi {
      */
     func saveUser(sender: AnyObject,completeHander:CompletionHandlerType)
     {
-        let params = ["nickname":self.nickname,"phone":self.phone,"sex":self.sex,"avatar":self.avatar]
+        let params = ["nickname":self.nickname,"motto":self.motto,"sex":self.sex,"avatar":self.avatar]
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCallBean(Alamofire.Method.PATCH, section: "\(self.id)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
+        NetApi().makeCallBean(Alamofire.Method.PATCH, section: "\(jwt.userId)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))
@@ -83,7 +85,5 @@ public class UserInfoViewModel:BaseApi {
     }
 
 public protocol UserInfoModelDelegate: class {
-    func getUser(sender: AnyObject)
-    func saveUser(sender: AnyObject)
 }
 

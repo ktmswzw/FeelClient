@@ -87,6 +87,4 @@ public class LoginUserInfoViewModel: BaseApi{
 }
 
 public protocol LoginUserModelDelegate: class {
-    func loginDelegate()
-    func getToken()
 }

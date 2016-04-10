@@ -15,16 +15,25 @@ import MobileCoreServices
 
 import Haneke
 import IBAnimatable
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
 
-class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
+class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
     var msgId = ""
+    var to = ""
     var isOk = false
     var viewModel: MessageViewModel!
     let cache = Shared.imageCache
     
+    var disposeBag = DisposeBag()
+    
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +48,14 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         viewModel = MessageViewModel(delegate: self)
         
         
+        self.searchBar.rx_text
+            .debounce(1, scheduler: MainScheduler.asyncInstance)
+            .subscribeNext { searchText in
+                self.to = searchText
+                self.searchMsg(searchText)
+                self.searchBar.endEditing(true)
+            }
+            .addDisposableTo(disposeBag)
         
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -68,6 +85,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
                     }
                     
                 }
+                
             }
             else{
                 leftIconView.image = UIImage(named: "girl")
@@ -132,16 +150,20 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             if let t:String = pin.title {
                 viewModel.to = t
             }
+            if let id:String = pin.fromId {
+                viewModel.fromId = id
+            }
+            
             self.performSegueWithIdentifier("open", sender: self)
         }
     }
     
     var selectedView: MKAnnotationView?
     
-    @IBAction func searchMsg(sender: AnyObject) {
+    func searchMsg(sender: AnyObject) {
         viewModel.longitude = self.longitude
         viewModel.latitude = self.latitude
-        viewModel.searchMessage(self.mapView)
+        viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
     }
     
     func sendMsg(sender:AnyObject){}

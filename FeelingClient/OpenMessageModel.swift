@@ -98,6 +98,4 @@ public class OpenMessageModel:BaseApi {
 
 
 public protocol OpenMessageModelDelegate: class {
-    func verifyAnswer()
-    func arrival()
 }

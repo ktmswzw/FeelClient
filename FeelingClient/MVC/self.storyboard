@@ -18,28 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQX-v1-KpM" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="20" y="496" width="560" height="47"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="MUa-2Y-dOm"/>
-                                </constraints>
-                                <state key="normal" title="退出">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Shake"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sQ0-jD-cNc">
                                 <rect key="frame" x="20" y="72" width="560" height="314"/>
                                 <subviews>
@@ -90,7 +68,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-ro-pA8" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-ro-pA8" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="130" width="560" height="60"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -123,7 +101,7 @@
                                             <constraint firstAttribute="height" constant="2" id="BHH-S3-O5O"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="座右铭" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKy-5A-36L" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="座右铭" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yKy-5A-36L" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="192" width="560" height="60"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -133,7 +111,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="center"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="question"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
@@ -152,31 +130,38 @@
                                             <constraint firstAttribute="height" constant="2" id="fXa-l0-Z2U"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="地区" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vki-zL-BMS" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxZ-J7-GkJ" customClass="AnimatableView" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="254" width="560" height="60"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lug-ak-Crf">
+                                                <rect key="frame" x="8" y="17" width="544" height="29"/>
+                                                <segments>
+                                                    <segment title="男士"/>
+                                                    <segment title="女士👗"/>
+                                                    <segment title="其他"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="sexChange:" destination="25T-P7-b6Q" eventType="valueChanged" id="vta-mi-vCL"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="PV5-xs-gyS"/>
+                                            <constraint firstItem="lug-ak-Crf" firstAttribute="trailing" secondItem="UxZ-J7-GkJ" secondAttribute="trailingMargin" id="0Jx-ls-Adi"/>
+                                            <constraint firstItem="lug-ak-Crf" firstAttribute="leading" secondItem="UxZ-J7-GkJ" secondAttribute="leadingMargin" id="Hhf-26-qTj"/>
+                                            <constraint firstItem="lug-ak-Crf" firstAttribute="top" secondItem="UxZ-J7-GkJ" secondAttribute="top" constant="17" id="iC0-6Z-k5O"/>
+                                            <constraint firstAttribute="height" constant="60" id="x0d-Ms-J8c"/>
                                         </constraints>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="address"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                    </textField>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="314" id="XGB-Ik-dPF"/>
                                     <constraint firstItem="yKy-5A-36L" firstAttribute="top" secondItem="SlW-ro-pA8" secondAttribute="bottom" constant="1" id="tmX-2d-N6l"/>
                                 </constraints>
                                 <variation key="default">
@@ -188,17 +173,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="leading" secondItem="RQX-v1-KpM" secondAttribute="leading" id="61o-js-Fba"/>
-                            <constraint firstItem="RQX-v1-KpM" firstAttribute="top" secondItem="aOU-Na-HYi" secondAttribute="bottom" constant="432" id="7TL-Xe-kHd"/>
-                            <constraint firstItem="5e7-8b-qoX" firstAttribute="top" secondItem="RQX-v1-KpM" secondAttribute="bottom" constant="8" symbolic="YES" id="9lX-Ha-3DY"/>
-                            <constraint firstItem="RQX-v1-KpM" firstAttribute="trailing" secondItem="Dyp-Hb-jbD" secondAttribute="trailingMargin" id="jhf-dS-8Qh"/>
-                            <constraint firstItem="RQX-v1-KpM" firstAttribute="leading" secondItem="Dyp-Hb-jbD" secondAttribute="leadingMargin" id="mfN-KC-mOw"/>
+                            <constraint firstAttribute="bottom" secondItem="sQ0-jD-cNc" secondAttribute="bottom" constant="214" id="Kk3-1g-rRr"/>
+                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="leading" secondItem="Dyp-Hb-jbD" secondAttribute="leadingMargin" id="ovn-Vk-yT9"/>
+                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="trailing" secondItem="Dyp-Hb-jbD" secondAttribute="trailingMargin" id="pz3-YH-S3s"/>
                             <constraint firstItem="sQ0-jD-cNc" firstAttribute="top" secondItem="aOU-Na-HYi" secondAttribute="bottom" constant="8" symbolic="YES" id="v89-PL-9ez"/>
-                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="trailing" secondItem="RQX-v1-KpM" secondAttribute="trailing" id="vFN-ha-voD"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="7TL-Xe-kHd"/>
+                                <exclude reference="Kk3-1g-rRr"/>
                             </mask>
                         </variation>
                     </view>
@@ -206,11 +188,10 @@
                     <navigationItem key="navigationItem" title="我" id="DaA-WB-wgS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="adress" destination="Vki-zL-BMS" id="e8c-Ck-EaG"/>
-                        <outlet property="exitApp" destination="RQX-v1-KpM" id="fmv-j1-J7a"/>
                         <outlet property="imageView" destination="U1Y-qZ-geq" id="mD8-w2-lKc"/>
                         <outlet property="motto" destination="yKy-5A-36L" id="ceY-c7-vec"/>
                         <outlet property="name" destination="SlW-ro-pA8" id="wtm-7Y-2O9"/>
+                        <outlet property="segment" destination="lug-ak-Crf" id="GS1-67-SLC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAb-Vf-jNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,8 +225,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="address" width="22" height="22"/>
-        <image name="center" width="22" height="22"/>
+        <image name="question" width="22" height="22"/>
         <image name="self" width="22" height="22"/>
     </resources>
 </document>

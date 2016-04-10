@@ -24,6 +24,8 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     @IBOutlet weak var mapView: MKMapView!
     //    @IBOutlet weak var openButton: AnimatableButton!
     var msgModel: OpenMessageModel!
+    var fromId:String = ""
+    var friendModel: FriendViewModel!
     var disposeBag = DisposeBag()
     var latitude = 0.0
     var longitude = 0.0
@@ -37,7 +39,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //msgModel = OpenMessageModel(delegate: self)
+        friendModel = FriendViewModel(delegate: self)
         locationManager.delegate = self
         //locationManager.distanceFilter = 1;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -48,6 +50,10 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         
         self.imageCollection.delegate = self
         self.imageCollection.dataSource = self
+        
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加好友", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.save))
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         imageCollection!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "photo")
         //        let everythingValid = distinctText.rx_text
@@ -101,10 +107,6 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         
     }
     
-    func verifyAnswer()
-    {
-        
-    }
     
     func arrival()
     {
@@ -117,8 +119,26 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         }
     }
     
+    func save(){
+        friendModel.save(self.fromId) { (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(_):
+                self.view.makeToast("添加成功", duration: 1, position: .Center)
+                self.navigationItem.rightBarButtonItem?.enabled = false
+                break
+            case .Failure(let error):
+                
+                self.view.makeToast("添加失败:\(error)", duration: 1, position: .Center)
+                break
+            }
+        }
+    }
 }
 
+
+extension OpenMapViewController: FriendModelDelegate{
+    
+}
 
 
 extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDelegate {

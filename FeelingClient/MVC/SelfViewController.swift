@@ -8,22 +8,20 @@
 
 import IBAnimatable
 import UIKit
-#if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
-#endif
 import SwiftyDB
+import MobileCoreServices
+import MediaPlayer
+import ImagePickerSheetController
+
 class SelfViewController: DesignableViewController {
     
-    @IBOutlet weak var exitApp: UIButton!
-    var disposeBag = DisposeBag()
-    
-    
+    var viewModel: UserInfoViewModel!    
     @IBOutlet weak var imageView: AnimatableImageView!
     @IBOutlet weak var name: AnimatableTextField!
     @IBOutlet weak var motto: AnimatableTextField!
-    @IBOutlet weak var adress: AnimatableTextField!
+    @IBOutlet weak var segment: UISegmentedControl!
     
+    var picker = UIImagePickerController()
     
     
     override func viewDidLoad() {
@@ -37,6 +35,11 @@ class SelfViewController: DesignableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.save))
         
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
+        
+        
+        viewModel = UserInfoViewModel(delegate: self)
+        
         let database = SwiftyDB(databaseName: "UserInfo")
         
         let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": jwt.userId]).value!
@@ -47,20 +50,57 @@ class SelfViewController: DesignableViewController {
             self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             self.name.text = userinfo.nickname
             self.motto.text = userinfo.phone
-            self.adress.text = userinfo.region
+            self.segment.selectedSegmentIndex = getSex(userinfo.sex)
         }
         
-        exitApp.rx_tap
-            .subscribeNext { [weak self] in self?.exitAppAction() }
-            .addDisposableTo(disposeBag)
+        //点击
+        //        exitApp.rx_tap
+        //            .subscribeNext { [weak self] in self?.exitAppAction() }
+        //            .addDisposableTo(disposeBag)
+        
+        //照片
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(SelfViewController.presentImagePickerSheet))
+        imageView.userInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
         
         
     }
     
+    func getSex(name:String) -> Int {
+        if name=="MALE" {
+            return 0
+        }
+        if name=="FEMALE"{
+            return 1
+        }
+        else {
+            return 2
+        }
+    }
+    
+    @IBAction func sexChange(sender: AnyObject) {
+        switch segment.selectedSegmentIndex
+        {
+        case 0:
+            self.viewModel.sex = "MALE";
+        case 1:
+            self.viewModel.sex = "FEMALE";
+        case 2:
+            self.viewModel.sex = "OTHER";
+        default:
+            break; 
+        }
+    }
+    
     func save()
     {
-        
-        self.view.makeToast("error", duration: 1, position: .Center)
+        viewModel.avatar = ""
+        viewModel.nickname = self.name.text!
+        viewModel.motto = self.motto.text!
+        viewModel.saveUser("") { (r:BaseApi.Result) in
+            
+        }
+        //self.view.makeToast("error", duration: 1, position: .Center)
     }
     
     func exitAppAction()
@@ -70,35 +110,92 @@ class SelfViewController: DesignableViewController {
         jwt.appPwd = ""
         
         
+        
         //断开连接并设置不再接收推送消息
         RCIM.sharedRCIM().disconnect(false)
         
         
         //let navigationController:UINavigationController? = self.tabBarController?.presentingViewController as? UINavigationController
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            //navigationController!.popToRootViewControllerAnimated(false)
+            self.view.makeToast("退出成功", duration: 2, position: .Center)
         })
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    
+    func presentImagePickerSheet() {
+        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .PhotoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let controller = ImagePickerSheetController(mediaType: .ImageAndVideo)
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("拍摄", comment: "标题"),handler: { _ in
+            presentImagePickerController(.Camera)
+            }, secondaryHandler: { _, numberOfPhotos in
+                for ass in controller.selectedImageAssets
+                {
+                    let image = getAssetThumbnail(ass)
+                    self.imageView.image = image
+                    
+                    self.view.makeToast("更新成功", duration: 1, position: .Center)
+                }
+        }))
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("相册", comment: "标题"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
+            presentImagePickerController(.PhotoLibrary)
+            }, secondaryHandler: { _, numberOfPhotos in
+                //print("Send \(controller.selectedImageAssets)")
+                for ass in controller.selectedImageAssets
+                {
+                    let image = getAssetThumbnail(ass)
+                    self.imageView.image = image
+                    self.view.makeToast("更新成功", duration: 1, position: .Center)
+                }
+                
+        }))
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("取消", comment: "Action Title"), style: .Cancel, handler: { _ in
+            //print("Cancelled")
+        }))
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            controller.modalPresentationStyle = .Popover
+            controller.popoverPresentationController?.sourceView = view
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+}
+
+
+extension SelfViewController: UserInfoModelDelegate{
+    
+}
+
+extension SelfViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.imageView.image = image
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }

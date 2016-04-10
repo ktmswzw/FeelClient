@@ -21,54 +21,21 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8CY-GM-Klr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffM-kZ-dCC" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="20" y="496" width="560" height="47"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="Gtb-vS-2Tn"/>
-                                    <constraint firstAttribute="height" constant="47" id="bN1-Au-eTQ"/>
-                                    <constraint firstAttribute="width" constant="55" id="uWt-oJ-loT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="寻觅">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="bN1-Au-eTQ"/>
-                                        <exclude reference="uWt-oJ-loT"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="searchMsg:" destination="k7f-3U-IcX" eventType="touchUpInside" id="CmO-s5-n0K"/>
-                                </connections>
-                            </button>
+                            <searchBar alpha="0.80000000000000004" contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ge0-CV-NAH">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="ffM-kZ-dCC" secondAttribute="bottom" constant="8" symbolic="YES" id="6RR-Kf-fGj"/>
-                            <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="Del-nq-gf2"/>
-                            <constraint firstItem="ffM-kZ-dCC" firstAttribute="centerX" secondItem="8CY-GM-Klr" secondAttribute="centerX" id="Rjm-Ue-ii7"/>
-                            <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="Vsa-Q8-ZVO"/>
-                            <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="ZSp-iC-y7d"/>
-                            <constraint firstItem="ffM-kZ-dCC" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" constant="268" id="dNE-Ve-II1"/>
-                            <constraint firstAttribute="trailing" secondItem="8CY-GM-Klr" secondAttribute="trailing" id="mKf-PF-7mi"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="ffM-kZ-dCC" secondAttribute="leading" id="t3G-wb-C1S"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ffM-kZ-dCC" secondAttribute="trailing" id="yPz-cD-IkV"/>
+                            <constraint firstAttribute="trailing" secondItem="Ge0-CV-NAH" secondAttribute="trailing" id="1pc-td-fHa"/>
+                            <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="6Bs-Fa-x3f"/>
+                            <constraint firstItem="Ge0-CV-NAH" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="9FO-1s-2Tk"/>
+                            <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="Jwn-hL-Mok"/>
+                            <constraint firstItem="8CY-GM-Klr" firstAttribute="trailing" secondItem="Ge0-CV-NAH" secondAttribute="trailing" id="a7Z-Ce-BsP"/>
+                            <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Ge0-CV-NAH" secondAttribute="leading" id="avF-2P-J2Q"/>
+                            <constraint firstItem="Ge0-CV-NAH" firstAttribute="top" secondItem="8CY-GM-Klr" secondAttribute="top" id="dDH-Am-mja"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="dNE-Ve-II1"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" image="send" id="m87-yF-hbL"/>
                     <navigationItem key="navigationItem" title="发现" id="lTY-dc-LDc">
@@ -85,10 +52,20 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="8CY-GM-Klr" id="jjZ-dy-jH6"/>
+                        <outlet property="searchBar" destination="Ge0-CV-NAH" id="649-Ot-Wv8"/>
+                        <outlet property="searchDisplayController" destination="ASf-w8-U9E" id="x7f-cV-bXK"/>
                         <segue destination="miY-Or-ZGL" kind="show" identifier="open" id="r4p-ne-w9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BpN-6Y-Ry8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="ASf-w8-U9E">
+                    <connections>
+                        <outlet property="delegate" destination="k7f-3U-IcX" id="Utq-ld-CiO"/>
+                        <outlet property="searchContentsController" destination="k7f-3U-IcX" id="j4E-tO-5wY"/>
+                        <outlet property="searchResultsDataSource" destination="k7f-3U-IcX" id="lAT-2K-gYm"/>
+                        <outlet property="searchResultsDelegate" destination="k7f-3U-IcX" id="GBa-rw-5pq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="4451" y="-86"/>
         </scene>

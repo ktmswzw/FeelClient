@@ -44,11 +44,6 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     }
     
     
-    func edit()
-    {
-        
-    }
-    
     func refreshData()
     {
         if refreshControl != nil {
@@ -113,22 +108,11 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     }
     
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func save(){
-        
-    }
-    func black(){
-        
-    }
-    func search(name:String){
-        
-    }
 }
 
 

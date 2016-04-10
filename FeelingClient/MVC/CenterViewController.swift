@@ -40,7 +40,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     @IBOutlet var hidden4: UIView!
     @IBOutlet var hidden5: UIView!
     @IBOutlet var hidden6: UIView!
-    @IBOutlet var sendButton: UIBarButtonItem!
+//    @IBOutlet var sendButton: UIBarButtonItem!
     
     @IBAction func chagenSwitch(sender: AnyObject) {
         if switchHidden.on {
@@ -112,7 +112,6 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         
     }
     
-    func searchMsg(sender: AnyObject){}
     
     func hiddenView(flag:Bool){
         hidden0.hidden = flag

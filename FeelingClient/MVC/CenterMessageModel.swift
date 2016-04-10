@@ -42,6 +42,9 @@ public class MessageViewModel {
     var latitude:Double = 0.0
     var longitude:Double = 0.0
     
+    //发起人id
+    var fromId = ""
+    
     public weak var delegate: MessageViewModelDelegate?
     
     var imageData = [UIImage]()
@@ -87,35 +90,42 @@ public class MessageViewModel {
                 se!.navigationController?!.popViewControllerAnimated(true)
             }
             
-            }) { () -> Void in
-                
+        }) { () -> Void in
+            
         }
         
         
     }
     
     
-    func searchMessage(map: MKMapView) {
-        msgs.searchMsg("", x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
+    func searchMessage(to:String, map: MKMapView, view: UIView) {
+        msgs.searchMsg(to, x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
-                
-                for msg in r as! [MessageBean] {
-                    let oneAnnotation = MyAnnotation()
-                    
-                    oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()
-                    oneAnnotation.title = msg.to
-                    oneAnnotation.subtitle = msg.question
-                    oneAnnotation.id = msg.id
-                    oneAnnotation.url = msg.avatar
-                    
-                    self.annotationArray.append(oneAnnotation)
+                map.removeAnnotations(map.annotations)
+                if let msgs = r  {
+                    if(msgs.count==0){
+                        view.makeToast("未找到记录", duration: 2, position: .Center)
+                    }
+                    else{
+                        for msg in r as! [MessageBean] {
+                            let oneAnnotation = MyAnnotation()
+                            
+                            oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()
+                            oneAnnotation.title = msg.to
+                            oneAnnotation.subtitle = msg.question
+                            oneAnnotation.id = msg.id
+                            oneAnnotation.url = msg.avatar
+                            oneAnnotation.fromId = msg.fromId
+                            
+                            self.annotationArray.append(oneAnnotation)
+                        }
+                        map.addAnnotations(self.annotationArray)
+                    }
                 }
-                map.addAnnotations(self.annotationArray)
-                
                 break;
             case .Failure(_):
-                
+                view.makeToast("搜索失败", duration: 2, position: .Center)
                 break;
             }
         }
@@ -124,6 +134,4 @@ public class MessageViewModel {
 }
 
 public protocol MessageViewModelDelegate: class {
-    func sendMsg(sender:AnyObject)
-    func searchMsg(sender: AnyObject)
 }

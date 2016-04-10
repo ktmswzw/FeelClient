@@ -177,7 +177,5 @@ extension LoginViewController: LoginUserModelDelegate {
         }
         
     }
-    func getToken(){
-    }
 }
 

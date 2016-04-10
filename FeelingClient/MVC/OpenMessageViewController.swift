@@ -87,6 +87,7 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
             let viewController = segue.destinationViewController as! OpenMapViewController
             viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
             viewController.msgModel = self.msgModel
+            viewController.fromId = self.viewModel.fromId
         }
     }
     
@@ -121,11 +122,6 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         }) { () -> Void in
         }
         
-        
-    }
-    
-    func arrival()
-    {
         
     }
     
