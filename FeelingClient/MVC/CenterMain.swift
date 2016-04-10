@@ -20,7 +20,7 @@ import IBAnimatable
     import RxCocoa
 #endif
 
-class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate,UISearchBarDelegate {
+class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
@@ -37,23 +37,29 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //地图初始化
-        locationManager.delegate = self
-        locationManager.distanceFilter = 1;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        self.mapView.delegate = self
-        //        self.mapView.showsUserLocation = true
         viewModel = MessageViewModel(delegate: self)
+        //地图初始化
         
+        //地图初始化
+        self.locationManager.delegate = self
+        self.locationManager.distanceFilter = 1;
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
+
+        
+        self.mapView.delegate = self
         
         self.searchBar.rx_text
             .debounce(1, scheduler: MainScheduler.asyncInstance)
             .subscribeNext { searchText in
                 self.to = searchText
-                self.searchMsg(searchText)
-                self.searchBar.endEditing(true)
+                if self.isOk == true {
+                    self.searchMsg(searchText)
+                    self.searchBar.endEditing(true)
+                }
             }
             .addDisposableTo(disposeBag)
         
@@ -62,62 +68,42 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DEFAULT")
-            //            annotationView!.image = UIImage(named: "qq")
-            annotationView!.canShowCallout = true
-            if annotationView!.rightCalloutAccessoryView == nil {
-                let button = UIButton(type: .InfoLight)
-                button.userInteractionEnabled = false
-                annotationView!.rightCalloutAccessoryView = button
-                annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
-            }
-            
-            
-            let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
-            if let pin = annotation as? MyAnnotation {
-                if let url:String = pin.url! as String {
-                    let URL = NSURL(string: url)!
-                    let fetcher = NetworkFetcher<UIImage>(URL: URL)
-                    cache.fetch(fetcher: fetcher).onSuccess { image in
-                        leftIconView.image = image
-                    }
-                    
+        if annotation is MyAnnotation {
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
+                annotationView!.canShowCallout = true
+                if annotationView!.rightCalloutAccessoryView == nil {
+                    let button = UIButton(type: .InfoLight)
+                    button.userInteractionEnabled = false
+                    annotationView!.rightCalloutAccessoryView = button
+                    annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
                 }
-                
+                let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
+                if let pin = annotation as? MyAnnotation {
+                    if let url:String = pin.url! as String {
+                        let URL = NSURL(string: url)!
+                        let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                        cache.fetch(fetcher: fetcher).onSuccess { image in
+                            leftIconView.image = image
+                        }
+                    }
+                }
+                else{
+                    leftIconView.image = UIImage(named: "girl")
+                }
+                annotationView!.leftCalloutAccessoryView = leftIconView
+                annotationView!.pinTintColor = UIColor.redColor()
             }
-            else{
-                leftIconView.image = UIImage(named: "girl")
+            else {
+                annotationView!.annotation = annotation
             }
-            annotationView!.leftCalloutAccessoryView = leftIconView
-            
-            annotationView!.pinTintColor = UIColor.redColor()
-            
+            return annotationView
         }
         else {
-            annotationView!.annotation = annotation
+            let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
+            return annotationView
         }
-        return annotationView
-        
-        
-    }
-    
-    
-    func mapViewWillStartLocatingUser(mapView: MKMapView) {
-        print("正在跟踪用户的位置")
-    }
-    
-    func mapViewDidStopLocatingUser(mapView: MKMapView) {
-        print("停止跟踪用户的位置")
-    }
-    
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        print("更新用户的位置")
-    }
-    
-    func mapView(mapView: MKMapView, didFailToLocateUserWithError error: NSError) {
-        print("跟踪用户的位置失败")
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
@@ -192,6 +178,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         
         latitude =  location!.coordinate.latitude
         longitude = location!.coordinate.longitude
+        
         
         
         if(!isOk){

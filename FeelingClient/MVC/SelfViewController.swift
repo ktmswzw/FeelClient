@@ -23,6 +23,7 @@ class SelfViewController: DesignableViewController {
     
     var picker = UIImagePickerController()
     
+    var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class SelfViewController: DesignableViewController {
         self.view.layer.contents = blurredImage.CGImage
         // Do any additional setup after loading the view.
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.save))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.saveImage))
         
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
@@ -49,7 +50,7 @@ class SelfViewController: DesignableViewController {
             
             self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             self.name.text = userinfo.nickname
-            self.motto.text = userinfo.phone
+            self.motto.text = userinfo.motto
             self.segment.selectedSegmentIndex = getSex(userinfo.sex)
         }
         
@@ -92,14 +93,53 @@ class SelfViewController: DesignableViewController {
         }
     }
     
-    func save()
+    func saveImage()
     {
-        viewModel.avatar = ""
-        viewModel.nickname = self.name.text!
-        viewModel.motto = self.motto.text!
-        viewModel.saveUser("") { (r:BaseApi.Result) in
+        self.view.addSubview(HUD!)
+        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
+            
+            if self.images.count != 0 {
+                self.viewModel.saveImages(self.images, completeHander: { (r:BaseApi.Result) in
+                    switch (r) {
+                    case .Success(let value):
+                        self.viewModel.avatar = value as! String
+                        self.save()
+                        break;
+                    case .Failure(let msg):
+                        self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
+                        break;
+                    }
+                })
+            }
+            else{
+                self.save()
+            }
+            
+        }) { () -> Void in
             
         }
+    }
+    
+    func save()
+    {
+        //viewModel.avatar = ""
+        viewModel.nickname = self.name.text!
+        viewModel.motto = self.motto.text!
+        
+        self.navigationItem.rightBarButtonItem?.enabled = false
+        viewModel.saveUser("") { (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(_):
+                self.view.makeToast("保存成功", duration: 2, position: .Center)
+                self.navigationItem.rightBarButtonItem?.enabled = true
+                HUD!.removeFromSuperview()
+                break;
+            case .Failure(let msg):
+                self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
+                break;
+            }
+        }
+        
         //self.view.makeToast("error", duration: 1, position: .Center)
     }
     
@@ -109,11 +149,8 @@ class SelfViewController: DesignableViewController {
         jwt.appUsername = ""
         jwt.appPwd = ""
         
-        
-        
         //断开连接并设置不再接收推送消息
         RCIM.sharedRCIM().disconnect(false)
-        
         
         //let navigationController:UINavigationController? = self.tabBarController?.presentingViewController as? UINavigationController
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
@@ -153,8 +190,7 @@ class SelfViewController: DesignableViewController {
                 {
                     let image = getAssetThumbnail(ass)
                     self.imageView.image = image
-                    
-                    self.view.makeToast("更新成功", duration: 1, position: .Center)
+                    self.images.append(image)
                 }
         }))
         controller.addAction(ImagePickerAction(title: NSLocalizedString("相册", comment: "标题"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
@@ -165,7 +201,7 @@ class SelfViewController: DesignableViewController {
                 {
                     let image = getAssetThumbnail(ass)
                     self.imageView.image = image
-                    self.view.makeToast("更新成功", duration: 1, position: .Center)
+                    self.images.append(image)
                 }
                 
         }))

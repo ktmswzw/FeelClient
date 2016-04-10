@@ -35,8 +35,17 @@ public class UserInfoViewModel:BaseApi {
     
     public init(delegate: UserInfoModelDelegate) {
         self.delegate = delegate
-        
-        
+    }
+    
+    
+    
+    
+    func saveImages(imags:[UIImage],completeHander: CompletionHandlerType)
+    {
+        let loader = PhotoUpLoader.init()
+        loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
+            completeHander(r)
+        }
     }
     
     /**
@@ -71,7 +80,7 @@ public class UserInfoViewModel:BaseApi {
     {
         let params = ["nickname":self.nickname,"motto":self.motto,"sex":self.sex,"avatar":self.avatar]
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCallBean(Alamofire.Method.PATCH, section: "\(jwt.userId)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
+        NetApi().makeCallBean(Alamofire.Method.PATCH, section: "user/\(jwt.userId)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))

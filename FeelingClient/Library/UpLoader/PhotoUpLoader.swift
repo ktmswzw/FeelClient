@@ -1,11 +1,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import Toucan
 
 class PhotoUpLoader:BaseApi {
-    
-    let jwt = JWTTools()
     private var uploadMgr: TXYUploadManager!;
     private var sign = "";
     private var bucket = "habit";
@@ -19,12 +16,18 @@ class PhotoUpLoader:BaseApi {
     override init()
     {
         super.init()
-        sign = initSign()
+        if jwt.sign.length == 0 {
+            initSign()
+        }
+        else
+        {
+            sign = jwt.sign
+        }
     }
     
     
-    func initSign() -> String {
-        if sign.length == 0 {
+    func initSign()  {
+        if sign.length == 0  {
             let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())            
             NetApi().makeCall(Alamofire.Method.GET, section: "user/imageSign", headers: headers, params: [:], completionHandler: { (result:BaseApi.Result) -> Void in
                 
@@ -32,7 +35,7 @@ class PhotoUpLoader:BaseApi {
                 case .Success(let r):
                     if let temp = r {
                         let myJosn = JSON(temp)
-                        self.jwt.sign = myJosn.dictionary!["message"]!.stringValue
+                        jwt.sign = myJosn.dictionary!["message"]!.stringValue
                     }
                     break;
                 case .Failure(let error):
@@ -44,7 +47,6 @@ class PhotoUpLoader:BaseApi {
             })
             
         }
-        return self.jwt.sign
     }
     
     

@@ -20,7 +20,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     var disposeBag = DisposeBag()
     var viewModel: FriendViewModel!
     var searchName = ""
-        @IBOutlet weak var search: UISearchBar!
+    @IBOutlet weak var search: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         

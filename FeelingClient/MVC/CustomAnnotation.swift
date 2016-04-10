@@ -9,13 +9,6 @@
 import Foundation
 import MapKit
 
-
-class MuseumInfo : MKPointAnnotation {
-    var exhibitions : [String]?
-    var url : String?
-}
-
-
 class MyAnnotation: MKPointAnnotation {
     var id = ""
     var url : String?

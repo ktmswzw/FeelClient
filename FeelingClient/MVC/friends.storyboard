@@ -179,7 +179,7 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5P-vE-Twd" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称备注" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5P-vE-Twd" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="130" width="560" height="60"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -275,10 +275,30 @@
                                     </mask>
                                 </variation>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdV-N5-lw3" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="20" y="483" width="560" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="gSu-2o-gO5"/>
+                                </constraints>
+                                <state key="normal" title="发起聊天">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EdV-N5-lw3" firstAttribute="trailing" secondItem="VWF-an-bPw" secondAttribute="trailing" id="N5Z-Ns-6wH"/>
+                            <constraint firstItem="EdV-N5-lw3" firstAttribute="leading" secondItem="VWF-an-bPw" secondAttribute="leading" id="QhF-qz-KzV"/>
                             <constraint firstItem="VWF-an-bPw" firstAttribute="leading" secondItem="k7i-wJ-jOk" secondAttribute="leadingMargin" id="Rmd-85-zHq"/>
+                            <constraint firstItem="Axj-PF-Sza" firstAttribute="top" secondItem="EdV-N5-lw3" secondAttribute="bottom" constant="8" symbolic="YES" id="fyn-ia-hS9"/>
                             <constraint firstItem="VWF-an-bPw" firstAttribute="top" secondItem="30V-AK-IFT" secondAttribute="bottom" constant="8" symbolic="YES" id="jU6-Fh-EUy"/>
                             <constraint firstItem="Axj-PF-Sza" firstAttribute="top" secondItem="VWF-an-bPw" secondAttribute="bottom" constant="167" id="rx2-sP-uOx"/>
                             <constraint firstItem="VWF-an-bPw" firstAttribute="trailing" secondItem="k7i-wJ-jOk" secondAttribute="trailingMargin" id="zxp-tE-BPj"/>
@@ -292,6 +312,7 @@
                     <connections>
                         <outlet property="address" destination="KfR-5d-PFI" id="suZ-Ad-bqp"/>
                         <outlet property="avatar" destination="9Uq-Nz-MyX" id="e7X-ia-lyC"/>
+                        <outlet property="chatButton" destination="EdV-N5-lw3" id="0Mw-f8-15R"/>
                         <outlet property="motto" destination="H2H-vK-sIr" id="7rv-jt-wW7"/>
                         <outlet property="userId" destination="X5P-vE-Twd" id="QMe-bj-mtx"/>
                     </connections>

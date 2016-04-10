@@ -142,6 +142,7 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.userId = userInfo.id
                         self.database.addObject(userInfo, update: true)
                         
+                        HUD!.removeFromSuperview()
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         self.performSegueWithIdentifier("login", sender: self)
                     }
@@ -165,6 +166,7 @@ extension LoginViewController: LoginUserModelDelegate {
                                 print("token错误")
                         })
                     }
+                    let _ = PhotoUpLoader.init()//初始化图片上传
                     break;
                 case .Failure(let msg):
                     print("\(msg)")
@@ -172,7 +174,6 @@ extension LoginViewController: LoginUserModelDelegate {
                 }
                 
             })
-            HUD!.removeFromSuperview()
         }) { () -> Void in
         }
         

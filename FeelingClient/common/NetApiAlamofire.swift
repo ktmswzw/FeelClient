@@ -17,7 +17,7 @@ class NetApi:BaseApi {
     
     //    var apiUrl = "http://192.168.1.117/"
 //        var apiUrl = "http://192.168.1.159:8080/"
-    var apiUrl = "http://192.168.1.103:8080/"
+    var apiUrl = "http://192.168.1.101:8080/"
     //    var apiUrl = "http://192.168.1.105/"
     
     
@@ -51,7 +51,6 @@ class NetApi:BaseApi {
     //array数据列表
     func makeCallArray<T: Mappable>(method: Alamofire.Method, section: String, headers: [String: String]?, params: [String: AnyObject]?,
                        completionHandler: Response<[T], NSError> -> Void ) {
-        //            NSLog("\(apiUrl)/\(section)")
         Alamofire.request(method, apiUrl+section,headers: headers, parameters: params)
             .responseArray { (response: Response<[T], NSError>) in
                 completionHandler(response)
