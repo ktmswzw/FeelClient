@@ -95,8 +95,6 @@ class SelfViewController: DesignableViewController {
     
     func saveImage()
     {
-        self.view.addSubview(HUD!)
-        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
             
             if self.images.count != 0 {
                 self.viewModel.saveImages(self.images, completeHander: { (r:BaseApi.Result) in
@@ -114,10 +112,7 @@ class SelfViewController: DesignableViewController {
             else{
                 self.save()
             }
-            
-        }) { () -> Void in
-            
-        }
+        
     }
     
     func save()
@@ -132,7 +127,7 @@ class SelfViewController: DesignableViewController {
             case .Success(_):
                 self.view.makeToast("保存成功", duration: 2, position: .Center)
                 self.navigationItem.rightBarButtonItem?.enabled = true
-                HUD!.removeFromSuperview()
+                
                 break;
             case .Failure(let msg):
                 self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)

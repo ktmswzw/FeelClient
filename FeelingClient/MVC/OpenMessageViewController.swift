@@ -103,7 +103,6 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         msgModel.answer = self.answerLabel.text
         //        msgModel.verifyAnswer(self.view,uc: self)
         
-        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.msgModel.verifyAnswer2(self.view) { (r:BaseApi.Result) in
                 switch (r) {
                 case .Success(let r):
@@ -112,15 +111,12 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
                     sleep(1)
                     self.performSegueWithIdentifier("openOver", sender: self)
                     
-                    HUD!.removeFromSuperview()
                     break;
                 case .Failure(let msg):
                     self.view.makeToast(msg as! String, duration: 1, position: .Center)
                     break;
                 }
             }
-        }) { () -> Void in
-        }
         
         
     }

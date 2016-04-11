@@ -56,7 +56,7 @@ extension UITextField {
     }
 }
 
-extension UIViewController:MBProgressHUDDelegate {
+extension UIViewController {
     
     /**
      * Called when 'return' key pressed. return NO to ignore.
@@ -74,11 +74,6 @@ extension UIViewController:MBProgressHUDDelegate {
         self.view.endEditing(true)
     }
     
-    
-    // MARK: - MBProgressHUDDelegate
-    func hudWasHidden(hud: MBProgressHUD) {
-        HUD!.removeFromSuperview()
-    }
     
 }
 

@@ -46,13 +46,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         username.delegate = self
         password.delegate = self
         
-        viewModel = LoginUserInfoViewModel(delegate: self)
-        
-        
-        HUD = MBProgressHUD(view: self.view)
-        self.view.addSubview(HUD!)
-        HUD!.mode = .AnnularIndeterminate
-        
+        viewModel = LoginUserInfoViewModel(delegate: self)        
     }
     
     
@@ -129,7 +123,6 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
 
 extension LoginViewController: LoginUserModelDelegate {
     func loginDelegate(){
-        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
             self.viewModel.loginDelegate({ (r:BaseApi.Result) in
                 switch (r) {
                 case .Success(let r):
@@ -141,8 +134,6 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.appPwd = self.viewModel.password
                         jwt.userId = userInfo.id
                         self.database.addObject(userInfo, update: true)
-                        
-                        HUD!.removeFromSuperview()
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         self.performSegueWithIdentifier("login", sender: self)
                     }
@@ -170,13 +161,10 @@ extension LoginViewController: LoginUserModelDelegate {
                     break;
                 case .Failure(let msg):
                     print("\(msg)")
+                    self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
                     break;
                 }
-                
             })
-        }) { () -> Void in
-        }
-        
     }
 }
 

@@ -9,12 +9,12 @@
 import UIKit
 import MapKit
 import Haneke
+import MBProgressHUD
 
 #if !RX_NO_MODULE
     import RxSwift
     import RxCocoa
 #endif
-
 class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
     var disposeBag = DisposeBag()
@@ -36,6 +36,9 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
                 self.refresh(searchText)
             }
             .addDisposableTo(disposeBag)
+        
+        
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,18 +57,26 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
     func getFriends()
     {
-        viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
-            switch (r) {
-            case .Success(let value):
-                self.viewModel.friends =  value as! [FriendBean]
-                self.tableView.reloadData()
-                self.search.endEditing(true)
-                break;
-            case .Failure(let msg):
-                print("\(msg)")
-                break;
+        HUDUtil.initHUD(self.view, title: "查找中")
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
+            sleep(1)
+            self.viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
+                switch (r) {
+                case .Success(let value):
+                    self.viewModel.friends =  value as! [FriendBean]
+                    self.tableView.reloadData()
+                    self.search.endEditing(true)
+                    dispatch_async(dispatch_get_main_queue(),{
+                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    })
+                    break;
+                case .Failure(let msg):
+                    print("\(msg)")
+                    break;
+                }
             }
         }
+        
     }
     @IBAction func refresh(sender: AnyObject) {
         if viewModel.friends.count != 0 {

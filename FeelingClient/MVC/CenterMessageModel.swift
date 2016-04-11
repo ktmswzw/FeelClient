@@ -72,9 +72,7 @@ public class MessageViewModel {
         msg.x = latitude
         msg.y = longitude
         
-        se!.view!!.addSubview(HUD!)
-        HUD!.showAnimated(true, whileExecutingBlock: { () -> Void in
-            self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
+        self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
                 case .Success(_):
                     self.selfSendMsgs.append(msg)
@@ -84,15 +82,11 @@ public class MessageViewModel {
                     se!.view!!.makeToast("登陆失效", duration: 2, position: .Center)
                     break;
                 }
-                
-                HUD!.removeFromSuperview()
+            
                 
                 se!.navigationController?!.popViewControllerAnimated(true)
             }
             
-        }) { () -> Void in
-            
-        }
         
         
     }
