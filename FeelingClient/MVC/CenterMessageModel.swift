@@ -71,14 +71,15 @@ public class MessageViewModel {
         msg.content = content
         msg.x = latitude
         msg.y = longitude
-        
         self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
                 case .Success(_):
                     self.selfSendMsgs.append(msg)
+                    se!.navigationController!!.view.hideToastActivity()
                     se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
                     break;
                 case .Failure(_):
+                    se!.navigationController!!.view.hideToastActivity()
                     se!.view!!.makeToast("登陆失效", duration: 2, position: .Center)
                     break;
                 }
@@ -86,13 +87,11 @@ public class MessageViewModel {
                 
                 se!.navigationController?!.popViewControllerAnimated(true)
             }
-            
-        
-        
     }
     
     
     func searchMessage(to:String, map: MKMapView, view: UIView) {
+        view.makeToastActivity(.Center)
         msgs.searchMsg(to, x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
@@ -117,8 +116,10 @@ public class MessageViewModel {
                         map.addAnnotations(self.annotationArray)
                     }
                 }
+                view.hideToastActivity();
                 break;
             case .Failure(_):
+                view.hideToastActivity();
                 view.makeToast("搜索失败", duration: 2, position: .Center)
                 break;
             }

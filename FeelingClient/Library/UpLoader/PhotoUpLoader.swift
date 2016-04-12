@@ -36,6 +36,8 @@ class PhotoUpLoader:BaseApi {
                     if let temp = r {
                         let myJosn = JSON(temp)
                         jwt.sign = myJosn.dictionary!["message"]!.stringValue
+                        self.sign = jwt.sign
+                        
                     }
                     break;
                 case .Failure(let error):
@@ -65,28 +67,28 @@ class PhotoUpLoader:BaseApi {
         var path:String = ""
         var count = 0;
         for element in imageData {
-            self.uploadToTXY(element, name: "000", completionHandler: { (result:Result) -> Void in
+            self.uploadToTXY(element, name: "\(arc4random())", completionHandler: { (result:Result) -> Void in
                 switch (result) {
                 case .Success(let pathIn):
                     if let temp = pathIn {
-                        if count == 0 {
+                        if path.length == 0 {
                             path = temp as! String
                         }else{
                             path = path + "," + (temp as! String)
                         }
                     }
                     
+                    count += 1
+
                     if count == imageData.count {
                         finishDo(Result.Success(path))
                     }
-                    
-                    break;
+                                        break;
                 case .Failure(let error):
                     finishDo(Result.Failure(error))
                     break;
                 }
             })
-            count += 1
         }
     }
     
@@ -133,7 +135,7 @@ class PhotoUpLoader:BaseApi {
                     NSLog(photoResp.photoFileId);
                     NSLog(photoResp.photoURL);
                     
-                    completionHandler(Result.Success(photoResp.photoURL))
+                    completionHandler(Result.Success(photoResp.photoFileId))
                 }
                 }, progress: {(total: Int64, complete: Int64, context: [NSObject : AnyObject]!) -> Void in
                     NSLog("progress total:\(total) complete:\(complete)");

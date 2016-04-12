@@ -25,10 +25,14 @@ class SelfViewController: DesignableViewController {
     
     var images = [UIImage]()
     
+    let database = SwiftyDB(databaseName: "UserInfo")
+    
+    var userinfo = UserInfo()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: "horse")//lonely-children
+        let image = UIImage(named: "lonely-children")
         let blurredImage = image!.imageByApplyingBlurWithRadius(30)
         self.view.layer.contents = blurredImage.CGImage
         // Do any additional setup after loading the view.
@@ -41,17 +45,17 @@ class SelfViewController: DesignableViewController {
         
         viewModel = UserInfoViewModel(delegate: self)
         
-        let database = SwiftyDB(databaseName: "UserInfo")
         
         let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": jwt.userId]).value!
         
         if list.count > 0 {
-            let userinfo = list[0]
+            userinfo = list[0]
             
             self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             self.name.text = userinfo.nickname
             self.motto.text = userinfo.motto
             self.segment.selectedSegmentIndex = getSex(userinfo.sex)
+            self.viewModel.sex = userinfo.sex
         }
         
         //点击
@@ -95,13 +99,15 @@ class SelfViewController: DesignableViewController {
     
     func saveImage()
     {
-            
+        
+        self.navigationController?.view.makeToastActivity(.Center)
             if self.images.count != 0 {
                 self.viewModel.saveImages(self.images, completeHander: { (r:BaseApi.Result) in
                     switch (r) {
                     case .Success(let value):
                         self.viewModel.avatar = value as! String
                         self.save()
+                        self.images.removeAll()
                         break;
                     case .Failure(let msg):
                         self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
@@ -117,19 +123,29 @@ class SelfViewController: DesignableViewController {
     
     func save()
     {
-        //viewModel.avatar = ""
         viewModel.nickname = self.name.text!
         viewModel.motto = self.motto.text!
-        
         self.navigationItem.rightBarButtonItem?.enabled = false
         viewModel.saveUser("") { (r:BaseApi.Result) in
             switch (r) {
             case .Success(_):
+                self.navigationController?.view.hideToastActivity()
                 self.view.makeToast("保存成功", duration: 2, position: .Center)
                 self.navigationItem.rightBarButtonItem?.enabled = true
+                self.view.endEditing(true)
+                self.userinfo.nickname = self.viewModel.nickname
+                self.userinfo.motto = self.viewModel.motto
+                self.userinfo.avatar = self.viewModel.avatar
+                self.database.asyncAddObject(self.userinfo) { (result) -> Void in
+                    if let error = result.error {
+                        self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
+                    }
+                }
                 
                 break;
             case .Failure(let msg):
+                self.navigationItem.rightBarButtonItem?.enabled = true
+                self.navigationController?.view.hideToastActivity()
                 self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
                 break;
             }

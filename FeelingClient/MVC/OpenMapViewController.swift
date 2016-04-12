@@ -120,14 +120,17 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     }
     
     func save(){
+        self.navigationController?.view.makeToastActivity(.Center)
         friendModel.save(self.fromId) { (r:BaseApi.Result) in
             switch (r) {
             case .Success(_):
+                self.navigationController?.view.hideToastActivity()
                 self.view.makeToast("添加成功", duration: 1, position: .Center)
                 self.navigationItem.rightBarButtonItem?.enabled = false
+                self.performSegueWithIdentifier("homeMain", sender: self)
                 break
-            case .Failure(let error):
-                
+            case .Failure(let error):                
+                self.navigationController?.view.hideToastActivity()
                 self.view.makeToast("添加失败:\(error)", duration: 1, position: .Center)
                 break
             }

@@ -67,6 +67,7 @@ class UserInfo : BaseModel {
         motto <- map["motto"]
         IMToken <- map["imtoken"]
         JWTToken <- map["jwttoken"]
+        SignToken <- map["signtoken"]
 
     }
 
@@ -87,9 +88,15 @@ class UserInfo : BaseModel {
     var id = ""
     var motto = ""
     
+    //聊天im
     var IMToken = ""
     
+    //jwt加密
     var JWTToken = ""
+    
+    //图片
+    var SignToken = ""
+
     
     
     //MARK: - private

@@ -14,6 +14,8 @@ import Alamofire
 
 var jwt = JWTTools()
 
+var loader:PhotoUpLoader = PhotoUpLoader()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
     

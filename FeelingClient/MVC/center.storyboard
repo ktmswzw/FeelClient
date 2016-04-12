@@ -21,7 +21,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8CY-GM-Klr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
-                            <searchBar alpha="0.80000000000000004" contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ge0-CV-NAH">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Ge0-CV-NAH">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -827,9 +827,11 @@
                         <outlet property="imageCollection" destination="BDh-RB-sIf" id="4aC-6T-YoX"/>
                         <outlet property="mapView" destination="Tv7-sd-7Ez" id="JhU-BI-fyy"/>
                         <outlet property="textView" destination="ZmY-bF-AJW" id="LHE-Ue-Afc"/>
+                        <segue destination="s46-I9-CoY" kind="unwind" identifier="homeMain" unwindAction="prepareForUnwind:" id="e72-S2-9b8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlS-m7-bOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="s46-I9-CoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5193" y="643"/>
         </scene>

@@ -98,6 +98,7 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
     
     func verifyAnswer()
     {
+        self.navigationController?.view.makeToastActivity(.Center)
         msgModel.id = self.viewModel.msgId
         msgModel.question = self.viewModel.question
         msgModel.answer = self.answerLabel.text
@@ -107,12 +108,14 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
                 switch (r) {
                 case .Success(let r):
                     self.msgModel.msgscrentId = r as! String;
+                    self.navigationController?.view.hideToastActivity()
                     self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
                     sleep(1)
                     self.performSegueWithIdentifier("openOver", sender: self)
                     
                     break;
                 case .Failure(let msg):
+                    self.navigationController?.view.hideToastActivity()
                     self.view.makeToast(msg as! String, duration: 1, position: .Center)
                     break;
                 }

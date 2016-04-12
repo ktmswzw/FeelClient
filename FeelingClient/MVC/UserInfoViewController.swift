@@ -32,7 +32,7 @@ class UserInfoViewController: DesignableViewController {
         
         viewModel = FriendViewModel(delegate: self)
         
-        let image = UIImage(named: "horse")
+        let image = UIImage(named: "lonely-children")
         let blurredImage = image!.imageByApplyingBlurWithRadius(50)
         self.view.layer.contents = blurredImage.CGImage
         
@@ -68,18 +68,24 @@ class UserInfoViewController: DesignableViewController {
             .subscribeNext { [weak self] in self?.privateChat() }
             .addDisposableTo(disposeBag)
 
+        
     }
     
     func saveFriend() {
+        
+        self.navigationController?.view.makeToastActivity(.Center)
         if self.userId.text?.length > 0 {
             self.navigationItem.rightBarButtonItem?.enabled = false
             viewModel.remark(self.friend.id, name: self.userId.text!) { (r:BaseApi.Result) in
                 switch (r) {
                 case .Success(_):
+                    self.navigationController?.view.hideToastActivity()
+
                     self.view.makeToast("保存成功", duration: 2, position: .Center)
                     self.navigationItem.rightBarButtonItem?.enabled = true
                     break;
                 case .Failure(let msg):
+                    self.navigationController?.view.hideToastActivity()
                     self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
                     break;
                 }

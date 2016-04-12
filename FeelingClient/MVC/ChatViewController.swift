@@ -15,6 +15,7 @@ class ChatViewController: RCConversationListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sleep(1)
         //设置需要显示哪些类型的会话
         self.setDisplayConversationTypes([RCConversationType.ConversationType_PRIVATE.rawValue,
             RCConversationType.ConversationType_DISCUSSION.rawValue,

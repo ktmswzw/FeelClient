@@ -13,7 +13,6 @@ import Alamofire
 public class Messages:BaseApi {
     static let defaultMessages = Messages()
     var msgs = [MessageBean]()
-    var loader = PhotoUpLoader.init()
     var imagesData: [UIImage]?
     
     func addMsg(msg: MessageBean, imags:[UIImage]) {

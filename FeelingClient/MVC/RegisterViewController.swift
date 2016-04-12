@@ -83,6 +83,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
                 self.view.makeToast("密码必选大于6位数小于18的数字或字符", duration: 2, position: .Center)
             }
             else {
+                self.navigationController?.view.makeToastActivity(.Center)
                 let userNameText = self.realPhone
                 let passwordText = password.text!.md5()
                 
@@ -97,13 +98,15 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
                             }
                             else{
                                 jwt.token = myJosn.dictionary!["message"]!.stringValue
-                                self.view.makeToast("登陆成功", duration: 1, position: .Center)
+                                self.navigationController?.view.hideToastActivity()
+                                self.view.makeToast("注册成功", duration: 1, position: .Center)
                                 self.performSegueWithIdentifier("registerIn", sender: self)
                             }
                         }
                         break;
                     case .Failure(let error):
-                        print("\(error)")
+                        print("\(error)")                        
+                        self.navigationController?.view.hideToastActivity()
                         break;
                     }
                     

@@ -65,6 +65,18 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.view.makeToast("定位中", duration: 2, position: .Center)
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
+        
+    }
+    
+    
+    //这样将避免约束错误
+    override func viewDidAppear(animated: Bool) {
+        //self.sendButton.enabled = false
+        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -151,9 +163,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         viewModel.latitude = self.latitude
         viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
     }
-    
-    func sendMsg(sender:AnyObject){}
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

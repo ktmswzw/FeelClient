@@ -56,11 +56,11 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.makeToast("定位中", duration: 2, position: .Center)
         viewModel = MessageViewModel(delegate: self)
         self.openUser.text = viewModel.to 
         
-        let image = UIImage(named: "lonely-children")//lonely-children
+        let image = UIImage(named: "lonely-children")
         let blurredImage = image!.imageByApplyingBlurWithRadius(35)
         self.view.layer.contents = blurredImage.CGImage
         //地图初始化
@@ -84,6 +84,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         //self.sendButton.enabled = false
         
     }
+    
     @IBAction func sendMsg(sender: AnyObject) {
         if !self.address.notEmpty {
             self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
@@ -104,6 +105,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.content = self.textView.text!
         viewModel.burnAfterReading = readFire.on
         
+        self.navigationController?.view.makeToastActivity(.Center)
         viewModel.sendMessage(self)
         
         

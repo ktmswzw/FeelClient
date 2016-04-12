@@ -30,7 +30,7 @@ public class UserInfoViewModel:BaseApi {
     
     var motto = ""
     
-    
+        
     public weak var delegate: UserInfoModelDelegate?
     
     public init(delegate: UserInfoModelDelegate) {
@@ -42,7 +42,6 @@ public class UserInfoViewModel:BaseApi {
     
     func saveImages(imags:[UIImage],completeHander: CompletionHandlerType)
     {
-        let loader = PhotoUpLoader.init()
         loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
             completeHander(r)
         }
@@ -80,7 +79,7 @@ public class UserInfoViewModel:BaseApi {
     {
         let params = ["nickname":self.nickname,"motto":self.motto,"sex":self.sex,"avatar":self.avatar]
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCallBean(Alamofire.Method.PATCH, section: "user/\(jwt.userId)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
+        NetApi().makeCallBean(Alamofire.Method.PUT, section: "user/\(jwt.userId)", headers: headers, params: params) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))

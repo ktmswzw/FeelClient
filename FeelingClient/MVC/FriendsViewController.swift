@@ -33,7 +33,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
             .debounce(0.5, scheduler: MainScheduler.asyncInstance)
             .subscribeNext { searchText in
                 self.searchName = searchText
-                self.refresh(searchText)
+                self.refreshData()
             }
             .addDisposableTo(disposeBag)
         
@@ -43,7 +43,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.refreshData()
+        //self.refreshData()
     }
     
     
@@ -57,25 +57,21 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
     func getFriends()
     {
-        HUDUtil.initHUD(self.view, title: "查找中")
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
-            sleep(1)
+        self.navigationController?.view.makeToastActivity(.Center)
             self.viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
                 switch (r) {
                 case .Success(let value):
                     self.viewModel.friends =  value as! [FriendBean]
                     self.tableView.reloadData()
                     self.search.endEditing(true)
-                    dispatch_async(dispatch_get_main_queue(),{
-                        MBProgressHUD.hideHUDForView(self.view, animated: true)
-                    })
+                    self.navigationController?.view.hideToastActivity()
                     break;
                 case .Failure(let msg):
                     print("\(msg)")
                     break;
                 }
             }
-        }
+        
         
     }
     @IBAction func refresh(sender: AnyObject) {

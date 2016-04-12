@@ -130,6 +130,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="lightStatusBar" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="loginBtn" destination="4Ie-5W-rG5" id="y9c-yx-bhy"/>
                         <outlet property="password" destination="yWq-dj-LsK" id="9Zu-iQ-376"/>
                         <outlet property="username" destination="Okb-KY-gBB" id="Yca-i0-Fdq"/>
                         <segue destination="pjJ-Nw-vue" kind="show" identifier="login" id="gEt-GL-UXG"/>
