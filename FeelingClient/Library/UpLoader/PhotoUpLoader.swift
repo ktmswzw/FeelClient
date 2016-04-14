@@ -52,11 +52,12 @@ class PhotoUpLoader:BaseApi {
     }
     
     
-    func getPath(image: UIImage) -> NSData{
+    func getPathZip(image: UIImage) -> NSData{
         //压缩
-        let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
-        guard let data = UIImagePNGRepresentation(resizedAndMaskedImage) else {//png
-            return UIImageJPEGRepresentation(resizedAndMaskedImage,1.0)! //jpg
+        //let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 1200, height: 1200), fitMode: Toucan.Resize.FitMode.Scale).image
+        let resizedAndMaskedImage = image
+        guard let data = UIImageJPEGRepresentation(resizedAndMaskedImage,1.0) else {//jpg
+            return UIImagePNGRepresentation(resizedAndMaskedImage)! //png
         }
         return data
     }
@@ -97,7 +98,7 @@ class PhotoUpLoader:BaseApi {
     
     /// 上传至万象优图
     func uploadToTXY(image: UIImage,name: String,completionHandler: CompletionHandlerType ) {
-        let data = getPath(image)
+        let data = getPathZip(image)
         if data.length == 0 {
             NSLog("没有data");
             completionHandler(Result.Failure(""))
@@ -144,4 +145,4 @@ class PhotoUpLoader:BaseApi {
             })
         };
     }
-}
+    }

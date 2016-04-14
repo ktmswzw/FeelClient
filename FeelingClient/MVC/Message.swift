@@ -48,7 +48,7 @@ class MessageBean: BaseModel {
     //内容
     var content: String = ""
     //图片地址
-    var photos: [String] = [""]
+    var photos: [String] = []
     //视频地址
     var video: String = ""
     //音频地址
@@ -65,7 +65,9 @@ class MessageBean: BaseModel {
     var avatar = "" //头像地址
     
     //问题
-    var question: String?
+    var question: String = ""
+    var answer: String = ""
+    
     var point: GeoJsonPoint?
     
 }
@@ -95,7 +97,7 @@ class MessagesSecret:BaseModel {
     //内容
     var content: String?
     //图片地址
-    var photos: [String] = [""]
+    var photos: [String] = []
     //视频地址
     var video: String?
     //音频地址

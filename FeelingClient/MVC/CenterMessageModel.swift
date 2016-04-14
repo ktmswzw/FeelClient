@@ -22,6 +22,8 @@ public class MessageViewModel {
     var msgId = ""
     //问题
     var question = ""
+    //答案
+    var answer = ""
     //接受对象
     var to: String = ""
     //期限
@@ -35,7 +37,7 @@ public class MessageViewModel {
     //音频地址
     var sound: String = ""
     //阅后即焚
-    var burnAfterReading: Bool = false
+    var burnAfterReading: Bool = true
     
     var annotationArray = [MyAnnotation]()
     
@@ -71,21 +73,26 @@ public class MessageViewModel {
         msg.content = content
         msg.x = latitude
         msg.y = longitude
+        msg.question = question
+        msg.answer = answer
         self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
-                case .Success(_):
+                case .Success(let value):
+                    print(value)
                     self.selfSendMsgs.append(msg)
                     se!.navigationController!!.view.hideToastActivity()
                     se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
+                    se!.navigationController?!.popViewControllerAnimated(true)
                     break;
-                case .Failure(_):
+                case .Failure(let value):
+                    print(value)
+                    self.selfSendMsgs.append(msg)
                     se!.navigationController!!.view.hideToastActivity()
-                    se!.view!!.makeToast("登陆失效", duration: 2, position: .Center)
+                    se!.view!!.makeToast("发表失败", duration: 2, position: .Center)
                     break;
                 }
             
-                
-                se!.navigationController?!.popViewControllerAnimated(true)
+            
             }
     }
     

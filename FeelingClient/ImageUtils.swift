@@ -35,6 +35,26 @@ func imageResize (image:UIImage, sizeChange:CGSize)-> UIImage{
     return scaledImage
 }
 
+let YUN = "http://habit-10005997.image.myqcloud.com";
+
+
+/**
+ * 获取完整路径
+ * @return
+ */
+func getPath(url:String) -> String {
+    return "\(YUN)/" + url;
+}
+
+/**
+ * 获取完整路径small
+ * @return
+ */
+func getPathSmall(url:String) -> String {
+    return getPath(url) + "/small";
+}
+
+
 extension UITextField {
     var notEmpty: Bool{
         get {

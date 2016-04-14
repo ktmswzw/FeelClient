@@ -9,6 +9,7 @@ import UIKit
 import IBAnimatable
 import SwiftyJSON
 import Alamofire
+import SwiftyDB
 
 class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     @IBOutlet var username: AnimatableTextField!
@@ -19,9 +20,12 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     @IBOutlet var password: AnimatableTextField!
     @IBOutlet var registerButton: AnimatableButton!
     
+    var viewModel:LoginUserInfoViewModel!
     
     var realPhone: String = ""
     
+    let database = SwiftyDB(databaseName: "UserInfo")
+    var userinfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
         let blurredImage = image!.imageByApplyingBlurWithRadius(10)
         self.view.layer.contents = blurredImage.CGImage
         
+        viewModel = LoginUserInfoViewModel(delegate: self)
         self.getCodesButton.disable()
         self.verifyCodesButton.disable()
         self.registerButton.disable()
@@ -83,36 +88,9 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
                 self.view.makeToast("密码必选大于6位数小于18的数字或字符", duration: 2, position: .Center)
             }
             else {
-                self.navigationController?.view.makeToastActivity(.Center)
-                let userNameText = self.realPhone
-                let passwordText = password.text!.md5()
-                
-                NetApi().makeCall(Alamofire.Method.POST,section: "/user/register",headers: [:], params: ["username": userNameText,"password":passwordText!,"device":"APP"], completionHandler: { (result:BaseApi.Result) -> Void in
-                    switch (result) {
-                    case .Success(let r):
-                        if let json = r {
-                            let myJosn = JSON(json)
-                            let code:Int = Int(myJosn["status"].stringValue)!
-                            if code != 200 {
-                                self.view.makeToast(myJosn.dictionary!["message"]!.stringValue, duration: 2, position: .Center)
-                            }
-                            else{
-                                jwt.token = myJosn.dictionary!["message"]!.stringValue
-                                self.navigationController?.view.hideToastActivity()
-                                self.view.makeToast("注册成功", duration: 1, position: .Center)
-                                self.performSegueWithIdentifier("registerIn", sender: self)
-                            }
-                        }
-                        break;
-                    case .Failure(let error):
-                        print("\(error)")                        
-                        self.navigationController?.view.hideToastActivity()
-                        break;
-                    }
-                    
-                    
-                })
-                
+                self.viewModel.userName = self.realPhone
+                self.viewModel.password = password.text!.md5()!
+                registerDelegate()
             }
             
         }
@@ -150,3 +128,47 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     }
     
 }
+
+    extension RegisterViewController: LoginUserModelDelegate {
+        func registerDelegate(){
+            self.view.makeToastActivity(.Center)
+            self.viewModel.register({ (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(let r):
+                    if let userInfo = r as? UserInfo {
+                        self.userinfo = userInfo
+                        jwt.jwtTemp = userInfo.JWTToken
+                        jwt.imToken = userInfo.IMToken
+                        jwt.appUsername = self.viewModel.userName
+                        jwt.appPwd = self.viewModel.password
+                        jwt.userId = userInfo.id
+                        self.database.addObject(userInfo, update: true)
+                        self.view.hideToastActivity()
+                        self.view.makeToast("注册成功", duration: 1, position: .Center)
+                        
+                        self.performSegueWithIdentifier("registerIn", sender: self)
+                    }
+                    if jwt.imToken.length != 0 {
+                        RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+                            success: { (userId) -> Void in
+                                //设置当前登陆用户的信息
+                                RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
+                            }, error: { (status) -> Void in
+                                self.view.hideToastActivity()
+                            }, tokenIncorrect: {
+                                print("token错误")
+                        })
+                    }
+                    loader = PhotoUpLoader.init()//初始化图片上传
+                    break;
+                case .Failure(let msg):
+                    print("\(msg)")
+                    
+                    self.view.hideToastActivity()
+                    self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                    
+                    break;
+                }
+            })
+        }
+    }

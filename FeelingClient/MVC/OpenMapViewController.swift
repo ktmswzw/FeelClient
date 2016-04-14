@@ -47,7 +47,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         locationManager.startUpdatingLocation()
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
-        
+        sleep(1)
         self.imageCollection.delegate = self
         self.imageCollection.dataSource = self
         
@@ -56,22 +56,6 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         imageCollection!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "photo")
-        //        let everythingValid = distinctText.rx_text
-        //            .map { (Double($0) ?? 0.0 ) > 100 }
-        //            .shareReplay(1)
-        //        
-        //        
-        //        everythingValid
-        //            .bindTo(openButton.rx_enabled)
-        //            .addDisposableTo(disposeBag)
-        //        
-        //        openButton.rx_tap
-        //            .subscribeNext { [weak self] in
-        //                self?.arrival()
-        //            }
-        //            .addDisposableTo(disposeBag)
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,7 +97,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         msgModel.arrival(self.view) { (m:MessagesSecret) in
             self.textView.text = m.content
             if(m.photos.count>0){
-                self.msgModel.photos = m.photos
+                self.msgModel.photos =  m.photos
             }            
             self.imageCollection.reloadData()
         }
@@ -162,7 +146,7 @@ extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDel
         let CellIdentifier = "photo"
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! CollectionViewCell
         let URLString = self.msgModel.photos[indexPath.row]
-        let URL = NSURL(string:URLString)!
+        let URL = NSURL(string:getPathSmall(URLString))!
         cell.imageView.hnk_setImageFromURL(URL)
         return cell
     }
@@ -171,7 +155,7 @@ extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDel
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showImage" {
             let viewController = segue.destinationViewController as! ViewImageViewController
-            viewController.imageUrl = sender as! String
+            viewController.imageUrl = getPath(sender as! String)
         }
     }
 }

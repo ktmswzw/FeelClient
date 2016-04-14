@@ -138,7 +138,12 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.appUsername = self.viewModel.userName
                         jwt.appPwd = self.viewModel.password
                         jwt.userId = userInfo.id
-                        self.database.addObject(userInfo, update: true)
+                        self.database.asyncAddObject(self.userinfo) { (result) -> Void in
+                            if let error = result.error {
+                                self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
+                            }
+                        }
+                        
                         self.view.hideToastActivity()
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         

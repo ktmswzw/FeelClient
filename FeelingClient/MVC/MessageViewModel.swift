@@ -44,8 +44,12 @@ public class Messages:BaseApi {
     private func sendSelf(msg: MessageBean,path: String,complete: CompletionHandlerType)
     {
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        let params = ["to": msg.to,"limitDate":msg.limitDate,"content":msg.content, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
-        NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] , completionHandler: complete)
+        let params = ["to": msg.to, "limitDate":msg.limitDate, "content":msg.content,"question": msg.question, "answer": msg.answer, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
+        NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] )
+        {
+            (result:BaseApi.Result) -> Void in
+            complete(result)
+        }
     }
     
     //    * @param to   接受人
@@ -75,13 +79,12 @@ public class Messages:BaseApi {
 class MessageApi:BaseApi{
     
     static let defaultMessages = MessageApi()
-    //    /messages/arrival/{x}/{y}/{id}
-    //    /messages/validate/{id}/{answer}
+    
     func verifyMsg(id: String,answer:String,completeHander: CompletionHandlerType)
     {
-        let params = [:]
+        let params = ["answer":answer]
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCall(Alamofire.Method.GET, section: "messages/validate/\(id)/\(answer)", headers: headers, params: params as? [String:AnyObject]) {
+        NetApi().makeCall(Alamofire.Method.GET, section: "messages/validate/\(id)", headers: headers, params: params) {
             (result:BaseApi.Result) -> Void in
             
             switch (result) {

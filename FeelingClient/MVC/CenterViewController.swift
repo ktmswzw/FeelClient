@@ -104,7 +104,8 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.limitDate = self.limitDate.date.formatted
         viewModel.content = self.textView.text!
         viewModel.burnAfterReading = readFire.on
-        
+        viewModel.question = self.question.text!
+        viewModel.answer = self.answer.text!
         self.navigationController?.view.makeToastActivity(.Center)
         viewModel.sendMessage(self)
         

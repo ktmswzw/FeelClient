@@ -41,24 +41,8 @@ public class OpenMessageModel:BaseApi {
     var msgscrent = MessagesSecret()// 内容
     var msgscrentId = "";//解密后的id
     
-    func verifyAnswer(view:UIView,uc:UIViewController)
-    {
-        msg.verifyMsg(self.id, answer: self.answer!) { (r: BaseApi.Result) -> Void in
-            switch (r) {
-            case .Success(let r):
-                self.msgscrentId = r as! String;
-                view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-                uc.performSegueWithIdentifier("openOver", sender: uc)
-                sleep(2)
-                break;
-            case .Failure(let msg):
-                view.makeToast(msg as! String, duration: 1, position: .Center)
-                break;
-            }
-        }
-    }
     
-    func verifyAnswer2(view:UIView,completeHander: CompletionHandlerType)
+    func verifyAnswer(view:UIView,completeHander: CompletionHandlerType)
     {
         msg.verifyMsg(self.id, answer: self.answer!) { (r:BaseApi.Result) in
             completeHander(r)
@@ -69,20 +53,22 @@ public class OpenMessageModel:BaseApi {
     
     func arrival(view:UIView,completeHander: CompletionHandler2)
     {
-        msg.arrival(msgscrentId) { (r:BaseApi.Result) -> Void in
-            switch (r) {
-            case .Success(let r):
-                self.msgscrent = r as! MessagesSecret;
-                print(self.msgscrent)
-                
-                
-                
-                completeHander(self.msgscrent)
-                break;
-            case .Failure(let msg):
-                view.makeToast(msg as! String, duration: 1, position: .Center)
-                break;
+        if msgscrentId.length != 0 {
+            msg.arrival(msgscrentId) { (r:BaseApi.Result) -> Void in
+                switch (r) {
+                case .Success(let r):
+                    self.msgscrent = r as! MessagesSecret;
+                    print(self.msgscrent)
+                    completeHander(self.msgscrent)
+                    break;
+                case .Failure(let msg):
+                    view.makeToast(msg as! String, duration: 1, position: .Center)
+                    break;
+                }
             }
+        }
+        else{
+            
         }
     }
     

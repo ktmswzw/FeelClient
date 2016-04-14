@@ -39,6 +39,20 @@ public class LoginUserInfoViewModel: BaseApi{
         }
     }
     
+    func register(completeHander:CompletionHandlerType){
+        NetApi().makeCallBean(Alamofire.Method.POST, section: "/user/register", headers: [:], params: ["username": userName,"password":password,"device":"APP"]) { (res:Response<UserInfo, NSError>) in
+            switch (res.result) {
+            case .Success(let value):
+                completeHander(Result.Success(value))
+                break
+            case .Failure(let error):
+                completeHander(Result.Failure(error))
+                break
+            }
+            
+        }
+    }
+    
     /**
      获取imtoken
      
