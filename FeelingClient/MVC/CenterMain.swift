@@ -118,27 +118,32 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         }
     }
     
+
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
+    }
+    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        print("点击注释视图按钮")
-        
         selectedView = view;
-        
     }
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        print("点击大头针注释视图")
+        selectedView = view;
+    }
+    
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         selectedView = view;
     }
     
     
     func didSelectAnnotationView(sender: UITapGestureRecognizer) {
+        
         guard let pinView = sender.view as? MKAnnotationView else {
             return
         }
         
-        // Show Safari if pinView == selectedView and has a valid HTTP URL string
         if pinView == selectedView {
+            self.navigationController?.view.makeToastActivity(.Center)
             let pin = pinView.annotation! as! MyAnnotation
             viewModel.msgId = pin.id as String
             //TODO
@@ -151,7 +156,6 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             if let id:String = pin.fromId {
                 viewModel.fromId = id
             }
-            
             self.performSegueWithIdentifier("open", sender: self)
         }
     }
@@ -174,7 +178,6 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         if segue.identifier == "send" {
             let bottomBar = segue.destinationViewController as! CenterViewController
             bottomBar.hidesBottomBarWhenPushed = true
-            //bottomBar.navigationItem.hidesBackButton = true
         }
         else if segue.identifier == "open" {
             let viewController = segue.destinationViewController as! OpenMessageViewController

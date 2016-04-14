@@ -159,7 +159,7 @@ class SelfViewController: DesignableViewController {
         jwt.jwtTemp = ""
         jwt.appUsername = ""
         jwt.appPwd = ""
-        
+        database.deleteObjectsForType(UserInfo.self)
         //断开连接并设置不再接收推送消息
         RCIM.sharedRCIM().disconnect(false)
         

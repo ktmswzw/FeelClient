@@ -46,7 +46,6 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
         if(viewModel.question.isEmpty)
         {
             title = "没有设置密码"
-            sleep(3)
             self.performSegueWithIdentifier("openOver", sender: self)
         }
         
@@ -79,6 +78,8 @@ class OpenMessageViewController: DesignableViewController,UITextFieldDelegate,Op
             .addDisposableTo(disposeBag)
         
         
+        self.navigationController?.view.hideToastActivity()
+
     }
     
     

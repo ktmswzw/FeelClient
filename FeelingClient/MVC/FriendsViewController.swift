@@ -67,7 +67,8 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
                     self.navigationController?.view.hideToastActivity()
                     break;
                 case .Failure(let msg):
-                    print("\(msg)")
+                    self.view.makeToast("\(msg)", duration: 2, position: .Center)
+                    self.navigationController?.view.hideToastActivity()
                     break;
                 }
             }
@@ -114,6 +115,44 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         }
     }
     
+    
+    
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+    
+    
+    
+    // Override to support editing the table view.
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            let bookCell = viewModel.friends[indexPath.row] as FriendBean
+            viewModel.friends.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            self.navigationController?.view.makeToastActivity(.Center)
+            self.viewModel.black(bookCell.id, completeHander: { (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(_):
+                    self.navigationController?.view.hideToastActivity()
+                    self.view.makeToast("拉黑成功", duration: 2, position: .Center)
+                    self.navigationItem.rightBarButtonItem?.enabled = true
+                    break;
+                case .Failure(let msg):
+                    self.navigationController?.view.hideToastActivity()
+                    self.view.makeToast("拉黑失败\(msg)", duration: 2, position: .Center)
+                    break;
+                }
+            })
+            
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
