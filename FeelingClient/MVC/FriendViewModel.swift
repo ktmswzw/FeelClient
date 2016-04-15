@@ -109,7 +109,7 @@ public class FriendViewModel:BaseApi {
                 completeHander(Result.Success(self.friends))
                 break;
             case .Failure(let error):
-                print("\(error)")
+                completeHander(Result.Failure(error))
                 break;
             }
         }

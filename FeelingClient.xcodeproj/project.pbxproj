@@ -19,6 +19,8 @@
 		BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1710481C6F75AB00003D6B /* NetApiAlamofire.swift */; };
 		BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF17104C1C6F809800003D6B /* ChatViewController.swift */; };
 		BF1A83521C784CD0006B0377 /* PhotoUpLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1A83441C784CD0006B0377 /* PhotoUpLoader.swift */; };
+		BF34DE061CC0D767009F0AC4 /* point.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF34DE051CC0D767009F0AC4 /* point.xib */; };
+		BF34DE081CC0D95A009F0AC4 /* PointUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34DE071CC0D95A009F0AC4 /* PointUIView.swift */; };
 		BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6701C6C38760027F63D /* AppDelegate.swift */; };
 		BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */; };
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
@@ -103,6 +105,8 @@
 		BF1710481C6F75AB00003D6B /* NetApiAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetApiAlamofire.swift; path = common/NetApiAlamofire.swift; sourceTree = "<group>"; };
 		BF17104C1C6F809800003D6B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = MVC/ChatViewController.swift; sourceTree = "<group>"; };
 		BF1A83441C784CD0006B0377 /* PhotoUpLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoUpLoader.swift; path = Library/UpLoader/PhotoUpLoader.swift; sourceTree = "<group>"; };
+		BF34DE051CC0D767009F0AC4 /* point.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = point.xib; path = MVC/point.xib; sourceTree = "<group>"; };
+		BF34DE071CC0D95A009F0AC4 /* PointUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PointUIView.swift; path = MVC/PointUIView.swift; sourceTree = "<group>"; };
 		BF45B66D1C6C38760027F63D /* FeelingClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF45B6701C6C38760027F63D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF45B6781C6C38760027F63D /* FeelingClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelingClient.xcdatamodel; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				BF8CCACD1C6DEF0700C266B8 /* login.storyboard */,
 				BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */,
 				BFB0C2691C746C4D00A7BD67 /* register.storyboard */,
+				BF34DE051CC0D767009F0AC4 /* point.xib */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 				BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */,
 				BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */,
 				BFCDC0551CB9501B00373E63 /* ViewImageViewController.swift */,
+				BF34DE071CC0D95A009F0AC4 /* PointUIView.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				BF45B6B01C6C9C730027F63D /* friends.storyboard in Resources */,
 				BF45B6B61C6C9E2F0027F63D /* self.storyboard in Resources */,
 				BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */,
+				BF34DE061CC0D767009F0AC4 /* point.xib in Resources */,
 				BF45B6A71C6C4ECD0027F63D /* Localizable.stringsdict in Resources */,
 				BF45B6AE1C6C9B0C0027F63D /* chat.storyboard in Resources */,
 				BF8CCACE1C6DEF0700C266B8 /* login.storyboard in Resources */,
@@ -648,6 +655,7 @@
 				BFD0D79E1CB0D58900B3FF35 /* CollectionViewCell.swift in Sources */,
 				BFFCEB021C789ED40042EF11 /* Sequence.swift in Sources */,
 				BF1A83521C784CD0006B0377 /* PhotoUpLoader.swift in Sources */,
+				BF34DE081CC0D95A009F0AC4 /* PointUIView.swift in Sources */,
 				BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */,
 				BF45B6921C6C4E440027F63D /* DatePickerDialog.swift in Sources */,
 				BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */,

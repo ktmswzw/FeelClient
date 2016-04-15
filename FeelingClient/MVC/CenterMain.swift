@@ -21,7 +21,7 @@ import IBAnimatable
 #endif
 
 class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
     var msgId = ""
@@ -65,7 +65,24 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.view.makeToast("定位中", duration: 2, position: .Center)
+        
+        if(CLLocationManager.authorizationStatus() == .Denied) {
+            let aleat = UIAlertController(title: "打开定位开关", message:"定位服务未开启,请进入系统设置>隐私>定位服务中打开开关,并允许Feeling使用定位服务", preferredStyle: .Alert)
+            let tempAction = UIAlertAction(title: "取消", style: .Cancel) { (action) in
+            }
+            let callAction = UIAlertAction(title: "立即设置", style: .Default) { (action) in
+                let url = NSURL.init(string: UIApplicationOpenSettingsURLString)
+                if(UIApplication.sharedApplication().canOpenURL(url!)) {
+                    UIApplication.sharedApplication().openURL(url!)
+                }
+            }
+            aleat.addAction(tempAction)
+            aleat.addAction(callAction)
+            self.presentViewController(aleat, animated: true, completion: nil)
+        }
+        else{
+            self.view.makeToast("定位中", duration: 2, position: .Center)
+        }
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
@@ -105,7 +122,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
                     leftIconView.image = UIImage(named: "girl")
                 }
                 annotationView!.leftCalloutAccessoryView = leftIconView
-                annotationView!.pinTintColor = UIColor.redColor()
+                annotationView!.pinTintColor = UIColor(red:1, green:0.79, blue:0, alpha:1)
             }
             else {
                 annotationView!.annotation = annotation
@@ -201,16 +218,18 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 self.mapView.region = region
                 self.isOk = true
+                self.locationManager.stopUpdatingLocation()
+                self.locationManager.delegate = nil;
             })
         }
         
     }
     
     
+    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
     {
         print("Error: " + error.localizedDescription)
     }
-    
     
 }

@@ -73,9 +73,28 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         self.mapView.showsUserLocation = true
-        
         self.photoCollectionView.delegate = self
         self.photoCollectionView.dataSource = self
+        
+        
+        
+        if(CLLocationManager.authorizationStatus() == .Denied) {
+            let aleat = UIAlertController(title: "打开定位开关", message:"定位服务未开启,请进入系统设置>隐私>定位服务中打开开关,并允许Feeling使用定位服务", preferredStyle: .Alert)
+            let tempAction = UIAlertAction(title: "取消", style: .Cancel) { (action) in
+            }
+            let callAction = UIAlertAction(title: "立即设置", style: .Default) { (action) in
+                let url = NSURL.init(string: UIApplicationOpenSettingsURLString)
+                if(UIApplication.sharedApplication().canOpenURL(url!)) {
+                    UIApplication.sharedApplication().openURL(url!)
+                }
+            }
+            aleat.addAction(tempAction)
+            aleat.addAction(callAction)
+            self.presentViewController(aleat, animated: true, completion: nil)
+        }
+        else{
+            self.view.makeToast("定位中", duration: 2, position: .Center)
+        }
     }
     
     //这样将避免约束错误
@@ -149,6 +168,8 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
             } else {
                 print("Problem with the data received from geocoder")
             }
+            
+            self.locationManager.stopUpdatingLocation()
         })
         
     }

@@ -54,10 +54,10 @@ class PhotoUpLoader:BaseApi {
     
     func getPathZip(image: UIImage) -> NSData{
         //压缩
-        //let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 1200, height: 1200), fitMode: Toucan.Resize.FitMode.Scale).image
-        let resizedAndMaskedImage = image
-        guard let data = UIImageJPEGRepresentation(resizedAndMaskedImage,1.0) else {//jpg
-            return UIImagePNGRepresentation(resizedAndMaskedImage)! //png
+        let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 800, height: 800), fitMode: Toucan.Resize.FitMode.Scale).image
+        //let resizedAndMaskedImage = image
+        guard let data = UIImagePNGRepresentation(resizedAndMaskedImage) else {//jpg
+            return UIImageJPEGRepresentation(resizedAndMaskedImage,1.0)! //png
         }
         return data
     }

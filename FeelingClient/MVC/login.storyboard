@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJg-yT-rx4" customClass="AnimatableStackView" customModule="IBAnimatable">
                                 <rect key="frame" x="20" y="260" width="560" height="181"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456789002" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="jTB-Xr-uTJ"/>
