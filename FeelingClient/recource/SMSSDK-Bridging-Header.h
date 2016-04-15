@@ -13,6 +13,5 @@
 #import "TXYUploadManager.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <RongIMKit/RongIMKit.h>
-#import <MBProgressHUD/MBProgressHUD.h>
 
 #endif /* SMSSDK_Bridging_Header_h */
