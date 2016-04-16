@@ -20,18 +20,20 @@ import IBAnimatable
     import RxCocoa
 #endif
 
-class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate,openOverProtocol {
+class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
     var msgId = ""
     var to = ""
     var isOk = false
+    var msgscrentId = ""
     var viewModel: MessageViewModel!
     let cache = Shared.imageCache
     
     var disposeBag = DisposeBag()
     
+    let msg: MessageApi = MessageApi.defaultMessages
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var mapView: MKMapView!
@@ -50,8 +52,7 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         self.mapView.showsUserLocation = true
 
         
-        let myCustomView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
-        myCustomView.delegate = self
+        
 
         
         self.mapView.delegate = self
@@ -94,22 +95,22 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     }
     
     
-    func openOverSubmit(id:String, answer:String) {
+    func openOverSubmit(id:String, answer:String) {        
         
-//        msgMolel.verifyAnswer(self.view) { (r:BaseApi.Result) in
-//            switch (r) {
-//            case .Success(let r):
-//                .msgModel.msgscrentId = r as! String;
-//                self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-//                sleep(1)
-//                self.performSegueWithIdentifier("openOver", sender: self)
-//                
-//                break;
-//            case .Failure(let msg):
-//                self.view.makeToast(msg as! String, duration: 1, position: .Center)
-//                break;
-//            }
-//        }
+        msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
+            switch (r) {
+                case .Success(let r):
+                    self.msgscrentId = r as! String;
+                    self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+                    sleep(1)
+                    self.performSegueWithIdentifier("openOver", sender: self)
+
+                    break;
+                case .Failure(let msg):
+                    self.view.makeToast(msg as! String, duration: 1, position: .Center)
+                    break;
+                }
+        }
     }
 
     
@@ -121,29 +122,9 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
                 annotationView!.canShowCallout = true
-//                if annotationView!.rightCalloutAccessoryView == nil {
-//                    let button = UIButton(type: .InfoLight)
-//                    button.userInteractionEnabled = false
-//                    annotationView!.rightCalloutAccessoryView = button
-//                    annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
-//                }
-//                let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
-//                if let pin = annotation as? MyAnnotation {
-//                    if let url:String = pin.url! as String {
-//                        let URL = NSURL(string: url)!
-//                        let fetcher = NetworkFetcher<UIImage>(URL: URL)
-//                        cache.fetch(fetcher: fetcher).onSuccess { image in
-//                            leftIconView.image = image
-//                        }
-//                    }
-//                }
-//                else{
-//                    leftIconView.image = UIImage(named: "girl")
-//                }
-//                annotationView!.leftCalloutAccessoryView = leftIconView
-//                annotationView!.pinTintColor = UIColor(red:1, green:0.79, blue:0, alpha:1)
+                let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
+                detailView.delegate = self
                 
-                let detailView = UIView.loadFromNibNamed("point") as! PointUIView
                 if let pin = annotation as? MyAnnotation {
                     if let url:String = pin.url! as String {
                         let URL = NSURL(string: url)!
@@ -233,14 +214,11 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let bottomBar = segue.destinationViewController as! CenterViewController
             bottomBar.hidesBottomBarWhenPushed = true
         }
-        else if segue.identifier == "open" {
-            let viewController = segue.destinationViewController as! OpenMessageViewController
-            viewController.viewModel = self.viewModel
-        }
         else if segue.identifier == "openOver" {
             let viewController = segue.destinationViewController as! OpenMapViewController
             viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
             viewController.fromId = self.viewModel.fromId
+            viewController.msgscrentId = self.msgscrentId
         }
     }
     

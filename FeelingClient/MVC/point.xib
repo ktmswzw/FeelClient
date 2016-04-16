@@ -97,6 +97,8 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="BaD-A5-Cdk" firstAttribute="centerY" secondItem="NBa-HA-fVO" secondAttribute="centerY" id="BQC-62-9D5"/>
+                        <constraint firstAttribute="height" constant="160" id="owN-bW-vro"/>
+                        <constraint firstAttribute="width" constant="220" id="t9t-Vi-VHq"/>
                     </constraints>
                 </stackView>
             </subviews>

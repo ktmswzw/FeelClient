@@ -23,18 +23,22 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     @IBOutlet weak var distinctText: AnimatableTextField!
     @IBOutlet weak var mapView: MKMapView!
     //    @IBOutlet weak var openButton: AnimatableButton!
-    var msgModel: OpenMessageModel!
+    var msgscrentId = ""
     var fromId:String = ""
     var friendModel: FriendViewModel!
     var disposeBag = DisposeBag()
     var latitude = 0.0
     var longitude = 0.0
     
+    var photos: [String] = []
+
     @IBOutlet weak var imageCollection: UICollectionView!
     var isOk = false
     let locationManager = CLLocationManager()
     var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点
     var distance = 0.0 //两点距离
+    
+    let msg: MessageApi = MessageApi.defaultMessages
     
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
@@ -94,12 +98,21 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     
     func arrival()
     {
-        msgModel.arrival(self.view) { (m:MessagesSecret) in
-            self.textView.text = m.content
-            if(m.photos.count>0){
-                self.msgModel.photos =  m.photos
-            }            
-            self.imageCollection.reloadData()
+        
+        msg.arrival(self.msgscrentId) { (r:BaseApi.Result) -> Void in
+            switch (r) {
+            case .Success(let r):
+                let m = r as! MessagesSecret
+                if(m.photos.count>0){
+                    self.photos =  m.photos
+                }
+                self.imageCollection.reloadData()
+                
+                break;
+            case .Failure(let msg):
+                self.view.makeToast(msg as! String, duration: 1, position: .Center)
+                break;
+            }
         }
     }
     
@@ -130,11 +143,11 @@ extension OpenMapViewController: FriendModelDelegate{
 
 extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.msgModel.photos.count
+        return self.photos.count
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        viewBigImages(self.msgModel.photos[indexPath.row] )        
+        viewBigImages(self.photos[indexPath.row] )
     }
     
     func viewBigImages(url: String)
@@ -145,7 +158,7 @@ extension OpenMapViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let CellIdentifier = "photo"
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath) as! CollectionViewCell
-        let URLString = self.msgModel.photos[indexPath.row]
+        let URLString = self.photos[indexPath.row]
         let URL = NSURL(string:getPathSmall(URLString))!
         cell.imageView.hnk_setImageFromURL(URL)
         return cell

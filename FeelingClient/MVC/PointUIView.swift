@@ -26,20 +26,12 @@ class PointUIView: UIView{
     @IBOutlet var verifyButton: AnimatableButton!
     
     
-    weak var delegate: openOverProtocol?
+    weak var delegate: OpenOverProtocol?
     
-    var msgModel: OpenMessageModel!
     
     var msgId:String = "" {
         didSet {
-
-            if(self.question.text!.isEmpty)
-            {
-//                self.verifyAnswer()
-                //self.performSegueWithIdentifier("openOver", sender: self)
-            }
-            
-            
+                        
             let questionValid = question.rx_text
                 .map { $0.characters.count >= 1 }
                 .shareReplay(1)
@@ -48,7 +40,7 @@ class PointUIView: UIView{
                 .map { $0.characters.count >= 1 }
                 .shareReplay(1)
             
-            let everythingValid = Observable.combineLatest(questionValid,answerValid) { $0 && $1}
+            let everythingValid = Observable.combineLatest(questionValid,answerValid) { $0 && $1 || self.question.text!.isEmpty}
                 .shareReplay(1)
             
             
@@ -59,6 +51,7 @@ class PointUIView: UIView{
             
             verifyButton.rx_tap
                 .subscribeNext { [weak self] in
+                    self!.verifyButton.titleLabel?.text = "芝麻开门"
                     self?.verifyAnswer()
                 }
                 .addDisposableTo(disposeBag)
@@ -69,16 +62,13 @@ class PointUIView: UIView{
     }
     
     func verifyAnswer()
-    {
-        msgModel.id = self.msgId
-        msgModel.question = self.question.text
-        msgModel.answer = self.answer.text
-        delegate?.openOverSubmit()
+    {        
+        delegate?.openOverSubmit(self.msgId, answer: self.answer.text!)
     }
     
 }
 
 
-protocol openOverProtocol: class {
-    func openOverSubmit()
+protocol OpenOverProtocol: class {
+    func openOverSubmit(id:String, answer:String)
 }

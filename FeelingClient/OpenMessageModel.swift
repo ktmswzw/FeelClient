@@ -24,7 +24,7 @@ public class OpenMessageModel:BaseApi {
     //内容
     var content: String = ""
     //图片地址
-    var photos: [String] = [""]
+    var photos: [String] = []
     //视频地址
     var video: String = ""
     //音频地址

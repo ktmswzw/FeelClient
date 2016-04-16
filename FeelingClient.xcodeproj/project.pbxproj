@@ -49,7 +49,6 @@
 		BFA5507B1CB6B67F0097B06C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA5507A1CB6B67F0097B06C /* UserInfoViewController.swift */; };
 		BFB0C2681C746B8D00A7BD67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */; };
 		BFB0C26A1C746C4D00A7BD67 /* register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFB0C2691C746C4D00A7BD67 /* register.storyboard */; };
-		BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */; };
 		BFB6A0531C9E7D1200B2EA86 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */; };
 		BFCBDFDE1C93F473000AAD6F /* CenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */; };
 		BFCD27281CAC31640064C364 /* OpenMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCD27271CAC31640064C364 /* OpenMapViewController.swift */; };
@@ -139,7 +138,6 @@
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterViewController.swift; path = MVC/RegisterViewController.swift; sourceTree = "<group>"; };
 		BFB0C2691C746C4D00A7BD67 /* register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = register.storyboard; path = MVC/register.storyboard; sourceTree = "<group>"; };
-		BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageViewController.swift; path = MVC/OpenMessageViewController.swift; sourceTree = "<group>"; };
 		BFB6A0521C9E7D1200B2EA86 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMessageModel.swift; sourceTree = "<group>"; };
 		BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterMain.swift; path = MVC/CenterMain.swift; sourceTree = "<group>"; };
 		BFCD27271CAC31640064C364 /* OpenMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMapViewController.swift; path = MVC/OpenMapViewController.swift; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 				BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */,
 				BFB0C2671C746B8D00A7BD67 /* RegisterViewController.swift */,
 				BFCBDFDD1C93F473000AAD6F /* CenterMain.swift */,
-				BFB6A0501C9E548C00B2EA86 /* OpenMessageViewController.swift */,
 				BFCD27271CAC31640064C364 /* OpenMapViewController.swift */,
 				BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */,
 				BFFD12571CB63DC0001AA9B3 /* FriendTabelViewCell.swift */,
@@ -634,7 +631,6 @@
 				BFEA23D61C9021B30037A691 /* Message.swift in Sources */,
 				BFFD12581CB63DC0001AA9B3 /* FriendTabelViewCell.swift in Sources */,
 				BFEA23D81C914C030037A691 /* CenterMessageModel.swift in Sources */,
-				BFB6A0511C9E548C00B2EA86 /* OpenMessageViewController.swift in Sources */,
 				BF45B6A01C6C4E5F0027F63D /* Toucan.swift in Sources */,
 				BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */,
 				BF45B6931C6C4E440027F63D /* UIButtonType.swift in Sources */,
