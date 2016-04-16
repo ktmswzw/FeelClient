@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Haneke
+import MBProgressHUD
 
 #if !RX_NO_MODULE
     import RxSwift

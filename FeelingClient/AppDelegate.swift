@@ -133,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         //建议您在本地做一个缓存，只有缓存没有该群组信息的情况下，才去您的服务器获取，以提高用户体验
         if (groupId == "group01") {
             //如果您提供的头像地址是http连接，在iOS9以上的系统中，请设置使用http，否则无法正常显示
+            //具体可以参考Info.plist中"App Transport Security Settings->Allow Arbitrary Loads"
             completion(RCGroup(groupId: groupId, groupName: "第一个群", portraitUri: "http://www.rongcloud.cn/images/newVersion/logo/aipai.png"))
         } else {
             completion(RCGroup(groupId: groupId, groupName: "unknown", portraitUri: "http://www.rongcloud.cn/images/newVersion/logo/qiugongl.png"))

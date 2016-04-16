@@ -26,7 +26,8 @@ pod 'SMSSDK'
 pod 'HanekeSwift'
 #IMCHAT
 pod 'RongCloudIMKit', '2.4.11'
-
+#吐司
+#pod 'MBProgressHUD'
 #响应编程
 pod 'RxSwift'
 pod 'RxCocoa'
