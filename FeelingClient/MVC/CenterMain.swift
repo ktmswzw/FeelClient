@@ -170,30 +170,30 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         selectedView = view;
     }
     
-    
-    func didSelectAnnotationView(sender: UITapGestureRecognizer) {
-        
-        guard let pinView = sender.view as? MKAnnotationView else {
-            return
-        }
-        
-        if pinView == selectedView {
-            self.navigationController?.view.makeToastActivity(.Center)
-            let pin = pinView.annotation! as! MyAnnotation
-            viewModel.msgId = pin.id as String
-            //TODO
-            if let q:String = pin.subtitle  {
-                viewModel.question = q
-            }
-            if let t:String = pin.title {
-                viewModel.to = t
-            }
-            if let id:String = pin.fromId {
-                viewModel.fromId = id
-            }
-            self.performSegueWithIdentifier("open", sender: self)
-        }
-    }
+//    
+//    func didSelectAnnotationView(sender: UITapGestureRecognizer) {
+//        
+//        guard let pinView = sender.view as? MKAnnotationView else {
+//            return
+//        }
+//        
+//        if pinView == selectedView {
+//            self.navigationController?.view.makeToastActivity(.Center)
+//            let pin = pinView.annotation! as! MyAnnotation
+//            viewModel.msgId = pin.id as String
+//            //TODO
+//            if let q:String = pin.subtitle  {
+//                viewModel.question = q
+//            }
+//            if let t:String = pin.title {
+//                viewModel.to = t
+//            }
+//            if let id:String = pin.fromId {
+//                viewModel.fromId = id
+//            }
+//            self.performSegueWithIdentifier("open", sender: self)
+//        }
+//    }
     
     var selectedView: MKAnnotationView?
     

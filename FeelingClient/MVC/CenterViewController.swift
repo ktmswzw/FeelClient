@@ -110,11 +110,11 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
             return
         }
         
-        if !self.openUser.notEmpty {
-            self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
-            return
-        }
-        
+//        if !self.openUser.notEmpty {
+//            self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
+//            return
+//        }
+//        
         if self.textView.text.length == 0 {
             self.view.makeToast("必须填写内容", duration: 2, position: .Center)
             return

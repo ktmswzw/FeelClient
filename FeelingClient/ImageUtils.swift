@@ -107,6 +107,16 @@ extension UIViewController {
     
 }
 
+extension UIButton {
+    func disable() {
+        self.enabled = false
+        self.alpha = 0.5
+    }
+    func enable() {
+        self.enabled = true
+        self.alpha = 1
+    }
+}
 
 extension UITabBarController {
     override public func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -127,15 +137,3 @@ extension UINavigationController {
         }
     }
 }
-
-extension UIButton {
-    func disable() {
-        self.enabled = false
-        self.alpha = 0.5
-    }
-    func enable() {
-        self.enabled = true
-        self.alpha = 1
-    }
-}
-

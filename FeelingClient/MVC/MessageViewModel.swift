@@ -68,7 +68,7 @@ public class Messages:BaseApi {
                 completeHander(Result.Success(self.msgs))
                 break;
             case .Failure(let error):
-                print("\(error)")
+                completeHander(Result.Failure(error))
                 break;
             }
         }

@@ -43,15 +43,13 @@ class PointUIView: UIView{
             let everythingValid = Observable.combineLatest(questionValid,answerValid) { $0 && $1 || self.question.text!.isEmpty}
                 .shareReplay(1)
             
-            
             everythingValid
                 .bindTo(verifyButton.rx_enabled)
                 .addDisposableTo(disposeBag)
             
-            
             verifyButton.rx_tap
                 .subscribeNext { [weak self] in
-                    self!.verifyButton.titleLabel?.text = "芝麻开门"
+                    self!.verifyButton.alpha = 1
                     self?.verifyAnswer()
                 }
                 .addDisposableTo(disposeBag)
