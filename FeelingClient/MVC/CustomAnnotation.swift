@@ -13,4 +13,5 @@ class MyAnnotation: MKPointAnnotation {
     var id = ""
     var url : String?
     var fromId : String?
+    var question :String?
 }

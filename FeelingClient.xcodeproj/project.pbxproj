@@ -42,7 +42,6 @@
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
 		BF8CCACE1C6DEF0700C266B8 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8CCACD1C6DEF0700C266B8 /* login.storyboard */; };
 		BF8CCAD01C6DEF7C00C266B8 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */; };
-		BF91FDE71CBB930200C054F5 /* HUDUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF91FDE61CBB930200C054F5 /* HUDUtil.swift */; };
 		BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */; };
 		BF92991A1C72BC7E00B6CD0B /* SelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */; };
 		BF9D34C31CB5617200B63925 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9D34C21CB5617200B63925 /* Friend.swift */; };
@@ -132,7 +131,6 @@
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF8CCACD1C6DEF0700C266B8 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = MVC/login.storyboard; sourceTree = "<group>"; };
 		BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = main.storyboard; path = MVC/main.storyboard; sourceTree = "<group>"; };
-		BF91FDE61CBB930200C054F5 /* HUDUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUDUtil.swift; path = common/HUDUtil.swift; sourceTree = "<group>"; };
 		BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = MVC/FriendsViewController.swift; sourceTree = "<group>"; };
 		BF9299191C72BC7E00B6CD0B /* SelfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfViewController.swift; path = MVC/SelfViewController.swift; sourceTree = "<group>"; };
 		BF9D34C21CB5617200B63925 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = MVC/Friend.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 				BFD0D79D1CB0D58900B3FF35 /* CollectionViewCell.swift */,
 				BF45B6AA1C6C4FA20027F63D /* JWTTools.swift */,
 				BF45B6A21C6C4E820027F63D /* ImageUtils.swift */,
-				BF91FDE61CBB930200C054F5 /* HUDUtil.swift */,
 				BF164D941CA59560008EF56F /* MapHelper.swift */,
 				BF0F5C881CAAB79000FA9C91 /* BindingExtensions.swift */,
 			);
@@ -623,7 +620,6 @@
 			files = (
 				BFFCEAFC1C789ED40042EF11 /* Double.swift in Sources */,
 				BF17103A1C6EFBDC00003D6B /* Image-GaussianBlur.swift in Sources */,
-				BF91FDE71CBB930200C054F5 /* HUDUtil.swift in Sources */,
 				BFE486B21CB28A0C00EE9A8A /* UserInfoViewModel.swift in Sources */,
 				BFCDC0561CB9501B00373E63 /* ViewImageViewController.swift in Sources */,
 				BFFCEAFA1C789ED40042EF11 /* Character.swift in Sources */,

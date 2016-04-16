@@ -55,6 +55,16 @@ func getPathSmall(url:String) -> String {
 }
 
 
+extension UIView {
+    class func loadFromNibNamed(nibNamed: String, bundle : NSBundle? = nil) -> UIView? {
+        return UINib(
+            nibName: nibNamed,
+            bundle: bundle
+            ).instantiateWithOwner(nil, options: nil).first as? UIView
+    }
+}
+
+
 extension UITextField {
     var notEmpty: Bool{
         get {

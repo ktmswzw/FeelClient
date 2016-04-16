@@ -112,8 +112,8 @@ public class MessageViewModel {
                             let oneAnnotation = MyAnnotation()
                             
                             oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()
-                            oneAnnotation.title = msg.to
-                            oneAnnotation.subtitle = msg.question
+                            oneAnnotation.title =  "寄给：msg.to"
+                            oneAnnotation.question = msg.question
                             oneAnnotation.id = msg.id
                             oneAnnotation.url = msg.avatar
                             oneAnnotation.fromId = msg.fromId

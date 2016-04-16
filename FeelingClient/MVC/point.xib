@@ -3,43 +3,109 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AnimatableView" customModule="IBAnimatable">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="180"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PointUIView" customModule="FeelingClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="160"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWr-Kq-RoW">
-                    <rect key="frame" x="8" y="8" width="334" height="24"/>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NBa-HA-fVO">
+                    <rect key="frame" x="0.0" y="0.0" width="220" height="160"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQC-4t-Hvy">
+                            <rect key="frame" x="0.0" y="0.0" width="220" height="45"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="8w0-w1-xMr" customClass="AnimatableImageView" customModule="IBAnimatable">
+                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="45" id="H9K-oo-nss"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="大师兄，师傅被妖精抓走了" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abt-wb-nQx" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <rect key="frame" x="45" y="0.0" width="175" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="jGE-VM-k3I"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BaD-A5-Cdk">
+                            <rect key="frame" x="0.0" y="45" width="220" height="70"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eN2-i0-FFX">
+                                    <rect key="frame" x="0.0" y="0.0" width="220" height="10"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="10" id="cEr-ZO-rde"/>
+                                    </constraints>
+                                </view>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="提示：妖精是谁" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIy-BJ-XuU" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <rect key="frame" x="0.0" y="10" width="220" height="45"/>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="m11-13-EUM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-eb-H2k">
+                                    <rect key="frame" x="0.0" y="55" width="220" height="15"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="a7T-7E-5rv"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="ZIy-BJ-XuU" secondAttribute="bottom" constant="20" symbolic="YES" id="L4o-uA-Edt"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="L4o-uA-Edt"/>
+                                </mask>
+                            </variation>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSb-yM-pGb" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <rect key="frame" x="0.0" y="115" width="220" height="45"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="4c3-q6-lgv"/>
+                            </constraints>
+                            <state key="normal" title="芝麻开门">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="OQY-mC-lfI"/>
+                        <constraint firstItem="BaD-A5-Cdk" firstAttribute="centerY" secondItem="NBa-HA-fVO" secondAttribute="centerY" id="BQC-62-9D5"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-W7-PbI" customClass="AnimatableButton" customModule="IBAnimatable">
-                    <rect key="frame" x="8" y="142" width="334" height="30"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="WWr-Kq-RoW" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="BYQ-r3-ikj"/>
-                <constraint firstItem="WWr-Kq-RoW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="c23-r1-cYQ"/>
-                <constraint firstItem="WWr-Kq-RoW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="liW-si-K3W"/>
+                <constraint firstItem="NBa-HA-fVO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3Le-Fq-IQy"/>
+                <constraint firstItem="NBa-HA-fVO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Iez-2f-cJH"/>
+                <constraint firstAttribute="bottom" secondItem="NBa-HA-fVO" secondAttribute="bottom" id="KEr-Ks-Rbf"/>
+                <constraint firstAttribute="trailing" secondItem="NBa-HA-fVO" secondAttribute="trailing" id="flK-ix-q99"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -48,7 +114,16 @@
                     <real key="value" value="20"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="448" y="295"/>
+            <connections>
+                <outlet property="answer" destination="ZIy-BJ-XuU" id="F5G-t6-4Is"/>
+                <outlet property="avator" destination="8w0-w1-xMr" id="Skl-ji-8rY"/>
+                <outlet property="question" destination="abt-wb-nQx" id="SIS-pb-Nou"/>
+                <outlet property="verifyButton" destination="HSb-yM-pGb" id="YCA-sZ-vtg"/>
+            </connections>
+            <point key="canvasLocation" x="381" y="284"/>
         </view>
     </objects>
+    <resources>
+        <image name="girl" width="200" height="200"/>
+    </resources>
 </document>

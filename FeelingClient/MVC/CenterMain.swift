@@ -20,7 +20,7 @@ import IBAnimatable
     import RxCocoa
 #endif
 
-class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate,openOverProtocol {
     var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
@@ -48,6 +48,10 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
+
+        
+        let myCustomView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
+        myCustomView.delegate = self
 
         
         self.mapView.delegate = self
@@ -90,39 +94,70 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     }
     
     
-    //这样将避免约束错误
-    override func viewDidAppear(animated: Bool) {
-        //self.sendButton.enabled = false
+    func openOverSubmit(id:String, answer:String) {
         
+//        msgMolel.verifyAnswer(self.view) { (r:BaseApi.Result) in
+//            switch (r) {
+//            case .Success(let r):
+//                .msgModel.msgscrentId = r as! String;
+//                self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+//                sleep(1)
+//                self.performSegueWithIdentifier("openOver", sender: self)
+//                
+//                break;
+//            case .Failure(let msg):
+//                self.view.makeToast(msg as! String, duration: 1, position: .Center)
+//                break;
+//            }
+//        }
     }
+
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        
         if annotation is MyAnnotation {
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
                 annotationView!.canShowCallout = true
-                if annotationView!.rightCalloutAccessoryView == nil {
-                    let button = UIButton(type: .InfoLight)
-                    button.userInteractionEnabled = false
-                    annotationView!.rightCalloutAccessoryView = button
-                    annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
-                }
-                let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
+//                if annotationView!.rightCalloutAccessoryView == nil {
+//                    let button = UIButton(type: .InfoLight)
+//                    button.userInteractionEnabled = false
+//                    annotationView!.rightCalloutAccessoryView = button
+//                    annotationView!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CenterMain.didSelectAnnotationView(_:))))
+//                }
+//                let leftIconView = UIImageView(frame: CGRectMake(0, 0, 53, 53))
+//                if let pin = annotation as? MyAnnotation {
+//                    if let url:String = pin.url! as String {
+//                        let URL = NSURL(string: url)!
+//                        let fetcher = NetworkFetcher<UIImage>(URL: URL)
+//                        cache.fetch(fetcher: fetcher).onSuccess { image in
+//                            leftIconView.image = image
+//                        }
+//                    }
+//                }
+//                else{
+//                    leftIconView.image = UIImage(named: "girl")
+//                }
+//                annotationView!.leftCalloutAccessoryView = leftIconView
+//                annotationView!.pinTintColor = UIColor(red:1, green:0.79, blue:0, alpha:1)
+                
+                let detailView = UIView.loadFromNibNamed("point") as! PointUIView
                 if let pin = annotation as? MyAnnotation {
                     if let url:String = pin.url! as String {
                         let URL = NSURL(string: url)!
                         let fetcher = NetworkFetcher<UIImage>(URL: URL)
                         cache.fetch(fetcher: fetcher).onSuccess { image in
-                            leftIconView.image = image
+                            detailView.avator.image = image
                         }
                     }
+                    detailView.msgId = pin.id
+                    detailView.fromId = pin.id
+                    detailView.question.text = pin.question
                 }
-                else{
-                    leftIconView.image = UIImage(named: "girl")
-                }
-                annotationView!.leftCalloutAccessoryView = leftIconView
-                annotationView!.pinTintColor = UIColor(red:1, green:0.79, blue:0, alpha:1)
+
+                annotationView!.detailCalloutAccessoryView = detailView
             }
             else {
                 annotationView!.annotation = annotation
@@ -133,6 +168,8 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
             return annotationView
         }
+        
+        
     }
     
 
@@ -200,6 +237,11 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
             let viewController = segue.destinationViewController as! OpenMessageViewController
             viewController.viewModel = self.viewModel
         }
+        else if segue.identifier == "openOver" {
+            let viewController = segue.destinationViewController as! OpenMapViewController
+            viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
+            viewController.fromId = self.viewModel.fromId
+        }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -233,3 +275,4 @@ class CenterMain: UIViewController,MessageViewModelDelegate, MKMapViewDelegate, 
     }
     
 }
+
