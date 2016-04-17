@@ -26,10 +26,16 @@ public class LoginUserInfoViewModel: BaseApi{
     
     func loginDelegate(completeHander:CompletionHandlerType){
         
-        NetApi().makeCallBean(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userName,"password":password,"device":"APP"]) { (res:Response<UserInfo, NSError>) in
+        NetApi().makeCallBean(Alamofire.Method.POST, section: "login", headers: [:], params: ["username": userName,"password":password,"device":"APP"]) {  (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
-                completeHander(Result.Success(value))
+                if value.id.length != 0 {
+                    completeHander(Result.Success(value))
+                }
+                else
+                {
+                    completeHander(Result.Failure(value))
+                }
                 break
             case .Failure(let error):
                 completeHander(Result.Failure(error))
@@ -43,7 +49,13 @@ public class LoginUserInfoViewModel: BaseApi{
         NetApi().makeCallBean(Alamofire.Method.POST, section: "/user/register", headers: [:], params: ["username": userName,"password":password,"device":"APP"]) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
-                completeHander(Result.Success(value))
+                if value.id.length != 0 {
+                    completeHander(Result.Success(value))
+                }
+                else
+                {
+                    completeHander(Result.Failure(value))
+                }
                 break
             case .Failure(let error):
                 completeHander(Result.Failure(error))

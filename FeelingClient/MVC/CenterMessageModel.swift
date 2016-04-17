@@ -57,6 +57,8 @@ public class MessageViewModel {
         return index == -1
     }
     
+    var address = ""
+    
     // new initializer
     public init(delegate: MessageViewModelDelegate) {
         self.delegate = delegate
@@ -75,6 +77,7 @@ public class MessageViewModel {
         msg.y = longitude
         msg.question = question
         msg.answer = answer
+        msg.address = address
         self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
                 case .Success(let value):

@@ -166,11 +166,9 @@ extension LoginViewController: LoginUserModelDelegate {
                     loader = PhotoUpLoader.init()//初始化图片上传
                     self.loginBtn.enabled = true
                     break;
-                case .Failure(let msg):
-                    print("\(msg)")
-                    
+                case .Failure(_):
                     self.view.hideToastActivity()
-                    self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                    self.view.makeToast("账号或者密码错误", duration: 1, position: .Center)
                     
                     self.loginBtn.enabled = true
                     break;

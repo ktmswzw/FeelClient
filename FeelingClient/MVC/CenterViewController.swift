@@ -22,7 +22,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     let locationManager = CLLocationManager()
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var address: AnimatableTextField!
-    @IBOutlet var textView: UITextView!
+    @IBOutlet var textView: KMPlaceholderTextView!
     var lockDate:String = ""
     @IBOutlet var openUser: UITextField!
     @IBOutlet var question: UITextField!
@@ -125,6 +125,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.burnAfterReading = readFire.on
         viewModel.question = self.question.text!
         viewModel.answer = self.answer.text!
+        viewModel.address = self.address.text!
         self.navigationController?.view.makeToastActivity(.Center)
         viewModel.sendMessage(self)
         

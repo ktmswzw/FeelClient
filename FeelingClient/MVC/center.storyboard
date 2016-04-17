@@ -91,11 +91,14 @@
                                             <constraint firstAttribute="height" constant="80" id="oG4-SQ-9ld"/>
                                         </constraints>
                                     </mapView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="这一刻的想法..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-WJ-8mT">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-WJ-8mT" customClass="KMPlaceholderTextView" customModule="FeelingClient" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="80" width="600" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="这一刻的想法"/>
+                                        </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textField opaque="NO" clipsSubviews="YES" alpha="0.84999999999999998" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="~~~~开启地点~~~~" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZPK-ZU-kxb" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="60" width="600" height="20"/>
@@ -544,7 +547,7 @@
                         <outlet property="readFire" destination="GgC-Rc-kJ9" id="bfh-sN-fH4"/>
                         <outlet property="stackView" destination="cam-CB-ydY" id="wWZ-3M-cBf"/>
                         <outlet property="switchHidden" destination="OaM-1f-xF1" id="sDd-hP-TMF"/>
-                        <outlet property="textView" destination="j5D-WJ-8mT" id="m53-H6-XQR"/>
+                        <outlet property="textView" destination="j5D-WJ-8mT" id="nMB-TT-Slh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9J-Yl-rp9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,7 +580,7 @@
         <!--Open Map View Controller-->
         <scene sceneID="ua5-r3-nXJ">
             <objects>
-                <viewController storyboardIdentifier="openmap" id="Uzy-mh-CyE" customClass="OpenMapViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="openmap" hidesBottomBarWhenPushed="YES" id="Uzy-mh-CyE" customClass="OpenMapViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iyU-OS-SmS"/>
                         <viewControllerLayoutGuide type="bottom" id="VhH-aJ-CxU"/>
@@ -587,10 +590,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Tv7-sd-7Ez">
-                                <rect key="frame" x="0.0" y="64" width="600" height="370"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="350"/>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BDh-RB-sIf">
-                                <rect key="frame" x="20" y="550" width="560" height="50"/>
+                                <rect key="frame" x="20" y="530" width="560" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8f9-wc-Rk3"/>
@@ -633,7 +636,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="距离小于100米开启密码" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-bF-AJW">
-                                <rect key="frame" x="20" y="442" width="560" height="100"/>
+                                <rect key="frame" x="20" y="422" width="560" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="2WO-sp-LgI"/>
@@ -653,7 +656,7 @@
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="leading" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="WLb-tP-h7f"/>
                             <constraint firstItem="BDh-RB-sIf" firstAttribute="top" secondItem="ZmY-bF-AJW" secondAttribute="bottom" constant="8" id="pZi-4y-CEx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tv7-sd-7Ez" secondAttribute="trailing" constant="-20" id="qxl-Yg-tda"/>
-                            <constraint firstItem="VhH-aJ-CxU" firstAttribute="top" secondItem="BDh-RB-sIf" secondAttribute="bottom" id="sd5-2g-OXq"/>
+                            <constraint firstItem="VhH-aJ-CxU" firstAttribute="top" secondItem="BDh-RB-sIf" secondAttribute="bottom" constant="20" id="sd5-2g-OXq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="xqQ-zg-2oB"/>
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" constant="8" symbolic="YES" id="yqx-PC-MD7"/>
                             <constraint firstItem="ZmY-bF-AJW" firstAttribute="top" secondItem="Tv7-sd-7Ez" secondAttribute="bottom" constant="8" id="zWO-OB-TBi"/>

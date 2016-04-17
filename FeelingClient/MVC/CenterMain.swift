@@ -102,9 +102,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
                 case .Success(let r):
                     self.msgscrentId = r as! String;
                     self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-                    sleep(1)
                     self.performSegueWithIdentifier("openOver", sender: self)
-
                     break;
                 case .Failure(let msg):
                     self.view.makeToast(msg as! String, duration: 1, position: .Center)
@@ -219,6 +217,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
             viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
             viewController.fromId = self.viewModel.fromId
             viewController.msgscrentId = self.msgscrentId
+            viewController.address = self.viewModel.address
         }
     }
     

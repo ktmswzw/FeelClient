@@ -29,7 +29,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var disposeBag = DisposeBag()
     var latitude = 0.0
     var longitude = 0.0
-    
+    var address = ""
     var photos: [String] = []
 
     @IBOutlet weak var imageCollection: UICollectionView!
@@ -51,7 +51,6 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         locationManager.startUpdatingLocation()
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
-        sleep(1)
         self.imageCollection.delegate = self
         self.imageCollection.dataSource = self
         
@@ -84,7 +83,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                 let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)
                 
                 self.distance = getDistinct(currentLocation, targetLocation: self.targetLocation)
-                self.distinctText.text = "距离开启地点约： \(Int(self.distance)) 米"
+                self.distinctText.text = "距离 \(self.address) 约： \(Int(self.distance)) 米"
                 if(self.distance<100){
                     self.isOk = true
                     self.arrival()
@@ -107,7 +106,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                     self.photos =  m.photos
                 }
                 self.imageCollection.reloadData()
-                
+                self.textView.text = m.content
                 break;
             case .Failure(let msg):
                 self.view.makeToast(msg as! String, duration: 1, position: .Center)

@@ -40,6 +40,7 @@
 		BF45B6B41C6C9DCF0027F63D /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF45B6B31C6C9DCF0027F63D /* center.storyboard */; };
 		BF45B6B61C6C9E2F0027F63D /* self.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF45B6B51C6C9E2F0027F63D /* self.storyboard */; };
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
+		BF5E5F961CC37EE300548DA5 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5E5F951CC37EE300548DA5 /* KMPlaceholderTextView.swift */; };
 		BF8CCACE1C6DEF0700C266B8 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8CCACD1C6DEF0700C266B8 /* login.storyboard */; };
 		BF8CCAD01C6DEF7C00C266B8 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */; };
 		BF9299181C72BBF400B6CD0B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */; };
@@ -128,6 +129,7 @@
 		BF5D8B3D1C705916002964D8 /* FeelingClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelingClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingClientTests.swift; sourceTree = "<group>"; };
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5E5F951CC37EE300548DA5 /* KMPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KMPlaceholderTextView.swift; path = common/extension/KMPlaceholderTextView.swift; sourceTree = "<group>"; };
 		BF8CCACD1C6DEF0700C266B8 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = MVC/login.storyboard; sourceTree = "<group>"; };
 		BF8CCACF1C6DEF7C00C266B8 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = main.storyboard; path = MVC/main.storyboard; sourceTree = "<group>"; };
 		BF9299171C72BBF400B6CD0B /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = MVC/FriendsViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				BF45B68F1C6C4E440027F63D /* UIButtonType.swift */,
 				BF45B6901C6C4E440027F63D /* UICircleImageView.swift */,
 				BF45B6911C6C4E440027F63D /* UIImageColors.swift */,
+				BF5E5F951CC37EE300548DA5 /* KMPlaceholderTextView.swift */,
 			);
 			name = updateSelf;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				BF45B6941C6C4E440027F63D /* UICircleImageView.swift in Sources */,
 				BF17104D1C6F809800003D6B /* ChatViewController.swift in Sources */,
 				BFD18E3B1C70A9F7002CF499 /* CenterViewController.swift in Sources */,
+				BF5E5F961CC37EE300548DA5 /* KMPlaceholderTextView.swift in Sources */,
 				BFA5507B1CB6B67F0097B06C /* UserInfoViewController.swift in Sources */,
 				BF1710491C6F75AB00003D6B /* NetApiAlamofire.swift in Sources */,
 				BFFCEAAC1C7887F60042EF11 /* AccountModel.swift in Sources */,
