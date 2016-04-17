@@ -32,6 +32,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var address = ""
     var photos: [String] = []
 
+    @IBOutlet var segmentButton: UISegmentedControl!
     @IBOutlet weak var imageCollection: UICollectionView!
     var isOk = false
     let locationManager = CLLocationManager()
@@ -39,6 +40,8 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var distance = 0.0 //两点距离
     
     let msg: MessageApi = MessageApi.defaultMessages
+    
+    var addressDict: [String : AnyObject]?
     
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
@@ -56,9 +59,26 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加好友", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.save))
+        self.navigationItem.rightBarButtonItem?.enabled = false
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         imageCollection!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "photo")
+        
+        let oneAnnotation = MyAnnotation()
+        oneAnnotation.coordinate = self.targetLocation.coordinate
+        mapView.addAnnotation(oneAnnotation)
+        
+    }
+    @IBAction func gotoNav(sender: AnyObject) {
+        openTransitDirectionsForCoordinates(self.targetLocation.coordinate, addressDictionary: [:])
+    }
+    
+    func openTransitDirectionsForCoordinates(
+        coord:CLLocationCoordinate2D,addressDictionary: [String : AnyObject]?) {
+        let placemark = MKPlacemark(coordinate: coord, addressDictionary: addressDictionary) // 1
+        let mapItem = MKMapItem(placemark: placemark)  // 2
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]  // 3
+        mapItem.openInMapsWithLaunchOptions(launchOptions)  // 4
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,13 +100,13 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 self.mapView.region = region
                 
-                let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)
-                
+                let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)                
                 self.distance = getDistinct(currentLocation, targetLocation: self.targetLocation)
                 self.distinctText.text = "距离 \(self.address) 约： \(Int(self.distance)) 米"
                 if(self.distance<100){
                     self.isOk = true
                     self.arrival()
+                    self.navigationItem.rightBarButtonItem?.enabled = true
                     self.distinctText.text = "已开启"
                 }
             })

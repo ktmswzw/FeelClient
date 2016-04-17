@@ -44,7 +44,7 @@ public class Messages:BaseApi {
     private func sendSelf(msg: MessageBean,path: String,complete: CompletionHandlerType)
     {
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        let params = ["to": msg.to, "limitDate":msg.limitDate, "content":msg.content,"question": msg.question, "answer": msg.answer, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
+        let params = ["to": msg.to, "limitDate":msg.limitDate, "address":msg.address, "content":msg.content,"question": msg.question, "answer": msg.answer, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
         NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] )
         {
             (result:BaseApi.Result) -> Void in

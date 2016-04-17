@@ -213,7 +213,9 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
                 for ass in controller.selectedImageAssets
                 {
                     let image = getAssetThumbnail(ass)
-                    self.viewModel.imageData.append(image)
+                    self.viewModel.imageDataThumbnail.append(image)
+                    let imageOr = getImageFromPHAsset(ass)
+                    self.viewModel.imageData.append(imageOr)
                 }
                 self.photoCollectionView.reloadData()
         }))
@@ -224,7 +226,9 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
                 for ass in controller.selectedImageAssets
                 {
                     let image = getAssetThumbnail(ass)
-                    self.viewModel.imageData.append(image)
+                    self.viewModel.imageDataThumbnail.append(image)
+                    let imageOr = getImageFromPHAsset(ass)
+                    self.viewModel.imageData.append(imageOr)
                 }
                 self.photoCollectionView.reloadData()
                 
@@ -247,7 +251,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
 
 extension CenterViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.imageData.count + 1
+        return self.viewModel.imageDataThumbnail.count + 1
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -261,11 +265,11 @@ extension CenterViewController: UICollectionViewDataSource, UICollectionViewDele
         
         switch indexPath.row {
             
-        case self.viewModel.imageData.count:
+        case self.viewModel.imageDataThumbnail.count:
             cell = collectionView.dequeueReusableCellWithReuseIdentifier("newCell", forIndexPath: indexPath)
         default:
             cell = collectionView.dequeueReusableCellWithReuseIdentifier("photo", forIndexPath: indexPath)
-            let imgV = UIImageView(image: self.viewModel.imageData[indexPath.row])
+            let imgV = UIImageView(image: self.viewModel.imageDataThumbnail[indexPath.row])
             imgV.frame = cell.frame
             cell.backgroundView = imgV
             cell.layer.cornerRadius = 5
@@ -279,7 +283,7 @@ extension CenterViewController: UICollectionViewDataSource, UICollectionViewDele
 extension CenterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        self.viewModel.imageData.append(image)
+        self.viewModel.imageDataThumbnail.append(image)
         photoCollectionView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -199,9 +199,10 @@ class SelfViewController: DesignableViewController {
             }, secondaryHandler: { _, numberOfPhotos in
                 for ass in controller.selectedImageAssets
                 {
-                    let image = getAssetThumbnail(ass)
+                    let image = getImageFromPHAsset(ass)
                     self.imageView.image = image
                     self.images.append(image)
+                    
                 }
         }))
         controller.addAction(ImagePickerAction(title: NSLocalizedString("相册", comment: "标题"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
@@ -210,7 +211,7 @@ class SelfViewController: DesignableViewController {
                 //print("Send \(controller.selectedImageAssets)")
                 for ass in controller.selectedImageAssets
                 {
-                    let image = getAssetThumbnail(ass)
+                    let image = getImageFromPHAsset(ass)
                     self.imageView.image = image
                     self.images.append(image)
                 }

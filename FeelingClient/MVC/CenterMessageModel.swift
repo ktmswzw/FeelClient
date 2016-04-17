@@ -51,6 +51,8 @@ public class MessageViewModel {
     
     var imageData = [UIImage]()
     
+    var imageDataThumbnail = [UIImage]()
+    
     private var index: Int = -1
     
     var isNew: Bool {
@@ -108,15 +110,15 @@ public class MessageViewModel {
                 map.removeAnnotations(map.annotations)
                 if let msgs = r  {
                     if(msgs.count==0){
-                        view.makeToast("未找到记录", duration: 2, position: .Center)
+                        view.makeToast("未找到你想要信件", duration: 2, position: .Center)
                     }
                     else{
                         for msg in r as! [MessageBean] {
                             let oneAnnotation = MyAnnotation()
                             
-                            oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()
+                            oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()// 转换火星地图
                             oneAnnotation.title =  "寄给：\(msg.to)"
-                            oneAnnotation.question = msg.question
+                            oneAnnotation.question = "问题：\(msg.question)"
                             oneAnnotation.id = msg.id
                             oneAnnotation.url = msg.avatar
                             oneAnnotation.fromId = msg.fromId
@@ -124,6 +126,8 @@ public class MessageViewModel {
                             self.annotationArray.append(oneAnnotation)
                         }
                         map.addAnnotations(self.annotationArray)
+                        
+                        view.makeToast("共找到 \(msgs.count) 封未开启蜜信", duration: 2, position: .Center)
                     }
                 }
                 view.hideToastActivity();

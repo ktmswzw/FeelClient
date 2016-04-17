@@ -16,7 +16,7 @@ import Foundation
     import RxCocoa
 #endif
 
-class PointUIView: UIView{
+class PointUIView: AnimatableView{
     
     var disposeBag = DisposeBag()
         var fromId = ""

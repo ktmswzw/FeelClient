@@ -24,6 +24,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
+    var temp_latitude = 0.0
+    var temp_longitude = 0.0
     var msgId = ""
     var to = ""
     var isOk = false
@@ -162,36 +164,27 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         selectedView = view;
+        
+//        self.navigationController?.view.makeToastActivity(.Center)
+        let pin = selectedView!.annotation! as! MyAnnotation
+        viewModel.msgId = pin.id as String
+        if let q:String = pin.subtitle  {
+            viewModel.question = q
+        }
+        if let t:String = pin.title {
+            viewModel.to = t
+        }
+        if let id:String = pin.fromId {
+            viewModel.fromId = id
+        }
+        self.temp_latitude = pin.coordinate.latitude
+        self.temp_longitude = pin.coordinate.longitude
+        
     }
     
     func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         selectedView = view;
     }
-    
-//    
-//    func didSelectAnnotationView(sender: UITapGestureRecognizer) {
-//        
-//        guard let pinView = sender.view as? MKAnnotationView else {
-//            return
-//        }
-//        
-//        if pinView == selectedView {
-//            self.navigationController?.view.makeToastActivity(.Center)
-//            let pin = pinView.annotation! as! MyAnnotation
-//            viewModel.msgId = pin.id as String
-//            //TODO
-//            if let q:String = pin.subtitle  {
-//                viewModel.question = q
-//            }
-//            if let t:String = pin.title {
-//                viewModel.to = t
-//            }
-//            if let id:String = pin.fromId {
-//                viewModel.fromId = id
-//            }
-//            self.performSegueWithIdentifier("open", sender: self)
-//        }
-//    }
     
     var selectedView: MKAnnotationView?
     
@@ -214,7 +207,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         }
         else if segue.identifier == "openOver" {
             let viewController = segue.destinationViewController as! OpenMapViewController
-            viewController.targetLocation = CLLocation(latitude: self.viewModel.latitude, longitude: self.viewModel.longitude)
+            
+            viewController.targetLocation = CLLocation(latitude: self.temp_latitude, longitude: self.temp_longitude)
             viewController.fromId = self.viewModel.fromId
             viewController.msgscrentId = self.msgscrentId
             viewController.address = self.viewModel.address
@@ -227,8 +221,6 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         
         latitude =  location!.coordinate.latitude
         longitude = location!.coordinate.longitude
-        
-        
         
         if(!isOk){
             

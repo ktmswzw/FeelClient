@@ -619,11 +619,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99999" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="he0-Yo-nzo" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                <rect key="frame" x="20" y="72" width="560" height="36"/>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="99999" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="he0-Yo-nzo" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                <rect key="frame" x="20" y="72" width="507" height="36"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="lzZ-wf-kt3"/>
+                                    <constraint firstAttribute="height" constant="36" id="zVE-5L-15r"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -635,7 +635,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="距离小于100米开启密码" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-bF-AJW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="距离小于100米开启密码和好友" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-bF-AJW">
                                 <rect key="frame" x="20" y="422" width="560" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -644,21 +644,42 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kP2-Vb-lts" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="535" y="72" width="45" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="0fU-AC-pks"/>
+                                </constraints>
+                                <state key="normal" title="导航">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gotoNav:" destination="Uzy-mh-CyE" eventType="touchUpInside" id="wds-O2-PmL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" constant="8" symbolic="YES" id="102-fC-dmv"/>
+                            <constraint firstItem="he0-Yo-nzo" firstAttribute="bottom" secondItem="kP2-Vb-lts" secondAttribute="bottom" id="1Xl-Yw-gd1"/>
+                            <constraint firstItem="kP2-Vb-lts" firstAttribute="leading" secondItem="he0-Yo-nzo" secondAttribute="trailing" constant="8" symbolic="YES" id="423-As-q8o"/>
                             <constraint firstItem="Tv7-sd-7Ez" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" id="8fc-OC-Wdv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="8zN-ur-hzA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BDh-RB-sIf" secondAttribute="trailing" id="EtI-9I-kDa"/>
                             <constraint firstItem="Tv7-sd-7Ez" firstAttribute="leading" secondItem="c2W-lX-Scb" secondAttribute="leadingMargin" constant="-20" id="HBh-qx-7NA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BDh-RB-sIf" secondAttribute="leading" id="I0F-Be-aDi"/>
-                            <constraint firstItem="he0-Yo-nzo" firstAttribute="trailing" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="S1S-oc-C0g"/>
-                            <constraint firstItem="he0-Yo-nzo" firstAttribute="leading" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="WLb-tP-h7f"/>
+                            <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="kP2-Vb-lts" secondAttribute="top" id="k68-rv-hfQ"/>
+                            <constraint firstItem="he0-Yo-nzo" firstAttribute="leading" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="nmI-f2-UD3"/>
                             <constraint firstItem="BDh-RB-sIf" firstAttribute="top" secondItem="ZmY-bF-AJW" secondAttribute="bottom" constant="8" id="pZi-4y-CEx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tv7-sd-7Ez" secondAttribute="trailing" constant="-20" id="qxl-Yg-tda"/>
                             <constraint firstItem="VhH-aJ-CxU" firstAttribute="top" secondItem="BDh-RB-sIf" secondAttribute="bottom" constant="20" id="sd5-2g-OXq"/>
+                            <constraint firstItem="kP2-Vb-lts" firstAttribute="trailing" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="w6U-dP-eqm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="xqQ-zg-2oB"/>
-                            <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" constant="8" symbolic="YES" id="yqx-PC-MD7"/>
                             <constraint firstItem="ZmY-bF-AJW" firstAttribute="top" secondItem="Tv7-sd-7Ez" secondAttribute="bottom" constant="8" id="zWO-OB-TBi"/>
                         </constraints>
                     </view>

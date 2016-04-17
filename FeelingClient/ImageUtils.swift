@@ -12,16 +12,28 @@ import UIKit
 import ObjectMapper
 
 
+func getImageFromPHAsset(asset: PHAsset) -> UIImage {
+    let manager = PHImageManager.defaultManager()
+    let option = PHImageRequestOptions()
+    var thumbnail = UIImage()
+    option.synchronous = true
+    manager.requestImageForAsset(asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+        thumbnail = result!
+    })
+    return thumbnail
+}
+
 func getAssetThumbnail(asset: PHAsset) -> UIImage {
     let manager = PHImageManager.defaultManager()
     let option = PHImageRequestOptions()
     var thumbnail = UIImage()
     option.synchronous = true
-    manager.requestImageForAsset(asset, targetSize: CGSize(width: 50.0, height: 50.0), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+    manager.requestImageForAsset(asset, targetSize: CGSize(width: 50, height: 50), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
         thumbnail = result!
     })
     return thumbnail
 }
+
 
 func imageResize (image:UIImage, sizeChange:CGSize)-> UIImage{
     
