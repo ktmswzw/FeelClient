@@ -53,7 +53,7 @@
                                         <constraint firstAttribute="height" constant="10" id="cEr-ZO-rde"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="提示：妖精是谁" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIy-BJ-XuU" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="提示：" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZIy-BJ-XuU" customClass="AnimatableTextField" customModule="IBAnimatable">
                                     <rect key="frame" x="0.0" y="10" width="220" height="45"/>
                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>

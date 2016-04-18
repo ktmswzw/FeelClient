@@ -142,6 +142,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
                         jwt.appUsername = self.viewModel.userName
                         jwt.appPwd = self.viewModel.password
                         jwt.userId = userInfo.id
+                        jwt.userName = userInfo.nickname
                         self.database.addObject(userInfo, update: true)
                         self.view.hideToastActivity()
                         self.view.makeToast("注册成功", duration: 1, position: .Center)

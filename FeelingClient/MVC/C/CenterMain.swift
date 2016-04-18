@@ -88,7 +88,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
             self.presentViewController(aleat, animated: true, completion: nil)
         }
         else{
-            self.view.makeToast("定位中", duration: 2, position: .Center)
+            self.searchMsg(jwt.userName)
         }
     }
     

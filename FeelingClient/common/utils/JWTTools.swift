@@ -21,6 +21,7 @@ class JWTTools {
     let AUTHORIZATION_STR: String = "Authorization"
     let IMTOKENTEMP: String = "IMTOKENTEMP"
     let USERID: String = "FEELING_USERID"
+    let USERINFO: String = "FEELING_USERINFO"
     
     var appUsername: String {
         get {
@@ -116,6 +117,20 @@ class JWTTools {
         }
         set {
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERID)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    var userName: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERINFO) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERINFO)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }

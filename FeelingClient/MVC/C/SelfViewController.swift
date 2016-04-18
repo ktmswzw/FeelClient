@@ -55,7 +55,9 @@ class SelfViewController: DesignableViewController {
             self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             self.name.text = userinfo.nickname
             self.motto.text = userinfo.motto
-            self.username.text = userinfo.phone
+            if userinfo.register {
+                self.username.text = userinfo.phone
+            }
             self.segment.selectedSegmentIndex = getSex(userinfo.sex)
             self.viewModel.sex = userinfo.sex
         }
@@ -120,7 +122,6 @@ class SelfViewController: DesignableViewController {
             else{
                 self.save()
             }
-        
     }
     
     func save()

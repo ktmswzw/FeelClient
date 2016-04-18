@@ -727,7 +727,7 @@
                                     <action selector="goBack:" destination="0o2-Zk-crR" eventType="touchUpInside" id="83M-zh-0cq"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpF-zc-g4M">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpF-zc-g4M">
                                 <rect key="frame" x="20" y="66" width="560" height="514"/>
                             </imageView>
                         </subviews>

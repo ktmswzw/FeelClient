@@ -64,6 +64,7 @@ class UserInfo : BaseModel {
         region <- map["region"]
         sex <- map["sex"]
         id <- map["id"]
+        register <- map["register"]
         motto <- map["motto"]
         IMToken <- map["imtoken"]
         JWTToken <- map["jwttoken"]
@@ -87,6 +88,7 @@ class UserInfo : BaseModel {
     /// 用户id
     var id = ""
     var motto = ""
+    var register = true
     
     //聊天im
     var IMToken = ""

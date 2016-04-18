@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sQ0-jD-cNc">
-                                <rect key="frame" x="20" y="72" width="560" height="376"/>
+                                <rect key="frame" x="20" y="112" width="560" height="376"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-Xr-fNf" customClass="AnimatableView" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="130"/>
@@ -181,6 +181,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="f8F-0T-C2H" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="314" id="6re-yB-NSu"/>
+                                    <constraint firstAttribute="height" constant="376" id="PQl-iE-Enk"/>
                                     <constraint firstItem="SlW-ro-pA8" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="130" id="ScR-zU-zLn"/>
                                     <constraint firstItem="CPS-zV-OWF" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="252" id="cbj-lf-Ajj"/>
                                     <constraint firstItem="yKy-5A-36L" firstAttribute="top" secondItem="SlW-ro-pA8" secondAttribute="bottom" constant="1" id="tmX-2d-N6l"/>
@@ -196,13 +197,17 @@
                         <constraints>
                             <constraint firstItem="sQ0-jD-cNc" firstAttribute="leading" secondItem="Dyp-Hb-jbD" secondAttribute="leadingMargin" id="1va-7X-t3K"/>
                             <constraint firstAttribute="bottom" secondItem="sQ0-jD-cNc" secondAttribute="bottom" constant="214" id="Kk3-1g-rRr"/>
+                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="centerY" secondItem="Dyp-Hb-jbD" secondAttribute="centerY" id="McO-Fr-SSK"/>
                             <constraint firstItem="sQ0-jD-cNc" firstAttribute="trailing" secondItem="Dyp-Hb-jbD" secondAttribute="trailingMargin" id="UOb-8d-cK9"/>
+                            <constraint firstItem="sQ0-jD-cNc" firstAttribute="centerX" secondItem="Dyp-Hb-jbD" secondAttribute="centerX" id="YgM-lf-mcG"/>
                             <constraint firstItem="5e7-8b-qoX" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="bottom" constant="103" id="e2p-WG-OGw"/>
                             <constraint firstItem="sQ0-jD-cNc" firstAttribute="top" secondItem="aOU-Na-HYi" secondAttribute="bottom" constant="8" symbolic="YES" id="q08-qP-GoA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Kk3-1g-rRr"/>
+                                <exclude reference="q08-qP-GoA"/>
+                                <exclude reference="e2p-WG-OGw"/>
                             </mask>
                         </variation>
                     </view>

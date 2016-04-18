@@ -37,14 +37,16 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         let blurredImage = image!.imageByApplyingBlurWithRadius(8)
         self.view.layer.contents = blurredImage.CGImage
         
-        let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "new")!)
+        let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
         register.action = { item in
             self.performSegueWithIdentifier("register", sender: self)
         }
-        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "new")!)
-        forget.action = { item in }
+        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "readfire")!)
+        forget.action = { item in
+            self.view.makeToast("老板没给发薪，程序员罢工了", duration: 1, position: .Center)
+        }
         
-        actionButton = ActionButton(attachedToView: self.view, items: [register])
+        actionButton = ActionButton(attachedToView: self.view, items: [register,forget])
         actionButton.action = { button in button.toggleMenu() }
         actionButton.setImage(UIImage(named: "new"), forState: .Normal)
         actionButton.backgroundColor = UIColor.lightGrayColor()
@@ -68,44 +70,45 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         let password = "123456"
         self.viewModel.password = password.md5()!
         
-//        self.viewModel.register({ (r:BaseApi.Result) in
-//            switch (r) {
-//            case .Success(let r):
-//                if let userInfo = r as? UserInfo {
-//                    self.userinfo = userInfo
-//                    jwt.jwtTemp = userInfo.JWTToken
-//                    jwt.imToken = userInfo.IMToken
-//                    jwt.appUsername = self.viewModel.userName
-//                    jwt.appPwd = self.viewModel.password
-//                    jwt.userId = userInfo.id
-//                    self.database.addObject(userInfo, update: true)
-//                    self.view.hideToastActivity()
-//                    self.view.makeToast("注册成功", duration: 1, position: .Center)
-//                    
-//                    self.performSegueWithIdentifier("login", sender: self)
-//                }
-//                if jwt.imToken.length != 0 {
-//                    RCIM.sharedRCIM().connectWithToken(jwt.imToken,
-//                        success: { (userId) -> Void in
-//                            //设置当前登陆用户的信息
-//                            RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
-//                        }, error: { (status) -> Void in
-//                            self.view.hideToastActivity()
-//                        }, tokenIncorrect: {
-//                            print("token错误")
-//                    })
-//                }
-//                loader = PhotoUpLoader.init()//初始化图片上传
-//                break;
-//            case .Failure(let msg):
-//                print("\(msg)")
-//                
-//                self.view.hideToastActivity()
-//                self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
-//                
-//                break;
-//            }
-//        })
+        self.viewModel.register({ (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(let r):
+                if let userInfo = r as? UserInfo {
+                    self.userinfo = userInfo
+                    jwt.jwtTemp = userInfo.JWTToken
+                    jwt.imToken = userInfo.IMToken
+                    jwt.appUsername = self.viewModel.userName
+                    jwt.appPwd = self.viewModel.password
+                    jwt.userId = userInfo.id
+                    jwt.userName = userInfo.nickname
+                    self.database.addObject(userInfo, update: true)
+                    self.view.hideToastActivity()
+                    self.view.makeToast("默认注册成功，密码123456", duration: 1, position: .Center)
+                    
+                    self.performSegueWithIdentifier("login", sender: self)
+                }
+                if jwt.imToken.length != 0 {
+                    RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+                        success: { (userId) -> Void in
+                            //设置当前登陆用户的信息
+                            RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
+                        }, error: { (status) -> Void in
+                            self.view.hideToastActivity()
+                        }, tokenIncorrect: {
+                            print("token错误")
+                    })
+                }
+                loader = PhotoUpLoader.init()//初始化图片上传
+                break;
+            case .Failure(let msg):
+                print("\(msg)")
+                
+                self.view.hideToastActivity()
+                self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                
+                break;
+            }
+        })
 
     }
     
@@ -196,6 +199,7 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.appUsername = self.viewModel.userName
                         jwt.appPwd = self.viewModel.password
                         jwt.userId = userInfo.id
+                        jwt.userName = userInfo.nickname
                         self.database.asyncAddObject(self.userinfo) { (result) -> Void in
                             if let error = result.error {
                                 self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
@@ -224,9 +228,9 @@ extension LoginViewController: LoginUserModelDelegate {
                     loader = PhotoUpLoader.init()//初始化图片上传
                     self.loginBtn.enabled = true
                     break;
-                case .Failure(_):
+                case .Failure(let message):
                     self.view.hideToastActivity()
-                    self.view.makeToast("服务器失败，账号或者密码错误", duration: 1, position: .Center)
+                    self.view.makeToast("\(message!)", duration: 1, position: .Center)
                     
                     self.loginBtn.enabled = true
                     break;

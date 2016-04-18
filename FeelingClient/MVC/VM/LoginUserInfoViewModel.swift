@@ -34,11 +34,11 @@ public class LoginUserInfoViewModel: BaseApi{
                 }
                 else
                 {
-                    completeHander(Result.Failure(value))
+                    completeHander(Result.Failure("账号或者密码错误"))
                 }
                 break
-            case .Failure(let error):
-                completeHander(Result.Failure(error))
+            case .Failure(_):
+                completeHander(Result.Failure("服务器离家出走，攻城狮在奋斗"))
                 break
             }
 
