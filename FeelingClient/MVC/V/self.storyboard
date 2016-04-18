@@ -111,12 +111,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="self"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="sign"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftImageLeftPadding">
-                                                <real key="value" value="20"/>
+                                                <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">
-                                                <real key="value" value="20"/>
+                                                <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -227,5 +227,6 @@
     </scenes>
     <resources>
         <image name="self" width="22" height="22"/>
+        <image name="sign" width="33" height="33"/>
     </resources>
 </document>

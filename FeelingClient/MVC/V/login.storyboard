@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJg-yT-rx4" customClass="AnimatableStackView" customModule="IBAnimatable">
-                                <rect key="frame" x="20" y="260" width="560" height="181"/>
+                                <rect key="frame" x="20" y="210" width="560" height="181"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
@@ -87,7 +87,7 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhS-Y0-UN8">
-                                <rect key="frame" x="20" y="80" width="560" height="120"/>
+                                <rect key="frame" x="20" y="82" width="560" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND U MEMORISE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
                                         <rect key="frame" x="0.0" y="39" width="560" height="41"/>
@@ -117,10 +117,19 @@
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="centerX" secondItem="F5S-vp-eLo" secondAttribute="centerX" id="6EA-Pl-uTX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hhS-Y0-UN8" secondAttribute="trailing" id="9zD-Jz-1S8"/>
                             <constraint firstAttribute="leadingMargin" secondItem="hhS-Y0-UN8" secondAttribute="leading" id="D5l-Ee-ZaZ"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerY" secondItem="F5S-vp-eLo" secondAttribute="centerY" id="EDo-SZ-U6H"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="8" symbolic="YES" id="PCs-rw-i7B"/>
                             <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="60" id="RlW-ei-9FU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bJg-yT-rx4" secondAttribute="trailing" id="Rmo-mV-TJX"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="top" secondItem="9WW-tc-v7g" secondAttribute="bottom" constant="60" id="fvr-P6-WV1"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerX" secondItem="F5S-vp-eLo" secondAttribute="centerX" id="s8X-ps-cNy"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fvr-P6-WV1"/>
+                                <exclude reference="RlW-ei-9FU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <userDefinedRuntimeAttributes>
