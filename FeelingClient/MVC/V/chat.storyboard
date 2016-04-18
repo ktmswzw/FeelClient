@@ -35,9 +35,6 @@
                     <navigationItem key="navigationItem" id="Sv4-Yu-fbd"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="lightStatusBar" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6z-Sg-yrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

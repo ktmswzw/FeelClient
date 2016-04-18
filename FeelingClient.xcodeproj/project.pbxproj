@@ -303,7 +303,6 @@
 			children = (
 				BF45B6A11C6C4E730027F63D /* Common */,
 				BF45B6881C6C4C490027F63D /* resource */,
-				BF45B6871C6C4C310027F63D /* Other */,
 				BF45B6861C6C4C100027F63D /* MVVM */,
 				BF45B6851C6C4B890027F63D /* ThirdParty */,
 			);
@@ -330,20 +329,13 @@
 			name = MVVM;
 			sourceTree = "<group>";
 		};
-		BF45B6871C6C4C310027F63D /* Other */ = {
+		BF45B6881C6C4C490027F63D /* resource */ = {
 			isa = PBXGroup;
 			children = (
 				BF45B67F1C6C38760027F63D /* Info.plist */,
 				BF45B6701C6C38760027F63D /* AppDelegate.swift */,
 				BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */,
 				BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */,
-			);
-			name = Other;
-			sourceTree = "<group>";
-		};
-		BF45B6881C6C4C490027F63D /* resource */ = {
-			isa = PBXGroup;
-			children = (
 				BF45B6A81C6C4EE00027F63D /* Supporting Files */,
 				BF45B67A1C6C38760027F63D /* Assets.xcassets */,
 			);
