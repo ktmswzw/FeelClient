@@ -18,6 +18,7 @@ class SelfViewController: DesignableViewController {
     var viewModel: UserInfoViewModel!    
     @IBOutlet weak var imageView: AnimatableImageView!
     @IBOutlet weak var name: AnimatableTextField!
+    @IBOutlet weak var username: AnimatableTextField!
     @IBOutlet weak var motto: AnimatableTextField!
     @IBOutlet weak var segment: UISegmentedControl!
     
@@ -54,6 +55,7 @@ class SelfViewController: DesignableViewController {
             self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             self.name.text = userinfo.nickname
             self.motto.text = userinfo.motto
+            self.username.text = userinfo.phone
             self.segment.selectedSegmentIndex = getSex(userinfo.sex)
             self.viewModel.sex = userinfo.sex
         }

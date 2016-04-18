@@ -11,17 +11,22 @@ import IBAnimatable
 import SwiftyJSON
 import Alamofire
 import SwiftyDB
-
+#if !RX_NO_MODULE
+    import RxSwift
+    import RxCocoa
+#endif
 class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
+    @IBOutlet var lookAny: UIButton!
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
     
+    var disposeBag = DisposeBag()
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
     
@@ -47,9 +52,62 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         username.delegate = self
         password.delegate = self
         
-        viewModel = LoginUserInfoViewModel(delegate: self)        
+        viewModel = LoginUserInfoViewModel(delegate: self)
+        
+        lookAny.rx_tap
+            .subscribeNext { [weak self] in self?.registerDervice() }
+            .addDisposableTo(disposeBag)
     }
     
+    func registerDervice()
+    {
+        self.view.makeToastActivity(.Center)
+        
+        let uuid = UIDevice.currentDevice().identifierForVendor!.UUIDString
+        self.viewModel.userName = uuid
+        let password = "123456"
+        self.viewModel.password = password.md5()!
+        
+//        self.viewModel.register({ (r:BaseApi.Result) in
+//            switch (r) {
+//            case .Success(let r):
+//                if let userInfo = r as? UserInfo {
+//                    self.userinfo = userInfo
+//                    jwt.jwtTemp = userInfo.JWTToken
+//                    jwt.imToken = userInfo.IMToken
+//                    jwt.appUsername = self.viewModel.userName
+//                    jwt.appPwd = self.viewModel.password
+//                    jwt.userId = userInfo.id
+//                    self.database.addObject(userInfo, update: true)
+//                    self.view.hideToastActivity()
+//                    self.view.makeToast("注册成功", duration: 1, position: .Center)
+//                    
+//                    self.performSegueWithIdentifier("login", sender: self)
+//                }
+//                if jwt.imToken.length != 0 {
+//                    RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+//                        success: { (userId) -> Void in
+//                            //设置当前登陆用户的信息
+//                            RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
+//                        }, error: { (status) -> Void in
+//                            self.view.hideToastActivity()
+//                        }, tokenIncorrect: {
+//                            print("token错误")
+//                    })
+//                }
+//                loader = PhotoUpLoader.init()//初始化图片上传
+//                break;
+//            case .Failure(let msg):
+//                print("\(msg)")
+//                
+//                self.view.hideToastActivity()
+//                self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+//                
+//                break;
+//            }
+//        })
+
+    }
     
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField === username) {

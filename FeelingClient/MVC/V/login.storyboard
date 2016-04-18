@@ -24,7 +24,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="jTB-Xr-uTJ"/>
+                                            <constraint firstAttribute="height" constant="60" id="JJ5-7Q-tgP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -44,14 +44,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiU-mO-ZYt">
                                         <rect key="frame" x="0.0" y="60" width="560" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="iXJ-d4-YHk"/>
-                                        </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-dj-LsK" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="61" width="560" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="eS1-uT-OiR"/>
+                                            <constraint firstAttribute="height" constant="60" id="SkJ-S9-DtZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -68,12 +65,9 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ie-5W-rG5" customClass="AnimatableButton" customModule="IBAnimatable">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ie-5W-rG5">
                                         <rect key="frame" x="0.0" y="121" width="560" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="gN1-UI-Ar1"/>
-                                        </constraints>
                                         <state key="normal" title="登陆">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -82,6 +76,10 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="yWq-dj-LsK" firstAttribute="centerY" secondItem="bJg-yT-rx4" secondAttribute="centerY" id="CPx-na-Gmi"/>
+                                    <constraint firstAttribute="height" constant="181" id="RgR-WO-Waa"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Shake"/>
                                 </userDefinedRuntimeAttributes>
@@ -90,7 +88,7 @@
                                 <rect key="frame" x="20" y="82" width="560" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND U MEMORISE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
-                                        <rect key="frame" x="0.0" y="39" width="560" height="41"/>
+                                        <rect key="frame" x="0.0" y="38" width="560" height="45"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="40"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -98,11 +96,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ynr-Cz-286" secondAttribute="trailing" id="EIR-ah-Ugy"/>
-                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="centerY" secondItem="hhS-Y0-UN8" secondAttribute="centerY" id="Ira-2w-xrA"/>
-                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="top" constant="39" id="NAp-7R-der"/>
-                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="leading" secondItem="hhS-Y0-UN8" secondAttribute="leading" id="fd5-GQ-ANJ"/>
-                                    <constraint firstAttribute="height" constant="120" id="sUG-d6-x8M"/>
+                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="leading" secondItem="hhS-Y0-UN8" secondAttribute="leading" id="3Y1-tN-1YP"/>
+                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="top" constant="38" id="O58-SX-hIy"/>
+                                    <constraint firstItem="Ynr-Cz-286" firstAttribute="centerY" secondItem="hhS-Y0-UN8" secondAttribute="centerY" id="R5H-hx-idp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ynr-Cz-286" secondAttribute="trailing" id="nuj-yp-0ft"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
@@ -110,26 +107,27 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfa-X4-LBR">
+                                <rect key="frame" x="254" y="567" width="92" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Gm8-PM-w9X"/>
+                                    <constraint firstAttribute="width" constant="92" id="NoU-cm-SsU"/>
+                                </constraints>
+                                <state key="normal" title="随便看看"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bJg-yT-rx4" firstAttribute="leading" secondItem="F5S-vp-eLo" secondAttribute="leadingMargin" id="4ni-ZF-f6N"/>
-                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="centerX" secondItem="F5S-vp-eLo" secondAttribute="centerX" id="6EA-Pl-uTX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hhS-Y0-UN8" secondAttribute="trailing" id="9zD-Jz-1S8"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="hhS-Y0-UN8" secondAttribute="leading" id="D5l-Ee-ZaZ"/>
-                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerY" secondItem="F5S-vp-eLo" secondAttribute="centerY" id="EDo-SZ-U6H"/>
-                            <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="8" symbolic="YES" id="PCs-rw-i7B"/>
-                            <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="60" id="RlW-ei-9FU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bJg-yT-rx4" secondAttribute="trailing" id="Rmo-mV-TJX"/>
-                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="top" secondItem="9WW-tc-v7g" secondAttribute="bottom" constant="60" id="fvr-P6-WV1"/>
-                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerX" secondItem="F5S-vp-eLo" secondAttribute="centerX" id="s8X-ps-cNy"/>
+                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="top" secondItem="9WW-tc-v7g" secondAttribute="bottom" constant="62" id="1DJ-ji-QZf"/>
+                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="bJg-yT-rx4" secondAttribute="leading" id="Fln-Yd-5jq"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerX" secondItem="Dfa-X4-LBR" secondAttribute="centerX" id="Paa-Vb-xEp"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="centerY" secondItem="F5S-vp-eLo" secondAttribute="centerY" id="UwF-l2-LgK"/>
+                            <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="8" symbolic="YES" id="avG-LA-wdK"/>
+                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="F5S-vp-eLo" secondAttribute="leadingMargin" id="hFZ-0t-T3H"/>
+                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="F5S-vp-eLo" secondAttribute="trailingMargin" id="hlL-DO-zT4"/>
+                            <constraint firstItem="LH4-NU-pi9" firstAttribute="top" secondItem="Dfa-X4-LBR" secondAttribute="bottom" constant="8" symbolic="YES" id="m2I-K1-R7t"/>
+                            <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="bJg-yT-rx4" secondAttribute="trailing" id="tse-Kb-N9h"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="fvr-P6-WV1"/>
-                                <exclude reference="RlW-ei-9FU"/>
-                            </mask>
-                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <userDefinedRuntimeAttributes>
@@ -140,6 +138,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="loginBtn" destination="4Ie-5W-rG5" id="y9c-yx-bhy"/>
+                        <outlet property="lookAny" destination="Dfa-X4-LBR" id="bPj-No-mh9"/>
                         <outlet property="password" destination="yWq-dj-LsK" id="9Zu-iQ-376"/>
                         <outlet property="username" destination="Okb-KY-gBB" id="Yca-i0-Fdq"/>
                         <segue destination="pjJ-Nw-vue" kind="show" identifier="login" id="gEt-GL-UXG"/>

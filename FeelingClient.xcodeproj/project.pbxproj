@@ -373,12 +373,12 @@
 		BF45B68B1C6C4C820027F63D /* C */ = {
 			isa = PBXGroup;
 			children = (
+				BF9F9B201CC4804D00795464 /* LoginViewController.swift */,
 				BF9F9B1B1CC4804D00795464 /* CenterMain.swift */,
 				BF9F9B1C1CC4804D00795464 /* CenterViewController.swift */,
 				BF9F9B1D1CC4804D00795464 /* ChatViewController.swift */,
 				BF9F9B1E1CC4804D00795464 /* FriendsViewController.swift */,
 				BF9F9B1F1CC4804D00795464 /* FriendTabelViewCell.swift */,
-				BF9F9B201CC4804D00795464 /* LoginViewController.swift */,
 				BF9F9B211CC4804D00795464 /* OpenMapViewController.swift */,
 				BF9F9B221CC4804D00795464 /* PointUIView.swift */,
 				BF9F9B231CC4804D00795464 /* RegisterViewController.swift */,
