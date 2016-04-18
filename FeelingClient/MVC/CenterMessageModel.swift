@@ -116,6 +116,7 @@ public class MessageViewModel {
                         for msg in r as! [MessageBean] {
                             let oneAnnotation = MyAnnotation()
                             
+                            oneAnnotation.original_coordinate = CLLocationCoordinate2DMake(msg.y, msg.x)
                             oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()// 转换火星地图
                             oneAnnotation.title =  "寄给：\(msg.to)"
                             oneAnnotation.question = "问题：\(msg.question)"

@@ -177,8 +177,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         if let id:String = pin.fromId {
             viewModel.fromId = id
         }
-        self.temp_latitude = pin.coordinate.latitude
-        self.temp_longitude = pin.coordinate.longitude
+        self.temp_latitude = pin.original_coordinate!.latitude
+        self.temp_longitude = pin.original_coordinate!.longitude
         
     }
     

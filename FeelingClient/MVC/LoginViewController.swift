@@ -168,7 +168,7 @@ extension LoginViewController: LoginUserModelDelegate {
                     break;
                 case .Failure(_):
                     self.view.hideToastActivity()
-                    self.view.makeToast("账号或者密码错误", duration: 1, position: .Center)
+                    self.view.makeToast("服务器失败，账号或者密码错误", duration: 1, position: .Center)
                     
                     self.loginBtn.enabled = true
                     break;
