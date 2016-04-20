@@ -11,6 +11,7 @@ import IBAnimatable
 import SwiftyJSON
 import Alamofire
 import SwiftyDB
+import Gifu
 #if !RX_NO_MODULE
     import RxSwift
     import RxCocoa
@@ -18,6 +19,7 @@ import SwiftyDB
 class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     
+    @IBOutlet weak var gifView: Gifu.AnimatableImageView!
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
@@ -33,9 +35,11 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: "lonely-children")
-        let blurredImage = image!.imageByApplyingBlurWithRadius(8)
-        self.view.layer.contents = blurredImage.CGImage
+//        let image = UIImage(named: "lonely-children")
+//        let blurredImage = image!.imageByApplyingBlurWithRadius(8)
+//        self.view.layer.contents = blurredImage.CGImage
+        
+        gifView.animateWithImage(named: "mugen.gif")
         
         let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
         register.action = { item in
@@ -183,6 +187,14 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     }
     
     
+    @IBAction func tapImage(sender: AnyObject) {
+        
+        if gifView.isAnimatingGIF {
+            gifView.stopAnimatingGIF()
+        } else {
+            gifView.startAnimatingGIF()
+        }
+    }
     
 }
 

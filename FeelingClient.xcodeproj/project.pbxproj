@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
+		BF0C8BD71CC6F84B000BB87B /* mugen.gif in Resources */ = {isa = PBXBuildFile; fileRef = BF0C8BD61CC6F84B000BB87B /* mugen.gif */; };
 		BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6701C6C38760027F63D /* AppDelegate.swift */; };
 		BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */; };
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 
 /* Begin PBXFileReference section */
 		37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF0C8BD61CC6F84B000BB87B /* mugen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mugen.gif; sourceTree = "<group>"; };
 		BF45B66D1C6C38760027F63D /* FeelingClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF45B6701C6C38760027F63D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF45B6781C6C38760027F63D /* FeelingClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelingClient.xcdatamodel; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		BF45B6881C6C4C490027F63D /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				BF0C8BD61CC6F84B000BB87B /* mugen.gif */,
 				BF45B67F1C6C38760027F63D /* Info.plist */,
 				BF45B6701C6C38760027F63D /* AppDelegate.swift */,
 				BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */,
@@ -534,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF9F9B161CC47FB300795464 /* login.storyboard in Resources */,
+				BF0C8BD71CC6F84B000BB87B /* mugen.gif in Resources */,
 				BF9F9B361CC4808400795464 /* Localizable.strings in Resources */,
 				BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */,
 				BF9F9B131CC47FB300795464 /* center.storyboard in Resources */,

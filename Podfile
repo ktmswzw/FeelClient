@@ -24,6 +24,8 @@ pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 #网络图片获取及缓存
 pod 'HanekeSwift'
+pod 'Gifu'
+
 #IMCHAT
 pod 'RongCloudIMKit', '2.4.11'
 #响应编程
@@ -31,7 +33,6 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxBlocking'
 pod 'RxAlamofire'
-
 post_install do |installer|
     installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
         configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
