@@ -27,7 +27,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
-    
+    var gifList = ["boll","girl","night"]
     var disposeBag = DisposeBag()
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
@@ -35,11 +35,11 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let image = UIImage(named: "lonely-children")
-//        let blurredImage = image!.imageByApplyingBlurWithRadius(8)
-//        self.view.layer.contents = blurredImage.CGImage
         
-        gifView.animateWithImage(named: "mugen.gif")
+        let diceFaceCount: UInt32 = 3
+        let randomRoll = Int(arc4random_uniform(diceFaceCount))
+        
+        gifView.animateWithImage(named: "\(gifList[randomRoll]).gif")
         
         let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
         register.action = { item in
