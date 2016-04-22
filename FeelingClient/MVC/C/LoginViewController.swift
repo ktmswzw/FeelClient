@@ -12,10 +12,6 @@ import SwiftyJSON
 import Alamofire
 import SwiftyDB
 import Gifu
-#if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
-#endif
 class LoginViewController: DesignableViewController,UITextFieldDelegate {
     
     
@@ -23,12 +19,10 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
-    @IBOutlet var lookAny: UIButton!
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
     var gifList = ["boll","girl","night"]
-    var disposeBag = DisposeBag()
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
     
@@ -40,7 +34,11 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         let randomRoll = Int(arc4random_uniform(diceFaceCount))
         
         gifView.animateWithImage(named: "\(gifList[randomRoll]).gif")
-        
+                
+        let lookAnyWhere = ActionButtonItem(title: "随便看看", image: UIImage(named: "address")!)
+        lookAnyWhere.action = { item in
+            self.registerDervice()
+        }
         let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
         register.action = { item in
             self.performSegueWithIdentifier("register", sender: self)
@@ -50,19 +48,17 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
             self.view.makeToast("老板没给发薪，程序员罢工了", duration: 1, position: .Center)
         }
         
-        actionButton = ActionButton(attachedToView: self.view, items: [register,forget])
+        actionButton = ActionButton(attachedToView: self.view, items: [register,lookAnyWhere,forget])
         actionButton.action = { button in button.toggleMenu() }
         actionButton.setImage(UIImage(named: "new"), forState: .Normal)
         actionButton.backgroundColor = UIColor.lightGrayColor()
+        
         
         username.delegate = self
         password.delegate = self
         
         viewModel = LoginUserInfoViewModel(delegate: self)
         
-        lookAny.rx_tap
-            .subscribeNext { [weak self] in self?.registerDervice() }
-            .addDisposableTo(disposeBag)
     }
     
     func registerDervice()
