@@ -27,7 +27,7 @@ pod 'HanekeSwift'
 pod 'Gifu'
 
 #IMCHAT
-pod 'RongCloudIMKit', '2.5.0'
+pod 'RongCloudIMKit', '2.4.11'
 #响应编程
 pod 'RxSwift'
 pod 'RxCocoa'

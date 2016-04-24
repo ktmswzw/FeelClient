@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rc3-oE-rRP">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -19,20 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sQ0-jD-cNc">
-                                <rect key="frame" x="20" y="112" width="560" height="376"/>
+                                <rect key="frame" x="20" y="97" width="560" height="406"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xj6-Xr-fNf" customClass="AnimatableView" customModule="IBAnimatable">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U1Y-qZ-geq" customClass="AnimatableImageView" customModule="IBAnimatable">
-                                                <rect key="frame" x="220" y="5" width="120" height="120"/>
+                                                <rect key="frame" x="235" y="5" width="90" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="Cni-fH-F6C"/>
+                                                    <constraint firstAttribute="width" constant="90" id="byK-lx-pnX"/>
+                                                    <constraint firstAttribute="height" constant="90" id="iyv-X9-U4T"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Shake"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="60"/>
+                                                        <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
                                                         <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -44,6 +45,11 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Cni-fH-F6C"/>
+                                                    </mask>
+                                                </variation>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -66,6 +72,13 @@
                                                 <exclude reference="ewl-IK-1Qw"/>
                                             </mask>
                                         </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjQ-Rr-phC">
+                                        <rect key="frame" x="0.0" y="100" width="560" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="g4n-hH-kUY"/>
+                                        </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SlW-ro-pA8" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="130" width="560" height="60"/>
@@ -103,6 +116,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="lzh-oc-IJr"/>
                                         </constraints>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -145,11 +159,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8F-0T-C2H">
-                                        <rect key="frame" x="0.0" y="314" width="560" height="2"/>
+                                        <rect key="frame" x="0.0" y="314" width="560" height="32"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UxZ-J7-GkJ" customClass="AnimatableView" customModule="IBAnimatable">
-                                        <rect key="frame" x="0.0" y="316" width="560" height="60"/>
+                                        <rect key="frame" x="0.0" y="346" width="560" height="60"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lug-ak-Crf">
                                                 <rect key="frame" x="8" y="17" width="544" height="29"/>
@@ -181,7 +195,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="f8F-0T-C2H" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="314" id="6re-yB-NSu"/>
-                                    <constraint firstAttribute="height" constant="376" id="PQl-iE-Enk"/>
+                                    <constraint firstAttribute="height" constant="406" id="PQl-iE-Enk"/>
                                     <constraint firstItem="SlW-ro-pA8" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="130" id="ScR-zU-zLn"/>
                                     <constraint firstItem="CPS-zV-OWF" firstAttribute="top" secondItem="sQ0-jD-cNc" secondAttribute="top" constant="252" id="cbj-lf-Ajj"/>
                                     <constraint firstItem="yKy-5A-36L" firstAttribute="top" secondItem="SlW-ro-pA8" secondAttribute="bottom" constant="1" id="tmX-2d-N6l"/>
