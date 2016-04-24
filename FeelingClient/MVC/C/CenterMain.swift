@@ -37,7 +37,10 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     
     let msg: MessageApi = MessageApi.defaultMessages
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    
+    @IBOutlet weak var addNewButton: AnimatableButton!
+    @IBOutlet weak var findMoreButton: AnimatableButton!
+    
     @IBOutlet var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +62,16 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         
         self.mapView.delegate = self
         
-        self.searchBar.rx_text
-            .debounce(1, scheduler: MainScheduler.asyncInstance)
-            .subscribeNext { searchText in
-                self.to = searchText
-                if self.isOk == true {
-                    self.searchMsg(searchText)
-                    self.searchBar.endEditing(true)
-                }
-            }
+        
+        //点击
+        addNewButton.rx_tap
+            .subscribeNext { [weak self] in self?.performSegueWithIdentifier("send", sender: self) }
             .addDisposableTo(disposeBag)
+        
+        findMoreButton.rx_tap
+            .subscribeNext { [weak self] in self?.searchMsg(jwt.userName) }
+            .addDisposableTo(disposeBag)
+        
         
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -86,9 +89,6 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
             aleat.addAction(tempAction)
             aleat.addAction(callAction)
             self.presentViewController(aleat, animated: true, completion: nil)
-        }
-        else{
-            self.searchMsg(jwt.userName)
         }
     }
     
@@ -231,6 +231,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
                 self.isOk = true
                 self.locationManager.stopUpdatingLocation()
                 self.locationManager.delegate = nil;
+                
+                self.searchMsg(jwt.userName)
             })
         }
         

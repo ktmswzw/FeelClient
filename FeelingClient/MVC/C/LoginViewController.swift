@@ -83,7 +83,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
                     jwt.userName = userInfo.nickname
                     self.database.addObject(userInfo, update: true)
                     self.view.hideToastActivity()
-                    self.view.makeToast("默认注册成功，密码123456", duration: 1, position: .Center)
+                    self.view.makeToast("默认注册成功，密码123456", duration: 3, position: .Center)
                     
                     self.performSegueWithIdentifier("login", sender: self)
                 }
