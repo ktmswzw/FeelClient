@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
-		BF32C8631CC93A670038B3B4 /* boll.gif in Resources */ = {isa = PBXBuildFile; fileRef = BF32C8601CC93A670038B3B4 /* boll.gif */; };
-		BF32C8641CC93A670038B3B4 /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = BF32C8611CC93A670038B3B4 /* girl.gif */; };
-		BF32C8651CC93A670038B3B4 /* night.gif in Resources */ = {isa = PBXBuildFile; fileRef = BF32C8621CC93A670038B3B4 /* night.gif */; };
 		BF45B6711C6C38760027F63D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6701C6C38760027F63D /* AppDelegate.swift */; };
 		BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */; };
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
@@ -78,6 +75,8 @@
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
 		BF9F9B361CC4808400795464 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B341CC4808400795464 /* Localizable.strings */; };
+		BFDB53EC1CCCEAD800E542D5 /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFDB53EB1CCCEAD800E542D5 /* girl.gif */; };
+		BFDB53EE1CCCEADC00E542D5 /* boll.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFDB53ED1CCCEADC00E542D5 /* boll.gif */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
 		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
@@ -96,9 +95,6 @@
 
 /* Begin PBXFileReference section */
 		37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		BF32C8601CC93A670038B3B4 /* boll.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = boll.gif; sourceTree = "<group>"; };
-		BF32C8611CC93A670038B3B4 /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = girl.gif; sourceTree = "<group>"; };
-		BF32C8621CC93A670038B3B4 /* night.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = night.gif; sourceTree = "<group>"; };
 		BF45B66D1C6C38760027F63D /* FeelingClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelingClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF45B6701C6C38760027F63D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF45B6781C6C38760027F63D /* FeelingClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelingClient.xcdatamodel; sourceTree = "<group>"; };
@@ -172,6 +168,8 @@
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
 		BF9F9B341CC4808400795464 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = recource/Localizable.strings; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		BFDB53EB1CCCEAD800E542D5 /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = girl.gif; path = recource/girl.gif; sourceTree = "<group>"; };
+		BFDB53ED1CCCEADC00E542D5 /* boll.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = boll.gif; path = recource/boll.gif; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -338,9 +336,8 @@
 		BF45B6881C6C4C490027F63D /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				BF32C8601CC93A670038B3B4 /* boll.gif */,
-				BF32C8611CC93A670038B3B4 /* girl.gif */,
-				BF32C8621CC93A670038B3B4 /* night.gif */,
+				BFDB53ED1CCCEADC00E542D5 /* boll.gif */,
+				BFDB53EB1CCCEAD800E542D5 /* girl.gif */,
 				BF45B67F1C6C38760027F63D /* Info.plist */,
 				BF45B6701C6C38760027F63D /* AppDelegate.swift */,
 				BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */,
@@ -548,13 +545,12 @@
 				BF9F9B131CC47FB300795464 /* center.storyboard in Resources */,
 				BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */,
 				BF9F9B191CC47FB300795464 /* self.storyboard in Resources */,
-				BF32C8651CC93A670038B3B4 /* night.gif in Resources */,
-				BF32C8641CC93A670038B3B4 /* girl.gif in Resources */,
 				BF9F9B151CC47FB300795464 /* friends.storyboard in Resources */,
 				BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */,
 				BF9F9B141CC47FB300795464 /* chat.storyboard in Resources */,
 				BF9F9B1A1CC47FB300795464 /* point.xib in Resources */,
-				BF32C8631CC93A670038B3B4 /* boll.gif in Resources */,
+				BFDB53EC1CCCEAD800E542D5 /* girl.gif in Resources */,
+				BFDB53EE1CCCEADC00E542D5 /* boll.gif in Resources */,
 				BF9F9B171CC47FB300795464 /* main.storyboard in Resources */,
 				BF9F9B181CC47FB300795464 /* register.storyboard in Resources */,
 			);

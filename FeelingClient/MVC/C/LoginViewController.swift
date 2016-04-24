@@ -22,7 +22,7 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
-    var gifList = ["boll","girl","night"]
+    var gifList = ["boll","girl","girl"]
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
     
