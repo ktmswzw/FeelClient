@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sa7-TK-OBg">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -210,7 +209,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find You Memorise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIA-yb-fkj" customClass="AnimatableLabel" customModule="IBAnimatable">
                                 <rect key="frame" x="20" y="84" width="560" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="xVo-gY-7qx"/>
+                                    <constraint firstAttribute="height" constant="70" id="99W-5e-Xhn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,20 +226,26 @@
                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="arp-dw-hx2" firstAttribute="top" secondItem="fEc-dv-46j" secondAttribute="bottom" constant="219" id="44M-IN-onY"/>
-                            <constraint firstItem="MIA-yb-fkj" firstAttribute="leading" secondItem="gk6-Xj-3Ic" secondAttribute="leadingMargin" id="520-lC-FC3"/>
                             <constraint firstItem="fEc-dv-46j" firstAttribute="centerY" secondItem="gk6-Xj-3Ic" secondAttribute="centerY" id="5JI-F6-MXN"/>
                             <constraint firstAttribute="leadingMargin" secondItem="fEc-dv-46j" secondAttribute="leading" id="Kxm-2j-mum"/>
                             <constraint firstItem="dsM-Tt-Ykp" firstAttribute="top" secondItem="jxD-XL-PwE" secondAttribute="bottom" constant="8" symbolic="YES" id="Mz4-kb-H1e"/>
+                            <constraint firstItem="MIA-yb-fkj" firstAttribute="leading" secondItem="fEc-dv-46j" secondAttribute="trailing" constant="-560" id="Nz9-Vp-6rY"/>
+                            <constraint firstItem="MIA-yb-fkj" firstAttribute="leading" secondItem="dsM-Tt-Ykp" secondAttribute="leading" id="OYY-nJ-wNa"/>
                             <constraint firstItem="fEc-dv-46j" firstAttribute="centerX" secondItem="gk6-Xj-3Ic" secondAttribute="centerX" id="atq-H4-Gae"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fEc-dv-46j" secondAttribute="trailing" id="cSB-Dw-a7i"/>
-                            <constraint firstItem="MIA-yb-fkj" firstAttribute="trailing" secondItem="gk6-Xj-3Ic" secondAttribute="trailingMargin" id="fHe-r6-K7O"/>
+                            <constraint firstItem="MIA-yb-fkj" firstAttribute="leading" secondItem="fEc-dv-46j" secondAttribute="trailing" constant="-560" id="eQb-wa-pMA"/>
+                            <constraint firstItem="fEc-dv-46j" firstAttribute="top" secondItem="MIA-yb-fkj" secondAttribute="bottom" constant="25" id="pez-kU-QHa"/>
                             <constraint firstItem="MIA-yb-fkj" firstAttribute="top" secondItem="jxD-XL-PwE" secondAttribute="bottom" constant="64" id="ptg-e9-Umb"/>
+                            <constraint firstItem="MIA-yb-fkj" firstAttribute="trailing" secondItem="fEc-dv-46j" secondAttribute="trailing" id="qJX-jG-C26"/>
+                            <constraint firstItem="MIA-yb-fkj" firstAttribute="leading" secondItem="fEc-dv-46j" secondAttribute="leading" id="rh1-wg-4HF"/>
                             <constraint firstItem="fEc-dv-46j" firstAttribute="top" secondItem="jxD-XL-PwE" secondAttribute="bottom" constant="180" id="taC-hR-xw9"/>
-                            <constraint firstItem="dsM-Tt-Ykp" firstAttribute="leading" secondItem="MIA-yb-fkj" secondAttribute="leading" id="wdc-yx-cia"/>
                             <constraint firstItem="arp-dw-hx2" firstAttribute="top" secondItem="MIA-yb-fkj" secondAttribute="bottom" constant="443" id="zRB-CC-TKr"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Nz9-Vp-6rY"/>
+                                <exclude reference="eQb-wa-pMA"/>
+                                <exclude reference="ptg-e9-Umb"/>
                                 <exclude reference="taC-hR-xw9"/>
                                 <exclude reference="44M-IN-onY"/>
                                 <exclude reference="zRB-CC-TKr"/>
