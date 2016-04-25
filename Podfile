@@ -9,7 +9,7 @@ pod 'Alamofire’
 pod 'ObjectMapper’
 pod 'AlamofireObjectMapper'
 #加密类
-pod 'CryptoSwift’
+#pod 'CryptoSwift’
 #jwt加密传输
 pod 'JSONWebToken’
 #动态效果框架
@@ -24,8 +24,9 @@ pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 #网络图片获取及缓存
 pod 'HanekeSwift'
-pod 'Gifu'
-
+#pod 'Gifu'
+#视频播放
+pod 'VideoSplashKit'
 #IMCHAT
 pod 'RongCloudIMKit', '2.4.11'
 #响应编程

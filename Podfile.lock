@@ -4,7 +4,6 @@ PODS:
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
   - CryptoSwift (0.0.14)
-  - Gifu (1.0.1)
   - HanekeSwift (0.10.1)
   - IBAnimatable (1.2)
   - ImagePickerSheetController (0.9.1)
@@ -32,12 +31,11 @@ PODS:
   - SwiftyJSON (2.3.2)
   - TinySQLite (0.3.1):
     - sqlite3
+  - VideoSplashKit (1.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
-  - CryptoSwift
-  - Gifu
   - HanekeSwift
   - IBAnimatable
   - ImagePickerSheetController
@@ -52,12 +50,12 @@ DEPENDENCIES:
   - SMSSDK
   - SwiftyDB
   - SwiftyJSON
+  - VideoSplashKit
 
 SPEC CHECKSUMS:
   Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
   CryptoSwift: 5a6b725e2ad65a789f5f435dd434d38eb2c40b46
-  Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   IBAnimatable: bcebfaf34b041949da5ed668ac5ab2e28a4b2357
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
@@ -74,5 +72,6 @@ SPEC CHECKSUMS:
   SwiftyDB: 9a5cf6461c086ef54d12a1980a47fa234d654cad
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TinySQLite: b27a26c4676a41f045f56e0d94ccc4bce9a1a87f
+  VideoSplashKit: 0aa63d0bb37c5bd357de3e6a2a13dea5acad4d66
 
 COCOAPODS: 0.39.0

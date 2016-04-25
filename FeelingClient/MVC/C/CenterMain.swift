@@ -74,7 +74,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         
         
         
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+//        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         if(CLLocationManager.authorizationStatus() == .Denied) {
             let aleat = UIAlertController(title: "打开定位开关", message:"定位服务未开启,请进入系统设置>隐私>定位服务中打开开关,并允许Feeling使用定位服务", preferredStyle: .Alert)

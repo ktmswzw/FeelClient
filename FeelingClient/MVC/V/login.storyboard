@@ -17,16 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="meO-mf-Auc" customClass="AnimatableImageView" customModule="Gifu">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Sr7-Pq-DAb" appends="YES" id="oI6-Bv-S3e"/>
-                                </connections>
-                            </imageView>
                             <stackView opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bJg-yT-rx4" customClass="AnimatableStackView" customModule="IBAnimatable">
                                 <rect key="frame" x="20" y="210" width="560" height="181"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="帐号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-KY-gBB" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="JJ5-7Q-tgP"/>
@@ -50,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="60" width="560" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-dj-LsK" customClass="AnimatableTextField" customModule="IBAnimatable">
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-dj-LsK" customClass="AnimatableTextField" customModule="IBAnimatable">
                                         <rect key="frame" x="0.0" y="61" width="560" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="SkJ-S9-DtZ"/>
@@ -70,7 +64,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ie-5W-rG5">
+                                    <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ie-5W-rG5">
                                         <rect key="frame" x="0.0" y="121" width="560" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="登陆">
@@ -92,7 +86,7 @@
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhS-Y0-UN8">
                                 <rect key="frame" x="20" y="82" width="560" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND U MEMORISE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND U MEMORISE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
                                         <rect key="frame" x="0.0" y="38" width="560" height="45"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="40"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,27 +110,16 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="top" secondItem="9WW-tc-v7g" secondAttribute="bottom" constant="62" id="1DJ-ji-QZf"/>
-                            <constraint firstItem="meO-mf-Auc" firstAttribute="centerY" secondItem="bJg-yT-rx4" secondAttribute="centerY" id="3N3-FL-JsT"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="bJg-yT-rx4" secondAttribute="leading" id="Fln-Yd-5jq"/>
                             <constraint firstItem="bJg-yT-rx4" firstAttribute="centerY" secondItem="F5S-vp-eLo" secondAttribute="centerY" id="UwF-l2-LgK"/>
                             <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="8" symbolic="YES" id="avG-LA-wdK"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="F5S-vp-eLo" secondAttribute="leadingMargin" id="hFZ-0t-T3H"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="F5S-vp-eLo" secondAttribute="trailingMargin" id="hlL-DO-zT4"/>
-                            <constraint firstItem="meO-mf-Auc" firstAttribute="centerX" secondItem="bJg-yT-rx4" secondAttribute="centerX" id="iKg-xe-ln7"/>
-                            <constraint firstItem="meO-mf-Auc" firstAttribute="leading" secondItem="F5S-vp-eLo" secondAttribute="leading" id="qs6-f2-tJT"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="bJg-yT-rx4" secondAttribute="trailing" id="tse-Kb-N9h"/>
-                            <constraint firstItem="meO-mf-Auc" firstAttribute="bottom" secondItem="LH4-NU-pi9" secondAttribute="top" id="wWk-sK-7SB"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="rootWindowBackgroundColor">
-                            <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="lightStatusBar" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="gifView" destination="meO-mf-Auc" id="fRF-As-Tos"/>
                         <outlet property="loginBtn" destination="4Ie-5W-rG5" id="y9c-yx-bhy"/>
                         <outlet property="password" destination="yWq-dj-LsK" id="9Zu-iQ-376"/>
                         <outlet property="username" destination="Okb-KY-gBB" id="Yca-i0-Fdq"/>

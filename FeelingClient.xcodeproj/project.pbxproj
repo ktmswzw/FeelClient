@@ -75,12 +75,11 @@
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
 		BF9F9B361CC4808400795464 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B341CC4808400795464 /* Localizable.strings */; };
-		BFDB53EC1CCCEAD800E542D5 /* girl.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFDB53EB1CCCEAD800E542D5 /* girl.gif */; };
-		BFDB53EE1CCCEADC00E542D5 /* boll.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFDB53ED1CCCEADC00E542D5 /* boll.gif */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
 		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
 		BFF89E0D1C78A67D00A38D16 /* libTXYUploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */; };
+		BFFB0A641CCDB0880059E997 /* 0900.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BFFB0A631CCDB0880059E997 /* 0900.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,8 +167,6 @@
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
 		BF9F9B341CC4808400795464 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = recource/Localizable.strings; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
-		BFDB53EB1CCCEAD800E542D5 /* girl.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = girl.gif; path = recource/girl.gif; sourceTree = "<group>"; };
-		BFDB53ED1CCCEADC00E542D5 /* boll.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = boll.gif; path = recource/boll.gif; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -179,6 +176,7 @@
 		BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTXYUploader.a; sourceTree = "<group>"; };
 		BFF89E0B1C78A67D00A38D16 /* TXYBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYBase.h; sourceTree = "<group>"; };
 		BFF89E0C1C78A67D00A38D16 /* TXYUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYUploadManager.h; sourceTree = "<group>"; };
+		BFFB0A631CCDB0880059E997 /* 0900.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0900.mp4; sourceTree = "<group>"; };
 		DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2F433E2F3517659A39AEF6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -336,8 +334,7 @@
 		BF45B6881C6C4C490027F63D /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				BFDB53ED1CCCEADC00E542D5 /* boll.gif */,
-				BFDB53EB1CCCEAD800E542D5 /* girl.gif */,
+				BFFB0A631CCDB0880059E997 /* 0900.mp4 */,
 				BF45B67F1C6C38760027F63D /* Info.plist */,
 				BF45B6701C6C38760027F63D /* AppDelegate.swift */,
 				BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */,
@@ -539,6 +536,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFFB0A641CCDB0880059E997 /* 0900.mp4 in Resources */,
 				BF9F9B161CC47FB300795464 /* login.storyboard in Resources */,
 				BF9F9B361CC4808400795464 /* Localizable.strings in Resources */,
 				BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */,
@@ -549,8 +547,6 @@
 				BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */,
 				BF9F9B141CC47FB300795464 /* chat.storyboard in Resources */,
 				BF9F9B1A1CC47FB300795464 /* point.xib in Resources */,
-				BFDB53EC1CCCEAD800E542D5 /* girl.gif in Resources */,
-				BFDB53EE1CCCEADC00E542D5 /* boll.gif in Resources */,
 				BF9F9B171CC47FB300795464 /* main.storyboard in Resources */,
 				BF9F9B181CC47FB300795464 /* register.storyboard in Resources */,
 			);

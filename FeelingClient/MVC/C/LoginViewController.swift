@@ -11,29 +11,40 @@ import IBAnimatable
 import SwiftyJSON
 import Alamofire
 import SwiftyDB
-import Gifu
-class LoginViewController: DesignableViewController,UITextFieldDelegate {
+import VideoSplashKit
+class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
     
     
-    @IBOutlet weak var gifView: Gifu.AnimatableImageView!
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
-    var gifList = ["boll","girl","girl"]
+    
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("0900", ofType: "mp4")!)
+        self.videoFrame = view.frame
+        self.fillMode = .ResizeAspectFill
+        self.alwaysRepeat = true
+        self.sound = true
+        self.startTime = 0.5
+        self.duration = 17.0
+        self.alpha = 0.9
+        //self.backgroundColor = UIColor.blackColor()
         
-        let diceFaceCount: UInt32 = 3
-        let randomRoll = Int(arc4random_uniform(diceFaceCount))
+        let image = UIImage(named: "lonely-children")
+        let blurredImage = image!.imageByApplyingBlurWithRadius(30)
+        self.view.layer.contents = blurredImage.CGImage
         
-        gifView.animateWithImage(named: "\(gifList[randomRoll]).gif")
+        self.contentURL = url
+        self.restartForeground = true
+        
                 
         let lookAnyWhere = ActionButtonItem(title: "随便看看", image: UIImage(named: "address")!)
         lookAnyWhere.action = { item in
@@ -182,14 +193,8 @@ class LoginViewController: DesignableViewController,UITextFieldDelegate {
         
     }
     
-    
-    @IBAction func tapImage(sender: AnyObject) {
-        
-        if gifView.isAnimatingGIF {
-            gifView.stopAnimatingGIF()
-        } else {
-            gifView.startAnimatingGIF()
-        }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
 }

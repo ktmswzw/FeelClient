@@ -201,7 +201,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="X8a-ke-6Zy"/>
                                 </constraints>
-                                <state key="normal" title="返回"/>
+                                <state key="normal" title="返回">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="closeBack:" destination="Sa7-TK-OBg" eventType="touchUpInside" id="B5Q-Va-1bU"/>
                                 </connections>
