@@ -69,9 +69,7 @@ public class MessageViewModel {
     
     func sendMessage(se:AnyObject?) {
         let msg = MessageBean()
-        msg.burnAfterReading = burnAfterReading
         msg.to = to
-        msg.limitDate = limitDate
         msg.video = video
         msg.sound = sound
         msg.content = content
@@ -96,9 +94,7 @@ public class MessageViewModel {
                     se!.view!!.makeToast("发表失败", duration: 2, position: .Center)
                     break;
                 }
-            
-            
-            }
+        }
     }
     
     

@@ -27,30 +27,12 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     @IBOutlet var openUser: UITextField!
     @IBOutlet var question: UITextField!
     @IBOutlet var answer: UITextField!
-    @IBOutlet var readFire: UISwitch!
-    
-    @IBOutlet var limitDate: UIDatePicker!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var photoCollectionView: UICollectionView!
-    @IBOutlet var switchHidden: UISwitch!
-    @IBOutlet var hidden0: UIView!
-    @IBOutlet var hidden1: UIView!
     @IBOutlet var hidden2: UIView!
     @IBOutlet var hidden3: UIView!
     @IBOutlet var hidden4: UIView!
     @IBOutlet var hidden5: UIView!
-    @IBOutlet var hidden6: UIView!
-//    @IBOutlet var sendButton: UIBarButtonItem!
-    
-    @IBAction func chagenSwitch(sender: AnyObject) {
-        if switchHidden.on {
-            hiddenView(false)
-        }
-        else
-        {
-            hiddenView(true)
-        }
-    }
     var picker = UIImagePickerController()
     var viewModel: MessageViewModel!
     
@@ -97,12 +79,6 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         }
     }
     
-    //这样将避免约束错误
-    override func viewDidAppear(animated: Bool) {
-        hiddenView(true)
-        //self.sendButton.enabled = false
-        
-    }
     
     @IBAction func sendMsg(sender: AnyObject) {
         if !self.address.notEmpty {
@@ -120,9 +96,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
             return
         }
         viewModel.to = self.openUser.text!
-        viewModel.limitDate = self.limitDate.date.formatted
         viewModel.content = self.textView.text!
-        viewModel.burnAfterReading = readFire.on
         viewModel.question = self.question.text!
         viewModel.answer = self.answer.text!
         viewModel.address = self.address.text!
@@ -132,16 +106,6 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         
     }
     
-    
-    func hiddenView(flag:Bool){
-        hidden0.hidden = flag
-        hidden1.hidden = flag
-        hidden2.hidden = flag
-        hidden3.hidden = flag
-        hidden4.hidden = flag
-        hidden5.hidden = flag
-        hidden6.hidden = flag
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
