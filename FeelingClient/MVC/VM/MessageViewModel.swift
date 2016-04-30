@@ -60,8 +60,9 @@ public class Messages:BaseApi {
     //
     func searchMsg(to: String,x: String,y:String,page:Int,size:Int,completeHander: CompletionHandlerType)
     {
+        let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
         let params = ["to": to,"x": y, "y":x, "page": page,"size":size]
-        NetApi().makeCallArray(Alamofire.Method.POST, section: "messages/search", headers: [:], params: params as? [String:AnyObject]) { (response: Response<[MessageBean], NSError>) -> Void in
+        NetApi().makeCallArray(Alamofire.Method.POST, section: "messages/search", headers: headers, params: params as? [String:AnyObject]) { (response: Response<[MessageBean], NSError>) -> Void in
             switch (response.result) {
             case .Success(let value):
                 self.msgs = value
