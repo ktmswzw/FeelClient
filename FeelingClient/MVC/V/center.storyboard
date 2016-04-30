@@ -54,15 +54,35 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Squeeze"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsW-Pe-Ud9" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="528" y="513" width="52" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.4784313738" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="tA2-TH-6p7"/>
+                                </constraints>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteMap:" destination="k7f-3U-IcX" eventType="touchUpInside" id="CW4-on-3Wl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="3zp-fa-kiP"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="leading" secondItem="zpX-Kc-Vep" secondAttribute="leading" id="6F3-ia-f23"/>
+                            <constraint firstItem="lsW-Pe-Ud9" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="EfV-YV-A02"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="trailing" secondItem="zpX-Kc-Vep" secondAttribute="trailing" id="Leb-sJ-qEa"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="MRz-a0-qRg"/>
                             <constraint firstAttribute="trailing" secondItem="8CY-GM-Klr" secondAttribute="trailing" id="VfI-uu-18h"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="Xpi-sa-EeK"/>
+                            <constraint firstItem="lsW-Pe-Ud9" firstAttribute="baseline" secondItem="zpX-Kc-Vep" secondAttribute="baseline" id="Z3X-6k-QLN"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="centerX" secondItem="W1O-31-f7T" secondAttribute="centerX" id="pdl-UW-W8B"/>
                             <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="zpX-Kc-Vep" secondAttribute="bottom" constant="8" symbolic="YES" id="qPY-3H-QRX"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="8" symbolic="YES" id="wcF-qP-bik"/>

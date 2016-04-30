@@ -24,8 +24,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
-    var temp_latitude = 0.0
-    var temp_longitude = 0.0
+    var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点火星后
+    var targetDistanceLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点原始距离
     var msgId = ""
     var to = ""
     var isOk = false
@@ -95,6 +95,11 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
         
     }
+    @IBAction func deleteMap(sender: AnyObject) {
+        
+        self.mapView.removeAnnotations(mapView.annotations)
+        
+    }
     
     
     func openOverSubmit(id:String, answer:String) {        
@@ -105,6 +110,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
                     self.msgscrentId = r as! String;
                     self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
                     self.performSegueWithIdentifier("openOver", sender: self)
+                    self.mapView.removeAnnotation((self.selectedView?.annotation)!)
                     break;
                 case .Failure(let msg):
                     self.view.makeToast(msg as! String, duration: 1, position: .Center)
@@ -116,57 +122,19 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        
-        if annotation is MyAnnotation {
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
-            if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
-                annotationView!.canShowCallout = true
-                let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
-                detailView.delegate = self
-                
-                if let pin = annotation as? MyAnnotation {
-                    if let url:String = pin.url! as String {
-                        let URL = NSURL(string: url)!
-                        let fetcher = NetworkFetcher<UIImage>(URL: URL)
-                        cache.fetch(fetcher: fetcher).onSuccess { image in
-                            detailView.avator.image = image
-                        }
-                    }
-                    detailView.msgId = pin.id
-                    detailView.fromId = pin.id
-                    detailView.question.text = pin.question
-                }
-
-                annotationView!.detailCalloutAccessoryView = detailView
-            }
-            else {
-                annotationView!.annotation = annotation
-            }
-            return annotationView
-        }
-        else {
             let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
             return annotationView
-        }
-        
-        
     }
     
 
     func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
-                 calloutAccessoryControlTapped control: UIControl) {
-        selectedView = view;
-    }
-    
+
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         selectedView = view;
         
-//        self.navigationController?.view.makeToastActivity(.Center)
-        let pin = selectedView!.annotation! as! MyAnnotation
+        let pin = view.annotation! as! MyAnnotation
         viewModel.msgId = pin.id as String
         if let q:String = pin.subtitle  {
             viewModel.question = q
@@ -177,21 +145,39 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         if let id:String = pin.fromId {
             viewModel.fromId = id
         }
-        self.temp_latitude = pin.original_coordinate!.latitude
-        self.temp_longitude = pin.original_coordinate!.longitude
+        self.targetLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
+        self.targetDistanceLocation = CLLocation(latitude: pin.original_coordinate!.latitude, longitude: pin.original_coordinate!.longitude)
+        
+        
+        
+        let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
+        detailView.delegate = self
+        
+        
+            if let url:String = pin.url! as String {
+                let URL = NSURL(string: url)!
+                let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                cache.fetch(fetcher: fetcher).onSuccess { image in
+                    detailView.avator.image = image
+                }
+            }
+            detailView.msgId = pin.id
+            detailView.fromId = pin.id
+            detailView.question.text = pin.question
+        
+        
+        view.detailCalloutAccessoryView = detailView
         
     }
-    
-    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
-        selectedView = view;
-    }
-    
+
     var selectedView: MKAnnotationView?
     
     func searchMsg(sender: AnyObject) {
         viewModel.longitude = self.longitude
         viewModel.latitude = self.latitude
         viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
+        
+        self.mapView.removeAnnotations(mapView.annotations)
     }
         
     override func didReceiveMemoryWarning() {
@@ -207,8 +193,8 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         }
         else if segue.identifier == "openOver" {
             let viewController = segue.destinationViewController as! OpenMapViewController
-            
-            viewController.targetLocation = CLLocation(latitude: self.temp_latitude, longitude: self.temp_longitude)
+            viewController.targetDistanceLocation = self.targetDistanceLocation
+            viewController.targetLocation = self.targetLocation
             viewController.fromId = self.viewModel.fromId
             viewController.msgscrentId = self.msgscrentId
             viewController.address = self.viewModel.address

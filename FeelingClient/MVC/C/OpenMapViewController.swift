@@ -36,7 +36,9 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     @IBOutlet weak var imageCollection: UICollectionView!
     var isOk = false
     let locationManager = CLLocationManager()
-    var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点
+    var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点火星后
+    
+    var targetDistanceLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点原始距离
     var distance = 0.0 //两点距离
     
     let msg: MessageApi = MessageApi.defaultMessages
@@ -101,7 +103,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                 self.mapView.region = region
                 
                 let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)                
-                self.distance = getDistinct(currentLocation, targetLocation: self.targetLocation)
+                self.distance = getDistinct(currentLocation, targetLocation: self.targetDistanceLocation)
                 self.distinctText.text = "距离 \(self.address) 约： \(Int(self.distance)) 米"
                 if(self.distance<100){
                     self.isOk = true

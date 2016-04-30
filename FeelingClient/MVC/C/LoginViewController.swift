@@ -21,6 +21,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
     var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
+    let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("0900", ofType: "mp4")!)
     
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
@@ -28,19 +29,14 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("0900", ofType: "mp4")!)
         self.videoFrame = view.frame
         self.fillMode = .ResizeAspectFill
-        self.alwaysRepeat = true
+        self.alwaysRepeat = false
         self.sound = true
         self.startTime = 0.5
         self.duration = 17.0
         self.alpha = 0.9
-        //self.backgroundColor = UIColor.blackColor()
-        
-        let image = UIImage(named: "lonely-children")
-        let blurredImage = image!.imageByApplyingBlurWithRadius(30)
-        self.view.layer.contents = blurredImage.CGImage
+        self.backgroundColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
         self.contentURL = url
         self.restartForeground = true

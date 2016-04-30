@@ -103,7 +103,7 @@ public class MessageViewModel {
         msgs.searchMsg(to, x: "\(latitude)", y: "\(longitude)", page: 0, size: 100) { (r:BaseApi.Result) -> Void in
             switch (r) {
             case .Success(let r):
-                map.removeAnnotations(map.annotations)
+                self.annotationArray.removeAll()
                 if let msgs = r  {
                     if(msgs.count==0){
                         view.makeToast("未找到你想要信件", duration: 2, position: .Center)
