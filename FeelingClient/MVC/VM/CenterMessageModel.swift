@@ -119,6 +119,7 @@ public class MessageViewModel {
                             oneAnnotation.id = msg.id
                             oneAnnotation.url = msg.avatar
                             oneAnnotation.fromId = msg.fromId
+                            oneAnnotation.answerTip = msg.answerTip
                             
                             self.annotationArray.append(oneAnnotation)
                         }

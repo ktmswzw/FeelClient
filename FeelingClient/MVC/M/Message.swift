@@ -31,6 +31,7 @@ class MessageBean: BaseModel {
         x <- map["x"]
         y <- map["y"]
         question <- map["question"]
+        answerTip <- map["answer_tip"]
         distance <- map["distance"]
         address <- map["address"]
         point <- map["point"]
@@ -68,7 +69,7 @@ class MessageBean: BaseModel {
     //问题
     var question: String = ""
     var answer: String = ""
-    
+    var answerTip: String = ""
     var point: GeoJsonPoint?
     
 }

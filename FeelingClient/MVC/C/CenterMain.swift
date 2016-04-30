@@ -121,48 +121,24 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
 
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MyAnnotation {
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
-            if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
-                annotationView!.canShowCallout = true
-                let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
-                detailView.delegate = self
-                
-                if let pin = annotation as? MyAnnotation {
-                    if let url:String = pin.url! as String {
-                        let URL = NSURL(string: url)!
-                        let fetcher = NetworkFetcher<UIImage>(URL: URL)
-                        cache.fetch(fetcher: fetcher).onSuccess { image in
-                            detailView.avator.image = image
-                        }
-                    }
-                    detailView.msgId = pin.id
-                    detailView.fromId = pin.id
-                    detailView.question.text = pin.question
-                }
-                
-                annotationView!.detailCalloutAccessoryView = detailView
-            }
-            else {
-                annotationView!.annotation = annotation
-            }
-            return annotationView
-        }
-        else {
+        //自定义地图图标
+//        if annotation is MyAnnotation {
+//            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
+//            if annotationView == nil {
+//                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
+//                annotationView!.canShowCallout = true
+        
+//            }
+//            else {
+//                annotationView!.annotation = annotation
+//            }
+//            return annotationView
+//        }
+//        else {
             let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
             return annotationView
-        }
+//        }
 
-    }
-    
-
-    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
-    }
-    
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView,
-                 calloutAccessoryControlTapped control: UIControl) {
-        selectedView = view;
     }
     
 
@@ -185,23 +161,22 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         
         
         
-//        let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
-//        detailView.delegate = self
-//        
-//        
-//            if let url:String = pin.url! as String {
-//                let URL = NSURL(string: url)!
-//                let fetcher = NetworkFetcher<UIImage>(URL: URL)
-//                cache.fetch(fetcher: fetcher).onSuccess { image in
-//                    detailView.avator.image = image
-//                }
-//            }
-//            detailView.msgId = pin.id
-//            detailView.fromId = pin.id
-//            detailView.question.text = pin.question
-//        
-//        
-//        view.detailCalloutAccessoryView = detailView
+        let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
+        detailView.delegate = self
+            if let url:String = pin.url! as String {
+                let URL = NSURL(string: url)!
+                let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                cache.fetch(fetcher: fetcher).onSuccess { image in
+                    detailView.avator.image = image
+                }
+            }
+            detailView.answer.placeholder = "提示：\(pin.answerTip)"
+            detailView.msgId = pin.id
+            detailView.fromId = pin.id
+            detailView.question.text = pin.question
+        
+        
+        view.detailCalloutAccessoryView = detailView
         
     }
 
