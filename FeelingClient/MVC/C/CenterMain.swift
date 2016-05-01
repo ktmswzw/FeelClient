@@ -13,6 +13,7 @@ import CoreLocation
 import IBAnimatable
 import MobileCoreServices
 
+import Instructions
 import Haneke
 import IBAnimatable
 #if !RX_NO_MODULE
@@ -20,7 +21,7 @@ import IBAnimatable
     import RxCocoa
 #endif
 
-class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager = CLLocationManager()
     var latitude = 0.0
     var longitude = 0.0
@@ -32,7 +33,11 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     var msgscrentId = ""
     var viewModel: MessageViewModel!
     let cache = Shared.imageCache
+    var coachMarksController: CoachMarksController?
+    let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
+    let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
     
+    let nextButtonText = "好"
     var disposeBag = DisposeBag()
     
     let msg: MessageApi = MessageApi.defaultMessages
@@ -45,6 +50,17 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MessageViewModel(delegate: self)
+        
+        //导航
+        self.coachMarksController = CoachMarksController()
+        self.coachMarksController?.allowOverlayTap = true
+        
+        self.coachMarksController?.dataSource = self
+
+        let skipView = CoachMarkSkipDefaultView()
+        skipView.setTitle("跳过", forState: .Normal)
+        self.coachMarksController?.skipView = skipView
+        
         //地图初始化
         
         //地图初始化
@@ -95,12 +111,12 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
         
     }
-    @IBAction func deleteMap(sender: AnyObject) {
-        
-        self.mapView.removeAnnotations(mapView.annotations)
-        
-    }
-    
+//    @IBAction func deleteMap(sender: AnyObject) {
+//        
+//        self.mapView.removeAnnotations(mapView.annotations)
+//        
+//    }
+//    
     
     func openOverSubmit(id:String, answer:String) {        
         
@@ -186,8 +202,7 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         viewModel.longitude = self.longitude
         viewModel.latitude = self.latitude
         viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
-        
-        //self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.removeAnnotations(mapView.annotations)
     }
         
     override func didReceiveMemoryWarning() {
@@ -241,5 +256,52 @@ class CenterMain: UIViewController,OpenOverProtocol,MessageViewModelDelegate, MK
         print("Error: " + error.localizedDescription)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if !userDefaults.boolForKey("NEWONESHOW") {
+            
+            self.coachMarksController!.startOn(self)
+            
+            userDefaults.setBool(true, forKey: "NEWONESHOW")
+            userDefaults.synchronize()
+        }
+    }
+    
+    //MARK: - Protocol Conformance | CoachMarksControllerDataSource
+    func numberOfCoachMarksForCoachMarksController(coachMarksController: CoachMarksController) -> Int {
+        return 2
+    }
+    
+    func coachMarksController(coachMarksController: CoachMarksController, coachMarksForIndex index: Int) -> CoachMark {
+        switch(index) {
+        case 0:
+            return coachMarksController.coachMarkForView(self.addNewButton)
+        case 1:
+            return coachMarksController.coachMarkForView(self.findMoreButton)
+        default:
+            return coachMarksController.coachMarkForView()
+        }
+    }
+    
+    func coachMarksController(coachMarksController: CoachMarksController, coachMarkViewsForIndex index: Int, coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        
+        let coachViews = coachMarksController.defaultCoachViewsWithArrow(true, arrowOrientation: coachMark.arrowOrientation)
+        
+        switch(index) {
+        case 0:
+            coachViews.bodyView.hintLabel.text = self.profileSectionText
+            coachViews.bodyView.nextLabel.text = self.nextButtonText
+        case 1:
+            coachViews.bodyView.hintLabel.text = self.handleText
+            coachViews.bodyView.nextLabel.text = self.nextButtonText
+        default: break
+        }
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+
 }
 

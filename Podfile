@@ -34,6 +34,10 @@ pod 'RxSwift'
 pod 'RxCocoa'
 pod 'RxBlocking'
 pod 'RxAlamofire'
+#引导
+pod 'Instructions'
+
+
 post_install do |installer|
     installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
         configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
