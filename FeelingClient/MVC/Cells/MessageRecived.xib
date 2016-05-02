@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="4u3-fr-v6l" customClass="MessageRecivedViewCell" customModule="FeelingClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4u3-fr-v6l" id="ZsQ-d9-rBG">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浙江天堂天河天使19号" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="K9R-f6-kaV">
+                        <rect key="frame" x="161" y="6" width="151" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="d4Z-xw-F53"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="南岸的🐟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZdY-4h-jez">
+                        <rect key="frame" x="66" y="5" width="87" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="87" id="hta-5k-Rl1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北岸的🐦在看雨吗？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="TRL-he-GXp">
+                        <rect key="frame" x="66" y="35" width="218" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="wvj-VM-sTL" customClass="AnimatableImageView" customModule="IBAnimatable">
+                        <rect key="frame" x="8" y="5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="7WO-vu-rNt"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-k8-Ush">
+                        <rect key="frame" x="292" y="35" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="ope-3V-GA5"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K9R-f6-kaV" firstAttribute="top" secondItem="ZsQ-d9-rBG" secondAttribute="topMargin" constant="-2" id="3lk-An-1r2"/>
+                    <constraint firstItem="TRL-he-GXp" firstAttribute="bottom" secondItem="ZZe-k8-Ush" secondAttribute="bottom" id="EUK-SU-8Os"/>
+                    <constraint firstItem="TRL-he-GXp" firstAttribute="top" secondItem="ZdY-4h-jez" secondAttribute="bottom" constant="8" symbolic="YES" id="LuF-mb-NFS"/>
+                    <constraint firstItem="K9R-f6-kaV" firstAttribute="trailing" secondItem="ZsQ-d9-rBG" secondAttribute="trailingMargin" id="NGN-td-bTm"/>
+                    <constraint firstItem="K9R-f6-kaV" firstAttribute="leading" secondItem="ZdY-4h-jez" secondAttribute="trailing" constant="8" symbolic="YES" id="Pe8-D8-zQg"/>
+                    <constraint firstItem="wvj-VM-sTL" firstAttribute="centerY" secondItem="ZsQ-d9-rBG" secondAttribute="centerY" id="Qsa-Lh-DA3"/>
+                    <constraint firstItem="ZZe-k8-Ush" firstAttribute="leading" secondItem="TRL-he-GXp" secondAttribute="trailing" constant="8" symbolic="YES" id="Ye3-LQ-pYy"/>
+                    <constraint firstItem="wvj-VM-sTL" firstAttribute="top" secondItem="ZdY-4h-jez" secondAttribute="top" id="cXi-s4-L87"/>
+                    <constraint firstItem="K9R-f6-kaV" firstAttribute="trailing" secondItem="ZZe-k8-Ush" secondAttribute="trailing" id="efR-xw-hO6"/>
+                    <constraint firstItem="ZdY-4h-jez" firstAttribute="leading" secondItem="wvj-VM-sTL" secondAttribute="trailing" constant="8" symbolic="YES" id="hlN-YY-TGD"/>
+                    <constraint firstItem="TRL-he-GXp" firstAttribute="top" secondItem="ZZe-k8-Ush" secondAttribute="top" id="ijp-wZ-bYL"/>
+                    <constraint firstItem="ZdY-4h-jez" firstAttribute="leading" secondItem="TRL-he-GXp" secondAttribute="leading" id="j9Y-8l-8nX"/>
+                    <constraint firstItem="ZZe-k8-Ush" firstAttribute="top" secondItem="K9R-f6-kaV" secondAttribute="bottom" constant="10" id="mwN-dx-dQU"/>
+                    <constraint firstItem="wvj-VM-sTL" firstAttribute="bottom" secondItem="TRL-he-GXp" secondAttribute="bottom" id="nxt-bz-JVQ"/>
+                    <constraint firstItem="wvj-VM-sTL" firstAttribute="leading" secondItem="ZsQ-d9-rBG" secondAttribute="leadingMargin" id="vjI-v3-ZqF"/>
+                    <constraint firstItem="ZdY-4h-jez" firstAttribute="centerY" secondItem="K9R-f6-kaV" secondAttribute="centerY" id="wNq-iu-Uxg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="address" destination="K9R-f6-kaV" id="MJO-Kx-opr"/>
+                <outlet property="image" destination="wvj-VM-sTL" id="fyq-nv-Y6g"/>
+                <outlet property="imageMe" destination="wvj-VM-sTL" id="IzZ-7b-WSf"/>
+                <outlet property="isArrivalImg" destination="ZZe-k8-Ush" id="f3r-F9-XcX"/>
+                <outlet property="name" destination="ZdY-4h-jez" id="IHW-RG-REr"/>
+                <outlet property="question" destination="TRL-he-GXp" id="2ZR-Ht-jhc"/>
+            </connections>
+            <point key="canvasLocation" x="441" y="325"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checked" width="80" height="80"/>
+        <image name="girl" width="200" height="200"/>
+    </resources>
+</document>

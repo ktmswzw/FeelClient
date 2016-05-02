@@ -36,7 +36,7 @@ pod 'RxBlocking'
 pod 'RxAlamofire'
 #引导
 pod 'Instructions'
-
+pod 'PageMenu'
 
 post_install do |installer|
     installer.pods_project.build_configuration_list.build_configurations.each do |configuration|

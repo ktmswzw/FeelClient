@@ -37,6 +37,8 @@ class MessageBean: BaseModel {
         point <- map["point"]
         fromId <- map["fromId"]
         avatar <- map["avatar"]
+        tryCount <- map["tryCount"]
+        
         
     }
     
@@ -71,6 +73,8 @@ class MessageBean: BaseModel {
     var answer: String = ""
     var answerTip: String = ""
     var point: GeoJsonPoint?
+    
+    var tryCount: Int = 0
     
 }
 //坐标点

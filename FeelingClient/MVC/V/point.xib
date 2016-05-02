@@ -85,7 +85,7 @@
                         </stackView>
                         <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSb-yM-pGb" customClass="AnimatableButton" customModule="IBAnimatable">
                             <rect key="frame" x="0.0" y="115" width="220" height="45"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.5490196078431373" green="0.69019607843137254" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="4c3-q6-lgv"/>
                             </constraints>
