@@ -20,13 +20,13 @@
                             <constraint firstAttribute="height" constant="21" id="VEd-KX-UXs"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开启人：南岸的🐟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="TTx-X2-jW0">
                         <rect key="frame" x="65" y="31" width="189" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Ah-pgc">
@@ -64,6 +64,12 @@
                     <constraint firstItem="JOu-Ah-pgc" firstAttribute="top" secondItem="N3w-t8-xbV" secondAttribute="bottom" constant="2" id="yMe-6B-pGh"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imagesMe" destination="ccP-cK-mGd" id="8dD-Ar-bpT"/>
+                <outlet property="name" destination="TTx-X2-jW0" id="b0t-s2-XuE"/>
+                <outlet property="question" destination="N3w-t8-xbV" id="F5z-fa-BUP"/>
+                <outlet property="tryCount" destination="JOu-Ah-pgc" id="4xY-6d-xeU"/>
+            </connections>
             <point key="canvasLocation" x="302" y="259"/>
         </tableViewCell>
     </objects>

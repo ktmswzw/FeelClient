@@ -75,6 +75,22 @@ public class Messages:BaseApi {
         }
     }
     
+    func querySendAndRecived(selfFlag: Bool,page:Int,size:Int,completeHander: CompletionHandlerType)
+    {
+        let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
+        let params = ["page": page,"size":size]
+        NetApi().makeCallArray(Alamofire.Method.POST, section: "messages/self/\(selfFlag)", headers: headers, params: params) { (response: Response<[MessageBean], NSError>) -> Void in
+            switch (response.result) {
+            case .Success(let value):
+                completeHander(Result.Success(value))
+                break;
+            case .Failure(let error):
+                completeHander(Result.Failure(error))
+                break;
+            }
+        }
+    }
+    
 }
 
 class MessageApi:BaseApi{

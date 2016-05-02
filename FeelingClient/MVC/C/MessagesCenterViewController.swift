@@ -33,10 +33,10 @@ class MessagesCenterViewController: UIViewController {
         var controllerArray : [UIViewController] = []
         
         let controller1 : MessagesSendTableTableViewController = MessagesSendTableTableViewController(nibName: "MessagesSendTableTableViewController", bundle: nil)
-        controller1.title = "收到"
+        controller1.title = "寄出 "
         controllerArray.append(controller1)
         let controller2 : MessagesGetTableViewController = MessagesGetTableViewController(nibName: "MessagesGetTableViewController", bundle: nil)
-        controller2.title = "发出"
+        controller2.title = "已解"
         controllerArray.append(controller2)
         
         // Customize menu (Optional)

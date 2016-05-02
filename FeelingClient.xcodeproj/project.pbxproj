@@ -305,6 +305,7 @@
 		BF2EFBE01CD705590089EFCC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BF9F9B1F1CC4804D00795464 /* FriendTabelViewCell.swift */,
 				BF2EFBDB1CD6E3A00089EFCC /* MessagesGetTableViewController.xib */,
 				BF2EFBD71CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib */,
 				BF9F9B121CC47FB300795464 /* point.xib */,
@@ -418,7 +419,6 @@
 				BF9F9B1C1CC4804D00795464 /* CenterViewController.swift */,
 				BF9F9B1D1CC4804D00795464 /* ChatViewController.swift */,
 				BF9F9B1E1CC4804D00795464 /* FriendsViewController.swift */,
-				BF9F9B1F1CC4804D00795464 /* FriendTabelViewCell.swift */,
 				BF9F9B211CC4804D00795464 /* OpenMapViewController.swift */,
 				BF9F9B221CC4804D00795464 /* PointUIView.swift */,
 				BF9F9B231CC4804D00795464 /* RegisterViewController.swift */,

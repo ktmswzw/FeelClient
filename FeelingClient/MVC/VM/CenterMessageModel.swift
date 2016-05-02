@@ -137,7 +137,7 @@ public class MessageViewModel {
             }
         }
     }
-    
+        
 }
 
 public protocol MessageViewModelDelegate: class {

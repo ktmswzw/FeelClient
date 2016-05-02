@@ -8,88 +8,120 @@
 
 import UIKit
 
+import IBAnimatable
+
 class MessagesGetTableViewController: UITableViewController {
         
+    let msg: Messages = Messages.defaultMessages
+    
+    var msgs = [MessageBean]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        refreshControl = UIRefreshControl()
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        self.clearsSelectionOnViewWillAppear = false
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //设置背景颜色
+        refreshControl!.backgroundColor = UIColor.redColor()
+        //设置菊花转的颜色
+        refreshControl!.tintColor = UIColor.yellowColor()
+        
+        //往tableView添加刷新控件
+        self.tableView.addSubview(refreshControl!)
+        
+        self.tableView.registerNib(UINib(nibName: "MessageRecived", bundle: nil), forCellReuseIdentifier: "MessageRecivedViewCell")
+        getMessages()
     }
-
+    
+    func getMessages()
+    {
+        self.navigationController?.view.makeToastActivity(.Center)
+        self.msg.querySendAndRecived(false, page: 1, size: 1000, completeHander: { (r: BaseApi.Result) in
+            switch (r) {
+            case .Success(let value):
+                self.msgs =  value as! [MessageBean]
+                self.tableView.reloadData()
+                self.navigationController?.view.hideToastActivity()
+                break;
+            case .Failure(let msg):
+                self.view.makeToast("\(msg)", duration: 2, position: .Center)
+                self.navigationController?.view.hideToastActivity()
+                break;
+            }
+        })
+    }
+    
+    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        if refreshControl!.refreshing {
+            if msgs.count != 0 {
+                msgs.removeAll()
+            }
+            getMessages()
+            refreshControl!.endRefreshing()
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return msgs.count
     }
-
-    /*
+    
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let cell : MessageRecivedViewCell = tableView.dequeueReusableCellWithIdentifier("MessageRecivedViewCell") as! MessageRecivedViewCell
+        
+        let bean = msgs[indexPath.row] as MessageBean
         // Configure the cell...
-
+        cell.name.text = bean.from
+        if bean.avatar.length != 0 {
+            cell.imageMe.hnk_setImageFromURL(NSURL(string:bean.avatar)!)
+        }
+        cell.address.text = bean.address
+        cell.question.text = bean.question
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    
+    
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
 }
