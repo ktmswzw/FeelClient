@@ -38,23 +38,21 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.makeToast("定位中", duration: 2, position: .Center)
-        viewModel = MessageViewModel(delegate: self)
-        self.openUser.text = viewModel.to 
         
-        let image = UIImage(named: "lonely-children")
-        let blurredImage = image!.imageByApplyingBlurWithRadius(35)
-        self.view.layer.contents = blurredImage.CGImage
+        viewModel = MessageViewModel(delegate: self)
+        self.openUser.text = viewModel.to
+        
         //地图初始化
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = 1;
         
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         self.mapView.showsUserLocation = true
+        
         self.photoCollectionView.delegate = self
         self.photoCollectionView.dataSource = self
         
@@ -119,7 +117,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.latitude =  location!.coordinate.latitude
         viewModel.longitude = location!.coordinate.longitude
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.015))
         self.mapView.setRegion(region, animated: true)
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {
             (placemarks, error) -> Void in

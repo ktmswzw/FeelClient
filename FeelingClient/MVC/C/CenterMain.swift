@@ -67,7 +67,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = 1;
         
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true

@@ -47,6 +47,7 @@ class MessagesCenterViewController: UIViewController {
             .BottomMenuHairlineColor(UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
             .MenuItemFont(UIFont(name: "Helvetica-Bold", size: 10.0)!),
             .MenuHeight(25.0),
+            .EnableHorizontalBounce(false),
             .MenuItemWidth(100),
             .CenterMenuItems(true)
             
@@ -57,7 +58,7 @@ class MessagesCenterViewController: UIViewController {
 //        print(arrFont)
         
         // Initialize scroll menu
-        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height), pageMenuOptions: parameters)
+        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height-100), pageMenuOptions: parameters)
         
         self.addChildViewController(pageMenu!)
         self.view.addSubview(pageMenu!.view)

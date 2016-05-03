@@ -26,7 +26,7 @@
                                             <constraint firstAttribute="height" constant="60" id="JJ5-7Q-tgP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="self"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftImageRightPadding">

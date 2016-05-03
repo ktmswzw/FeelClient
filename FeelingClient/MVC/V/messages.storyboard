@@ -29,7 +29,6 @@
         <!--信件-->
         <scene sceneID="OqJ-7Q-IVx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="No7-VN-6ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ddQ-pN-uqT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="信件" image="readfire" id="2Sf-O2-MyP"/>
                     <toolbarItems/>
@@ -42,6 +41,7 @@
                         <segue destination="ona-yq-tEX" kind="relationship" relationship="rootViewController" id="Bg7-k0-ACu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="No7-VN-6ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2485" y="471"/>
         </scene>
