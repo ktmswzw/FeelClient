@@ -49,22 +49,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         
         RCIM.sharedRCIM().enableTypingStatus = true
         
-        //推送处理1
-        //注册推送,用于iOS8以上系统
-        application.registerUserNotificationSettings(
-            UIUserNotificationSettings(forTypes:[.Alert, .Badge, .Sound], categories: nil))
         
-        //点击远程推送的launchOptions内容格式请参考官网文档
-        //http://www.rongcloud.cn/docs/ios.html#App_接收的消息推送格式
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
         
         return true
     }
     
-    //推送处理2
-    @available(iOS 8.0, *)
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        //注册推送,用于iOS8以上系统
-        application.registerForRemoteNotifications()
+    //    // 注册通知 alert 、 sound 、 badge （ 8.0 之后，必须要添加下面这段代码，否则注册失败）
+    //    func application(application: UIApplication , didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings ) {
+    //        application.registerForRemoteNotifications ()
+    //    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
     }
     
     //推送处理3
@@ -73,15 +74,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString("<", withString: "")
         rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(">", withString: "")
         rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(" ", withString: "")
-        
+        print("\(rcDevicetoken)")
         RCIMClient.sharedRCIMClient().setDeviceToken(rcDevicetoken)
     }
     
     //推送处理4
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        //远程推送的userInfo内容格式请参考官网文档
-        //http://www.rongcloud.cn/docs/ios.html#App_接收的消息推送格式
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        print("userInfo==\(userInfo)")
+        if let notification = userInfo["aps"] as? NSDictionary,
+            let alert = notification["alert"] as? String {
+            let alertCtrl = UIAlertController(title: "userInfo==\(userInfo)", message: alert as String, preferredStyle: UIAlertControllerStyle.Alert)
+            alertCtrl.addAction(UIAlertAction(title: "userInfo==\(userInfo)", style: UIAlertActionStyle.Default, handler: nil))
+            // Find the presented VC...
+            var presentedVC = self.window?.rootViewController
+            while (presentedVC!.presentedViewController != nil)  {
+                presentedVC = presentedVC!.presentedViewController
+            }
+            presentedVC!.presentViewController(alertCtrl, animated: true, completion: nil)
+            
+            // call the completion handler
+            // -- pass in NoData, since no new data was fetched from the server.
+            completionHandler(UIBackgroundFetchResult.NoData)
+        }
+        
+//        let notif    = userInfo as NSDictionary
+//        let apsDic   = notif.objectForKey( "aps" ) as! NSDictionary
+//        let alertDic = apsDic.objectForKey( "alert" )  as! String
+        
+        
+//        let tabController = self.window!.rootViewController as! UITabBarController;
+//        let now_count = (tabController.tabBar.items?[3].badgeValue)
+//        let count = Int(now_count!)! + 1
+//        tabController.tabBar.items?[3].badgeValue = "\(count)"   // this will add "1" badge to your fifth tab bar item
+        
     }
+    
+    
+    
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         //本地通知
@@ -115,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
                     break
                 case .Failure(let error):
                     completion(RCUserInfo(userId: userId, name: "新用户", portrait: ""))
-                    print(error)                    
+                    print(error)
                     break
                 }
             }
@@ -147,6 +176,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         } else {
             print("收到一条消息")
         }
+        
+        
+//        
+//        let tabController = root?.childViewControllers.count as! UITabBarController;
+//        let now_count = (tabController.tabBar.items?[3].badgeValue)
+//        let count = Int(now_count!)! + 1
+//        tabController.tabBar.items?[3].badgeValue = "\(count)"
     }
     
     

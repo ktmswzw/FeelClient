@@ -19,6 +19,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     var disposeBag = DisposeBag()
     var viewModel: FriendViewModel!
     var searchName = ""
+    var badgeNumber:Int = 0
     @IBOutlet weak var search: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,21 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         //self.refreshData()
     }
     
+    func addBadge () {
+        badgeNumber = badgeNumber + 1
+        let tabArray = self.tabBarController?.tabBar.items as NSArray!
+        let tabItem = tabArray.objectAtIndex(3) as! UITabBarItem
+        
+        tabItem.badgeValue  = "\(badgeNumber)"
+        
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FriendsViewController.addBadge), name: "addBadge", object: nil)
+        
+    }
     
     func refreshData()
     {

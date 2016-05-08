@@ -29,10 +29,14 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>应用获取GPS地址进行定位</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>login</string>
+	<string>main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

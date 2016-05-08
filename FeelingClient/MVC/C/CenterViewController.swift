@@ -117,7 +117,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.latitude =  location!.coordinate.latitude
         viewModel.longitude = location!.coordinate.longitude
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.0015, longitudeDelta: 0.015))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         self.mapView.setRegion(region, animated: true)
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {
             (placemarks, error) -> Void in

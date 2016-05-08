@@ -16,7 +16,7 @@ import SwiftyJSON
 class NetApi:BaseApi {
     
     var apiUrl = "http://61.164.187.56:8080/"
-//    var apiUrl = "http://192.168.1.102:8080/"
+//    var apiUrl = "http://192.168.1.107:8080/"
     
     //简单数据
     func makeCallString(method: Alamofire.Method, section: String, headers: [String: String]?, params: [String: AnyObject]?, completionHandler: CompletionHandlerType) {

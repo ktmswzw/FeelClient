@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
 		BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67C1C6C38760027F63D /* LaunchScreen.storyboard */; };
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
+		BF8B5F261CDEC1B200A76470 /* CustomNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */; };
 		BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */; };
 		BF9F9AC31CC47D7B00795464 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AB61CC47D7B00795464 /* Bool.swift */; };
 		BF9F9AC41CC47D7B00795464 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AB71CC47D7B00795464 /* Character.swift */; };
@@ -124,6 +125,7 @@
 		BF5D8B3D1C705916002964D8 /* FeelingClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelingClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingClientTests.swift; sourceTree = "<group>"; };
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNotificationHandler.swift; path = common/utils/CustomNotificationHandler.swift; sourceTree = "<group>"; };
 		BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = messages.storyboard; path = MVC/V/messages.storyboard; sourceTree = "<group>"; };
 		BF9F9AB61CC47D7B00795464 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bool.swift; path = common/extension/Bool.swift; sourceTree = "<group>"; };
 		BF9F9AB71CC47D7B00795464 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = common/extension/Character.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				BF9F9AD31CC47DDA00795464 /* ImageUtils.swift */,
 				BF9F9AD41CC47DDA00795464 /* JWTTools.swift */,
 				BF9F9AD51CC47DDA00795464 /* MapHelper.swift */,
+				BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -546,6 +549,15 @@
 				TargetAttributes = {
 					BF45B66C1C6C38760027F63D = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = AHNQ4GYSUZ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BF5D8B3C1C705916002964D8 = {
 						CreatedOnToolsVersion = 7.2;
@@ -554,7 +566,7 @@
 				};
 			};
 			buildConfigurationList = BF45B6681C6C38760027F63D /* Build configuration list for PBXProject "FeelingClient" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -693,6 +705,7 @@
 				BF9F9ADC1CC47E2500795464 /* PhotoUpLoader.swift in Sources */,
 				BF9F9AE81CC47E9B00795464 /* ActionButton.swift in Sources */,
 				BF9F9ACB1CC47D7B00795464 /* NSArray.swift in Sources */,
+				BF8B5F261CDEC1B200A76470 /* CustomNotificationHandler.swift in Sources */,
 				BF9F9B271CC4804D00795464 /* CenterMain.swift in Sources */,
 				BF9F9AC41CC47D7B00795464 /* Character.swift in Sources */,
 				BF2EFBE41CD706180089EFCC /* MessageRecivedViewCell.swift in Sources */,
@@ -770,7 +783,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -792,6 +806,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "f3c978f8-6526-4751-b64d-50c87f9cbbc5";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -814,6 +829,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -839,8 +855,8 @@
 			baseConfigurationReference = 37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FeelingClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -849,9 +865,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FeelingClient/Library/QCloudUploadSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.Feeling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "f3c978f8-6526-4751-b64d-50c87f9cbbc5";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -872,7 +888,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FeelingClient/Library/QCloudUploadSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.FeelingClient2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.Feeling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
