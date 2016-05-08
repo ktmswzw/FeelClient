@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0v0-XJ-eoM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0v0-XJ-eoM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="YxR-Cg-WGt">
             <objects>
-                <tabBarController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="0v0-XJ-eoM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="main" automaticallyAdjustsScrollViewInsets="NO" id="0v0-XJ-eoM" customClass="MainViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9aY-X8-Klg">
@@ -19,11 +19,20 @@
                         <segue destination="b6Y-sj-DIo" kind="relationship" relationship="viewControllers" id="is3-Ha-gDN"/>
                         <segue destination="pnh-6U-1Mo" kind="relationship" relationship="viewControllers" id="6eL-fH-i7j"/>
                         <segue destination="dpM-lX-vvl" kind="relationship" relationship="viewControllers" id="zFb-9H-3Df"/>
+                        <segue destination="BFt-Ci-Oij" kind="show" identifier="login" id="iJX-YE-ToI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3q2-br-1L6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="323"/>
+        </scene>
+        <!--login-->
+        <scene sceneID="VUR-N9-AWM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="login" id="BFt-Ci-Oij" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qv-fj-pml" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="323"/>
         </scene>
         <!--friends-->
         <scene sceneID="o3M-2Y-yug">

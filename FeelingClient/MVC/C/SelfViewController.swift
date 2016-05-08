@@ -159,6 +159,8 @@ class SelfViewController: DesignableViewController {
     
     func exitAppAction()
     {
+        self.tabBarController?.selectedIndex = 0
+
         jwt.jwtTemp = ""
         jwt.appUsername = ""
         jwt.appPwd = ""
@@ -167,9 +169,11 @@ class SelfViewController: DesignableViewController {
         RCIM.sharedRCIM().disconnect(false)
         
         //let navigationController:UINavigationController? = self.tabBarController?.presentingViewController as? UINavigationController
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.view.makeToast("退出成功", duration: 2, position: .Center)
-        })
+//        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+//            self.view.makeToast("退出成功", duration: 2, position: .Center)
+//        })
+        self.view.makeToast("退出成功", duration: 2, position: .Center)
+        self.performSegueWithIdentifier("login", sender: self)
     }
     
     override func didReceiveMemoryWarning() {

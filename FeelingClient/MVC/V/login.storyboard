@@ -123,7 +123,6 @@
                         <outlet property="loginBtn" destination="4Ie-5W-rG5" id="y9c-yx-bhy"/>
                         <outlet property="password" destination="yWq-dj-LsK" id="9Zu-iQ-376"/>
                         <outlet property="username" destination="Okb-KY-gBB" id="Yca-i0-Fdq"/>
-                        <segue destination="pjJ-Nw-vue" kind="show" identifier="login" id="gEt-GL-UXG"/>
                         <segue destination="wgj-fT-Mgx" kind="show" identifier="register" id="Nma-HI-CwT"/>
                     </connections>
                 </viewController>
@@ -136,21 +135,13 @@
             </objects>
             <point key="canvasLocation" x="448" y="-133"/>
         </scene>
-        <!--main-->
-        <scene sceneID="VmX-he-pOz">
-            <objects>
-                <viewControllerPlaceholder storyboardName="main" id="pjJ-Nw-vue" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-u5-ZMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="336" y="295"/>
-        </scene>
         <!--register-->
         <scene sceneID="BEB-ay-Wcb">
             <objects>
                 <viewControllerPlaceholder storyboardName="register" id="wgj-fT-Mgx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBS-nd-SXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580.5" y="295"/>
+            <point key="canvasLocation" x="448" y="316"/>
         </scene>
     </scenes>
     <resources>

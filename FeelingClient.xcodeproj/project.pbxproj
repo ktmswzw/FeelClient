@@ -87,6 +87,7 @@
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
 		BF9F9B361CC4808400795464 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B341CC4808400795464 /* Localizable.strings */; };
+		BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
 		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
@@ -190,6 +191,7 @@
 		BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewImageViewController.swift; path = MVC/C/ViewImageViewController.swift; sourceTree = "<group>"; };
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
 		BF9F9B341CC4808400795464 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = recource/Localizable.strings; sourceTree = "<group>"; };
+		BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MVC/C/MainViewController.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -417,6 +419,7 @@
 		BF45B68B1C6C4C820027F63D /* C */ = {
 			isa = PBXGroup;
 			children = (
+				BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */,
 				BF9F9B201CC4804D00795464 /* LoginViewController.swift */,
 				BF9F9B1B1CC4804D00795464 /* CenterMain.swift */,
 				BF9F9B1C1CC4804D00795464 /* CenterViewController.swift */,
@@ -689,6 +692,7 @@
 				BF9F9B051CC47F5400795464 /* OpenMessageModel.swift in Sources */,
 				BF9F9B2C1CC4804D00795464 /* LoginViewController.swift in Sources */,
 				BF9F9AF71CC47EF900795464 /* Friend.swift in Sources */,
+				BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */,
 				BF9F9AFA1CC47F2900795464 /* CustomAnnotation.swift in Sources */,
 				BF9F9AF81CC47EF900795464 /* Message.swift in Sources */,
 				BF9F9ACE1CC47D7B00795464 /* String.swift in Sources */,

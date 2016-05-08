@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rc3-oE-rRP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rc3-oE-rRP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -225,7 +225,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="我" image="self" id="Wia-m2-7ft"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="我" image="self" badgeValue="33" id="Wia-m2-7ft"/>
                     <navigationItem key="navigationItem" title="我" id="DaA-WB-wgS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -234,11 +234,20 @@
                         <outlet property="name" destination="SlW-ro-pA8" id="wtm-7Y-2O9"/>
                         <outlet property="segment" destination="lug-ak-Crf" id="GS1-67-SLC"/>
                         <outlet property="username" destination="bGm-oT-3yw" id="9TV-oM-d8c"/>
+                        <segue destination="2lV-9J-5tK" kind="presentation" identifier="login" modalPresentationStyle="overFullScreen" id="jCY-qF-RCM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAb-Vf-jNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1865" y="16"/>
+        </scene>
+        <!--login-->
+        <scene sceneID="XRs-mP-2S0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="login" id="2lV-9J-5tK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dp-2r-Wba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1865" y="445"/>
         </scene>
         <!--我-->
         <scene sceneID="Xic-87-zIs">

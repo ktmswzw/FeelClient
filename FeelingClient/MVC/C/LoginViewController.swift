@@ -92,7 +92,8 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
                     self.view.hideToastActivity()
                     self.view.makeToast("默认注册成功，密码123456", duration: 3, position: .Center)
                     
-                    self.performSegueWithIdentifier("login", sender: self)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    //self.performSegueWithIdentifier("login", sender: self)
                 }
                 if jwt.imToken.length != 0 {
                     RCIM.sharedRCIM().connectWithToken(jwt.imToken,
@@ -218,7 +219,8 @@ extension LoginViewController: LoginUserModelDelegate {
                         self.view.hideToastActivity()
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
                         
-                        self.performSegueWithIdentifier("login", sender: self)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                        //self.performSegueWithIdentifier("login", sender: self)
                     }
                     if jwt.imToken.length != 0 {
                         RCIM.sharedRCIM().connectWithToken(jwt.imToken,

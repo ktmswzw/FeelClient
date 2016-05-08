@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print(error)
     }
-    
+                
     //推送处理3
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         var rcDevicetoken = deviceToken.description
@@ -179,10 +179,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         
         
 //        
-//        let tabController = root?.childViewControllers.count as! UITabBarController;
-//        let now_count = (tabController.tabBar.items?[3].badgeValue)
-//        let count = Int(now_count!)! + 1
-//        tabController.tabBar.items?[3].badgeValue = "\(count)"
+        let rootcontorller = self.window?.rootViewController?.childViewControllers;
+        print("\(rootcontorller!.count)")
+        let tabController = self.window?.rootViewController as! UITabBarController;
+//
+        let now_count = (tabController.tabBar.items?[2].badgeValue)
+        var  count = 0
+        if now_count != nil {
+            count = Int(now_count!)! + 1
+        }
+        else{
+            count = 1
+        }
+        tabController.tabBar.items?[2].badgeValue = "\(count)"
     }
     
     

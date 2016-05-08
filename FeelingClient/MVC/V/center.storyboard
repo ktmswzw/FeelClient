@@ -68,7 +68,7 @@
                             <constraint firstItem="W1O-31-f7T" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="8" symbolic="YES" id="wcF-qP-bik"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="send" id="m87-yF-hbL"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="send" badgeValue="00" id="m87-yF-hbL"/>
                     <navigationItem key="navigationItem" title="发现" id="lTY-dc-LDc">
                         <barButtonItem key="backBarButtonItem" id="bgA-fX-xqW">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
