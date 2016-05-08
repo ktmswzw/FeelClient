@@ -32,7 +32,7 @@ class SelfViewController: DesignableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "设置"
         let image = UIImage(named: "lonely-children")
         let blurredImage = image!.imageByApplyingBlurWithRadius(30)
         self.view.layer.contents = blurredImage.CGImage

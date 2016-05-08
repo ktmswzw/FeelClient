@@ -27,7 +27,7 @@ class ChatViewController: RCConversationListViewController {
         self.setCollectionConversationType([RCConversationType.ConversationType_DISCUSSION.rawValue,
             RCConversationType.ConversationType_GROUP.rawValue])
         
-        self.navigationItem.title = "会话列表"
+        self.title = "聊天"
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.

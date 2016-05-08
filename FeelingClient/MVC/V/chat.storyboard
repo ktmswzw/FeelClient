@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9x7-ZC-qCi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9x7-ZC-qCi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--消息-->
+        <!--聊天-->
         <scene sceneID="q18-xy-sps">
             <objects>
                 <viewController storyboardIdentifier="chat" id="XgY-6Z-pPg" customClass="ChatViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                             <constraint firstItem="6h2-ZG-BHC" firstAttribute="centerY" secondItem="Trd-kY-nmW" secondAttribute="centerY" id="AY8-oF-nrQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="消息" image="chat" id="Pdz-Wu-zwA"/>
+                    <tabBarItem key="tabBarItem" title="聊天" image="chat" id="Pdz-Wu-zwA"/>
                     <navigationItem key="navigationItem" id="Sv4-Yu-fbd"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

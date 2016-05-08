@@ -105,7 +105,7 @@
                             <outlet property="delegate" destination="VJR-Pg-D6y" id="SzN-D4-ar3"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="2" title="好友" image="friends" badgeValue="22" id="gSf-CS-iqq"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="好友" image="friends" id="gSf-CS-iqq"/>
                     <navigationItem key="navigationItem" id="RLU-ro-hKY"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
