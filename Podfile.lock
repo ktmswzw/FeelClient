@@ -13,7 +13,7 @@ PODS:
   - MOBFoundation_IDFA (1.3.1)
   - ObjectMapper (1.1.4)
   - PageMenu (1.2.9)
-  - RongCloudIMKit (2.4.11)
+  - RongCloudIMKit (2.5.0)
   - RxAlamofire (2.2):
     - RxAlamofire/Core (= 2.2)
   - RxAlamofire/Core (2.2):
@@ -46,7 +46,7 @@ DEPENDENCIES:
   - MOBFoundation_IDFA
   - ObjectMapper
   - PageMenu
-  - RongCloudIMKit (= 2.4.11)
+  - RongCloudIMKit (= 2.5.0)
   - RxAlamofire
   - RxBlocking
   - RxCocoa
@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
   ObjectMapper: 09ff2ad156bb0e103d9dde9bfe10fbde78affeb2
   PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
-  RongCloudIMKit: 40fefc63541927aad728e06c731d12d34de1c5fa
+  RongCloudIMKit: 3d8473f022c7588db80ef81caf0208e5c2fa4789
   RxAlamofire: 250b7846cedbd189d6190e4f83caa01ee1f1eceb
   RxBlocking: 84fd81865a641a3843b33bae7b8315e78ddbd383
   RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa

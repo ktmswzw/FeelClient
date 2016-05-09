@@ -17,9 +17,10 @@ var jwt = JWTTools()
 var loader:PhotoUpLoader = PhotoUpLoader()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
-    
+class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
+    var updateToken = false //已更新
     var window: UIWindow?
+    var viewModel: UserInfoViewModel!
     let cacheDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
         return urls[urls.endIndex-1]
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        viewModel = UserInfoViewModel(delegate: self)
         
         //初始化SMS－SDK ,在MOB后台注册应用并获得AppKey 和AppSecret
         SMSSDK.registerApp("f7b6d783cb00", withSecret: "164aabea58f5eb4723f366eafb0eadf0")
@@ -75,13 +78,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
         rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(">", withString: "")
         rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(" ", withString: "")
         print("\(rcDevicetoken)")
+        if !updateToken {
+            self.updateToken = true
+            viewModel.updateDeviceToken(rcDevicetoken) { (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(_):
+                    break;
+                case .Failure(_):
+                    
+                    break;
+                }
+            }
+        }
         RCIMClient.sharedRCIMClient().setDeviceToken(rcDevicetoken)
     }
     
     //推送处理4
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         print("userInfo==\(userInfo)")
-
         for (_, value) in userInfo {
             for (key2, value2) in (value as? NSDictionary)!  {
                 if key2 as! String == "badge" {
@@ -106,7 +120,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCIMConnectionStatusDeleg
     }
     
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
         print("Recived: \(userInfo)")
         
     }

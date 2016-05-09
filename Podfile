@@ -28,7 +28,7 @@ pod 'HanekeSwift'
 #视频播放
 pod 'VideoSplashKit'
 #IMCHAT
-pod 'RongCloudIMKit', '2.4.11'
+pod 'RongCloudIMKit', '2.5.0'
 #响应编程
 pod 'RxSwift'
 pod 'RxCocoa'

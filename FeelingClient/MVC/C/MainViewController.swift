@@ -70,7 +70,6 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
                         }
                     }
                     self.view.hideToastActivity()
-                    self.view.makeToast("登陆成功", duration: 1, position: .Center)
                 }
                 if jwt.imToken.length != 0 {
                     RCIM.sharedRCIM().connectWithToken(jwt.imToken,

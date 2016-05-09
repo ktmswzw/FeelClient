@@ -261,10 +261,8 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        if !userDefaults.boolForKey("NEWONESHOW") {
-            
-            self.coachMarksController!.startOn(self)
-            
+        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
+            self.coachMarksController!.startOn(self)            
             userDefaults.setBool(true, forKey: "NEWONESHOW")
             userDefaults.synchronize()
         }

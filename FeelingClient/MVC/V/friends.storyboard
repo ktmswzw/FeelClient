@@ -53,20 +53,19 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ltv-RH-Ino" customClass="AnimatableImageView" customModule="IBAnimatable">
-                                            <rect key="frame" x="8" y="6" width="50" height="50"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ltv-RH-Ino">
+                                            <rect key="frame" x="8" y="8" width="50" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="SOS-A7-fU9"/>
+                                                <constraint firstAttribute="height" constant="50" id="3SZ-JY-KY8"/>
+                                                <constraint firstAttribute="width" constant="50" id="fQF-Lf-CuU"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="tix-M3-krj"/>
                                                 <constraint firstAttribute="width" constant="45" id="yC3-Ad-t68"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="0.0"/>
-                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -79,16 +78,16 @@
                                     <color key="backgroundColor" red="0.97945773800836478" green="0.97836642296289167" blue="0.99742897850707968" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="wiU-Zq-wG9" firstAttribute="leading" secondItem="aAX-FP-StR" secondAttribute="trailing" constant="8" symbolic="YES" id="6gk-w9-deC"/>
+                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="bottom" secondItem="PkL-Xh-2Qf" secondAttribute="bottom" id="H0y-Tp-GSs"/>
                                         <constraint firstItem="wiU-Zq-wG9" firstAttribute="trailing" secondItem="PkL-Xh-2Qf" secondAttribute="trailing" id="HlR-gI-3l9"/>
                                         <constraint firstItem="wiU-Zq-wG9" firstAttribute="trailing" secondItem="tmv-kW-aQL" secondAttribute="trailingMargin" id="LAN-Dh-IzX"/>
+                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="leading" secondItem="tmv-kW-aQL" secondAttribute="leadingMargin" id="RSP-BV-iBj"/>
                                         <constraint firstItem="PkL-Xh-2Qf" firstAttribute="top" secondItem="wiU-Zq-wG9" secondAttribute="bottom" constant="8" symbolic="YES" id="Zyb-Vc-LXA"/>
                                         <constraint firstItem="aAX-FP-StR" firstAttribute="top" secondItem="tmv-kW-aQL" secondAttribute="topMargin" id="a91-Gx-B5O"/>
-                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="leading" secondItem="tmv-kW-aQL" secondAttribute="leadingMargin" id="ahv-oY-q9c"/>
+                                        <constraint firstItem="aAX-FP-StR" firstAttribute="leading" secondItem="ltv-RH-Ino" secondAttribute="trailing" constant="8" symbolic="YES" id="b4v-lw-ycf"/>
                                         <constraint firstItem="wiU-Zq-wG9" firstAttribute="baseline" secondItem="aAX-FP-StR" secondAttribute="firstBaseline" id="b9F-7p-Gag"/>
+                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="top" secondItem="aAX-FP-StR" secondAttribute="top" id="bqe-Jl-hIo"/>
                                         <constraint firstItem="aAX-FP-StR" firstAttribute="leading" secondItem="PkL-Xh-2Qf" secondAttribute="leading" id="d62-ft-9aj"/>
-                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="top" secondItem="tmv-kW-aQL" secondAttribute="topMargin" constant="-2" id="kJ8-N2-aZQ"/>
-                                        <constraint firstItem="ltv-RH-Ino" firstAttribute="bottom" secondItem="tmv-kW-aQL" secondAttribute="bottomMargin" id="lnU-Km-Sn9"/>
-                                        <constraint firstItem="aAX-FP-StR" firstAttribute="leading" secondItem="ltv-RH-Ino" secondAttribute="trailing" constant="8" symbolic="YES" id="oPS-zp-cGa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

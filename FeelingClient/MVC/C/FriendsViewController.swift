@@ -116,6 +116,8 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         cell.remark.text = friendCell.remark
         cell.id.text = friendCell.id
         cell.motto.text = friendCell.motto
+        cell.avatar.layer.cornerRadius = 10
+        cell.avatar.layer.masksToBounds = true
         cell.avatar.hnk_setImageFromURL(NSURL(string:friendCell.avatar)!)
         return cell
     }
