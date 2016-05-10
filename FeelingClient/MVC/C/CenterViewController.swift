@@ -18,6 +18,7 @@ import Alamofire
 
 import ImagePickerSheetController
 
+@available(iOS 9.0, *)
 class CenterViewController: DesignableViewController,MessageViewModelDelegate , MKMapViewDelegate, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     @IBOutlet var mapView: MKMapView!
@@ -211,6 +212,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
 
 
 
+@available(iOS 9.0, *)
 extension CenterViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.imageDataThumbnail.count + 1
@@ -242,6 +244,7 @@ extension CenterViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
+@available(iOS 9.0, *)
 extension CenterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage

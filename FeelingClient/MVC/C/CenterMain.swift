@@ -186,7 +186,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
                     detailView.avator.image = image
                 }
             }
-            detailView.answer.placeholder = "提示：\(pin.answerTip)"
+            detailView.answer.placeholder = "提示：\(pin.answerTip!)"
             detailView.msgId = pin.id
             detailView.fromId = pin.id
             detailView.question.text = pin.question
