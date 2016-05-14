@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
   - CryptoSwift (0.0.14)
+  - Eureka (1.5.0)
   - HanekeSwift (0.10.1)
   - IBAnimatable (1.2)
   - ImagePickerSheetController (0.9.1)
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - Eureka
   - HanekeSwift
   - IBAnimatable
   - ImagePickerSheetController
@@ -60,6 +62,7 @@ SPEC CHECKSUMS:
   Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
   CryptoSwift: 5a6b725e2ad65a789f5f435dd434d38eb2c40b46
+  Eureka: 2fb37bb50569c62ee3284689d5b7aca694b040e0
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   IBAnimatable: bcebfaf34b041949da5ed668ac5ab2e28a4b2357
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba

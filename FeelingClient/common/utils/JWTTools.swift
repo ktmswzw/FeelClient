@@ -153,3 +153,16 @@ class JWTTools {
         }
     }
 }
+
+
+func getSex(name:String) -> String {
+    if name=="MALE" {
+        return "男"
+    }
+    if name=="FEMALE"{
+        return "女"
+    }
+    else {
+        return "无"
+    }
+}

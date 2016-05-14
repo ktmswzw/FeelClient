@@ -13,17 +13,16 @@ import IBAnimatable
     import RxSwift
     import RxCocoa
 #endif
+import Eureka
 
-class UserInfoViewController: DesignableViewController {
+var imageViewFriend = UIImageView(image: UIImage(named: "agirl"))
+
+class UserInfoViewController: FormViewController {
     
     var friend:FriendBean = FriendBean()
     
     var viewModel: FriendViewModel!
-    @IBOutlet weak var avatar: AnimatableImageView!
-    @IBOutlet weak var userId: AnimatableTextField!
-    @IBOutlet weak var motto: AnimatableTextField!
-    @IBOutlet weak var address: AnimatableTextField!
-    @IBOutlet weak var chatButton: AnimatableButton!
+    
     
     var disposeBag = DisposeBag()
     
@@ -35,10 +34,10 @@ class UserInfoViewController: DesignableViewController {
         let image = UIImage(named: "lonely-children")
         let blurredImage = image!.imageByApplyingBlurWithRadius(50)
         self.view.layer.contents = blurredImage.CGImage
-        
+        var tmp = ""
         
         self.navigationItem.title = "用户信息"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.saveFriend))
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.saveFriend))
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         
@@ -48,46 +47,100 @@ class UserInfoViewController: DesignableViewController {
         
         if list.count > 0 {
             let userinfo = list[0]
+            imageViewFriend.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             
-            self.avatar.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
-            self.userId.text = userinfo.nickname
-            self.motto.text = userinfo.phone
-            self.address.text = userinfo.region
-        }
-        else{
-            self.avatar.hnk_setImageFromURL(NSURL(string:friend.avatar)!)
-            self.userId.text = self.friend.remark
-            self.motto.text = self.friend.motto
-            self.address.text = ""
-        }
-        // Do any additional setup after loading the view.
-        
-        
-        //点击
-        chatButton.rx_tap
-            .subscribeNext { [weak self] in self?.privateChat() }
-            .addDisposableTo(disposeBag)
+            if userinfo.register {
+                tmp = userinfo.phone
+            }
+            
+            form = Section() {
+                $0.header = HeaderFooterView<EurekaFriendView>(HeaderFooterProvider.Class)
+                }
+                
+                +++ Section()
+                <<< TextRow("remark"){
+                    $0.title = "备注"
+                    $0.value = self.friend.remark
+                }
+                <<< PhoneRow("phone"){
+                    $0.title = "手机"
+                    $0.disabled = true
+                    $0.value = tmp
+                }
+                <<< TextRow("realname") {
+                    $0.title = "姓名"
+                    $0.disabled = true
+                    $0.placeholder = "真实姓名"
+                }
+                <<< TextRow("nickname") {
+                    $0.title = "昵称"
+                    $0.value = userinfo.nickname
+                    $0.disabled = true
+                    $0.placeholder = "朋友或亲人对你的昵称"
+                }
+                <<< TextRow("sex") {
+                    $0.title = "性别"                    
+                    $0.value = getSex(userinfo.sex)
+                    $0.disabled = true
+                }
+                <<< TextRow("mommo") {
+                    $0.title = "签名"
+                    $0.value = userinfo.motto
+                    $0.disabled = true
+                }
+                
+                +++ Section()
+                <<< ButtonRow() { (row: ButtonRow) -> Void in
+                    row.title = "和TA聊天"
+                    }  .onCellSelection({ (cell, row) in
+                        self.privateChat()
+                    })
 
+        }else{
+            
+            imageViewFriend.hnk_setImageFromURL(NSURL(string:self.friend.avatar)!)
+            
+            form = Section() {
+                $0.header = HeaderFooterView<EurekaFriendView>(HeaderFooterProvider.Class)
+                }
+                
+                +++ Section()
+                <<< TextRow("remark"){ $0.title = "备注"
+                    $0.value = self.friend.remark
+                }
+                <<< TextRow("mommo") {$0.title = "签名"
+                    $0.value = self.friend.motto
+                    $0.disabled = true
+                }
+                +++ Section()
+                <<< ButtonRow() { (row: ButtonRow) -> Void in
+                    row.title = "和TA聊天"
+                    }  .onCellSelection({ (cell, row) in
+                        self.privateChat()
+                    })
+        }
         
     }
     
     func saveFriend() {
         
-        self.navigationController?.view.makeToastActivity(.Center)
-        if self.userId.text?.length > 0 {
-            self.navigationItem.rightBarButtonItem?.enabled = false
-            viewModel.remark(self.friend.id, name: self.userId.text!) { (r:BaseApi.Result) in
-                switch (r) {
-                case .Success(_):
-                    self.navigationController?.view.hideToastActivity()
-
-                    self.view.makeToast("保存成功", duration: 2, position: .Center)
-                    self.navigationItem.rightBarButtonItem?.enabled = true
-                    break;
-                case .Failure(let msg):
-                    self.navigationController?.view.hideToastActivity()
-                    self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
-                    break;
+        if let remarkText =  form.rowByTag("remark")?.baseValue as? String {
+            self.navigationController?.view.makeToastActivity(.Center)
+            if remarkText.length > 0 {
+                self.navigationItem.rightBarButtonItem?.enabled = false
+                viewModel.remark(self.friend.id, name: remarkText) { (r:BaseApi.Result) in
+                    switch (r) {
+                    case .Success(_):
+                        self.navigationController?.view.hideToastActivity()
+                        
+                        self.view.makeToast("保存成功", duration: 2, position: .Center)
+                        self.navigationItem.rightBarButtonItem?.enabled = true
+                        break;
+                    case .Failure(let msg):
+                        self.navigationController?.view.hideToastActivity()
+                        self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
+                        break;
+                    }
                 }
             }
         }
@@ -111,5 +164,26 @@ class UserInfoViewController: DesignableViewController {
     }
 }
 extension UserInfoViewController: FriendModelDelegate{
+    
+}
+class EurekaFriendView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        imageViewFriend.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
+        imageViewFriend.autoresizingMask = .FlexibleBottomMargin
+        let bounds = UIScreen.mainScreen().bounds
+        let width = bounds.size.width
+        self.frame = CGRect(x: 0, y: 0, width: width, height: 140)
+        imageViewFriend.center = CGPointMake(self.frame.size.width  / 2, (self.frame.size.height / 2) + 15 )
+        imageViewFriend.contentMode = .ScaleAspectFit
+        imageViewFriend.layer.masksToBounds = true
+        imageViewFriend.layer.cornerRadius = 5
+        self.addSubview(imageViewFriend)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }

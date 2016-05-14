@@ -6,23 +6,18 @@
 //  Copyright © 2016 xecoder. All rights reserved.
 //
 
-import IBAnimatable
 import UIKit
 import SwiftyDB
 import MobileCoreServices
 import MediaPlayer
 import ImagePickerSheetController
+import Eureka
 
-class SelfViewController: DesignableViewController {
+var imageViewSelf = UIImageView(image: UIImage(named: "agirl"))
+
+class SelfViewController: FormViewController {
     
-    var viewModel: UserInfoViewModel!    
-    @IBOutlet weak var imageView: AnimatableImageView!
-    @IBOutlet weak var name: AnimatableTextField!
-    @IBOutlet weak var username: AnimatableTextField!
-    @IBOutlet weak var motto: AnimatableTextField!
-    @IBOutlet weak var segment: UISegmentedControl!
-    
-    var picker = UIImagePickerController()
+    var viewModel: UserInfoViewModel!
     
     var images = [UIImage]()
     
@@ -33,71 +28,88 @@ class SelfViewController: DesignableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设置"
-        let image = UIImage(named: "lonely-children")
-        let blurredImage = image!.imageByApplyingBlurWithRadius(30)
-        self.view.layer.contents = blurredImage.CGImage
-        // Do any additional setup after loading the view.
+        
+        TextRow.defaultCellUpdate = { cell, row in cell.textField.textColor = UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 ) }
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.saveImage))
         
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
-        
+//        
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
+//        
         
         viewModel = UserInfoViewModel(delegate: self)
         
+        var tmp = ""
         
         let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": jwt.userId]).value!
         
         if list.count > 0 {
             userinfo = list[0]
             
-            self.imageView.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
-            self.name.text = userinfo.nickname
-            self.motto.text = userinfo.motto
+            imageViewSelf.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
+            
             if userinfo.register {
-                self.username.text = userinfo.phone
+                tmp = userinfo.phone
             }
-            self.segment.selectedSegmentIndex = getSex(userinfo.sex)
+            
+            form = Section() {
+                $0.header = HeaderFooterView<EurekaSelfView>(HeaderFooterProvider.Class)
+                }
+            
+                +++ Section()
+                <<< PhoneRow("phone"){ $0.title = "手机"
+                    $0.disabled = true
+                    $0.value = tmp
+                }
+                <<< TextRow("realname") {
+                    $0.title = "姓名"
+                    $0.placeholder = "真实姓名"
+                }
+                <<< TextRow("nickname") {$0.title = "昵称"
+                    $0.value = userinfo.nickname
+                    $0.placeholder = "朋友或亲人对你的昵称"
+                    }
+                <<< ActionSheetRow<String>() {
+                    $0.title = "性别"
+                    $0.options = ["女", "男", "无"]
+                    $0.value = getSex(userinfo.sex)
+                    
+                }.onChange { row in
+                    self.sexChange(row.value!)
+                }
+                
+                <<< TextRow("mommo") {$0.title = "签名"
+                $0.value = userinfo.motto
+                }
+                
+                +++ Section("版本1.0")
+                <<< ButtonRow() { (row: ButtonRow) -> Void in
+                    row.title = "退出"
+                    }  .onCellSelection({ (cell, row) in
+                        self.exitAppAction()
+                    })
+
+            
             self.viewModel.sex = userinfo.sex
         }
         
-        //点击
-        //        exitApp.rx_tap
-        //            .subscribeNext { [weak self] in self?.exitAppAction() }
-        //            .addDisposableTo(disposeBag)
         
-        //照片
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(SelfViewController.presentImagePickerSheet))
-        imageView.userInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        
-        
+        imageViewSelf.userInteractionEnabled = true
+        imageViewSelf.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func getSex(name:String) -> Int {
-        if name=="MALE" {
-            return 0
-        }
-        if name=="FEMALE"{
-            return 1
-        }
-        else {
-            return 2
-        }
-    }
-    
-    @IBAction func sexChange(sender: AnyObject) {
-        switch segment.selectedSegmentIndex
+    func sexChange(value: String) {
+        switch value
         {
-        case 0:
+        case "男":
             self.viewModel.sex = "MALE";
-        case 1:
+        case "女":
             self.viewModel.sex = "FEMALE";
-        case 2:
+        case "无":
             self.viewModel.sex = "OTHER";
         default:
-            break; 
+            break;
         }
     }
     
@@ -126,8 +138,13 @@ class SelfViewController: DesignableViewController {
     
     func save()
     {
-        viewModel.nickname = self.name.text!
-        viewModel.motto = self.motto.text!
+        if let nickname = form.rowByTag("nickname")?.baseValue as? String {
+            viewModel.nickname = nickname
+        }
+        if let motto = form.rowByTag("motto")?.baseValue as? String {
+            viewModel.motto = motto
+        }
+        
         self.navigationItem.rightBarButtonItem?.enabled = false
         viewModel.saveUser("") { (r:BaseApi.Result) in
             switch (r) {
@@ -207,7 +224,7 @@ class SelfViewController: DesignableViewController {
                 for ass in controller.selectedImageAssets
                 {
                     let image = getImageFromPHAsset(ass)
-                    self.imageView.image = image
+                    imageViewSelf.image = image
                     self.images.append(image)
                     
                 }
@@ -219,7 +236,8 @@ class SelfViewController: DesignableViewController {
                 for ass in controller.selectedImageAssets
                 {
                     let image = getImageFromPHAsset(ass)
-                    self.imageView.image = image
+                    imageViewSelf.image = image
+                    self.images.removeAll()
                     self.images.append(image)
                 }
                 
@@ -246,11 +264,39 @@ extension SelfViewController: UserInfoModelDelegate{
 extension SelfViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        self.imageView.image = image
+        imageViewSelf.image = image
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+
+class EurekaSelfView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        imageViewSelf.frame = CGRect(x: 0, y: 0, width: 130, height: 130)
+        imageViewSelf.autoresizingMask = .FlexibleBottomMargin
+        let bounds = UIScreen.mainScreen().bounds
+        let width = bounds.size.width
+        
+        self.frame = CGRect(x: 0, y: 0, width: width, height: 140)
+        
+        imageViewSelf.center = CGPointMake(self.frame.size.width  / 2, (self.frame.size.height / 2) + 15 )
+        
+        imageViewSelf.contentMode = .ScaleAspectFit
+        imageViewSelf.layer.masksToBounds = true
+        imageViewSelf.layer.cornerRadius = 5
+        
+        
+        self.addSubview(imageViewSelf)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

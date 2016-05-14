@@ -23,6 +23,8 @@
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
 		BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67C1C6C38760027F63D /* LaunchScreen.storyboard */; };
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
+		BF8116DF1CE7122800212982 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8116E11CE7122800212982 /* Localizable.strings */; };
+		BF8116E81CE7136A00212982 /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8116EA1CE7136A00212982 /* center.storyboard */; };
 		BF8B5F261CDEC1B200A76470 /* CustomNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */; };
 		BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */; };
 		BF9F9AC31CC47D7B00795464 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AB61CC47D7B00795464 /* Bool.swift */; };
@@ -65,7 +67,6 @@
 		BF9F9B051CC47F5400795464 /* OpenMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AFF1CC47F5400795464 /* OpenMessageModel.swift */; };
 		BF9F9B061CC47F5400795464 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B001CC47F5400795464 /* UserInfoViewModel.swift */; };
 		BF9F9B0A1CC47F8300795464 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B091CC47F8300795464 /* BaseModel.swift */; };
-		BF9F9B131CC47FB300795464 /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B0B1CC47FB300795464 /* center.storyboard */; };
 		BF9F9B141CC47FB300795464 /* chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B0C1CC47FB300795464 /* chat.storyboard */; };
 		BF9F9B151CC47FB300795464 /* friends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B0D1CC47FB300795464 /* friends.storyboard */; };
 		BF9F9B161CC47FB300795464 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B0E1CC47FB300795464 /* login.storyboard */; };
@@ -86,7 +87,6 @@
 		BF9F9B311CC4804D00795464 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B251CC4804D00795464 /* UserInfoViewController.swift */; };
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
-		BF9F9B361CC4808400795464 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B341CC4808400795464 /* Localizable.strings */; };
 		BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
@@ -126,6 +126,13 @@
 		BF5D8B3D1C705916002964D8 /* FeelingClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelingClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingClientTests.swift; sourceTree = "<group>"; };
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF8116E01CE7122800212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF8116E51CE7133F00212982 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BF8116E61CE7134600212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BF8116E71CE7134600212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF8116E91CE7136A00212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/center.storyboard; sourceTree = "<group>"; };
+		BF8116EC1CE7136F00212982 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/center.strings; sourceTree = "<group>"; };
+		BF8116EE1CE7137100212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/center.strings"; sourceTree = "<group>"; };
 		BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNotificationHandler.swift; path = common/utils/CustomNotificationHandler.swift; sourceTree = "<group>"; };
 		BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = messages.storyboard; path = MVC/V/messages.storyboard; sourceTree = "<group>"; };
 		BF9F9AB61CC47D7B00795464 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bool.swift; path = common/extension/Bool.swift; sourceTree = "<group>"; };
@@ -169,7 +176,6 @@
 		BF9F9AFF1CC47F5400795464 /* OpenMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenMessageModel.swift; path = MVC/VM/OpenMessageModel.swift; sourceTree = "<group>"; };
 		BF9F9B001CC47F5400795464 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewModel.swift; path = MVC/VM/UserInfoViewModel.swift; sourceTree = "<group>"; };
 		BF9F9B091CC47F8300795464 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = MVC/M/BaseModel.swift; sourceTree = "<group>"; };
-		BF9F9B0B1CC47FB300795464 /* center.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = center.storyboard; path = MVC/V/center.storyboard; sourceTree = "<group>"; };
 		BF9F9B0C1CC47FB300795464 /* chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = chat.storyboard; path = MVC/V/chat.storyboard; sourceTree = "<group>"; };
 		BF9F9B0D1CC47FB300795464 /* friends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = friends.storyboard; path = MVC/V/friends.storyboard; sourceTree = "<group>"; };
 		BF9F9B0E1CC47FB300795464 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = MVC/V/login.storyboard; sourceTree = "<group>"; };
@@ -190,7 +196,6 @@
 		BF9F9B251CC4804D00795464 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewController.swift; path = MVC/C/UserInfoViewController.swift; sourceTree = "<group>"; };
 		BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewImageViewController.swift; path = MVC/C/ViewImageViewController.swift; sourceTree = "<group>"; };
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
-		BF9F9B341CC4808400795464 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = recource/Localizable.strings; sourceTree = "<group>"; };
 		BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MVC/C/MainViewController.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -404,10 +409,10 @@
 			isa = PBXGroup;
 			children = (
 				BF45B67C1C6C38760027F63D /* LaunchScreen.storyboard */,
-				BF9F9B0B1CC47FB300795464 /* center.storyboard */,
+				BF8116EA1CE7136A00212982 /* center.storyboard */,
 				BF9F9B0C1CC47FB300795464 /* chat.storyboard */,
-				BF9F9B0D1CC47FB300795464 /* friends.storyboard */,
 				BF9F9B0E1CC47FB300795464 /* login.storyboard */,
+				BF9F9B0D1CC47FB300795464 /* friends.storyboard */,
 				BF9F9B0F1CC47FB300795464 /* main.storyboard */,
 				BF9F9B101CC47FB300795464 /* register.storyboard */,
 				BF9F9B111CC47FB300795464 /* self.storyboard */,
@@ -452,7 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9F9B331CC4808400795464 /* Localizable.stringsdict */,
-				BF9F9B341CC4808400795464 /* Localizable.strings */,
+				BF8116E11CE7122800212982 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -573,8 +578,9 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
+				"zh-Hans",
 			);
 			mainGroup = BF45B6641C6C38760027F63D;
 			productRefGroup = BF45B66E1C6C38760027F63D /* Products */;
@@ -596,9 +602,9 @@
 				BF9F9B161CC47FB300795464 /* login.storyboard in Resources */,
 				BF2EFBE81CD708750089EFCC /* MessageSendViewCell.xib in Resources */,
 				BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */,
-				BF9F9B361CC4808400795464 /* Localizable.strings in Resources */,
+				BF8116DF1CE7122800212982 /* Localizable.strings in Resources */,
 				BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */,
-				BF9F9B131CC47FB300795464 /* center.storyboard in Resources */,
+				BF8116E81CE7136A00212982 /* center.storyboard in Resources */,
 				BF2EFBD91CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib in Resources */,
 				BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */,
 				BF9F9B191CC47FB300795464 /* self.storyboard in Resources */,
@@ -763,8 +769,31 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF45B67D1C6C38760027F63D /* Base */,
+				BF8116E51CE7133F00212982 /* en */,
+				BF8116E61CE7134600212982 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BF8116E11CE7122800212982 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8116E01CE7122800212982 /* Base */,
+				BF8116E71CE7134600212982 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			path = recource;
+			sourceTree = "<group>";
+		};
+		BF8116EA1CE7136A00212982 /* center.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8116E91CE7136A00212982 /* Base */,
+				BF8116EC1CE7136F00212982 /* en */,
+				BF8116EE1CE7137100212982 /* zh-Hans */,
+			);
+			name = center.storyboard;
+			path = MVC/V;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
