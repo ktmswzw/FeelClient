@@ -44,6 +44,10 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     @IBAction func getCodes(sender: AnyObject) {
         if self.username.validatePhoneNumber(){
             SMSSDK.getVerificationCodeByMethod(SMSGetCodeMethodSMS, phoneNumber: username.text, zone: "86", customIdentifier: nil) { (error : NSError!) -> Void in

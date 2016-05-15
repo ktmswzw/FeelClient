@@ -7,104 +7,35 @@
 //
 
 import UIKit
-import PageMenu
+import XLPagerTabStrip
 
-class MessagesCenterViewController: UIViewController {
+import Foundation
+
+class MessagesCenterViewController: TwitterPagerTabStripViewController {
     
-    var pageMenu : CAPSPageMenu?
+    var isReload = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "信件"
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Compact)
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Default
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//        self.navigationController?.navigationBar.hidden = true
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )]
+    override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "<-", style: UIBarButtonItemStyle.Done, target: self, action: #selector(MessagesCenterViewController.didTapGoToLeft))
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "->", style: UIBarButtonItemStyle.Done, target: self, action: #selector(MessagesCenterViewController.didTapGoToRight))
-        
-        // MARK: - Scroll menu setup
-        
-        // Initialize view controllers to display and place in array
-        var controllerArray : [UIViewController] = []
-        
-        let controller1 : MessagesSendTableTableViewController = MessagesSendTableTableViewController(nibName: "MessagesSendTableTableViewController", bundle: nil)
-        controller1.title = "寄出 "
-        controllerArray.append(controller1)
-        let controller2 : MessagesGetTableViewController = MessagesGetTableViewController(nibName: "MessagesGetTableViewController", bundle: nil)
-        controller2.title = "已解"
-        controllerArray.append(controller2)
-        
-        // Customize menu (Optional)
-        let parameters: [CAPSPageMenuOption] = [
-            .ScrollMenuBackgroundColor(UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
-            .ViewBackgroundColor(UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
-            .SelectionIndicatorColor(UIColor.orangeColor()),
-            .BottomMenuHairlineColor(UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)),
-            .MenuItemFont(UIFont(name: "Helvetica-Bold", size: 10.0)!),
-            .MenuHeight(25.0),
-            .EnableHorizontalBounce(false),
-            .MenuItemWidth(100),
-            .CenterMenuItems(true)
-            
-        ]
-        
-        // 系统中能够支持的字体名称
-//        let arrFont = UIFont.familyNames()
-//        print(arrFont)
-        
-        // Initialize scroll menu
-        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0.0, 0.0, self.view.frame.width, self.view.frame.height-100), pageMenuOptions: parameters)
-        
-        self.addChildViewController(pageMenu!)
-        self.view.addSubview(pageMenu!.view)
-        
-        pageMenu!.didMoveToParentViewController(self)
-    }
-    
-    func didTapGoToLeft() {
-        let currentIndex = pageMenu!.currentPageIndex
-        
-        if currentIndex > 0 {
-            pageMenu!.moveToPage(currentIndex - 1)
+        let child_1 = MessagesSendTableTableViewController(style: .Plain, itemInfo: "寄出")
+        let child_2 = MessagesGetTableViewController(style: .Grouped, itemInfo: "解开")
+        guard isReload else {
+            return [child_1, child_2]
         }
-    }
-    
-    func didTapGoToRight() {
-        let currentIndex = pageMenu!.currentPageIndex
         
-        if currentIndex < pageMenu!.controllerArray.count {
-            pageMenu!.moveToPage(currentIndex + 1)
+        var childViewControllers = [child_1, child_2]
+        
+        for (index, _) in childViewControllers.enumerate(){
+            let nElements = childViewControllers.count - index
+            let n = (Int(arc4random()) % nElements) + index
+            if n != index{
+                swap(&childViewControllers[index], &childViewControllers[n])
+            }
         }
+        return childViewControllers
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
-    // MARK: - Container View Controller
-    override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
-        return true
-    }
-    
-    override func shouldAutomaticallyForwardRotationMethods() -> Bool {
-        return true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

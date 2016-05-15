@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Page-->
+        <!--MessagesCenter-->
         <scene sceneID="bKB-lX-Xjr">
             <objects>
-                <viewController title="Page" id="ona-yq-tEX" customClass="MessagesCenterViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MessagesCenter" id="ona-yq-tEX" customClass="MessagesCenterViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ofs-RJ-33e"/>
                         <viewControllerLayoutGuide type="bottom" id="9fc-2J-Mzv"/>
@@ -15,12 +15,26 @@
                     <view key="view" contentMode="scaleToFill" id="j35-an-KIv">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WtI-Kc-1jQ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WtI-Kc-1jQ" firstAttribute="leading" secondItem="j35-an-KIv" secondAttribute="leading" id="C5K-DT-sPj"/>
+                            <constraint firstItem="WtI-Kc-1jQ" firstAttribute="top" secondItem="Ofs-RJ-33e" secondAttribute="bottom" id="I47-jp-7CA"/>
+                            <constraint firstItem="WtI-Kc-1jQ" firstAttribute="bottom" secondItem="9fc-2J-Mzv" secondAttribute="top" id="Mig-aj-3u9"/>
+                            <constraint firstAttribute="trailing" secondItem="WtI-Kc-1jQ" secondAttribute="trailing" id="RpD-Bb-xNJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="1" title="信件" image="readfire" id="lg6-Po-hox"/>
                     <navigationItem key="navigationItem" id="FcP-T7-2Bk"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="WtI-Kc-1jQ" id="mob-Ew-dMq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3v-Lf-459" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -35,6 +49,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="lQ3-vJ-LtI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137383460999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

@@ -87,6 +87,9 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {

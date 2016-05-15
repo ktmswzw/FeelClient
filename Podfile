@@ -36,8 +36,7 @@ pod 'RxBlocking'
 pod 'RxAlamofire'
 #引导
 pod 'Instructions'
-pod 'PageMenu'
-
+pod 'XLPagerTabStrip'
 #表单
 pod 'Eureka'
 

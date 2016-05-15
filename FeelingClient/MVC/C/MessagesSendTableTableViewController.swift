@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import Foundation
+import XLPagerTabStrip
 
-class MessagesSendTableTableViewController: UITableViewController,MessageViewModelDelegate {
+class MessagesSendTableTableViewController: UITableViewController,MessageViewModelDelegate,IndicatorInfoProvider {
     
     let msg: Messages = Messages.defaultMessages
     
     var msgs = [MessageBean]()
     
+    var itemInfo = IndicatorInfo(title: "View")
+    
+    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
+        self.itemInfo = itemInfo
+        super.init(style: style)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
@@ -24,15 +36,15 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //设置背景颜色
-        refreshControl!.backgroundColor = UIColor.redColor()
+        refreshControl!.backgroundColor = UIColor ( red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 )
         //设置菊花转的颜色
-        refreshControl!.tintColor = UIColor.yellowColor()
+        refreshControl!.tintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
         //往tableView添加刷新控件
         self.tableView.addSubview(refreshControl!)
         
         self.tableView.registerNib(UINib(nibName: "MessageSendViewCell", bundle: nil), forCellReuseIdentifier: "MessageSendViewCell")
-    getMessages()
+        getMessages()
     }
     
     func getMessages()
@@ -105,7 +117,9 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         return true
     }
     */
-
+    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
+    }
 
     
     

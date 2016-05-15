@@ -45,6 +45,9 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         super.viewWillAppear(true)
         //self.refreshData()
     }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
     func addBadge () {
         badgeNumber = badgeNumber + 1
