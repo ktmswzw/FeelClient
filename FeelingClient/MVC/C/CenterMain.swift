@@ -161,39 +161,39 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         selectedView = view;
         
-        let pin = view.annotation! as! MyAnnotation
-        viewModel.msgId = pin.id as String
-        if let q:String = pin.subtitle  {
-            viewModel.question = q
-        }
-        if let t:String = pin.title {
-            viewModel.to = t
-        }
-        if let id:String = pin.fromId {
-            viewModel.fromId = id
-        }
-        self.targetLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
-        self.targetDistanceLocation = CLLocation(latitude: pin.original_coordinate!.latitude, longitude: pin.original_coordinate!.longitude)
-        
-        
-        
-        let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
-        detailView.delegate = self
-            if let url:String = pin.url! as String {
-                let URL = NSURL(string: url)!
-                let fetcher = NetworkFetcher<UIImage>(URL: URL)
-                cache.fetch(fetcher: fetcher).onSuccess { image in
-                    detailView.avator.image = image
-                }
+        if let pin = view.annotation as? MyAnnotation {
+            viewModel.msgId = pin.id as String
+            if let q:String = pin.subtitle  {
+                viewModel.question = q
             }
-            detailView.answer.placeholder = "提示：\(pin.answerTip!)"
-            detailView.msgId = pin.id
-            detailView.fromId = pin.id
-            detailView.question.text = pin.question
-        
-        
-        view.detailCalloutAccessoryView = detailView
-        
+            if let t:String = pin.title {
+                viewModel.to = t
+            }
+            if let id:String = pin.fromId {
+                viewModel.fromId = id
+            }
+            self.targetLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
+            self.targetDistanceLocation = CLLocation(latitude: pin.original_coordinate!.latitude, longitude: pin.original_coordinate!.longitude)
+            
+            
+            
+            let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
+            detailView.delegate = self
+                if let url:String = pin.url! as String {
+                    let URL = NSURL(string: url)!
+                    let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                        detailView.avator.image = image
+                    }
+                }
+                detailView.answer.placeholder = "提示：\(pin.answerTip!)"
+                detailView.msgId = pin.id
+                detailView.fromId = pin.id
+                detailView.question.text = pin.question
+            
+            
+            view.detailCalloutAccessoryView = detailView
+        }
     }
 
     var selectedView: MKAnnotationView?
