@@ -190,6 +190,7 @@ class SelfViewController: FormViewController {
 //            self.view.makeToast("退出成功", duration: 2, position: .Center)
 //        })
         self.view.makeToast("退出成功", duration: 2, position: .Center)
+        //self.navigationController?.popToRootViewControllerAnimated(true)
         self.performSegueWithIdentifier("login", sender: self)
     }
     

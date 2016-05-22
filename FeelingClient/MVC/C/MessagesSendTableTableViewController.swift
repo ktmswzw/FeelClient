@@ -36,7 +36,7 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //设置背景颜色
-        refreshControl!.backgroundColor = UIColor ( red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 )
+        refreshControl!.backgroundColor = UIColor ( red: 0.4, green: 0.4, blue: 1.0, alpha: 1.0 )
         //设置菊花转的颜色
         refreshControl!.tintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         

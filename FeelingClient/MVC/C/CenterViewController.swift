@@ -17,8 +17,6 @@ import SwiftyJSON
 import Alamofire
 
 import ImagePickerSheetController
-
-@available(iOS 9.0, *)
 class CenterViewController: DesignableViewController,MessageViewModelDelegate , MKMapViewDelegate, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     @IBOutlet var mapView: MKMapView!
@@ -34,6 +32,17 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     @IBOutlet var hidden3: UIView!
     @IBOutlet var hidden4: UIView!
     @IBOutlet var hidden5: UIView!
+    
+    @IBOutlet var selfImage: UIImageView!
+    
+    //录音
+    var recordIndicatorView: RecordIndicatorView!
+    var recorder: AudioRecorderBean!
+    @IBOutlet var recordButton: UIButton!
+    let indicatorViewH: CGFloat = 120
+    var messageList = [Message]()
+    
+    var player: AudioPlayer!
     var picker = UIImagePickerController()
     var viewModel: MessageViewModel!
     
@@ -57,7 +66,13 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         self.photoCollectionView.delegate = self
         self.photoCollectionView.dataSource = self
         
-        
+        recordButton.addTarget(self, action: #selector(CenterViewController.recordClick(_:)), forControlEvents: .TouchDown)
+                
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(CenterViewController.playAction))
+        selfImage.userInteractionEnabled = true
+        selfImage.addGestureRecognizer(tapGestureRecognizer)
+        selfImage.animationDuration = 1.0
+        selfImage.hidden = true;
         
         if(CLLocationManager.authorizationStatus() == .Denied) {
             let aleat = UIAlertController(title: "打开定位开关", message:"定位服务未开启,请进入系统设置>隐私>定位服务中打开开关,并允许Feeling使用定位服务", preferredStyle: .Alert)
@@ -78,6 +93,69 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         }
     }
     
+    
+    func stopAnimation() {
+        if selfImage.isAnimating() {
+            selfImage.stopAnimating()
+        }
+    }
+    
+    
+    func beginAnimation() {
+        selfImage.startAnimating()
+    }
+    func playAction(sender: AnyObject) {
+        setUpVoicePlayIndicatorImageView()
+        for message in messageList {
+            if message.messageType == .Voice {
+                let message = message as! voiceMessage
+                
+                let play = AudioPlayer()
+                player = play
+                player.startPlaying(message)
+                
+                beginAnimation()
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(message.voiceTime.intValue) * 1000 * 1000 * 1000), dispatch_get_main_queue(), { () -> Void in
+                    self.stopAnimation()
+                })
+            } else if message.messageType == .Video {
+                
+            }
+        }
+    }
+
+    
+    func setUpVoicePlayIndicatorImageView() {
+        let images =  NSArray(objects: UIImage(named: "ReceiverVoiceNodePlaying001")!, UIImage(named: "ReceiverVoiceNodePlaying002")!, UIImage(named: "ReceiverVoiceNodePlaying003")!)
+            selfImage.image = UIImage(named: "ReceiverVoiceNodePlaying")
+        
+        selfImage.animationImages = (images as! [UIImage])
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if event?.type == UIEventType.Motion && event?.subtype == UIEventSubtype.MotionShake {
+            print("Shake Motion Began :)")
+            messageList.removeAll();
+            selfImage.hidden = true;
+        }
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if event?.type == UIEventType.Motion && event?.subtype == UIEventSubtype.MotionShake {
+            print("Shake Motion Ended :(")
+        }
+    }
+    
+    override func motionCancelled(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if event?.type == UIEventType.Motion && event?.subtype == UIEventSubtype.MotionShake {
+            print("Shake Motion Canceled :(")
+        }
+    }
     
     @IBAction func sendMsg(sender: AnyObject) {
         if !self.address.notEmpty {
@@ -215,16 +293,20 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
 
 
 
-@available(iOS 9.0, *)
 extension CenterViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.imageDataThumbnail.count + 1
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //pickerImage()
-        presentImagePickerSheet()
-        //self.presentViewController(picker, animated: true, completion: nil)
+        switch indexPath.row {
+        case self.viewModel.imageDataThumbnail.count:
+            presentImagePickerSheet()
+        default:
+            self.viewModel.imageDataThumbnail.removeAtIndex(indexPath.row)
+            photoCollectionView.reloadData()
+        }
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -247,7 +329,6 @@ extension CenterViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 }
 
-@available(iOS 9.0, *)
 extension CenterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
@@ -260,3 +341,64 @@ extension CenterViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
+
+extension CenterViewController: AudioRecorderDelegate {
+    
+    func recordClick(button: UIButton) {
+        self.title = "松开     结束"
+        button.addTarget(self, action: #selector(CenterViewController.recordComplection(_:)), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(CenterViewController.recordDragOut(_:)), forControlEvents: .TouchDragOutside)
+        button.addTarget(self, action: #selector(CenterViewController.recordCancel(_:)), forControlEvents: .TouchUpOutside)
+        
+        let currentTime = NSDate().timeIntervalSinceReferenceDate
+        let record = AudioRecorderBean(fileName: "\(currentTime).wav")
+        record.delegate = self
+        recorder = record
+        recorder.startRecord()
+        
+        recordIndicatorView = RecordIndicatorView(frame: CGRectMake(self.view.center.x - indicatorViewH / 2, self.view.center.y - indicatorViewH / 3, indicatorViewH, indicatorViewH))
+        view.addSubview(recordIndicatorView)
+    }
+    
+    func recordComplection(button: UIButton) {
+        self.title = "按住     说话"
+        recorder.stopRecord()
+        recorder.delegate = nil
+        recordIndicatorView.removeFromSuperview()
+        recordIndicatorView = nil
+        
+        if recorder.timeInterval != nil {
+            let message = voiceMessage(incoming: false, sentDate: NSDate(), iconName: "", voicePath: recorder.recorder.url, voiceTime: recorder.timeInterval)
+            //let receiveMessage = voiceMessage(incoming: true, sentDate: NSDate(), iconName: "", voicePath: recorder.recorder.url, voiceTime: recorder.timeInterval)
+            
+            self.title = ""
+            selfImage.hidden = false;
+            messageList.append(message)
+            //messageList.append(receiveMessage)
+            
+        }
+    }
+    
+    func recordDragOut(button: UIButton) {
+        self.title = "按住     说话"
+        recordIndicatorView.showText("松开手指,取消发送", textColor: UIColor.redColor())
+    }
+    
+    
+    func recordCancel(button: UIButton) {
+        self.title = "按住     说话"
+        recorder.stopRecord()
+        recorder.delegate = nil
+        recordIndicatorView.removeFromSuperview()
+        recordIndicatorView = nil
+    }
+    
+    
+    // MARK: -LGrecordDelegate
+    func audioRecorderUpdateMetra(metra: Float) {
+        if recordIndicatorView != nil {
+            recordIndicatorView.updateLevelMetra(metra)
+        }
+    }
+}
+

@@ -22,6 +22,10 @@
 		BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF45B6771C6C38760027F63D /* FeelingClient.xcdatamodeld */; };
 		BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67A1C6C38760027F63D /* Assets.xcassets */; };
 		BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF45B67C1C6C38760027F63D /* LaunchScreen.storyboard */; };
+		BF50C43E1CF18F3F00B70E09 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43A1CF18F3F00B70E09 /* AudioPlayer.swift */; };
+		BF50C43F1CF18F3F00B70E09 /* AudioRecorderBean.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43B1CF18F3F00B70E09 /* AudioRecorderBean.swift */; };
+		BF50C4401CF18F3F00B70E09 /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43C1CF18F3F00B70E09 /* ExString.swift */; };
+		BF50C4411CF18F3F00B70E09 /* RecordIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43D1CF18F3F00B70E09 /* RecordIndicatorView.swift */; };
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
 		BF8116DF1CE7122800212982 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8116E11CE7122800212982 /* Localizable.strings */; };
 		BF8116E81CE7136A00212982 /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8116EA1CE7136A00212982 /* center.storyboard */; };
@@ -123,16 +127,15 @@
 		BF45B67A1C6C38760027F63D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF45B67D1C6C38760027F63D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF45B67F1C6C38760027F63D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF50C43A1CF18F3F00B70E09 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = common/utils/AudioPlayer.swift; sourceTree = "<group>"; };
+		BF50C43B1CF18F3F00B70E09 /* AudioRecorderBean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioRecorderBean.swift; path = common/utils/AudioRecorderBean.swift; sourceTree = "<group>"; };
+		BF50C43C1CF18F3F00B70E09 /* ExString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExString.swift; path = common/utils/ExString.swift; sourceTree = "<group>"; };
+		BF50C43D1CF18F3F00B70E09 /* RecordIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordIndicatorView.swift; path = common/utils/RecordIndicatorView.swift; sourceTree = "<group>"; };
 		BF5D8B3D1C705916002964D8 /* FeelingClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelingClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingClientTests.swift; sourceTree = "<group>"; };
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF8116E01CE7122800212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		BF8116E51CE7133F00212982 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		BF8116E61CE7134600212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		BF8116E71CE7134600212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BF8116E91CE7136A00212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/center.storyboard; sourceTree = "<group>"; };
-		BF8116EC1CE7136F00212982 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/center.strings; sourceTree = "<group>"; };
-		BF8116EE1CE7137100212982 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/center.strings"; sourceTree = "<group>"; };
 		BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNotificationHandler.swift; path = common/utils/CustomNotificationHandler.swift; sourceTree = "<group>"; };
 		BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = messages.storyboard; path = MVC/V/messages.storyboard; sourceTree = "<group>"; };
 		BF9F9AB61CC47D7B00795464 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bool.swift; path = common/extension/Bool.swift; sourceTree = "<group>"; };
@@ -288,6 +291,10 @@
 		BF01B86A1C7B56240049627E /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				BF50C43A1CF18F3F00B70E09 /* AudioPlayer.swift */,
+				BF50C43B1CF18F3F00B70E09 /* AudioRecorderBean.swift */,
+				BF50C43C1CF18F3F00B70E09 /* ExString.swift */,
+				BF50C43D1CF18F3F00B70E09 /* RecordIndicatorView.swift */,
 				BF9F9ADB1CC47E2500795464 /* PhotoUpLoader.swift */,
 				BF9F9AD11CC47DDA00795464 /* BindingExtensions.swift */,
 				BF9F9AD21CC47DDA00795464 /* CollectionViewCell.swift */,
@@ -579,8 +586,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
-				en,
-				"zh-Hans",
 			);
 			mainGroup = BF45B6641C6C38760027F63D;
 			productRefGroup = BF45B66E1C6C38760027F63D /* Products */;
@@ -697,12 +702,16 @@
 				BF9F9AE71CC47E9B00795464 /* Accelerate-GaussianBlur.swift in Sources */,
 				BF9F9B051CC47F5400795464 /* OpenMessageModel.swift in Sources */,
 				BF9F9B2C1CC4804D00795464 /* LoginViewController.swift in Sources */,
+				BF50C43F1CF18F3F00B70E09 /* AudioRecorderBean.swift in Sources */,
 				BF9F9AF71CC47EF900795464 /* Friend.swift in Sources */,
 				BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */,
+				BF50C4401CF18F3F00B70E09 /* ExString.swift in Sources */,
 				BF9F9AFA1CC47F2900795464 /* CustomAnnotation.swift in Sources */,
 				BF9F9AF81CC47EF900795464 /* Message.swift in Sources */,
+				BF50C43E1CF18F3F00B70E09 /* AudioPlayer.swift in Sources */,
 				BF9F9ACE1CC47D7B00795464 /* String.swift in Sources */,
 				BF9F9ADA1CC47DDA00795464 /* MapHelper.swift in Sources */,
+				BF50C4411CF18F3F00B70E09 /* RecordIndicatorView.swift in Sources */,
 				BF2EFBDC1CD6E3A00089EFCC /* MessagesGetTableViewController.swift in Sources */,
 				BF2EFBE71CD708750089EFCC /* MessageSendViewCell.swift in Sources */,
 				BF9F9B011CC47F5400795464 /* CenterMessageModel.swift in Sources */,
@@ -769,8 +778,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF45B67D1C6C38760027F63D /* Base */,
-				BF8116E51CE7133F00212982 /* en */,
-				BF8116E61CE7134600212982 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -779,7 +786,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF8116E01CE7122800212982 /* Base */,
-				BF8116E71CE7134600212982 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = recource;
@@ -789,8 +795,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF8116E91CE7136A00212982 /* Base */,
-				BF8116EC1CE7136F00212982 /* en */,
-				BF8116EE1CE7137100212982 /* zh-Hans */,
 			);
 			name = center.storyboard;
 			path = MVC/V;
@@ -836,7 +840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "41955e34-4662-4b3f-9d33-d5d0158f551f";
@@ -876,7 +880,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

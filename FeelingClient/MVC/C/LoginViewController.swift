@@ -58,7 +58,8 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         actionButton = ActionButton(attachedToView: self.view, items: [register,lookAnyWhere,forget])
         actionButton.action = { button in button.toggleMenu() }
         actionButton.setImage(UIImage(named: "new"), forState: .Normal)
-        actionButton.backgroundColor = UIColor.lightGrayColor()
+        actionButton.backgroundColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0 )
+        
         
         
         username.delegate = self
