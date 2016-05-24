@@ -36,7 +36,7 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //设置背景颜色
-        refreshControl!.backgroundColor = UIColor ( red: 0.4, green: 0.4, blue: 1.0, alpha: 1.0 )
+        refreshControl!.backgroundColor = UIColor ( red: 0.702, green: 0.702, blue: 0.702, alpha: 1.0 )
         //设置菊花转的颜色
         refreshControl!.tintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
@@ -98,14 +98,16 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : MessageSendViewCell = tableView.dequeueReusableCellWithIdentifier("MessageSendViewCell") as! MessageSendViewCell
         
-        let bean = msgs[indexPath.row] as MessageBean
-        // Configure the cell...
-        cell.name.text = "\(bean.from)"
-        if bean.avatar.length != 0 {
-            cell.imagesMe.hnk_setImageFromURL(NSURL(string:bean.avatar)!)
+        if msgs.count > 0 {
+            let bean = msgs[indexPath.row] as MessageBean
+            // Configure the cell...
+            cell.name.text = "\(bean.from)"
+            if bean.avatar.length != 0 {
+                cell.imagesMe.hnk_setImageFromURL(NSURL(string:bean.avatar)!)
+            }
+            cell.tryCount.text = "\(bean.tryCount)"
+            cell.question.text = bean.question
         }
-        cell.tryCount.text = "\(bean.tryCount)"
-        cell.question.text = bean.question
         return cell
     }
     
