@@ -37,5 +37,4 @@ class MessagesCenterViewController: TwitterPagerTabStripViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-    
 }

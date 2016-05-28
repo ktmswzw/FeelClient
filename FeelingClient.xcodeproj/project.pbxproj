@@ -92,6 +92,7 @@
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
 		BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */; };
+		BFCCF8E61CF5EC0B004491B9 /* MessageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
 		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
@@ -201,6 +202,7 @@
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
 		BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MVC/C/MainViewController.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewController.swift; path = MVC/C/MessageInfoViewController.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -446,6 +448,7 @@
 				BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */,
 				BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */,
 				BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */,
+				BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -571,6 +574,9 @@
 							};
 							com.apple.Push = {
 								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
 							};
 						};
 					};
@@ -740,6 +746,7 @@
 				BF9F9AC61CC47D7B00795464 /* Double.swift in Sources */,
 				BF9F9AC51CC47D7B00795464 /* Dictionary.swift in Sources */,
 				BF9F9B2E1CC4804D00795464 /* PointUIView.swift in Sources */,
+				BFCCF8E61CF5EC0B004491B9 /* MessageInfoViewController.swift in Sources */,
 				BF9F9AC31CC47D7B00795464 /* Bool.swift in Sources */,
 				BF9F9B2A1CC4804D00795464 /* FriendsViewController.swift in Sources */,
 				BF2EFBD81CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift in Sources */,
@@ -892,8 +899,8 @@
 			baseConfigurationReference = 37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xiaozheng Mo (5FHUZR252W)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = FeelingClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -904,7 +911,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xecoder.Feeling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "41955e34-4662-4b3f-9d33-d5d0158f551f";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeelingClient/SMSSDK-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

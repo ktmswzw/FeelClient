@@ -93,6 +93,15 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         // #warning Incomplete implementation, return the number of rows
         return msgs.count
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if msgs.count > 0 {
+            let bean = msgs[indexPath.row] as MessageBean
+            let nib = MessageInfoViewController()//需要跳转的viewcontroller
+            nib.msg = bean
+            self.presentViewController(nib, animated:true, completion: nil)
+        }
+    }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

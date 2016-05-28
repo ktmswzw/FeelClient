@@ -26,7 +26,6 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     @IBOutlet var openUser: UITextField!
     @IBOutlet var question: UITextField!
     @IBOutlet var answer: UITextField!
-    @IBOutlet var stackView: UIStackView!
     @IBOutlet var photoCollectionView: UICollectionView!
     @IBOutlet var hidden2: UIView!
     @IBOutlet var hidden3: UIView!

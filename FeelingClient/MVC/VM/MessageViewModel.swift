@@ -139,4 +139,19 @@ class MessageApi:BaseApi{
             }
         }
     }
+    
+    func drop(id: String,completeHander: CompletionHandlerType)
+    {
+        let params = [:]
+        NetApi().makeCallBean(Alamofire.Method.DELETE, section: "messages/drop/\(id)", headers: [:], params: (params as! [String : AnyObject])) { (res:Response<MessagesSecret, NSError>) in
+            switch (res.result) {
+            case .Success(let value):
+                completeHander(Result.Success(value))
+                break
+            case .Failure(let error):
+                completeHander(Result.Failure(error))
+                break
+            }
+        }
+    }
 }
