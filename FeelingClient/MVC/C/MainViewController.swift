@@ -32,15 +32,17 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if jwt.appUsername.length > 0 && jwt.appPwd.length > 0 {
-            viewModel.userName = jwt.appUsername
-            viewModel.password = jwt.appPwd
-            loginDelegate()
-        }
-        else
-        {
-            self.performSegueWithIdentifier("login", sender: self)
+        if jwt.jwtTemp.length == 0 {
+            super.viewDidAppear(animated)
+            if jwt.appUsername.length > 0 && jwt.appPwd.length > 0 {
+                viewModel.userName = jwt.appUsername
+                viewModel.password = jwt.appPwd
+                loginDelegate()
+            }
+            else
+            {
+                self.performSegueWithIdentifier("login", sender: self)
+            }
         }
     }
 

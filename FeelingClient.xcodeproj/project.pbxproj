@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
+		BF15FB721CFB30F800FD7A15 /* MessageInfoViewGetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */; };
 		BF2EFBD51CD6D89F0089EFCC /* MessagesCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */; };
 		BF2EFBD81CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */; };
-		BF2EFBD91CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2EFBD71CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib */; };
 		BF2EFBDC1CD6E3A00089EFCC /* MessagesGetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */; };
-		BF2EFBDD1CD6E3A00089EFCC /* MessagesGetTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2EFBDB1CD6E3A00089EFCC /* MessagesGetTableViewController.xib */; };
 		BF2EFBDF1CD6E6C70089EFCC /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBDE1CD6E6C70089EFCC /* CAPSPageMenu.swift */; };
 		BF2EFBE21CD705BD0089EFCC /* MessageRecived.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2EFBE11CD705BD0089EFCC /* MessageRecived.xib */; };
 		BF2EFBE41CD706180089EFCC /* MessageRecivedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBE31CD706180089EFCC /* MessageRecivedViewCell.swift */; };
@@ -112,11 +111,10 @@
 
 /* Begin PBXFileReference section */
 		37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewGetController.swift; path = MVC/C/MessageInfoViewGetController.swift; sourceTree = "<group>"; };
 		BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesCenterViewController.swift; path = MVC/C/MessagesCenterViewController.swift; sourceTree = "<group>"; };
 		BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSendTableTableViewController.swift; path = MVC/C/MessagesSendTableTableViewController.swift; sourceTree = "<group>"; };
-		BF2EFBD71CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesSendTableTableViewController.xib; path = MVC/C/MessagesSendTableTableViewController.xib; sourceTree = "<group>"; };
 		BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesGetTableViewController.swift; path = MVC/C/MessagesGetTableViewController.swift; sourceTree = "<group>"; };
-		BF2EFBDB1CD6E3A00089EFCC /* MessagesGetTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessagesGetTableViewController.xib; path = MVC/C/MessagesGetTableViewController.xib; sourceTree = "<group>"; };
 		BF2EFBDE1CD6E6C70089EFCC /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		BF2EFBE11CD705BD0089EFCC /* MessageRecived.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageRecived.xib; path = MVC/Cells/MessageRecived.xib; sourceTree = "<group>"; };
 		BF2EFBE31CD706180089EFCC /* MessageRecivedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageRecivedViewCell.swift; path = MVC/Cells/MessageRecivedViewCell.swift; sourceTree = "<group>"; };
@@ -325,8 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				BF9F9B1F1CC4804D00795464 /* FriendTabelViewCell.swift */,
-				BF2EFBDB1CD6E3A00089EFCC /* MessagesGetTableViewController.xib */,
-				BF2EFBD71CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib */,
 				BF9F9B121CC47FB300795464 /* point.xib */,
 				BF2EFBE31CD706180089EFCC /* MessageRecivedViewCell.swift */,
 				BF2EFBE11CD705BD0089EFCC /* MessageRecived.xib */,
@@ -449,6 +445,7 @@
 				BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */,
 				BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */,
 				BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */,
+				BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -616,11 +613,9 @@
 				BF8116DF1CE7122800212982 /* Localizable.strings in Resources */,
 				BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */,
 				BF8116E81CE7136A00212982 /* center.storyboard in Resources */,
-				BF2EFBD91CD6DDFF0089EFCC /* MessagesSendTableTableViewController.xib in Resources */,
 				BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */,
 				BF9F9B191CC47FB300795464 /* self.storyboard in Resources */,
 				BF9F9B151CC47FB300795464 /* friends.storyboard in Resources */,
-				BF2EFBDD1CD6E3A00089EFCC /* MessagesGetTableViewController.xib in Resources */,
 				BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */,
 				BF2EFBE21CD705BD0089EFCC /* MessageRecived.xib in Resources */,
 				BF9F9B141CC47FB300795464 /* chat.storyboard in Resources */,
@@ -741,6 +736,7 @@
 				BF9F9B2B1CC4804D00795464 /* FriendTabelViewCell.swift in Sources */,
 				BF9F9B041CC47F5400795464 /* MessageViewModel.swift in Sources */,
 				BF9F9B031CC47F5400795464 /* LoginUserInfoViewModel.swift in Sources */,
+				BF15FB721CFB30F800FD7A15 /* MessageInfoViewGetController.swift in Sources */,
 				BF9F9AD71CC47DDA00795464 /* CollectionViewCell.swift in Sources */,
 				BF9F9ACD1CC47D7B00795464 /* Sequence.swift in Sources */,
 				BF9F9AC61CC47D7B00795464 /* Double.swift in Sources */,

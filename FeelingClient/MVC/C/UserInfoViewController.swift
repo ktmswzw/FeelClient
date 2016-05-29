@@ -122,8 +122,7 @@ class UserInfoViewController: FormViewController {
         
     }
     
-    func saveFriend() {
-        
+    func saveFriend() {        
         if let remarkText =  form.rowByTag("remark")?.baseValue as? String {
             self.navigationController?.view.makeToastActivity(.Center)
             if remarkText.length > 0 {

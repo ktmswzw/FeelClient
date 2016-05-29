@@ -11,8 +11,8 @@ import MediaPlayer
 import Eureka
 
 
-class MessageInfoViewController: FormViewController {
-
+class MessageInfoGetViewController: FormViewController {
+    
     var msg: MessageBean!
     
     let msgApi: MessageApi = MessageApi.defaultMessages
@@ -20,9 +20,9 @@ class MessageInfoViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.title = "信息"
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
-       // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        //        self.navigationItem.title = "信息"
+        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
+        // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         form = Section()
             <<< ButtonRow() { (row: ButtonRow) -> Void in
@@ -37,7 +37,7 @@ class MessageInfoViewController: FormViewController {
                 $0.value = msg.to
             }
             
-        
+            
             <<< TextAreaRow("content") {
                 $0.title = "内容"
                 $0.placeholder = "内容"
@@ -62,14 +62,14 @@ class MessageInfoViewController: FormViewController {
                 $0.disabled = true
                 $0.value = msg.address
             }
+                        
+            +++ Section("操作")
             
-            
-            +++ Section("开启人")
-            <<< LabelRow("open") {
-                $0.title = "开启人："
-                $0.disabled = true
-                $0.value =  msg.from
-            }
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "删除"
+                }  .onCellSelection({ (cell, row) in
+                    self.dropMessage(self.msg.id)
+                })
     }
     
     func dropMessage(id: String)
@@ -91,13 +91,13 @@ class MessageInfoViewController: FormViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }
 
 

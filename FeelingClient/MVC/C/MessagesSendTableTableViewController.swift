@@ -36,7 +36,7 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //设置背景颜色
-        refreshControl!.backgroundColor = UIColor ( red: 0.702, green: 0.702, blue: 0.702, alpha: 1.0 )
+        refreshControl!.backgroundColor = UIColor ( red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0 )
         //设置菊花转的颜色
         refreshControl!.tintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
@@ -100,13 +100,15 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
             let nib = MessageInfoViewController()//需要跳转的viewcontroller
             nib.msg = bean
             self.presentViewController(nib, animated:true, completion: nil)
+            
+            
+//            self.performSegueWithIdentifier("infoMessage", sender: self)
         }
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : MessageSendViewCell = tableView.dequeueReusableCellWithIdentifier("MessageSendViewCell") as! MessageSendViewCell
-        
         if msgs.count > 0 {
             let bean = msgs[indexPath.row] as MessageBean
             // Configure the cell...
@@ -138,14 +140,18 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         return 60.0
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "infoMessage" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let object = msgs[indexPath.row] as MessageBean
+                (segue.destinationViewController as! MessageInfoViewController).msg = object
+            }
+        }
     }
-    */
+ 
     
 }
