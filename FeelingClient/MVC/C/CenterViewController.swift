@@ -39,7 +39,6 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     var recorder: AudioRecorderBean!
     @IBOutlet var recordButton: UIButton!
     let indicatorViewH: CGFloat = 120
-    var messageList = [Message]()
     
     var player: AudioPlayer!
     var picker = UIImagePickerController()
@@ -105,7 +104,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     }
     func playAction(sender: AnyObject) {
         setUpVoicePlayIndicatorImageView()
-        for message in messageList {
+        for message in viewModel.msgs.messageList {
             if message.messageType == .Voice {
                 let message = message as! voiceMessage
                 
@@ -139,7 +138,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if event?.type == UIEventType.Motion && event?.subtype == UIEventSubtype.MotionShake {
             print("Shake Motion Began :)")
-            messageList.removeAll();
+            viewModel.msgs.messageList.removeAll();
             selfImage.hidden = true;
         }
     }
@@ -372,7 +371,7 @@ extension CenterViewController: AudioRecorderDelegate {
             
             self.title = ""
             selfImage.hidden = false;
-            messageList.append(message)
+            viewModel.msgs.messageList.append(message)
             //messageList.append(receiveMessage)
             
         }

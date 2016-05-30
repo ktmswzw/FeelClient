@@ -10,7 +10,7 @@ import Foundation
 
 import JWT
 
-class JWTTools {
+struct JWTTools {
     
     let SECERT: String = "FEELING_ME007"
     let JWTDEMOTOKEN: String = "JWTDEMOTOKEN"
@@ -18,6 +18,7 @@ class JWTTools {
     let FEELINGPSWORD: String = "FEELINGPSWORD"
     let JWTDEMOTEMP: String = "JWTDEMOTEMP"
     let JWTSIGN: String = "JWTSIGN"
+    let JWTSIGNFILE: String = "JWTSIGNFILE"
     let AUTHORIZATION_STR: String = "Authorization"
     let IMTOKENTEMP: String = "IMTOKENTEMP"
     let USERID: String = "FEELING_USERID"
@@ -72,6 +73,19 @@ class JWTTools {
         }
         set {
             NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTSIGN)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    var sign_file: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTSIGNFILE) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTSIGNFILE)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -135,7 +149,7 @@ class JWTTools {
         }
     }
     
-    func getHeader(tokenNew: String, myDictionary: Dictionary<String, String> ) -> [String : String] {
+    mutating func getHeader(tokenNew: String, myDictionary: Dictionary<String, String> ) -> [String : String] {
         if jwtTemp.isEmpty || !myDictionary.isEmpty {//重复使用上次计算结果
             let jwt = JWT.encode(.HS256(SECERT)) { builder in
                 for (key, value) in myDictionary {

@@ -181,6 +181,8 @@ class SelfViewController: FormViewController {
         jwt.jwtTemp = ""
         jwt.appUsername = ""
         jwt.appPwd = ""
+        jwt.sign_file = ""
+        jwt.sign = ""
         database.deleteObjectsForType(UserInfo.self)
         //断开连接并设置不再接收推送消息
         RCIM.sharedRCIM().disconnect(false)

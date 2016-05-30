@@ -4,9 +4,13 @@ import SwiftyJSON
 
 class PhotoUpLoader:BaseApi {
     private var uploadMgr: TXYUploadManager!;
-    private var sign = "";
+    private var sign = "",signFile="";
     private var bucket = "habit";
     private var appId = "10005997";
+    
+    private var bucket_file = "test";
+    private var appId_file = "10043128";
+    
     private var semaphore: dispatch_semaphore_t?;
     private var queue: dispatch_queue_t = dispatch_get_global_queue(0, 0);
     
@@ -25,7 +29,6 @@ class PhotoUpLoader:BaseApi {
         }
     }
     
-    
     func initSign()  {
         if sign.length == 0  {
             let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())            
@@ -35,8 +38,12 @@ class PhotoUpLoader:BaseApi {
                 case .Success(let r):
                     if let temp = r {
                         let myJosn = JSON(temp)
-                        jwt.sign = myJosn.dictionary!["message"]!.stringValue
+                        let signString = myJosn.dictionary!["message"]!.stringValue
+                        let fullNameArr = signString.characters.split {$0 == ","}
+                        jwt.sign = String(fullNameArr[0])
+                        jwt.sign_file = String(fullNameArr[1])
                         self.sign = jwt.sign
+                        self.signFile = jwt.sign_file
                         
                     }
                     break;
@@ -113,7 +120,7 @@ class PhotoUpLoader:BaseApi {
             completionHandler(Result.Failure(""))
             return;
         }
-        uploadMgr = TXYUploadManager(cloudType: TXYCloudType.ForImage, persistenceId: "", appId: self.appId);
+        uploadMgr = TXYUploadManager(cloudType: TXYCloudType.ForImage, persistenceId: "photoUploadMgr", appId: self.appId);
         if uploadMgr == nil {
             semaphore = dispatch_semaphore_create(0);
         }
@@ -130,8 +137,6 @@ class PhotoUpLoader:BaseApi {
                 completionHandler(Result.Failure(""));
                 return;
             }
-            //let uploadNode = TXYPhotoUploadTask(imageData: path, sign: self!.sign, bucket: self!.bucket, expiredDate: 0, msgContext: "msg", fileId: nil);
-            
             let uploadNode = TXYPhotoUploadTask(imageData: data, fileName: name, sign: self!.sign, bucket: self!.bucket, expiredDate: 0, msgContext: "", fileId: nil);
             self?.uploadMgr.upload(uploadNode, complete: { (rsp: TXYTaskRsp!, context: [NSObject : AnyObject]!) -> Void in
                 if let photoResp = rsp as? TXYPhotoUploadTaskRsp {
@@ -147,4 +152,52 @@ class PhotoUpLoader:BaseApi {
             })
         };
     }
+    
+    /// 上传至Qcloud COS
+    func uploadAudioToTXY(path: String,name: String,completionHandler: CompletionHandlerType ) {
+        if path.length == 0 {
+            NSLog("没有data");
+            completionHandler(Result.Failure(""))
+            return;
+        }
+        
+        if self.signFile.length == 0 {
+            NSLog("没有sign");
+            completionHandler(Result.Failure(""))
+            return;
+        }
+        uploadMgr = TXYUploadManager(cloudType: TXYCloudType.ForFile, persistenceId: "fileUploadMgr", appId: self.appId_file);
+        if uploadMgr == nil {
+            semaphore = dispatch_semaphore_create(0);
+        }
+        dispatch_async(queue) {[weak self] () -> Void in
+            if self?.semaphore != nil {
+                NSLog("开始等待获取到签名信号");
+                let timer = dispatch_time(DISPATCH_TIME_NOW, Int64(15) * Int64(NSEC_PER_SEC));
+                dispatch_semaphore_wait((self?.semaphore)!, timer);
+                self?.semaphore = nil
+                NSLog("结束等待获取到签名信号");
+            }
+            if self?.uploadMgr == nil {
+                NSLog("不能开始上传, cos上传管理器没有创建...");
+                completionHandler(Result.Failure(""));
+                return;
+            }
+            
+            let fileTask = TXYFileUploadTask(path: path, sign: self!.signFile, bucket: self!.bucket_file, customAttribute: nil, uploadDirectory: "test", msgContext: "");
+            
+            self?.uploadMgr.upload(fileTask, complete: { (rsp: TXYTaskRsp!, context: [NSObject : AnyObject]!) -> Void in
+                if let fileResp = rsp as? TXYFileUploadTaskRsp {
+                    NSLog(fileResp.fileURL);
+                    NSLog(fileResp.fileId);
+                    completionHandler(Result.Success(fileResp.fileId))
+                }
+                }, progress: {(total: Int64, complete: Int64, context: [NSObject : AnyObject]!) -> Void in
+                    NSLog("progress total:\(total) complete:\(complete)");
+                }, stateChange: {(state: TXYUploadTaskState, context: [NSObject : AnyObject]!) -> Void in
+                    NSLog("stateChange:\(state)");
+            })
+        };
     }
+
+}

@@ -14,7 +14,7 @@ public class Messages:BaseApi {
     static let defaultMessages = Messages()
     var msgs = [MessageBean]()
     var imagesData: [UIImage]?
-    
+    var messageList = [Message]()
     func addMsg(msg: MessageBean, imags:[UIImage]) {
         msgs.insert(msg, atIndex:0)
     }
@@ -23,7 +23,7 @@ public class Messages:BaseApi {
     {
         
         if imags.count==0 {
-            self.sendSelf(msg, path: "",complete: completeHander)
+            self.sendSelf(msg, path: "", vpath: "", complete: completeHander)
         }
         else
         {
@@ -31,7 +31,31 @@ public class Messages:BaseApi {
             loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
                 switch (r) {
                 case .Success(let pathIn):
-                    self.sendSelf(msg, path: pathIn as!String,complete: completeHander)
+                    
+                    if self.messageList.count == 0 {
+                        self.sendSelf(msg, path: pathIn as!String, vpath: "", complete: completeHander)
+                    }
+                    else {
+                        for message in self.messageList {
+                            
+                            if message.messageType == .Voice {
+                                let m = message as! voiceMessage
+                                
+                                loader.uploadAudioToTXY(m.voicePath.absoluteString, name: "", completionHandler: { (r:BaseApi.Result) in
+                                    switch (r) {
+                                    case .Success(let pathIn2):
+                                        self.sendSelf(msg, path: pathIn as!String, vpath: pathIn2 as!String, complete: completeHander)
+                                        break;
+                                    case .Failure(let error):
+                                        completeHander(Result.Failure(error))
+                                        break;
+                                    }
+                                    
+                                })
+                            }
+                            
+                        }
+                    }
                     break;
                 case .Failure(let error):
                     completeHander(Result.Failure(error))
@@ -41,10 +65,10 @@ public class Messages:BaseApi {
         }
     }
     
-    private func sendSelf(msg: MessageBean,path: String,complete: CompletionHandlerType)
+    private func sendSelf(msg: MessageBean,path: String, vpath: String, complete: CompletionHandlerType)
     {
         let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        let params = ["to": msg.to, "limitDate":msg.limitDate, "address":msg.address, "content":msg.content,"question": msg.question, "answer": msg.answer, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
+        let params = ["to": msg.to, "limitDate":msg.limitDate, "address":msg.address, "content":msg.content,"sound": vpath, "question": msg.question, "answer": msg.answer, "photos": path,  "burnAfterReading":msg.burnAfterReading, "x": "\(msg.y)", "y":"\(msg.x)"]
         NetApi().makeCall(Alamofire.Method.POST,section: "messages/send", headers: headers, params: params as? [String : AnyObject] )
         {
             (result:BaseApi.Result) -> Void in
