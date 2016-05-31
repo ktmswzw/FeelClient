@@ -29,6 +29,8 @@
 		BF8116DF1CE7122800212982 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8116E11CE7122800212982 /* Localizable.strings */; };
 		BF8116E81CE7136A00212982 /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8116EA1CE7136A00212982 /* center.storyboard */; };
 		BF8B5F261CDEC1B200A76470 /* CustomNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */; };
+		BF91CF441CFDCCBE0071DE3E /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF91CF431CFDCCBE0071DE3E /* libstdc++.6.tbd */; };
+		BF91CF4C1CFDE8AB0071DE3E /* libTXYUploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF91CF4B1CFDE8AB0071DE3E /* libTXYUploader.a */; };
 		BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */; };
 		BF9F9AC31CC47D7B00795464 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AB61CC47D7B00795464 /* Bool.swift */; };
 		BF9F9AC41CC47D7B00795464 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9AB71CC47D7B00795464 /* Character.swift */; };
@@ -94,8 +96,6 @@
 		BFCCF8E61CF5EC0B004491B9 /* MessageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
-		BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */; };
-		BFF89E0D1C78A67D00A38D16 /* libTXYUploader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */; };
 		BFFB0A641CCDB0880059E997 /* 0900.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BFFB0A631CCDB0880059E997 /* 0900.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -133,9 +133,13 @@
 		BF5D8B3D1C705916002964D8 /* FeelingClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelingClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingClientTests.swift; sourceTree = "<group>"; };
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5ED5DA1CFD61C500F1C105 /* TXYBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXYBase.h; sourceTree = "<group>"; };
+		BF5ED5DB1CFD61C500F1C105 /* TXYUploadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXYUploadManager.h; sourceTree = "<group>"; };
 		BF8116E01CE7122800212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF8116E91CE7136A00212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/center.storyboard; sourceTree = "<group>"; };
 		BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNotificationHandler.swift; path = common/utils/CustomNotificationHandler.swift; sourceTree = "<group>"; };
+		BF91CF431CFDCCBE0071DE3E /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		BF91CF4B1CFDE8AB0071DE3E /* libTXYUploader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTXYUploader.a; sourceTree = "<group>"; };
 		BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = messages.storyboard; path = MVC/V/messages.storyboard; sourceTree = "<group>"; };
 		BF9F9AB61CC47D7B00795464 /* Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bool.swift; path = common/extension/Bool.swift; sourceTree = "<group>"; };
 		BF9F9AB71CC47D7B00795464 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = common/extension/Character.swift; sourceTree = "<group>"; };
@@ -204,12 +208,6 @@
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		BFE890501C782B9000429E9E /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		BFE890521C782BA000429E9E /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
-		BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTXYUploader.a; sourceTree = "<group>"; };
-		BFF89E0B1C78A67D00A38D16 /* TXYBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYBase.h; sourceTree = "<group>"; };
-		BFF89E0C1C78A67D00A38D16 /* TXYUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXYUploadManager.h; sourceTree = "<group>"; };
 		BFFB0A631CCDB0880059E997 /* 0900.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0900.mp4; sourceTree = "<group>"; };
 		DBD5A369E29F0C790C5487E6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2F433E2F3517659A39AEF6A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,9 +218,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFE890551C782BAC00429E9E /* libstdc++.6.0.9.tbd in Frameworks */,
+				BF91CF441CFDCCBE0071DE3E /* libstdc++.6.tbd in Frameworks */,
 				BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */,
-				BFF89E0D1C78A67D00A38D16 /* libTXYUploader.a in Frameworks */,
+				BF91CF4C1CFDE8AB0071DE3E /* libTXYUploader.a in Frameworks */,
 				BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */,
 				43AECBC75386581642FD9250 /* Pods.framework in Frameworks */,
 			);
@@ -250,9 +248,7 @@
 		BA8637AC2504A18834A906A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BFE890541C782BAC00429E9E /* libstdc++.6.0.9.tbd */,
-				BFE890521C782BA000429E9E /* libz.1.2.5.tbd */,
-				BFE890501C782B9000429E9E /* libxml2.2.tbd */,
+				BF91CF431CFDCCBE0071DE3E /* libstdc++.6.tbd */,
 				BFE8904E1C782B7D00429E9E /* MobileCoreServices.framework */,
 				BFE8904C1C782B7300429E9E /* CoreTelephony.framework */,
 				BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */,
@@ -500,9 +496,9 @@
 		BFF89E091C78A67D00A38D16 /* QCloudUploadSDK */ = {
 			isa = PBXGroup;
 			children = (
-				BFF89E0A1C78A67D00A38D16 /* libTXYUploader.a */,
-				BFF89E0B1C78A67D00A38D16 /* TXYBase.h */,
-				BFF89E0C1C78A67D00A38D16 /* TXYUploadManager.h */,
+				BF91CF4B1CFDE8AB0071DE3E /* libTXYUploader.a */,
+				BF5ED5DA1CFD61C500F1C105 /* TXYBase.h */,
+				BF5ED5DB1CFD61C500F1C105 /* TXYUploadManager.h */,
 			);
 			name = QCloudUploadSDK;
 			path = Library/QCloudUploadSDK;

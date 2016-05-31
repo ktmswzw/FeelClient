@@ -22,12 +22,46 @@ public class Messages:BaseApi {
     func saveMsg(msg: MessageBean, imags:[UIImage],completeHander: CompletionHandlerType)
     {
         
-        if imags.count==0 {
+        if imags.count==0 && self.messageList.count == 0 {
             self.sendSelf(msg, path: "", vpath: "", complete: completeHander)
+        }
+        else if imags.count != 0 && self.messageList.count == 0 {
+            loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
+                switch (r) {
+                case .Success(let pathIn):
+                    self.sendSelf(msg, path: pathIn as!String, vpath: "", complete: completeHander)
+                    break;
+                case .Failure(let error):
+                    completeHander(Result.Failure(error))
+                    break;
+                }
+            }
+        }
+        else if imags.count == 0 && self.messageList.count != 0 {
+            for message in self.messageList {
+                if message.messageType == .Voice {
+                    let m = message as! voiceMessage
+                    
+                    
+                    
+                    loader.uploadAudioToTXY(m.voicePath.relativeString!, name: "", completionHandler: { (r:BaseApi.Result) in
+                        switch (r) {
+                        case .Success(let pathIn2):
+                            self.sendSelf(msg, path: "", vpath: pathIn2 as!String, complete: completeHander)
+                            break;
+                        case .Failure(let error):
+                            completeHander(Result.Failure(error))
+                            break;
+                        }
+                        
+                    })
+                }
+                
+            }
+
         }
         else
         {
-            
             loader.completionAll(imags) { (r:PhotoUpLoader.Result) -> Void in
                 switch (r) {
                 case .Success(let pathIn):
@@ -41,7 +75,7 @@ public class Messages:BaseApi {
                             if message.messageType == .Voice {
                                 let m = message as! voiceMessage
                                 
-                                loader.uploadAudioToTXY(m.voicePath.absoluteString, name: "", completionHandler: { (r:BaseApi.Result) in
+                                loader.uploadAudioToTXY(m.voicePath.relativeString!, name: "", completionHandler: { (r:BaseApi.Result) in
                                     switch (r) {
                                     case .Success(let pathIn2):
                                         self.sendSelf(msg, path: pathIn as!String, vpath: pathIn2 as!String, complete: completeHander)

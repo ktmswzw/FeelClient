@@ -25,7 +25,8 @@ class PhotoUpLoader:BaseApi {
         }
         else
         {
-            sign = jwt.sign
+            self.sign = jwt.sign
+            self.signFile = jwt.sign_file
         }
     }
     
@@ -160,13 +161,16 @@ class PhotoUpLoader:BaseApi {
             completionHandler(Result.Failure(""))
             return;
         }
+//        let tmp = NSHomeDirectory() + "/Documents"
+        let path_tmp = path.replaceMatches("file://", withString: "", ignoreCase: false)
+        
         
         if self.signFile.length == 0 {
             NSLog("没有sign");
             completionHandler(Result.Failure(""))
             return;
         }
-        uploadMgr = TXYUploadManager(cloudType: TXYCloudType.ForFile, persistenceId: "fileUploadMgr", appId: self.appId_file);
+        uploadMgr = TXYUploadManager(cloudType: TXYCloudType.ForFile, persistenceId: "test", appId: self.appId_file);
         if uploadMgr == nil {
             semaphore = dispatch_semaphore_create(0);
         }
@@ -184,13 +188,14 @@ class PhotoUpLoader:BaseApi {
                 return;
             }
             
-            let fileTask = TXYFileUploadTask(path: path, sign: self!.signFile, bucket: self!.bucket_file, customAttribute: nil, uploadDirectory: "test", msgContext: "");
-            
-            self?.uploadMgr.upload(fileTask, complete: { (rsp: TXYTaskRsp!, context: [NSObject : AnyObject]!) -> Void in
+            let fileTask = TXYFileUploadTask(path: path_tmp, sign: self!.signFile, bucket: self!.bucket_file, customAttribute: nil, uploadDirectory: "/baron", msgContext: nil);
+            sleep(1)
+            self?.uploadMgr.upload(fileTask, complete: { (rsp: TXYTaskRsp!, context: [NSObject : AnyObject]! ) -> Void in
+                
                 if let fileResp = rsp as? TXYFileUploadTaskRsp {
                     NSLog(fileResp.fileURL);
-                    NSLog(fileResp.fileId);
-                    completionHandler(Result.Success(fileResp.fileId))
+                    
+                    completionHandler(Result.Success(fileResp.fileURL))
                 }
                 }, progress: {(total: Int64, complete: Int64, context: [NSObject : AnyObject]!) -> Void in
                     NSLog("progress total:\(total) complete:\(complete)");

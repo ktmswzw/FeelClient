@@ -156,10 +156,10 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     }
     
     @IBAction func sendMsg(sender: AnyObject) {
-        if !self.address.notEmpty {
-            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
-            return
-        }
+//        if !self.address.notEmpty {
+//            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
+//            return
+//        }
         
 //        if !self.openUser.notEmpty {
 //            self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
@@ -302,6 +302,7 @@ extension CenterViewController: UICollectionViewDataSource, UICollectionViewDele
             presentImagePickerSheet()
         default:
             self.viewModel.imageDataThumbnail.removeAtIndex(indexPath.row)
+            self.viewModel.imageData.removeAtIndex(indexPath.row)
             photoCollectionView.reloadData()
         }
         
@@ -371,6 +372,8 @@ extension CenterViewController: AudioRecorderDelegate {
             
             self.title = ""
             selfImage.hidden = false;
+            
+            viewModel.msgs.messageList.removeAll()
             viewModel.msgs.messageList.append(message)
             //messageList.append(receiveMessage)
             
