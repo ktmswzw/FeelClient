@@ -569,44 +569,40 @@
                                     <action selector="gotoNav:" destination="Uzy-mh-CyE" eventType="touchUpInside" id="wds-O2-PmL"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReceiverVoiceNodePlaying" translatesAutoresizingMaskIntoConstraints="NO" id="RHA-fn-VuV">
-                                <rect key="frame" x="535" y="530" width="45" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="0NJ-sb-Bqs"/>
-                                    <constraint firstAttribute="height" constant="50" id="scC-cS-UQU"/>
-                                </constraints>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAU-tj-vG4">
+                                <rect key="frame" x="542" y="533" width="31" height="44"/>
+                                <state key="normal" title="Button" image="record"/>
+                                <connections>
+                                    <action selector="playVoice:" destination="Uzy-mh-CyE" eventType="touchUpInside" id="hC9-ua-YsR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" constant="8" symbolic="YES" id="102-fC-dmv"/>
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="bottom" secondItem="kP2-Vb-lts" secondAttribute="bottom" id="1Xl-Yw-gd1"/>
+                            <constraint firstItem="PAU-tj-vG4" firstAttribute="leading" secondItem="BDh-RB-sIf" secondAttribute="trailing" constant="15" id="1fU-Ex-CcY"/>
                             <constraint firstItem="kP2-Vb-lts" firstAttribute="leading" secondItem="he0-Yo-nzo" secondAttribute="trailing" constant="8" symbolic="YES" id="423-As-q8o"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RHA-fn-VuV" secondAttribute="trailing" id="7xA-5d-TY7"/>
+                            <constraint firstItem="PAU-tj-vG4" firstAttribute="centerX" secondItem="kP2-Vb-lts" secondAttribute="centerX" id="5ZZ-mR-pdJ"/>
                             <constraint firstItem="Tv7-sd-7Ez" firstAttribute="top" secondItem="iyU-OS-SmS" secondAttribute="bottom" id="8fc-OC-Wdv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="8zN-ur-hzA"/>
-                            <constraint firstItem="RHA-fn-VuV" firstAttribute="leading" secondItem="BDh-RB-sIf" secondAttribute="trailing" constant="8" id="CfB-eX-WN9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BDh-RB-sIf" secondAttribute="trailing" id="EtI-9I-kDa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PAU-tj-vG4" secondAttribute="trailing" constant="7" id="GG0-gS-iWg"/>
                             <constraint firstItem="Tv7-sd-7Ez" firstAttribute="leading" secondItem="c2W-lX-Scb" secondAttribute="leadingMargin" constant="-20" id="HBh-qx-7NA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="BDh-RB-sIf" secondAttribute="leading" id="I0F-Be-aDi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RHA-fn-VuV" secondAttribute="trailing" id="Jat-SO-TS0"/>
-                            <constraint firstItem="VhH-aJ-CxU" firstAttribute="top" secondItem="RHA-fn-VuV" secondAttribute="bottom" constant="20" id="YSO-kC-Inx"/>
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="top" secondItem="kP2-Vb-lts" secondAttribute="top" id="k68-rv-hfQ"/>
-                            <constraint firstItem="RHA-fn-VuV" firstAttribute="top" secondItem="ZmY-bF-AJW" secondAttribute="bottom" constant="8" id="mqR-W3-QH4"/>
                             <constraint firstItem="he0-Yo-nzo" firstAttribute="leading" secondItem="ZmY-bF-AJW" secondAttribute="leading" id="nmI-f2-UD3"/>
                             <constraint firstItem="BDh-RB-sIf" firstAttribute="top" secondItem="ZmY-bF-AJW" secondAttribute="bottom" constant="8" id="pZi-4y-CEx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tv7-sd-7Ez" secondAttribute="trailing" constant="-20" id="qxl-Yg-tda"/>
                             <constraint firstItem="VhH-aJ-CxU" firstAttribute="top" secondItem="BDh-RB-sIf" secondAttribute="bottom" constant="20" id="sd5-2g-OXq"/>
                             <constraint firstItem="kP2-Vb-lts" firstAttribute="trailing" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="w6U-dP-eqm"/>
+                            <constraint firstItem="PAU-tj-vG4" firstAttribute="centerY" secondItem="BDh-RB-sIf" secondAttribute="centerY" id="whf-XI-zNs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZmY-bF-AJW" secondAttribute="trailing" id="xqQ-zg-2oB"/>
-                            <constraint firstItem="RHA-fn-VuV" firstAttribute="leading" secondItem="BDh-RB-sIf" secondAttribute="trailing" constant="8" id="zAF-5r-imq"/>
                             <constraint firstItem="ZmY-bF-AJW" firstAttribute="top" secondItem="Tv7-sd-7Ez" secondAttribute="bottom" constant="8" id="zWO-OB-TBi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="EtI-9I-kDa"/>
-                                <exclude reference="Jat-SO-TS0"/>
-                                <exclude reference="zAF-5r-imq"/>
                             </mask>
                         </variation>
                     </view>
@@ -616,7 +612,7 @@
                         <outlet property="imageCollection" destination="BDh-RB-sIf" id="4aC-6T-YoX"/>
                         <outlet property="mapView" destination="Tv7-sd-7Ez" id="JhU-BI-fyy"/>
                         <outlet property="textView" destination="ZmY-bF-AJW" id="LHE-Ue-Afc"/>
-                        <outlet property="voiceImage" destination="RHA-fn-VuV" id="pIZ-Ka-6Bh"/>
+                        <outlet property="voiceImage" destination="PAU-tj-vG4" id="3fe-iP-GUz"/>
                         <segue destination="s46-I9-CoY" kind="unwind" identifier="homeMain" unwindAction="prepareForUnwind:" id="e72-S2-9b8"/>
                     </connections>
                 </viewController>

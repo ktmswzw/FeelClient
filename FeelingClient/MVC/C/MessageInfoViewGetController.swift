@@ -24,26 +24,20 @@ class MessageInfoGetViewController: FormViewController {
         //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
         // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
-        form = Section()
-            <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "返回"
-                }  .onCellSelection({ (cell, row) in
-                    self.close()
-                })
-            
-            +++ Section("信息")
+        form = Section("信息")
             <<< TextRow("to"){ $0.title = "收件人"
                 $0.disabled = true
                 $0.value = msg.to
             }
             
             
-            <<< TextAreaRow("content") {
-                $0.title = "内容"
-                $0.placeholder = "内容"
-                $0.value = msg.content
-            }
             
+//            <<< TextAreaRow("content") {
+//                $0.title = "内容"
+//                $0.placeholder = "内容"
+//                $0.value = msg.content
+//            }
+//            
             
             <<< TextRow("question") {
                 $0.title = "问题"
@@ -69,6 +63,12 @@ class MessageInfoGetViewController: FormViewController {
                 row.title = "删除"
                 }  .onCellSelection({ (cell, row) in
                     self.dropMessage(self.msg.id)
+                })
+            
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "返回"
+                }  .onCellSelection({ (cell, row) in
+                    self.close()
                 })
     }
     

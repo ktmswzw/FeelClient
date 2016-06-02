@@ -34,7 +34,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var address = ""
     var photos: [String] = []
     var voiceUrl = ""
-    @IBOutlet var voiceImage: UIImageView!
+    
     @IBOutlet weak var imageCollection: UICollectionView!
     var isOk = false
     let locationManager = CLLocationManager()
@@ -44,6 +44,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     var targetDistanceLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点原始距离
     var distance = 0.0 //两点距离
     
+    @IBOutlet var voiceImage: UIButton!
     let msg: MessageApi = MessageApi.defaultMessages
     
     var addressDict: [String : AnyObject]?
@@ -73,13 +74,18 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         oneAnnotation.coordinate = self.targetLocation.coordinate
         mapView.addAnnotation(oneAnnotation)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(CenterViewController.playAction))
-        voiceImage.userInteractionEnabled = true
-        voiceImage.addGestureRecognizer(tapGestureRecognizer)
-        voiceImage.animationDuration = 1.0
+
         voiceImage.hidden = true;
         
     }
+    
+    
+    @IBAction func playVoice(sender: AnyObject) {
+        self.playAction()
+    }
+    
+    
+    
     @IBAction func gotoNav(sender: AnyObject) {
         openTransitDirectionsForCoordinates(self.targetLocation.coordinate, addressDictionary: [:])
     }
@@ -136,13 +142,13 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
             switch (r) {
             case .Success(let r):
                 let m = r as! MessagesSecret
-                if(m.photos.count>0){
+                if(m.photos.count>0 && m.photos[0].length != 0 ){
                     self.photos =  m.photos
+                    self.imageCollection.reloadData()
                 }
-                self.imageCollection.reloadData()
                 self.textView.text = m.content
-                if let url = m.sound {
-                    self.voiceUrl = url
+                if m.sound != ""  {
+                    self.voiceUrl = m.sound!
                     self.voiceImage.hidden = false
                 }
                 break;
@@ -172,18 +178,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     }
     
     
-    func stopAnimation() {
-        if voiceImage.isAnimating() {
-            voiceImage.stopAnimating()
-        }
-    }
-    
-    
-    func beginAnimation() {
-        voiceImage.startAnimating()
-    }
-    func playAction(sender: AnyObject) {
-        setUpVoicePlayIndicatorImageView()
+    func playAction() {
         let url = NSURL(string: voiceUrl)
         downloadFileFromURL(url!)
     }
@@ -191,8 +186,6 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
     func downloadFileFromURL(url:NSURL){
         var downloadTask:NSURLSessionDownloadTask
         downloadTask = NSURLSession.sharedSession().downloadTaskWithURL(url, completionHandler: { (URL, response, error) -> Void in
-            
-            
             self.play(URL!)
         })
         downloadTask.resume()
@@ -206,19 +199,10 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
             let message = voiceMessage(incoming: false, sentDate: NSDate(), iconName: "", voicePath: player2.url!, voiceTime: player2.duration)
             
             if message.messageType == .Voice {
-                
                 let play = AudioPlayer()
                 player = play
                 player.startPlaying(message)
-                
-                beginAnimation()
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(message.voiceTime.intValue) * 1000 * 1000 * 1000), dispatch_get_main_queue(), { () -> Void in
-                    self.stopAnimation()
-                })
             }
-            
-            
         } catch let error as NSError {
             //self.player = nil
             print(error.localizedDescription)
@@ -228,13 +212,6 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         
     }
     
-    
-    func setUpVoicePlayIndicatorImageView() {
-        let images =  NSArray(objects: UIImage(named: "ReceiverVoiceNodePlaying001")!, UIImage(named: "ReceiverVoiceNodePlaying002")!, UIImage(named: "ReceiverVoiceNodePlaying003")!)
-        voiceImage.image = UIImage(named: "ReceiverVoiceNodePlaying")
-        
-        voiceImage.animationImages = (images as! [UIImage])
-    }
 }
 
 

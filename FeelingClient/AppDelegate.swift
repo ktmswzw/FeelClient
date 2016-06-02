@@ -11,7 +11,7 @@ import CoreData
 import SwiftyDB
 import SwiftyJSON
 import Alamofire
-
+import Chirp
 var jwt = JWTTools()
 
 var loader:PhotoUpLoader = PhotoUpLoader()
@@ -58,7 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
         
         application.registerUserNotificationSettings(pushNotificationSettings)
         application.registerForRemoteNotifications()
-        
+        Chirp.sharedManager.prepareSound(fileName: "got.wav")
+        Chirp.sharedManager.prepareSound(fileName: "no.wav")
+        Chirp.sharedManager.prepareSound(fileName: "send.wav")
+
         return true
     }
     
@@ -70,7 +73,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print(error)
     }
-                
+    
+    deinit {
+        // Cleanup is really simple!
+        Chirp.sharedManager.removeSound(fileName: "got.wav")
+        Chirp.sharedManager.removeSound(fileName: "no.wav")
+        Chirp.sharedManager.removeSound(fileName: "send.wav")
+    }
+    
     //推送处理3
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         var rcDevicetoken = deviceToken.description

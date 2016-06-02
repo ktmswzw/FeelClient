@@ -40,7 +40,9 @@ class PointUIView: AnimatableView{
                 .map { $0.characters.count >= 1 }
                 .shareReplay(1)
             
-            let everythingValid = Observable.combineLatest(questionValid,answerValid) { $0 && $1 || self.question.text!.isEmpty}
+            let everythingValid = Observable.combineLatest(questionValid,answerValid) {
+                $0 && $1 || self.question.text!.isEmpty
+                }
                 .shareReplay(1)
             
             everythingValid

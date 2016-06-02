@@ -21,8 +21,13 @@ import IBAnimatable
     import RxCocoa
 #endif
 
+var radar: RadarViewBiBi?
+
 class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager = CLLocationManager()
+    
+    var radarTimer: NSTimer?
+    var searchTimer: NSTimer?
     var latitude = 0.0
     var longitude = 0.0
     var targetLocation:CLLocation = CLLocation(latitude: 0, longitude: 0) //目标点火星后
@@ -37,6 +42,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
     let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
     
+
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
     
@@ -47,8 +53,13 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     @IBOutlet weak var findMoreButton: AnimatableButton!
     
     @IBOutlet var mapView: MKMapView!
+    
+    var tempView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         viewModel = MessageViewModel(delegate: self)
         
         //导航
@@ -62,8 +73,6 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         self.coachMarksController?.skipView = skipView
         
         //地图初始化
-        
-        //地图初始化
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = 1;
         
@@ -71,21 +80,14 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
-
-        
-        
-
-        
         self.mapView.delegate = self
-        
-        
         //点击
         addNewButton.rx_tap
             .subscribeNext { [weak self] in self?.performSegueWithIdentifier("send", sender: self) }
             .addDisposableTo(disposeBag)
         
         findMoreButton.rx_tap
-            .subscribeNext { [weak self] in self?.searchMsg(jwt.userName) }
+            .subscribeNext { [weak self] in self?.searchMsg() }
             .addDisposableTo(disposeBag)
         
         
@@ -106,17 +108,13 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
             aleat.addAction(callAction)
             self.presentViewController(aleat, animated: true, completion: nil)
         }
+        
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
         
     }
-//    @IBAction func deleteMap(sender: AnyObject) {
-//        
-//        self.mapView.removeAnnotations(mapView.annotations)
-//        
-//    }
-//    
+    
     
     func openOverSubmit(id:String, answer:String) {        
         
@@ -138,23 +136,31 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         //自定义地图图标
-//        if annotation is MyAnnotation {
-//            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("MYANNOTATION")  as? MKPinAnnotationView
-//            if annotationView == nil {
-//                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "MYANNOTATION")
-//                annotationView!.canShowCallout = true
         
-//            }
-//            else {
-//                annotationView!.annotation = annotation
-//            }
-//            return annotationView
-//        }
-//        else {
-            let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("DEFAULT")  as? MKPinAnnotationView
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        if annotation is MyAnnotation {
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("annotationView")
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
+                annotationView!.canShowCallout = true
+                if let pin = annotation as? MyAnnotation {
+                    if pin.type == 0 {
+                        annotationView!.image = UIImage(named: "pin")
+                    }
+                    else {
+                        annotationView!.image = UIImage(named: "pin_color")
+                    }
+                }
+            }
             return annotationView
-//        }
-
+        }
+        else {
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DEFAULT")
+            return annotationView
+        }
     }
     
 
@@ -198,11 +204,40 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
 
     var selectedView: MKAnnotationView?
     
-    func searchMsg(sender: AnyObject) {
+    func searchMsg() {
+        //雷达图
+        addTempView()
+        radar?.isStart = true
         viewModel.longitude = self.longitude
         viewModel.latitude = self.latitude
-        viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
         self.mapView.removeAnnotations(mapView.annotations)
+        findMoreButton.enabled = false
+        findMoreButton.hidden = true
+        searchTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(searchTimerFunc), userInfo: nil, repeats: false)
+        radarTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(stopRadar), userInfo: nil, repeats: false)
+    }
+    
+    func searchTimerFunc()
+    {
+        viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
+    }
+    
+    func stopRadar()
+    {
+        radar?.isStart = false
+        findMoreButton.enabled = true
+        findMoreButton.hidden = false
+        tempView.removeFromSuperview()
+    }
+    
+    func addTempView(){
+        tempView = UIView(frame: CGRect(x: 0, y: 0, width: self.mapView.bounds.width, height: self.mapView.bounds.height))
+        tempView.alpha = 1
+        radar = RadarViewBiBi.init(frame: CGRectMake(100, 100, 0, 0))
+        radar!.backgroundColor = UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 128.0/255.0, alpha: 1.0)
+        radar!.center = self.view.center
+        tempView.addSubview(radar!)
+        self.mapView.addSubview(tempView)
     }
         
     override func didReceiveMemoryWarning() {
@@ -246,7 +281,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
                 self.locationManager.stopUpdatingLocation()
                 self.locationManager.delegate = nil;
                 
-                self.searchMsg(jwt.userName)
+                self.searchMsg()
             })
         }
         

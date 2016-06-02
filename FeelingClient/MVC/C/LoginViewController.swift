@@ -32,7 +32,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         self.videoFrame = view.frame
         self.fillMode = .ResizeAspectFill
         self.alwaysRepeat = false
-        self.sound = false
+        self.sound = true
         self.startTime = 0.5
         self.duration = 17.0
         self.alpha = 0.7

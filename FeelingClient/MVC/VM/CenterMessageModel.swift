@@ -9,6 +9,8 @@
 import Foundation
 import MapKit
 
+import Chirp
+
 public class MessageViewModel {
     
     public let msgs: Messages = Messages.defaultMessages
@@ -86,6 +88,7 @@ public class MessageViewModel {
                     se!.navigationController!!.view.hideToastActivity()
                     se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
                     se!.navigationController?!.popViewControllerAnimated(true)
+                    Chirp.sharedManager.playSound(fileName: "send.wav")
                     break;
                 case .Failure(let value):
                     print(value)
@@ -106,6 +109,7 @@ public class MessageViewModel {
                 self.annotationArray.removeAll()
                 if let msgs = r  {
                     if(msgs.count==0){
+                        Chirp.sharedManager.playSound(fileName: "no.wav")
                         view.makeToast("未找到你想要信件", duration: 2, position: .Center)
                     }
                     else{
@@ -120,12 +124,13 @@ public class MessageViewModel {
                             oneAnnotation.url = msg.avatar
                             oneAnnotation.fromId = msg.fromId
                             oneAnnotation.answerTip = msg.answerTip
+                            oneAnnotation.type = msg.type
                             
                             self.annotationArray.append(oneAnnotation)
                         }
-                        map.addAnnotations(self.annotationArray)
-                        
-                        view.makeToast("共找到 \(msgs.count) 封未开启蜜信", duration: 2, position: .Center)
+                        map.addAnnotations(self.annotationArray)                        
+                        Chirp.sharedManager.playSound(fileName: "got.wav")
+                        view.makeToast("共找到 \(msgs.count) 封未开启信件", duration: 1, position: .Center)
                     }
                 }
                 view.hideToastActivity();

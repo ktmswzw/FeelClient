@@ -24,14 +24,7 @@ class MessageInfoViewController: FormViewController {
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
        // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
-        form = Section()
-            <<< ButtonRow() { (row: ButtonRow) -> Void in
-                row.title = "返回"
-                }  .onCellSelection({ (cell, row) in
-                    self.close()
-                })
-            
-            +++ Section("信息")
+        form =  Section("信息")
             <<< TextRow("to"){ $0.title = "收件人"
                 $0.disabled = true
                 $0.value = msg.to
@@ -63,13 +56,18 @@ class MessageInfoViewController: FormViewController {
                 $0.value = msg.address
             }
             
-            
-            +++ Section("开启人")
             <<< LabelRow("open") {
                 $0.title = "开启人："
                 $0.disabled = true
                 $0.value =  msg.from
             }
+            
+            +++ Section("操作")
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "返回"
+                }  .onCellSelection({ (cell, row) in
+                    self.close()
+                })
     }
     
     func dropMessage(id: String)
