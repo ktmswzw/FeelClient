@@ -682,7 +682,7 @@
     </scenes>
     <resources>
         <image name="ReceiverVoiceNodePlaying" width="12" height="17"/>
-        <image name="add_photo" width="40" height="40"/>
+        <image name="add_photo" width="38" height="41"/>
         <image name="record" width="28" height="44"/>
         <image name="send" width="22" height="22"/>
     </resources>

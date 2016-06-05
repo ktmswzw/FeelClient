@@ -26,16 +26,18 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
     @IBOutlet weak var loginBtn: AnimatableButton!
     var userinfo: UserInfo!
     
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.videoFrame = view.frame
         self.fillMode = .ResizeAspectFill
         self.alwaysRepeat = false
-        self.sound = true
+//        self.sound = true
         self.startTime = 0.5
-        self.duration = 17.0
-        self.alpha = 0.7
+        self.duration = 16.5
+        self.alpha = 0.6
         self.backgroundColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
         self.contentURL = url
@@ -189,6 +191,10 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
             self.loginBtn.enabled = true
         }
         
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

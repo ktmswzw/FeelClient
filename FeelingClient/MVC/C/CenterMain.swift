@@ -42,6 +42,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
     let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
     
+     let userDefaults = NSUserDefaults.standardUserDefaults()
 
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
@@ -76,7 +77,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = 1;
         
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
@@ -205,16 +206,25 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     var selectedView: MKAnnotationView?
     
     func searchMsg() {
-        //雷达图
-        addTempView()
-        radar?.isStart = true
-        viewModel.longitude = self.longitude
-        viewModel.latitude = self.latitude
-        self.mapView.removeAnnotations(mapView.annotations)
-        findMoreButton.enabled = false
-        findMoreButton.hidden = true
-        searchTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(searchTimerFunc), userInfo: nil, repeats: false)
-        radarTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(stopRadar), userInfo: nil, repeats: false)
+        
+        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
+            self.coachMarksController!.startOn(self)
+            userDefaults.setBool(true, forKey: "NEWONESHOW")
+            userDefaults.synchronize()
+        }
+        else
+        {
+            //雷达图
+            addTempView()
+            radar?.isStart = true
+            viewModel.longitude = self.longitude
+            viewModel.latitude = self.latitude
+            self.mapView.removeAnnotations(mapView.annotations)
+            findMoreButton.enabled = false
+            findMoreButton.hidden = true
+            searchTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(searchTimerFunc), userInfo: nil, repeats: false)
+            radarTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: #selector(stopRadar), userInfo: nil, repeats: false)
+        }
     }
     
     func searchTimerFunc()
@@ -296,14 +306,19 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        
-        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
-            self.coachMarksController!.startOn(self)            
-            userDefaults.setBool(true, forKey: "NEWONESHOW")
-            userDefaults.synchronize()
-        }
+    }
+    
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+//        
+//        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
+//            self.coachMarksController!.startOn(self)
+//            userDefaults.setBool(true, forKey: "NEWONESHOW")
+//            userDefaults.synchronize()
+//        }
     }
     
     //MARK: - Protocol Conformance | CoachMarksControllerDataSource

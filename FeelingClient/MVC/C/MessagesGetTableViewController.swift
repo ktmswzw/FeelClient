@@ -111,7 +111,7 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
         
         let bean = msgs[indexPath.row] as MessageBean
         // Configure the cell...
-        cell.name.text = bean.from
+        cell.name.text = "来自：\(bean.from)"
         if bean.avatar.length != 0 {
             cell.imageMe.hnk_setImageFromURL(NSURL(string:bean.avatar)!)
         }

@@ -112,11 +112,11 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         if msgs.count > 0 {
             let bean = msgs[indexPath.row] as MessageBean
             // Configure the cell...
-            cell.name.text = "\(bean.from)"
+            cell.name.text = "尝试: \(bean.from)"
             if bean.avatar.length != 0 {
                 cell.imagesMe.hnk_setImageFromURL(NSURL(string:bean.avatar)!)
             }
-            cell.tryCount.text = "\(bean.tryCount)"
+            cell.tryCount.text = "次数：\(bean.tryCount)"
             cell.question.text = bean.question
         }
         return cell

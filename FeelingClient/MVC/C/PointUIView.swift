@@ -33,7 +33,7 @@ class PointUIView: AnimatableView{
         didSet {
                         
             let questionValid = question.rx_text
-                .map { $0.characters.count >= 1 }
+                .map { $0.characters.count >= 0 }
                 .shareReplay(1)
             
             let answerValid = answer.rx_text
