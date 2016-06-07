@@ -15,7 +15,6 @@ import Chirp
 var jwt = JWTTools()
 
 var loader:PhotoUpLoader = PhotoUpLoader()
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
     var updateToken = false //已更新
@@ -30,6 +29,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
         // Override point for customization after application launch.
         
         viewModel = UserInfoViewModel(delegate: self)
+        
+        
+        
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
+        Chirp.sharedManager.prepareSound(fileName: "got.wav")
+        Chirp.sharedManager.prepareSound(fileName: "no.wav")
+        Chirp.sharedManager.prepareSound(fileName: "send.wav")
+
+        initRIM()
+        
+        return true
+    }
+    
+    func initRIM()
+    {
         
         //初始化SMS－SDK ,在MOB后台注册应用并获得AppKey 和AppSecret
         SMSSDK.registerApp("f7b6d783cb00", withSecret: "164aabea58f5eb4723f366eafb0eadf0")
@@ -52,17 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
         
         RCIM.sharedRCIM().enableTypingStatus = true
         
-        
-        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
-        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
-        
-        application.registerUserNotificationSettings(pushNotificationSettings)
-        application.registerForRemoteNotifications()
-        Chirp.sharedManager.prepareSound(fileName: "got.wav")
-        Chirp.sharedManager.prepareSound(fileName: "no.wav")
-        Chirp.sharedManager.prepareSound(fileName: "send.wav")
-
-        return true
     }
     
     // 注册通知 alert 、 sound 、 badge （ 8.0 之后，必须要添加下面这段代码，否则注册失败）
@@ -141,6 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     //监听连接状态变化
     func onRCIMConnectionStatusChanged(status: RCConnectionStatus) {
         print("RCConnectionStatus = \(status.rawValue)")
+        if status.rawValue != 0 && status.rawValue != 10 && status.rawValue != 11 {
+                loginRIM()
+        }
     }
     
     //用户信息提供者。您需要在completion中返回userId对应的用户信息，SDK将根据您提供的信息显示头像和用户名
@@ -253,22 +263,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("FeelingClinet.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
-        } catch {
+        } catch let error as NSError {
             // Report any error we got.
             var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             
-            dict[NSUnderlyingErrorKey] = error as NSError
-            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            dict[NSUnderlyingErrorKey] = error
+            let wrappedError = NSError(domain: "www.xecoder.com", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
+        } catch {
+            // dummy
         }
         
         return coordinator
@@ -299,4 +311,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     }
     
 }
-

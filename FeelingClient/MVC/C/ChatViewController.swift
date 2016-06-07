@@ -11,7 +11,7 @@ import UIKit
 import SwiftyDB
 import IBAnimatable
 
-class ChatViewController: RCConversationListViewController {
+class ChatViewController: RCConversationListViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,12 @@ class ChatViewController: RCConversationListViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loginRIM()
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

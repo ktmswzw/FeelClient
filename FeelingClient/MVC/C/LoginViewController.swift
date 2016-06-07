@@ -217,32 +217,18 @@ extension LoginViewController: LoginUserModelDelegate {
                         jwt.appPwd = self.viewModel.password
                         jwt.userId = userInfo.id
                         jwt.userName = userInfo.nickname
+                        jwt.userAvator = userInfo.avatar
                         self.database.asyncAddObject(self.userinfo) { (result) -> Void in
                             if let error = result.error {
                                 self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
                             }
                         }
-                        
                         self.view.hideToastActivity()
                         self.view.makeToast("登陆成功", duration: 1, position: .Center)
-                        
                         self.dismissViewControllerAnimated(true, completion: nil)
                         //self.performSegueWithIdentifier("login", sender: self)
                     }
-                    if jwt.imToken.length != 0 {
-                        RCIM.sharedRCIM().connectWithToken(jwt.imToken,
-                            success: { (userId) -> Void in
-                                //设置当前登陆用户的信息
-                                RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
-                                
-                                
-                                
-                            }, error: { (status) -> Void in
-                                self.view.hideToastActivity()
-                            }, tokenIncorrect: {
-                                print("token错误")
-                        })
-                    }
+                    loginRIM()
                     loader = PhotoUpLoader.init()//初始化图片上传
                     self.loginBtn.enabled = true
                     break;

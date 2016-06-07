@@ -23,6 +23,7 @@ struct JWTTools {
     let IMTOKENTEMP: String = "IMTOKENTEMP"
     let USERID: String = "FEELING_USERID"
     let USERINFO: String = "FEELING_USERINFO"
+    let USERAVOTOR: String = "FEELING_USERAVOTOR"
     
     var appUsername: String {
         get {
@@ -149,6 +150,20 @@ struct JWTTools {
         }
     }
     
+    var userAvator: String {
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERAVOTOR) as? String {
+                return returnValue
+            } else {
+                return "" //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERAVOTOR)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
     mutating func getHeader(tokenNew: String, myDictionary: Dictionary<String, String> ) -> [String : String] {
         if jwtTemp.isEmpty || !myDictionary.isEmpty {//重复使用上次计算结果
             let jwt = JWT.encode(.HS256(SECERT)) { builder in
@@ -178,5 +193,20 @@ func getSex(name:String) -> String {
     }
     else {
         return "无"
+    }
+}
+
+
+func loginRIM(){
+    if jwt.imToken.length != 0 {
+        RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+                                           success: { (userId) -> Void in
+                                            //设置当前登陆用户的信息
+                                            RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: jwt.userName,portrait: jwt.userAvator)
+            }, error: { (status) -> Void in
+                
+            }, tokenIncorrect: {
+                print("token错误")
+        })
     }
 }
