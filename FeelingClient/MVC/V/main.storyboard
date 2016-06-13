@@ -49,7 +49,7 @@
         <scene sceneID="hve-ME-ATR">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="center" storyboardName="center" id="MZw-Fm-Ra7" colorLabel="IBBuiltInLabel-Orange" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="发现" image="center" id="DLH-9r-VR5"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="send" id="DLH-9r-VR5"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2U-4Q-0jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,10 +87,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="center" width="22" height="22"/>
-        <image name="chat" width="22" height="22"/>
-        <image name="friends" width="22" height="22"/>
-        <image name="readfire" width="22" height="22"/>
-        <image name="sys" width="21" height="21"/>
+        <image name="chat" width="24" height="22"/>
+        <image name="friends" width="27" height="27"/>
+        <image name="readfire" width="24" height="24"/>
+        <image name="send" width="22" height="22"/>
+        <image name="sys" width="24" height="24"/>
     </resources>
 </document>

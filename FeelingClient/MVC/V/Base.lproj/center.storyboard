@@ -21,12 +21,13 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1O-31-f7T" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="285" y="72" width="30" height="30"/>
+                                <rect key="frame" x="275" y="72" width="50" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="Lqf-CD-NEr"/>
+                                    <constraint firstAttribute="width" constant="50" id="Lqf-CD-NEr"/>
                                     <constraint firstAttribute="height" constant="30" id="tCY-gZ-dhV"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="寄">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -44,12 +45,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-Kc-Vep" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="285" y="513" width="30" height="30"/>
+                                <rect key="frame" x="275" y="513" width="50" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.45235589430000001" blue="0.94844095689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="7PC-8z-6iJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="7PC-8z-6iJ"/>
                                     <constraint firstAttribute="height" constant="30" id="qja-en-Wzp"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="觅">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -684,6 +686,6 @@
         <image name="ReceiverVoiceNodePlaying" width="12" height="17"/>
         <image name="add_photo" width="38" height="41"/>
         <image name="record" width="28" height="44"/>
-        <image name="send" width="22" height="22"/>
+        <image name="send" width="24" height="24"/>
     </resources>
 </document>

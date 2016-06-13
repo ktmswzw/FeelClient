@@ -61,13 +61,9 @@ class PhotoUpLoader:BaseApi {
     
     
     func getPathZip(image: UIImage) -> NSData{
-        //压缩
-        let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 800, height: 800), fitMode: Toucan.Resize.FitMode.Scale).image
-//        let resizedAndMaskedImage = imageResize(image, sizeChange: CGSize(width: 800, height: 800))
-        
-        
-        guard let data = UIImagePNGRepresentation(resizedAndMaskedImage) else {//jpg
-            return UIImageJPEGRepresentation(resizedAndMaskedImage,1.0)! //png
+        let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 800, height: 800), fitMode: Toucan.Resize.FitMode.Clip).image
+        guard let data = UIImageJPEGRepresentation(resizedAndMaskedImage,0.5) else {//jpg
+            return UIImagePNGRepresentation(resizedAndMaskedImage)! //png
         }
         return data
     }
@@ -90,11 +86,11 @@ class PhotoUpLoader:BaseApi {
                     }
                     
                     count += 1
-
+                    
                     if count == imageData.count {
                         finishDo(Result.Success(path))
                     }
-                                        break;
+                    break;
                 case .Failure(let error):
                     finishDo(Result.Failure(error))
                     break;
@@ -161,7 +157,7 @@ class PhotoUpLoader:BaseApi {
             completionHandler(Result.Failure(""))
             return;
         }
-//        let tmp = NSHomeDirectory() + "/Documents"
+        //        let tmp = NSHomeDirectory() + "/Documents"
         let path_tmp = path.replaceMatches("file://", withString: "", ignoreCase: false)
         
         
@@ -204,5 +200,5 @@ class PhotoUpLoader:BaseApi {
             })
         };
     }
-
+    
 }
