@@ -13,7 +13,7 @@ import SwiftyJSON
 import Alamofire
 import Chirp
 var jwt = JWTTools()
-
+var RIMStatus = 0
 var loader:PhotoUpLoader = PhotoUpLoader()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
         Chirp.sharedManager.prepareSound(fileName: "got.wav")
         Chirp.sharedManager.prepareSound(fileName: "no.wav")
         Chirp.sharedManager.prepareSound(fileName: "send.wav")
-
+        
         initRIM()
         
         return true
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
                 }
             }
         }
-
+        
         completionHandler(UIBackgroundFetchResult.NewData)
     }
     
@@ -148,8 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     //监听连接状态变化
     func onRCIMConnectionStatusChanged(status: RCConnectionStatus) {
         print("RCConnectionStatus = \(status.rawValue)")
-        if status.rawValue != 0 && status.rawValue != 10 && status.rawValue != 11 {
-                loginRIM()
+        RIMStatus = status.rawValue
+        if RIMStatus != 0 && RIMStatus != 10 && RIMStatus != 11 {
+            loginRIM()
         }
     }
     

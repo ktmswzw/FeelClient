@@ -29,7 +29,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let image = UIImage(named: "lonely-children")
+        let image = UIImage(named: "agirl")
         let blurredImage = image!.imageByApplyingBlurWithRadius(10)
         self.view.layer.contents = blurredImage.CGImage
         
@@ -133,47 +133,47 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
     
 }
 
-    extension RegisterViewController: LoginUserModelDelegate {
-        func registerDelegate(){
-            self.view.makeToastActivity(.Center)
-            self.viewModel.register({ (r:BaseApi.Result) in
-                switch (r) {
-                case .Success(let r):
-                    if let userInfo = r as? UserInfo {
-                        self.userinfo = userInfo
-                        jwt.jwtTemp = userInfo.JWTToken
-                        jwt.imToken = userInfo.IMToken
-                        jwt.appUsername = self.viewModel.userName
-                        jwt.appPwd = self.viewModel.password
-                        jwt.userId = userInfo.id
-                        jwt.userName = userInfo.nickname
-                        self.database.addObject(userInfo, update: true)
-                        self.view.hideToastActivity()
-                        self.view.makeToast("注册成功", duration: 1, position: .Center)
-                        
-                        self.performSegueWithIdentifier("registerIn", sender: self)
-                    }
-                    if jwt.imToken.length != 0 {
-                        RCIM.sharedRCIM().connectWithToken(jwt.imToken,
-                            success: { (userId) -> Void in
-                                //设置当前登陆用户的信息
-                                RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
-                            }, error: { (status) -> Void in
-                                self.view.hideToastActivity()
-                            }, tokenIncorrect: {
-                                print("token错误")
-                        })
-                    }
-                    loader = PhotoUpLoader.init()//初始化图片上传
-                    break;
-                case .Failure(let msg):
-                    print("\(msg)")
-                    
+extension RegisterViewController: LoginUserModelDelegate {
+    func registerDelegate(){
+        self.view.makeToastActivity(.Center)
+        self.viewModel.register({ (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(let r):
+                if let userInfo = r as? UserInfo {
+                    self.userinfo = userInfo
+                    jwt.jwtTemp = userInfo.JWTToken
+                    jwt.imToken = userInfo.IMToken
+                    jwt.appUsername = self.viewModel.userName
+                    jwt.appPwd = self.viewModel.password
+                    jwt.userId = userInfo.id
+                    jwt.userName = userInfo.nickname
+                    self.database.addObject(userInfo, update: true)
                     self.view.hideToastActivity()
-                    self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                    self.view.makeToast("注册成功", duration: 1, position: .Center)
                     
-                    break;
+                    self.performSegueWithIdentifier("registerIn", sender: self)
                 }
-            })
-        }
+                if jwt.imToken.length != 0 {
+                    RCIM.sharedRCIM().connectWithToken(jwt.imToken,
+                        success: { (userId) -> Void in
+                            //设置当前登陆用户的信息
+                            RCIM.sharedRCIM().currentUserInfo = RCUserInfo.init(userId: userId, name: self.userinfo.nickname, portrait: self.userinfo.avatar)
+                        }, error: { (status) -> Void in
+                            self.view.hideToastActivity()
+                        }, tokenIncorrect: {
+                            print("token错误")
+                    })
+                }
+                loader = PhotoUpLoader.init()//初始化图片上传
+                break;
+            case .Failure(let msg):
+                print("\(msg)")
+                
+                self.view.hideToastActivity()
+                self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                
+                break;
+            }
+        })
     }
+}

@@ -31,13 +31,13 @@ class UserInfoViewController: FormViewController {
         
         viewModel = FriendViewModel(delegate: self)
         
-        let image = UIImage(named: "lonely-children")
+        let image = UIImage(named: "agirl")
         let blurredImage = image!.imageByApplyingBlurWithRadius(50)
         self.view.layer.contents = blurredImage.CGImage
         var tmp = ""
         
         self.navigationItem.title = "用户信息"
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.saveFriend))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.saveFriend))
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         
@@ -95,7 +95,7 @@ class UserInfoViewController: FormViewController {
                     }  .onCellSelection({ (cell, row) in
                         self.privateChat()
                     })
-
+            
         }else{
             
             imageViewFriend.hnk_setImageFromURL(NSURL(string:self.friend.avatar)!)

@@ -32,6 +32,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
     @IBOutlet var hidden4: UIView!
     @IBOutlet var hidden5: UIView!
     
+    @IBOutlet var readFire: UISwitch!
     @IBOutlet var selfImage: UIImageView!
     
     //录音
@@ -175,6 +176,7 @@ class CenterViewController: DesignableViewController,MessageViewModelDelegate , 
         viewModel.question = self.question.text!
         viewModel.answer = self.answer.text!
         viewModel.address = self.address.text!
+        viewModel.burnAfterReading = readFire.on
         self.navigationController?.view.makeToastActivity(.Center)
         viewModel.sendMessage(self)
         
