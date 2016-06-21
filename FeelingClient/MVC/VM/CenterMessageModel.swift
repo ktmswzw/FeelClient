@@ -80,6 +80,7 @@ public class MessageViewModel {
         msg.question = question
         msg.answer = answer
         msg.address = address
+        msg.burnAfterReading = burnAfterReading
         self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
                 switch (r) {
                 case .Success(let value):
