@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Haneke
 
+import SwiftyDB
 #if !RX_NO_MODULE
     import RxSwift
     import RxCocoa
@@ -20,6 +21,10 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     var viewModel: FriendViewModel!
     var searchName = ""
     var badgeNumber:Int = 0
+    
+    let database = SwiftyDB(databaseName: "UserInfo")
+    
+    
     @IBOutlet weak var search: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +43,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
             .addDisposableTo(disposeBag)
         
         
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -76,20 +81,38 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     func getFriends()
     {
         self.navigationController?.view.makeToastActivity(.Center)
-            self.viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
-                switch (r) {
-                case .Success(let value):
-                    self.viewModel.friends =  value as! [FriendBean]
-                    self.tableView.reloadData()
-                    self.search.endEditing(true)
-                    self.navigationController?.view.hideToastActivity()
-                    break;
-                case .Failure(let msg):
-                    self.view.makeToast("\(msg)", duration: 2, position: .Center)
-                    self.navigationController?.view.hideToastActivity()
-                    break;
+        self.viewModel.searchMsg(self.searchName) { (r: BaseApi.Result) in
+            switch (r) {
+            case .Success(let value):
+                self.viewModel.friends =  value as! [FriendBean]
+                
+                RCIM.sharedRCIM().clearUserInfoCache()
+                for userinfo in self.viewModel.friends {
+                    RCIM.sharedRCIM().refreshUserInfoCache(RCUserInfo(userId: userinfo.user, name: userinfo.remark, portrait: userinfo.avatar), withUserId: userinfo.user)
+                    let list = self.database.objectsForType(UserInfo.self, matchingFilter: ["id": userinfo.user]).value!
+                    if list.count > 0 {
+                        let userinfoDB = list[0] as UserInfo
+                        userinfoDB.avatar = userinfo.avatar
+                        userinfoDB.nickname = userinfo.remark
+                        self.database.asyncAddObject(userinfoDB) { (result) -> Void in
+                            if let error = result.error {
+                                self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
+                            }
+                        }
+                    }
+                    
                 }
+                
+                self.tableView.reloadData()
+                self.search.endEditing(true)
+                self.navigationController?.view.hideToastActivity()
+                break;
+            case .Failure(let msg):
+                self.view.makeToast("\(msg)", duration: 2, position: .Center)
+                self.navigationController?.view.hideToastActivity()
+                break;
             }
+        }
         
         
     }
@@ -137,11 +160,11 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
     
     
     
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
     
     
     
@@ -172,7 +195,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

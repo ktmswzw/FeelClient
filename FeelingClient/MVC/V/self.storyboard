@@ -63,6 +63,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sys" width="21" height="21"/>
+        <image name="sys" width="24" height="24"/>
     </resources>
 </document>

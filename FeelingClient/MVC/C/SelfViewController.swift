@@ -33,9 +33,9 @@ class SelfViewController: FormViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.saveImage))
         
-//        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
-//        
+        //        
+        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "退出", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SelfViewController.exitAppAction))
+        //        
         
         viewModel = UserInfoViewModel(delegate: self)
         
@@ -55,7 +55,7 @@ class SelfViewController: FormViewController {
             form = Section() {
                 $0.header = HeaderFooterView<EurekaSelfView>(HeaderFooterProvider.Class)
                 }
-            
+                
                 +++ Section()
                 <<< PhoneRow("phone"){ $0.title = "手机"
                     $0.disabled = true
@@ -68,18 +68,18 @@ class SelfViewController: FormViewController {
                 <<< TextRow("nickname") {$0.title = "昵称"
                     $0.value = userinfo.nickname
                     $0.placeholder = "朋友或亲人对你的昵称"
-                    }
+                }
                 <<< ActionSheetRow<String>() {
                     $0.title = "性别"
                     $0.options = ["女", "男", "无"]
                     $0.value = getSex(userinfo.sex)
                     
-                }.onChange { row in
-                    self.sexChange(row.value!)
+                    }.onChange { row in
+                        self.sexChange(row.value!)
                 }
                 
                 <<< TextRow("mommo") {$0.title = "签名"
-                $0.value = userinfo.motto
+                    $0.value = userinfo.motto
                 }
                 
                 +++ Section("版本1.0")
@@ -88,7 +88,7 @@ class SelfViewController: FormViewController {
                     }  .onCellSelection({ (cell, row) in
                         self.exitAppAction()
                     })
-
+            
             
             self.viewModel.sex = userinfo.sex
         }
@@ -117,23 +117,23 @@ class SelfViewController: FormViewController {
     {
         
         self.navigationController?.view.makeToastActivity(.Center)
-            if self.images.count != 0 {
-                self.viewModel.saveImages(self.images, completeHander: { (r:BaseApi.Result) in
-                    switch (r) {
-                    case .Success(let value):
-                        self.viewModel.avatar = value as! String
-                        self.save()
-                        self.images.removeAll()
-                        break;
-                    case .Failure(let msg):
-                        self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
-                        break;
-                    }
-                })
-            }
-            else{
-                self.save()
-            }
+        if self.images.count != 0 {
+            self.viewModel.saveImages(self.images, completeHander: { (r:BaseApi.Result) in
+                switch (r) {
+                case .Success(let value):
+                    self.viewModel.avatar = value as! String
+                    self.save()
+                    self.images.removeAll()
+                    break;
+                case .Failure(let msg):
+                    self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
+                    break;
+                }
+            })
+        }
+        else{
+            self.save()
+        }
     }
     
     func save()
@@ -162,11 +162,13 @@ class SelfViewController: FormViewController {
                     }
                 }
                 
+                RCIM.sharedRCIM().refreshUserInfoCache(RCUserInfo(userId: self.viewModel.user_id, name: self.viewModel.nickname, portrait: self.viewModel.avatar), withUserId: self.viewModel.user_id)
+                
                 break;
-            case .Failure(let msg):
+            case .Failure(_):
                 self.navigationItem.rightBarButtonItem?.enabled = true
                 self.navigationController?.view.hideToastActivity()
-                self.view.makeToast("保存失败\(msg)", duration: 2, position: .Center)
+                self.view.makeToast("保存失败,长时间未使用，请重新登录", duration: 2, position: .Center)
                 break;
             }
         }
@@ -177,7 +179,7 @@ class SelfViewController: FormViewController {
     func exitAppAction()
     {
         self.tabBarController?.selectedIndex = 0
-
+        
         jwt.jwtTemp = ""
         jwt.appUsername = ""
         jwt.appPwd = ""
@@ -188,9 +190,9 @@ class SelfViewController: FormViewController {
         RCIM.sharedRCIM().disconnect(false)
         
         //let navigationController:UINavigationController? = self.tabBarController?.presentingViewController as? UINavigationController
-//        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-//            self.view.makeToast("退出成功", duration: 2, position: .Center)
-//        })
+        //        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+        //            self.view.makeToast("退出成功", duration: 2, position: .Center)
+        //        })
         self.view.makeToast("退出成功", duration: 2, position: .Center)
         //self.navigationController?.popToRootViewControllerAnimated(true)
         self.performSegueWithIdentifier("login", sender: self)

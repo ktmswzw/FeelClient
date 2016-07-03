@@ -42,8 +42,8 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
     let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
     
-     let userDefaults = NSUserDefaults.standardUserDefaults()
-
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
     
@@ -68,7 +68,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         self.coachMarksController?.allowOverlayTap = true
         
         self.coachMarksController?.dataSource = self
-
+        
         let skipView = CoachMarkSkipDefaultView()
         skipView.setTitle("跳过", forState: .Normal)
         self.coachMarksController?.skipView = skipView
@@ -93,7 +93,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         
         
         
-//        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        //        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         if(CLLocationManager.authorizationStatus() == .Denied) {
             let aleat = UIAlertController(title: "打开定位开关", message:"定位服务未开启,请进入系统设置>隐私>定位服务中打开开关,并允许Feeling使用定位服务", preferredStyle: .Alert)
@@ -121,19 +121,19 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         
         msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
             switch (r) {
-                case .Success(let r):
-                    self.msgscrentId = r as! String;
-                    self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-                    self.performSegueWithIdentifier("openOver", sender: self)
-                    self.mapView.removeAnnotation((self.selectedView?.annotation)!)
-                    break;
-                case .Failure(let msg):
-                    self.view.makeToast(msg as! String, duration: 1, position: .Center)
-                    break;
-                }
+            case .Success(let r):
+                self.msgscrentId = r as! String;
+                self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+                self.performSegueWithIdentifier("openOver", sender: self)
+                self.mapView.removeAnnotation((self.selectedView?.annotation)!)
+                break;
+            case .Failure(let msg):
+                self.view.makeToast(msg as! String, duration: 1, position: .Center)
+                break;
+            }
         }
     }
-
+    
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         //自定义地图图标
@@ -164,7 +164,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         }
     }
     
-
+    
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         selectedView = view;
         
@@ -186,23 +186,23 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
             
             let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
             detailView.delegate = self
-                if let url:String = pin.url! as String {
-                    let URL = NSURL(string: url)!
-                    let fetcher = NetworkFetcher<UIImage>(URL: URL)
-                    cache.fetch(fetcher: fetcher).onSuccess { image in
-                        detailView.avator.image = image
-                    }
+            if let url:String = pin.url! as String {
+                let URL = NSURL(string: url)!
+                let fetcher = NetworkFetcher<UIImage>(URL: URL)
+                cache.fetch(fetcher: fetcher).onSuccess { image in
+                    detailView.avator.image = image
                 }
-                detailView.answer.placeholder = "提示：\(pin.answerTip!)"
-                detailView.msgId = pin.id
-                detailView.fromId = pin.id
-                detailView.question.text = pin.question
+            }
+            detailView.answer.placeholder = "提示：\(pin.answerTip!)"
+            detailView.msgId = pin.id
+            detailView.fromId = pin.id
+            detailView.question.text = pin.question
             
             
             view.detailCalloutAccessoryView = detailView
         }
     }
-
+    
     var selectedView: MKAnnotationView?
     
     func searchMsg() {
@@ -249,7 +249,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         tempView.addSubview(radar!)
         self.mapView.addSubview(tempView)
     }
-        
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -312,13 +312,13 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-//        
-//        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
-//            self.coachMarksController!.startOn(self)
-//            userDefaults.setBool(true, forKey: "NEWONESHOW")
-//            userDefaults.synchronize()
-//        }
+        
+        //        
+        //        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
+        //            self.coachMarksController!.startOn(self)
+        //            userDefaults.setBool(true, forKey: "NEWONESHOW")
+        //            userDefaults.synchronize()
+        //        }
     }
     
     //MARK: - Protocol Conformance | CoachMarksControllerDataSource
@@ -353,6 +353,6 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
-
+    
 }
 

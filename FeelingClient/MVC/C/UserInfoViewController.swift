@@ -154,6 +154,7 @@ class UserInfoViewController: FormViewController {
         let chat = RCConversationViewController(conversationType: RCConversationType.ConversationType_PRIVATE, targetId: self.friend.user)
         chat.title = "\(friend.remark)"
         chat.hidesBottomBarWhenPushed = true
+        
         self.navigationController?.pushViewController(chat, animated: true)
     }
     

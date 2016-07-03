@@ -82,22 +82,22 @@ public class MessageViewModel {
         msg.address = address
         msg.burnAfterReading = burnAfterReading
         self.msgs.saveMsg(msg, imags: self.imageData) { (r:BaseApi.Result) -> Void in
-                switch (r) {
-                case .Success(let value):
-                    print(value)
-                    self.selfSendMsgs.append(msg)
-                    se!.navigationController!!.view.hideToastActivity()
-                    se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
-                    se!.navigationController?!.popViewControllerAnimated(true)
-                    Chirp.sharedManager.playSound(fileName: "send.wav")
-                    break;
-                case .Failure(let value):
-                    print(value)
-                    self.selfSendMsgs.append(msg)
-                    se!.navigationController!!.view.hideToastActivity()
-                    se!.view!!.makeToast("发表失败", duration: 2, position: .Center)
-                    break;
-                }
+            switch (r) {
+            case .Success(let value):
+                print(value)
+                self.selfSendMsgs.append(msg)
+                se!.navigationController!!.view.hideToastActivity()
+                se!.view!!.makeToast("发表成功", duration: 2, position: .Center)
+                se!.navigationController?!.popViewControllerAnimated(true)
+                Chirp.sharedManager.playSound(fileName: "send.wav")
+                break;
+            case .Failure(let value):
+                print(value)
+                self.selfSendMsgs.append(msg)
+                se!.navigationController!!.view.hideToastActivity()
+                se!.view!!.makeToast("发表失败,长时间未使用，请重新登录", duration: 2, position: .Center)
+                break;
+            }
         }
     }
     
@@ -138,12 +138,12 @@ public class MessageViewModel {
                 break;
             case .Failure(_):
                 view.hideToastActivity();
-                view.makeToast("搜索失败", duration: 2, position: .Center)
+                view.makeToast("长时间未使用，请重新登录", duration: 2, position: .Center)
                 break;
             }
         }
     }
-        
+    
 }
 
 public protocol MessageViewModelDelegate: class {

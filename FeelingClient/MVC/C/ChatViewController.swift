@@ -58,8 +58,12 @@ class ChatViewController: RCConversationListViewController  {
         if list.count > 0 {
             let userinfo = list[0]
             chat.title = "\(userinfo.nickname)"
+            
+            RCIM.sharedRCIM().refreshUserInfoCache(RCUserInfo(userId: userinfo.id, name: userinfo.nickname, portrait: userinfo.avatar), withUserId: userinfo.id)
+            
         }
         chat.hidesBottomBarWhenPushed = true
+        
         
         //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.pushViewController(chat, animated: true)

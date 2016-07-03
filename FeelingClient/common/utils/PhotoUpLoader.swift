@@ -41,10 +41,15 @@ class PhotoUpLoader:BaseApi {
                         let myJosn = JSON(temp)
                         let signString = myJosn.dictionary!["message"]!.stringValue
                         let fullNameArr = signString.characters.split {$0 == ","}
-                        jwt.sign = String(fullNameArr[0])
-                        jwt.sign_file = String(fullNameArr[1])
-                        self.sign = jwt.sign
-                        self.signFile = jwt.sign_file
+                        if fullNameArr.count > 1 {
+                            jwt.sign = String(fullNameArr[0])
+                            jwt.sign_file = String(fullNameArr[1])
+                            self.sign = jwt.sign
+                            self.signFile = jwt.sign_file
+                        }
+                        else {
+                            break
+                        }
                         
                     }
                     break;
