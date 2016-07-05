@@ -148,11 +148,18 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
                 annotationView!.canShowCallout = true
                 if let pin = annotation as? MyAnnotation {
+                    let two:UIImage
                     if pin.type == 0 {
-                        annotationView!.image = UIImage(named: "pin")
+                        two = UIImage(named: "pin")!
                     }
                     else {
-                        annotationView!.image = UIImage(named: "pin_color")
+                        two = UIImage(named: "pin_color")!
+                    }
+                    
+                    let fetcher = NetworkFetcher<UIImage>(URL: NSURL(string: pin.url!)!)
+                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                        let one:UIImage = image
+                        annotationView?.image = self.getPin(one, two: two)
                     }
                 }
             }
@@ -162,6 +169,14 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
             let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DEFAULT")
             return annotationView
         }
+    }
+    
+    func getPin(one: UIImage,two: UIImage) -> UIImage {
+        let myImage:UIImage =   Toucan(image: one).resize(CGSizeMake(26.0, 26.0)).image
+        let backgrounpImage:UIImage =   Toucan(image: two).resize(CGSizeMake(32.0, 42.0)).image
+        let frontImage =  Toucan(image: myImage).maskWithEllipse().image
+        let newImage = mergeImages(backgrounpImage ,backgroundImage: frontImage )
+        return newImage
     }
     
     

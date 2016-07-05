@@ -34,6 +34,32 @@ func getAssetThumbnail(asset: PHAsset) -> UIImage {
     return thumbnail
 }
 
+func mergeImages (forgroundImage : UIImage, backgroundImage : UIImage) -> UIImage {
+    
+    let bottomImage = forgroundImage
+    let topImage = backgroundImage
+    
+    let size = forgroundImage.size
+    
+    let forsize = backgroundImage.size
+    
+    UIGraphicsBeginImageContext(size)
+    
+    let areaSize = CGRect(x: 0, y: 0, width: size.width , height: size.height )
+    bottomImage.drawInRect(areaSize)
+    
+    
+    let topSize = CGRect(x: (size.width - forsize.width) / 2, y: (size.height - forsize.height) / 2 - 5, width: forsize.width , height: forsize.height )
+    topImage.drawInRect(topSize, blendMode: .Normal, alpha: 1.0)
+    
+    let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    
+    UIGraphicsEndImageContext()
+    
+    return newImage
+    
+}
+
 
 func imageResize (image:UIImage, sizeChange:CGSize)-> UIImage{
     
