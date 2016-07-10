@@ -68,13 +68,42 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="530" y="293" width="50" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.45235589430000001" blue="0.94844095689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8MJ-dw-Nly"/>
+                                    <constraint firstAttribute="height" constant="30" id="XJB-RB-bTk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="AR">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Squeeze"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonTap:" destination="k7f-3U-IcX" eventType="touchUpInside" id="24F-xr-OqE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="3zp-fa-kiP"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="centerY" secondItem="8CY-GM-Klr" secondAttribute="centerY" id="4Ja-cB-GmM"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="leading" secondItem="zpX-Kc-Vep" secondAttribute="leading" id="6F3-ia-f23"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="trailing" secondItem="zpX-Kc-Vep" secondAttribute="trailing" id="Leb-sJ-qEa"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="MRz-a0-qRg"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="NBQ-kw-CoC"/>
                             <constraint firstAttribute="trailing" secondItem="8CY-GM-Klr" secondAttribute="trailing" id="VfI-uu-18h"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="Xpi-sa-EeK"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="centerX" secondItem="W1O-31-f7T" secondAttribute="centerX" id="pdl-UW-W8B"/>
@@ -412,7 +441,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlD-Tu-fqO">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RlD-Tu-fqO">
                                         <rect key="frame" x="104" y="7" width="51" height="31"/>
                                     </switch>
                                 </subviews>
@@ -524,7 +553,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="duj-6f-IHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3639" y="-86"/>
+            <point key="canvasLocation" x="3780" y="-86"/>
         </scene>
         <!--Open Map View Controller-->
         <scene sceneID="ua5-r3-nXJ">
@@ -661,7 +690,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlS-m7-bOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="s46-I9-CoY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4451" y="677"/>
+            <point key="canvasLocation" x="4495" y="672"/>
         </scene>
         <!--View Image View Controller-->
         <scene sceneID="XKs-tS-P7i">
@@ -719,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9G1-Fx-2UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5193" y="677"/>
+            <point key="canvasLocation" x="5193" y="672"/>
         </scene>
     </scenes>
     <resources>

@@ -43,7 +43,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         self.contentURL = url
         self.restartForeground = true
         
-                
+        
         let lookAnyWhere = ActionButtonItem(title: "随便看看", image: UIImage(named: "address")!)
         lookAnyWhere.action = { item in
             self.registerDervice()
@@ -78,7 +78,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         let uuid = UIDevice.currentDevice().identifierForVendor!.UUIDString
         self.viewModel.userName = uuid
         let password = "123456"
-        self.viewModel.password = password.md5()!
+        self.viewModel.password = password.md5()
         
         self.viewModel.register({ (r:BaseApi.Result) in
             switch (r) {
@@ -120,7 +120,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
                 break;
             }
         })
-
+        
     }
     
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -155,7 +155,7 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
                 let passwordText = password.text!.md5()
                 
                 viewModel.userName = userNameText!
-                viewModel.password = passwordText!
+                viewModel.password = passwordText
                 self.loginBtn.enabled = false
                 loginDelegate()
             }
@@ -206,40 +206,43 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
 extension LoginViewController: LoginUserModelDelegate {
     func loginDelegate(){
         self.view.makeToastActivity(.Center)
-            self.viewModel.loginDelegate({ (r:BaseApi.Result) in
-                switch (r) {
-                case .Success(let r):
-                    if let userInfo = r as? UserInfo {
-                        self.userinfo = userInfo
-                        jwt.jwtTemp = userInfo.JWTToken
-                        jwt.imToken = userInfo.IMToken
-                        jwt.appUsername = self.viewModel.userName
-                        jwt.appPwd = self.viewModel.password
-                        jwt.userId = userInfo.id
-                        jwt.userName = userInfo.nickname
-                        jwt.userAvator = userInfo.avatar
-                        self.database.asyncAddObject(self.userinfo) { (result) -> Void in
-                            if let error = result.error {
-                                self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
-                            }
+        self.viewModel.loginDelegate({ (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(let r):
+                if let userInfo = r as? UserInfo {
+                    self.userinfo = userInfo
+                    jwt.jwtTemp = userInfo.JWTToken
+                    jwt.imToken = userInfo.IMToken
+                    jwt.appUsername = self.viewModel.userName
+                    jwt.appPwd = self.viewModel.password
+                    jwt.userId = userInfo.id
+                    jwt.userName = userInfo.nickname
+                    jwt.userAvator = userInfo.avatar
+                    self.database.asyncAddObject(self.userinfo) { (result) -> Void in
+                        if let error = result.error {
+                            self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
                         }
-                        self.view.hideToastActivity()
-                        self.view.makeToast("登陆成功", duration: 1, position: .Center)
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        //self.performSegueWithIdentifier("login", sender: self)
                     }
-                    loginRIM()
-                    loader = PhotoUpLoader.init()//初始化图片上传
-                    self.loginBtn.enabled = true
-                    break;
-                case .Failure(let message):
                     self.view.hideToastActivity()
-                    self.view.makeToast("\(message!)", duration: 1, position: .Center)
-                    
-                    self.loginBtn.enabled = true
-                    break;
+                    self.view.makeToast("登陆成功", duration: 1, position: .Center)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    //self.performSegueWithIdentifier("login", sender: self)
                 }
-            })
+                loginRIM()
+                loader = PhotoUpLoader.init()//初始化图片上传
+                self.loginBtn.enabled = true                
+                if Constant.Devicetoken != "" {
+                    self.viewModel.updateDeviceToken(Constant.Devicetoken) {_ in }
+                }
+                break;
+            case .Failure(let message):
+                self.view.hideToastActivity()
+                self.view.makeToast("\(message!)", duration: 1, position: .Center)
+                
+                self.loginBtn.enabled = true
+                break;
+            }
+        })
     }
 }
 

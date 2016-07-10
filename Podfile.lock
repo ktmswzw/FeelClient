@@ -1,35 +1,36 @@
 PODS:
-  - Alamofire (3.3.0)
-  - AlamofireObjectMapper (2.1.2):
+  - Alamofire (3.4.1)
+  - AlamofireObjectMapper (3.0.0):
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
+  - ALCameraViewController (1.2.1)
   - Chirp (1.1.1)
-  - CryptoSwift (0.0.14)
-  - Eureka (1.5.0)
+  - CryptoSwift (0.4.1)
+  - Eureka (1.7.0)
   - HanekeSwift (0.10.1)
-  - IBAnimatable (1.2)
+  - IBAnimatable (2.4)
   - ImagePickerSheetController (0.9.1)
-  - Instructions (0.4.0)
-  - JSONWebToken (1.4.1):
-    - CryptoSwift (= 0.0.14)
-  - MOBFoundation_IDFA (1.3.1)
-  - ObjectMapper (1.1.4)
+  - Instructions (0.4.2)
+  - JSONWebToken (1.5.0):
+    - CryptoSwift (~> 0.4.0)
+  - MOBFoundation_IDFA (2.0.4)
+  - ObjectMapper (1.3.0)
   - RongCloudIMKit (2.5.0)
-  - RxAlamofire (2.2):
-    - RxAlamofire/Core (= 2.2)
-  - RxAlamofire/Core (2.2):
-    - Alamofire (~> 3.1)
-    - RxSwift (~> 2.1)
-  - RxBlocking (2.3.1):
-    - RxSwift (~> 2.3.1)
-  - RxCocoa (2.3.1):
-    - RxSwift (~> 2.3.1)
-  - RxSwift (2.3.1)
-  - SMSSDK (2.0.2)
-  - sqlite3 (3.11.1):
-    - sqlite3/common (= 3.11.1)
-  - sqlite3/common (3.11.1)
-  - SwiftyDB (1.0.0):
+  - RxAlamofire (2.5):
+    - RxAlamofire/Core (= 2.5)
+  - RxAlamofire/Core (2.5):
+    - Alamofire (~> 3.4)
+    - RxSwift (~> 2.5)
+  - RxBlocking (2.6.0):
+    - RxSwift (~> 2.5)
+  - RxCocoa (2.6.0):
+    - RxSwift (~> 2.5)
+  - RxSwift (2.6.0)
+  - SMSSDK (2.0.5)
+  - sqlite3 (3.13.0):
+    - sqlite3/common (= 3.13.0)
+  - sqlite3/common (3.13.0)
+  - SwiftyDB (1.1.3):
     - TinySQLite (~> 0.3.0)
   - SwiftyJSON (2.3.2)
   - TinySQLite (0.3.1):
@@ -40,6 +41,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - ALCameraViewController
   - Chirp
   - Eureka
   - HanekeSwift
@@ -61,26 +63,27 @@ DEPENDENCIES:
   - XLPagerTabStrip
 
 SPEC CHECKSUMS:
-  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
-  AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
+  ALCameraViewController: 51c3617ad4f955106e4bf3a34578433cfff1ec99
   Chirp: e06920df90dd33b3e74c988c58f621a8a1e41e7d
-  CryptoSwift: 5a6b725e2ad65a789f5f435dd434d38eb2c40b46
-  Eureka: 2fb37bb50569c62ee3284689d5b7aca694b040e0
+  CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
+  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
-  IBAnimatable: bcebfaf34b041949da5ed668ac5ab2e28a4b2357
+  IBAnimatable: f5dcd428e0fc41d11d3ed657c925393dd7bbaa0a
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
-  Instructions: 7283d009379714e8ff667153014cd62b6e4f4eb9
-  JSONWebToken: cf8b58850dc4cf38ce777a08753a2ea1620d960e
-  MOBFoundation_IDFA: 0b4f8248e12384fc32b861a9b75a83825e8fb444
-  ObjectMapper: 09ff2ad156bb0e103d9dde9bfe10fbde78affeb2
+  Instructions: acb639e81dbbab70c92d35bc08f4f831fec84e0c
+  JSONWebToken: 6c8968ace6b60b2e6156a7bbe5019fd9b5ff9b5a
+  MOBFoundation_IDFA: cb3efe578b5cc8ff0313a37b959d98fb3eb1b7d3
+  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   RongCloudIMKit: 3d8473f022c7588db80ef81caf0208e5c2fa4789
-  RxAlamofire: 250b7846cedbd189d6190e4f83caa01ee1f1eceb
-  RxBlocking: 84fd81865a641a3843b33bae7b8315e78ddbd383
-  RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
-  RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
-  SMSSDK: 4c369e5df6d6998b5341f53bf98a0c18a5b90719
-  sqlite3: 999671531811b14e0e9dc98e065e3a1e7727df55
-  SwiftyDB: 9a5cf6461c086ef54d12a1980a47fa234d654cad
+  RxAlamofire: b4572a077b6b2410c8732a27266299df4c00736e
+  RxBlocking: f2e0a7e74d5e9d3029d2b1118e2af01f583fbdd8
+  RxCocoa: 89ab00d5753502520227940e3a0e0a0413683c6b
+  RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
+  SMSSDK: 85375419fc969dc9398ce9922c5165c1e14ebe23
+  sqlite3: c8b1b937fe823ab46411e471cdc1aa92d1b106ce
+  SwiftyDB: b4a52b0a0ce8008aaba02290ae1d15c7f9be2d8a
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TinySQLite: b27a26c4676a41f045f56e0d94ccc4bce9a1a87f
   VideoSplashKit: 0aa63d0bb37c5bd357de3e6a2a13dea5acad4d66

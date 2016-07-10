@@ -74,7 +74,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         oneAnnotation.coordinate = self.targetLocation.coordinate
         mapView.addAnnotation(oneAnnotation)
         
-
+        
         voiceImage.hidden = true;
         
     }
@@ -120,7 +120,7 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
                 let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 self.mapView.region = region
                 
-                let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)                
+                let currentLocation =  CLLocation(latitude: self.latitude, longitude: self.longitude)
                 self.distance = getDistinct(currentLocation, targetLocation: self.targetDistanceLocation)
                 self.distinctText.text = "距离 \(self.address) 约： \(Int(self.distance)) 米"
                 if(self.distance<100){

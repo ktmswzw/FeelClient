@@ -13,13 +13,11 @@ import SwiftyJSON
 import Alamofire
 import Chirp
 var jwt = JWTTools()
-var RIMStatus = 0
+
 var loader:PhotoUpLoader = PhotoUpLoader()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCIMConnectionStatusDelegate, RCIMUserInfoDataSource, RCIMGroupInfoDataSource, RCIMReceiveMessageDelegate{
-    var updateToken = false //已更新
     var window: UIWindow?
-    var viewModel: UserInfoViewModel!
     let cacheDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
         return urls[urls.endIndex-1]
@@ -28,20 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        viewModel = UserInfoViewModel(delegate: self)
-        
-        
         
         let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         
         application.registerUserNotificationSettings(pushNotificationSettings)
         application.registerForRemoteNotifications()
+        
+        application.applicationIconBadgeNumber = 0
         Chirp.sharedManager.prepareSound(fileName: "got.wav")
         Chirp.sharedManager.prepareSound(fileName: "no.wav")
         Chirp.sharedManager.prepareSound(fileName: "send.wav")
         
         initRIM()
+        
+        
         
         return true
     }
@@ -90,73 +89,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     
     //推送处理3
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        var rcDevicetoken = deviceToken.description
-        rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString("<", withString: "")
-        rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(">", withString: "")
-        rcDevicetoken = rcDevicetoken.stringByReplacingOccurrencesOfString(" ", withString: "")
-        print("\(rcDevicetoken)")
-        if !updateToken {
-            self.updateToken = true
-            viewModel.updateDeviceToken(rcDevicetoken) { (r:BaseApi.Result) in
-                switch (r) {
-                case .Success(_):
-                    break;
-                case .Failure(_):
-                    
-                    break;
-                }
-            }
-        }
-        RCIMClient.sharedRCIMClient().setDeviceToken(rcDevicetoken)
+        var Devicetoken = deviceToken.description
+        Devicetoken = Devicetoken.stringByReplacingOccurrencesOfString("<", withString: "")
+        Devicetoken = Devicetoken.stringByReplacingOccurrencesOfString(">", withString: "")
+        Devicetoken = Devicetoken.stringByReplacingOccurrencesOfString(" ", withString: "")
+        //        print("\(Devicetoken)")
+        Constant.Devicetoken = Devicetoken
+        RCIMClient.sharedRCIMClient().setDeviceToken(Devicetoken)
     }
     
     //推送处理4
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        print("userInfo==\(userInfo)")
+        //        print("userInfo==\(userInfo)")
         for (_, value) in userInfo {
             for (key2, value2) in (value as? NSDictionary)!  {
                 if key2 as! String == "badge" {
                     let badge = "\(value2)"
-                    let tabController = self.window?.rootViewController as! UITabBarController
-                    let now_count = (tabController.tabBar.items?[1].badgeValue)
-                    var  count = 0
-                    if Int(badge ) != nil {
-                        if now_count != nil {
-                            count = Int(now_count!)! + Int(badge)!
-                        }
-                        else{
-                            count = Int(badge)!
-                        }
-                    }
-                    tabController.tabBar.items?[1].badgeValue = "\(count)"
+                    if Int(badge) != nil {
+                        Constant.messagecountAPNS += Int(badge)!
+                        Constant.Notifi.postNotificationName(Constant.APNSUnreadMessageNotifi, object: nil)                    }
                 }
             }
-        }
-        
+        }        
         completionHandler(UIBackgroundFetchResult.NewData)
     }
     
     func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("Recived: \(userInfo)")
+        //        print("userInfo: \(userInfo)")
         
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         //本地通知
+        //        print("notification: \(notification)")
     }
     
     //监听连接状态变化
     func onRCIMConnectionStatusChanged(status: RCConnectionStatus) {
         print("RCConnectionStatus = \(status.rawValue)")
-        RIMStatus = status.rawValue
-        if RIMStatus != 0 && RIMStatus != 10 && RIMStatus != 11 {
+        Constant.RIMStatus = status.rawValue
+        if Constant.RIMStatus != 0 && Constant.RIMStatus != 10 && Constant.RIMStatus != 11 {
             loginRIM()
         }
     }
     
     //用户信息提供者。您需要在completion中返回userId对应的用户信息，SDK将根据您提供的信息显示头像和用户名
     func getUserInfoWithUserId(userId: String!, completion: ((RCUserInfo!) -> Void)!) {
-        print("用户信息提供者，getUserInfoWithUserId:\(userId)")
+        //        print("用户信息提供者，getUserInfoWithUserId:\(userId)")
         
         let database = SwiftyDB(databaseName: "UserInfo")
         
@@ -189,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     
     //群组信息提供者。您需要在Block中返回groupId对应的群组信息，SDK将根据您提供的信息显示头像和群组名
     func getGroupInfoWithGroupId(groupId: String!, completion: ((RCGroup!) -> Void)!) {
-        print("群组信息提供者，getGroupInfoWithGroupId:\(groupId)")
+        //        print("群组信息提供者，getGroupInfoWithGroupId:\(groupId)")
         
         //简单的示例，根据groupId获取对应的群组信息并返回
         //建议您在本地做一个缓存，只有缓存没有该群组信息的情况下，才去您的服务器获取，以提高用户体验
@@ -204,21 +183,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UserInfoModelDelegate, RCI
     
     //监听消息接收
     func onRCIMReceiveMessage(message: RCMessage!, left: Int32) {
-        if (left != 0) {
-            print("收到一条消息，当前的接收队列中还剩余\(left)条消息未接收，您可以等待left为0时再刷新UI以提高性能")
-        } else {
-            print("收到一条消息")
-        }
-        let tabController = self.window?.rootViewController as! UITabBarController
-        let now_count = (tabController.tabBar.items?[2].badgeValue)
-        var  count = 0
-        if now_count != nil {
-            count = Int(now_count!)! + Int(left)
-        }
-        else {
-            count = 1
-        }
-        tabController.tabBar.items?[2].badgeValue = "\(count)"
+        Constant.messagecount += 1        
+        Constant.Notifi.postNotificationName(Constant.RongCloudUnreadMessageNotifi, object: nil)
     }
     
     

@@ -22,7 +22,11 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
         viewModel = LoginUserInfoViewModel(delegate: self)
         // Do any additional setup after loading the view.
     }
-
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,16 +49,16 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
             }
         }
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     func loginDelegate(){
         self.view.makeToastActivity(.Center)
@@ -79,6 +83,9 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
                 }
                 loginRIM()
                 loader = PhotoUpLoader.init()//初始化图片上传
+                if Constant.Devicetoken != "" {
+                    self.viewModel.updateDeviceToken(Constant.Devicetoken) {_ in }
+                }
                 break;
             case .Failure(let message):
                 self.view.hideToastActivity()
@@ -87,5 +94,5 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
             }
         })
     }
-
+    
 }

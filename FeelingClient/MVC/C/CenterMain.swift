@@ -12,7 +12,6 @@ import MapKit
 import CoreLocation
 import IBAnimatable
 import MobileCoreServices
-
 import Instructions
 import Haneke
 import IBAnimatable
@@ -23,9 +22,10 @@ import IBAnimatable
 
 var radar: RadarViewBiBi?
 
-class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager = CLLocationManager()
     
+    var selectedView: MKAnnotationView?
     var radarTimer: NSTimer?
     var searchTimer: NSTimer?
     var latitude = 0.0
@@ -59,6 +59,8 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         
         viewModel = MessageViewModel(delegate: self)
@@ -110,6 +112,35 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
             self.presentViewController(aleat, animated: true, completion: nil)
         }
         
+        Constant.Notifi.addObserver(self, selector: #selector(self.hasUnreadMessages), name: Constant.RongCloudUnreadMessageNotifi, object: nil)
+        
+        Constant.Notifi.addObserver(self, selector: #selector(self.hasUnreadMessagesAPNS), name: Constant.APNSUnreadMessageNotifi, object: nil)
+    }
+    
+    deinit {
+        Constant.Notifi.removeObserver(self)
+    }
+    
+    func hasUnreadMessagesAPNS() {
+        dispatch_async(dispatch_get_main_queue()) {
+            UIApplication.sharedApplication().applicationIconBadgeNumber = Constant.messagecountAPNS + Constant.messagecount
+            if Constant.messagecountAPNS != 0 {
+                self.tabBarController?.tabBar.items![0].badgeValue = "\(Constant.messagecountAPNS)"
+            } else {
+                self.tabBarController?.tabBar.items![0].badgeValue = nil
+            }
+        }
+    }
+    
+    func hasUnreadMessages() {
+        dispatch_async(dispatch_get_main_queue()) {
+            UIApplication.sharedApplication().applicationIconBadgeNumber = Constant.messagecountAPNS + Constant.messagecount
+            if Constant.messagecount != 0 {
+                self.tabBarController?.tabBar.items![2].badgeValue = "\(Constant.messagecount)"
+            } else {
+                self.tabBarController?.tabBar.items![2].badgeValue = nil
+            }
+        }
     }
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
@@ -134,11 +165,20 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         }
     }
     
-    
+    /**
+     图标列表
+     **/
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         //自定义地图图标
         
         if annotation.isKindOfClass(MKUserLocation) {
+            //            let annotationView =  MKAnnotationView(annotation: annotation, reuseIdentifier: "annotationView")
+            //            let fetcher = NetworkFetcher<UIImage>(URL: NSURL(string: jwt.userAvator)!)
+            //            cache.fetch(fetcher: fetcher).onSuccess { image in
+            //                annotationView.image =  Toucan(image: image).maskWithEllipse(borderWidth: 3, borderColor: UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 )).image
+            //            }
+            //            annotationView.canShowCallout = true
+            //            return annotationView
             return nil
         }
         
@@ -149,17 +189,22 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
                 annotationView!.canShowCallout = true
                 if let pin = annotation as? MyAnnotation {
                     let two:UIImage
-                    if pin.type == 0 {
-                        two = UIImage(named: "pin")!
-                    }
-                    else {
-                        two = UIImage(named: "pin_color")!
-                    }
+                    //                    if pin.type == 0 {
+                    two = UIImage(named: "pin")!
+                    //                    }
+                    //                    else {
+                    //                        two = UIImage(named: "pin_color")!
+                    //                    }
                     
                     let fetcher = NetworkFetcher<UIImage>(URL: NSURL(string: pin.url!)!)
+                    //                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                    //                        annotationView?.image =  Toucan(image: image).maskWithEllipse(borderWidth: 3, borderColor: UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 )).image
+                    //                    }
+                    
+                    //                    
                     cache.fetch(fetcher: fetcher).onSuccess { image in
-                        let one:UIImage = image
-                        annotationView?.image = self.getPin(one, two: two)
+                        //annotationView?.image = image
+                        annotationView?.image = getPin(image, two: two)
                     }
                 }
             }
@@ -171,13 +216,7 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
         }
     }
     
-    func getPin(one: UIImage,two: UIImage) -> UIImage {
-        let myImage:UIImage =   Toucan(image: one).resize(CGSizeMake(26.0, 26.0)).image
-        let backgrounpImage:UIImage =   Toucan(image: two).resize(CGSizeMake(32.0, 42.0)).image
-        let frontImage =  Toucan(image: myImage).maskWithEllipse().image
-        let newImage = mergeImages(backgrounpImage ,backgroundImage: frontImage )
-        return newImage
-    }
+    
     
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
@@ -210,15 +249,13 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
             }
             detailView.answer.placeholder = "提示：\(pin.answerTip!)"
             detailView.msgId = pin.id
-            detailView.fromId = pin.id
+            detailView.fromId = pin.fromId!
             detailView.question.text = pin.question
             
             
             view.detailCalloutAccessoryView = detailView
         }
     }
-    
-    var selectedView: MKAnnotationView?
     
     func searchMsg() {
         
@@ -245,6 +282,9 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     func searchTimerFunc()
     {
         viewModel.searchMessage(self.to,map: self.mapView, view: self.view)
+        
+        Constant.messagecountAPNS = 0
+        Constant.Notifi.postNotificationName(Constant.APNSUnreadMessageNotifi, object: nil)
     }
     
     func stopRadar()
@@ -327,13 +367,6 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //        
-        //        if !userDefaults.boolForKey("NEWONESHOW") && jwt.jwtTemp != ""  {
-        //            self.coachMarksController!.startOn(self)
-        //            userDefaults.setBool(true, forKey: "NEWONESHOW")
-        //            userDefaults.synchronize()
-        //        }
     }
     
     //MARK: - Protocol Conformance | CoachMarksControllerDataSource
@@ -370,4 +403,3 @@ class CenterMain: UIViewController,CoachMarksControllerDataSource,OpenOverProtoc
     }
     
 }
-

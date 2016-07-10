@@ -49,7 +49,7 @@ func mergeImages (forgroundImage : UIImage, backgroundImage : UIImage) -> UIImag
     bottomImage.drawInRect(areaSize)
     
     
-    let topSize = CGRect(x: (size.width - forsize.width) / 2, y: (size.height - forsize.height) / 2 - 5, width: forsize.width , height: forsize.height )
+    let topSize = CGRect(x: (size.width - forsize.width) / 2  , y: (size.height - forsize.height) / 2 - 7, width: forsize.width , height: forsize.height )
     topImage.drawInRect(topSize, blendMode: .Normal, alpha: 1.0)
     
     let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -58,6 +58,14 @@ func mergeImages (forgroundImage : UIImage, backgroundImage : UIImage) -> UIImag
     
     return newImage
     
+}
+
+func getPin(one: UIImage,two: UIImage) -> UIImage {
+    let myImage:UIImage = Toucan(image: one).resize(CGSizeMake(40.0, 40.0)).image
+    let backgrounpImage:UIImage =   Toucan(image: two).resize(CGSizeMake(42.0, 56.0)).image
+    let frontImage =  Toucan(image: myImage).maskWithEllipse(borderWidth: 2, borderColor: UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 )).image
+    let newImage = mergeImages(backgrounpImage ,backgroundImage: frontImage )
+    return newImage
 }
 
 

@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 import SwiftyDB
 
-class RegisterViewController: DesignableViewController,UITextFieldDelegate{
+class RegisterViewController: AnimatableViewController,UITextFieldDelegate{
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var getCodesButton: AnimatableButton!
     
@@ -93,7 +93,7 @@ class RegisterViewController: DesignableViewController,UITextFieldDelegate{
             }
             else {
                 self.viewModel.userName = self.realPhone
-                self.viewModel.password = password.text!.md5()!
+                self.viewModel.password = password.text!.md5()
                 registerDelegate()
             }
             

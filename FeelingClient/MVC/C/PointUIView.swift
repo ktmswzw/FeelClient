@@ -19,7 +19,7 @@ import Foundation
 class PointUIView: AnimatableView{
     
     var disposeBag = DisposeBag()
-        var fromId = ""
+    var fromId = ""
     @IBOutlet var avator: UIImageView!
     @IBOutlet var question: AnimatableTextField!
     @IBOutlet var answer: AnimatableTextField!
@@ -31,7 +31,7 @@ class PointUIView: AnimatableView{
     
     var msgId:String = "" {
         didSet {
-                        
+            
             let questionValid = question.rx_text
                 .map { $0.characters.count >= 0 }
                 .shareReplay(1)

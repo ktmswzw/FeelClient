@@ -127,7 +127,7 @@ public class MessageViewModel {
                             oneAnnotation.answerTip = msg.answerTip
                             oneAnnotation.type = msg.type
                             
-                            self.annotationArray.append(oneAnnotation)
+                                self.annotationArray.append(oneAnnotation)
                         }
                         map.addAnnotations(self.annotationArray)                        
                         Chirp.sharedManager.playSound(fileName: "got.wav")

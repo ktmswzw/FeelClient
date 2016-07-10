@@ -90,27 +90,7 @@ public class UserInfoViewModel:BaseApi {
             }
         }
     }
-    
-    /**
-     更新token
-     - parameter sender:         sender description
-     - parameter completeHander: completeHander description
-     */
-    func updateDeviceToken(token: String,completeHander:CompletionHandlerType)
-    {
-        let params = [:] 
-        let headers = jwt.getHeader(jwt.token, myDictionary: Dictionary<String,String>())
-        NetApi().makeCall(Alamofire.Method.PATCH, section: "user/updateDeviceToken/\(token)", headers: headers, params: params as? [String : AnyObject]) { (r: BaseApi.Result) in
-            switch (r) {
-            case .Success(let value):
-                completeHander(Result.Success(value))
-                break
-            case .Failure(let error):
-                completeHander(Result.Failure(error))
-                break
-            }
-        }
-    }
+
 }
 
 public protocol UserInfoModelDelegate: class {

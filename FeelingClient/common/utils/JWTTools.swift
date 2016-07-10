@@ -11,88 +11,75 @@ import Foundation
 import JWT
 
 struct JWTTools {
-    
-    let SECERT: String = "FEELING_ME007"
-    let JWTDEMOTOKEN: String = "JWTDEMOTOKEN"
-    let FEELINGUSERNAME: String = "FEELINGUSERNAME"
-    let FEELINGPSWORD: String = "FEELINGPSWORD"
-    let JWTDEMOTEMP: String = "JWTDEMOTEMP"
-    let JWTSIGN: String = "JWTSIGN"
-    let JWTSIGNFILE: String = "JWTSIGNFILE"
-    let AUTHORIZATION_STR: String = "Authorization"
-    let IMTOKENTEMP: String = "IMTOKENTEMP"
-    let USERID: String = "FEELING_USERID"
-    let USERINFO: String = "FEELING_USERINFO"
-    let USERAVOTOR: String = "FEELING_USERAVOTOR"
-    
+       
     var appUsername: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(FEELINGUSERNAME) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.FEELINGUSERNAME) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: FEELINGUSERNAME)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.FEELINGUSERNAME)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     var appPwd: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(FEELINGPSWORD) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.FEELINGPSWORD) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: FEELINGPSWORD)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.FEELINGPSWORD)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     var token: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTDEMOTOKEN) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.JWTDEMOTOKEN) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTDEMOTOKEN)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.JWTDEMOTOKEN)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     var sign: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTSIGN) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.JWTSIGN) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTSIGN)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.JWTSIGN)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     var sign_file: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTSIGNFILE) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.JWTSIGNFILE) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTSIGNFILE)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.JWTSIGNFILE)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     var jwtTemp: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(JWTDEMOTEMP) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.JWTDEMOTEMP) as? String {
 //                NSLog("\(returnValue)")
                 
                 return returnValue
@@ -101,21 +88,21 @@ struct JWTTools {
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: JWTDEMOTEMP)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.JWTDEMOTEMP)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     var imToken: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(IMTOKENTEMP) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.IMTOKENTEMP) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: IMTOKENTEMP)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.IMTOKENTEMP)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -124,49 +111,49 @@ struct JWTTools {
     
     var userId: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERID) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.USERID) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERID)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.USERID)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     var userName: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERINFO) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.USERINFO) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERINFO)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.USERINFO)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     var userAvator: String {
         get {
-            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(USERAVOTOR) as? String {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey(Constant.USERAVOTOR) as? String {
                 return returnValue
             } else {
                 return "" //Default value
             }
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: USERAVOTOR)
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: Constant.USERAVOTOR)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
     
     mutating func getHeader(tokenNew: String, myDictionary: Dictionary<String, String> ) -> [String : String] {
         if jwtTemp.isEmpty || !myDictionary.isEmpty {//重复使用上次计算结果
-            let jwt = JWT.encode(.HS256(SECERT)) { builder in
+            let jwt = JWT.encode(.HS256(Constant.SECERT)) { builder in
                 for (key, value) in myDictionary {
                     builder[key] = value
                 }
@@ -175,10 +162,10 @@ struct JWTTools {
             if !myDictionary.isEmpty && tokenNew == self.token {//不填充新数据
                 jwtTemp = jwt
             }
-            return [ AUTHORIZATION_STR : jwt ]
+            return [ Constant.AUTHORIZATION_STR : jwt ]
         }
         else {
-            return [ AUTHORIZATION_STR : jwtTemp ]
+            return [ Constant.AUTHORIZATION_STR : jwtTemp ]
         }
     }
 }

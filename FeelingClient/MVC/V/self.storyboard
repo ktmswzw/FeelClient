@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="设置9" image="sys" id="Wia-m2-7ft"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="设置" image="sys" id="Wia-m2-7ft"/>
                     <navigationItem key="navigationItem" title="设置" id="DaA-WB-wgS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

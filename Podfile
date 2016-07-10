@@ -16,6 +16,7 @@ pod 'JSONWebToken’
 pod 'IBAnimatable’
 #照片获取
 pod 'ImagePickerSheetController’
+pod 'ALCameraViewController' # 可编辑
 #sqlist数据库操作
 pod 'SwiftyDB'
 #Mob产品公共库
@@ -41,6 +42,9 @@ pod 'XLPagerTabStrip'
 pod 'Eureka'
 #音频播放
 pod 'Chirp'
+#AR
+#pod 'HDAugmentedReality', :git => 'https://github.com/DanijelHuis/HDAugmentedReality.git'
+
 post_install do |installer|
     installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
         configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'

@@ -12,7 +12,7 @@ import SwiftyDB
 import IBAnimatable
 
 class ChatViewController: RCConversationListViewController  {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sleep(1)
@@ -32,7 +32,6 @@ class ChatViewController: RCConversationListViewController  {
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         // Do any additional setup after loading the view.
     }
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,28 +57,29 @@ class ChatViewController: RCConversationListViewController  {
         if list.count > 0 {
             let userinfo = list[0]
             chat.title = "\(userinfo.nickname)"
-            
             RCIM.sharedRCIM().refreshUserInfoCache(RCUserInfo(userId: userinfo.id, name: userinfo.nickname, portrait: userinfo.avatar), withUserId: userinfo.id)
-            
         }
         chat.hidesBottomBarWhenPushed = true
-        
-        
+        Constant.messagecount -= model.unreadMessageCount
+        if Constant.messagecount < 0 {
+            Constant.messagecount = 0
+        }
+        Constant.Notifi.postNotificationName(Constant.RongCloudUnreadMessageNotifi, object: nil)
         //chat.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.pushViewController(chat, animated: true)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 

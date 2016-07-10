@@ -58,10 +58,10 @@
         <!--chat-->
         <scene sceneID="nnv-P5-9N2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKg-fz-mzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="chat" id="SpO-Pi-Y7l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="聊天" image="chat" id="Zkj-tJ-v8A"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oKg-fz-mzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.5" y="843"/>
         </scene>
@@ -69,7 +69,7 @@
         <scene sceneID="XW1-I2-Sx4">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="self" storyboardName="self" id="dpM-lX-vvl" colorLabel="IBBuiltInLabel-Green" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="设置0" image="sys" id="JAB-BD-kcg"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="设置0" image="sys" badgeValue="8" id="JAB-BD-kcg"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RU4-n2-NAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -90,7 +90,7 @@
         <image name="chat" width="24" height="22"/>
         <image name="friends" width="27" height="27"/>
         <image name="readfire" width="24" height="24"/>
-        <image name="send" width="22" height="22"/>
+        <image name="send" width="24" height="24"/>
         <image name="sys" width="24" height="24"/>
     </resources>
 </document>

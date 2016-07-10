@@ -10,8 +10,8 @@ import UIKit
 import SwiftyDB
 import MobileCoreServices
 import MediaPlayer
-import ImagePickerSheetController
 import Eureka
+import ALCameraViewController
 
 var imageViewSelf = UIImageView(image: UIImage(named: "agirl"))
 
@@ -39,8 +39,55 @@ class SelfViewController: FormViewController {
         
         viewModel = UserInfoViewModel(delegate: self)
         
-        var tmp = ""
+        form = Section() {
+            $0.header = HeaderFooterView<EurekaSelfView>(HeaderFooterProvider.Class)
+            }
+            
+            +++ Section()
+            <<< PhoneRow("phone"){ $0.title = "手机"
+                $0.disabled = true                }
+            <<< TextRow("realname") {
+                $0.title = "姓名"
+                $0.placeholder = "真实姓名"
+            }
+            <<< TextRow("nickname") {$0.title = "昵称"
+                $0.placeholder = "朋友或亲人对你的昵称"
+            }
+            <<< ActionSheetRow<String>() {
+                $0.title = "性别"
+                $0.tag = "sex"
+                $0.options = ["女", "男", "无"]
+                
+                }.onChange { row in
+                    self.sexChange(row.value!)
+            }
+            
+            <<< TextRow("mommo") {$0.title = "签名"
+                
+            }
+            
+            +++ Section("版本1.0")
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "退出"
+                }  .onCellSelection({ (cell, row) in
+                    self.exitAppAction()
+                })
         
+        
+        self.viewModel.sex = userinfo.sex
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(SelfViewController.presentImagePickerSheet))
+        imageViewSelf.userInteractionEnabled = true
+        imageViewSelf.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        updateInfo()
+    }
+    
+    func updateInfo() {
         let list = database.objectsForType(UserInfo.self, matchingFilter: ["id": jwt.userId]).value!
         
         if list.count > 0 {
@@ -49,54 +96,19 @@ class SelfViewController: FormViewController {
             imageViewSelf.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             
             if userinfo.register {
-                tmp = userinfo.phone
+                form.rowByTag("phone")?.value = userinfo.phone
+                form.rowByTag("phone")?.baseCell.update()
+                
+                form.rowByTag("sex")?.value = getSex(userinfo.sex)
+                form.rowByTag("sex")?.baseCell.update()
+                
+                form.rowByTag("nickname")?.value = userinfo.nickname
+                form.rowByTag("nickname")?.baseCell.update()
+                
+                form.rowByTag("mommo")?.value = userinfo.motto
+                form.rowByTag("mommo")?.baseCell.update()
             }
-            
-            form = Section() {
-                $0.header = HeaderFooterView<EurekaSelfView>(HeaderFooterProvider.Class)
-                }
-                
-                +++ Section()
-                <<< PhoneRow("phone"){ $0.title = "手机"
-                    $0.disabled = true
-                    $0.value = tmp
-                }
-                <<< TextRow("realname") {
-                    $0.title = "姓名"
-                    $0.placeholder = "真实姓名"
-                }
-                <<< TextRow("nickname") {$0.title = "昵称"
-                    $0.value = userinfo.nickname
-                    $0.placeholder = "朋友或亲人对你的昵称"
-                }
-                <<< ActionSheetRow<String>() {
-                    $0.title = "性别"
-                    $0.options = ["女", "男", "无"]
-                    $0.value = getSex(userinfo.sex)
-                    
-                    }.onChange { row in
-                        self.sexChange(row.value!)
-                }
-                
-                <<< TextRow("mommo") {$0.title = "签名"
-                    $0.value = userinfo.motto
-                }
-                
-                +++ Section("版本1.0")
-                <<< ButtonRow() { (row: ButtonRow) -> Void in
-                    row.title = "退出"
-                    }  .onCellSelection({ (cell, row) in
-                        self.exitAppAction()
-                    })
-            
-            
-            self.viewModel.sex = userinfo.sex
         }
-        
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(SelfViewController.presentImagePickerSheet))
-        imageViewSelf.userInteractionEnabled = true
-        imageViewSelf.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func sexChange(value: String) {
@@ -209,55 +221,44 @@ class SelfViewController: FormViewController {
     
     
     func presentImagePickerSheet() {
-        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            var sourceType = source
-            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
-                sourceType = .PhotoLibrary
-                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
-            }
-            controller.sourceType = sourceType
-            
-            self.presentViewController(controller, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: "头像选择", message: "选择照片或者照相", preferredStyle: .ActionSheet)
         
-        let controller = ImagePickerSheetController(mediaType: .ImageAndVideo)
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("拍摄", comment: "标题"),handler: { _ in
-            presentImagePickerController(.Camera)
-            }, secondaryHandler: { _, numberOfPhotos in
-                for ass in controller.selectedImageAssets
-                {
-                    let image = getImageFromPHAsset(ass)
-                    imageViewSelf.image = image
-                    self.images.append(image)
-                    
-                }
-        }))
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("相册", comment: "标题"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
-            presentImagePickerController(.PhotoLibrary)
-            }, secondaryHandler: { _, numberOfPhotos in
-                //print("Send \(controller.selectedImageAssets)")
-                for ass in controller.selectedImageAssets
-                {
-                    let image = getImageFromPHAsset(ass)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        let imageAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (action) -> Void in
+            let libraryViewController = CameraViewController.imagePickerViewController(true) { image, asset in
+                if  image != nil {
                     imageViewSelf.image = image
                     self.images.removeAll()
-                    self.images.append(image)
+                    self.images.append(image!)
                 }
-                
-        }))
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("取消", comment: "Action Title"), style: .Cancel, handler: { _ in
-            //print("Cancelled")
-        }))
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            controller.modalPresentationStyle = .Popover
-            controller.popoverPresentationController?.sourceView = view
-            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            self.presentViewController(libraryViewController, animated: true, completion: nil)
         }
         
-        presentViewController(controller, animated: true, completion: nil)
+        
+        let cameraokAction = UIAlertAction(title: "拍摄", style: UIAlertActionStyle.Default ) { (action) -> Void in
+            let cameraViewController = CameraViewController(croppingEnabled: true, allowsLibraryAccess: true) { [weak self] image, asset in
+                if  image != nil {
+                    imageViewSelf.image = image
+                    self!.images.removeAll()
+                    self!.images.append(image!)
+                }
+                self?.dismissViewControllerAnimated(true, completion: nil)
+                
+            }
+            
+            self.presentViewController(cameraViewController, animated: true, completion: nil)
+        }
+        
+        
+        
+        alert.addAction(imageAction)
+        alert.addAction(cameraokAction)
+        alert.addAction(cancelAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 
@@ -265,19 +266,6 @@ class SelfViewController: FormViewController {
 extension SelfViewController: UserInfoModelDelegate{
     
 }
-
-extension SelfViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageViewSelf.image = image
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
 
 class EurekaSelfView: UIView {
     

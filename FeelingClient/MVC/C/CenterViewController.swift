@@ -17,7 +17,7 @@ import SwiftyJSON
 import Alamofire
 
 import ImagePickerSheetController
-class CenterViewController: DesignableViewController,MessageViewModelDelegate , MKMapViewDelegate, CLLocationManagerDelegate {
+class CenterViewController: AnimatableViewController,MessageViewModelDelegate , MKMapViewDelegate, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var address: AnimatableTextField!

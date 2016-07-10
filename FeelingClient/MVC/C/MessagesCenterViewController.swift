@@ -17,8 +17,8 @@ class MessagesCenterViewController: TwitterPagerTabStripViewController {
     
     override func viewControllersForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let child_1 = MessagesSendTableTableViewController(style: .Plain, itemInfo: "寄出")
-        let child_2 = MessagesGetTableViewController(style: .Plain, itemInfo: "解开")
+        let child_2 = MessagesSendTableTableViewController(style: .Plain, itemInfo: "寄出")
+        let child_1 = MessagesGetTableViewController(style: .Plain, itemInfo: "解开")
         guard isReload else {
             return [child_1, child_2]
         }
