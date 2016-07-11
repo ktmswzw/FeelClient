@@ -22,7 +22,7 @@ import IBAnimatable
 
 var radar: RadarViewBiBi?
 
-class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProtocol,ARDataSource,AnnotationProtocol,MessageViewModelDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager = CLLocationManager()
     
     var selectedView: MKAnnotationView?
@@ -148,6 +148,102 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     }
     
     
+    func ar(arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView
+    {
+        // Annotation views should be lightweight views, try to avoid xibs and autolayout all together.
+        let annotationView = TestAnnotationView()
+        annotationView.frame = CGRect(x: 0,y: 0,width: 200,height: 50)
+        annotationView.delegate = self
+        return annotationView;
+    }
+    
+    
+    func showAnnotationInfo(annotation: ARAnnotation) {
+        var answerField: UITextField?
+        
+        let alertController: UIAlertController = UIAlertController(title: "你最机智", message: annotation.question, preferredStyle: .Alert)
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "取消", style: .Cancel) { action -> Void in
+            print("Pushed CANCEL")
+        }
+        alertController.addAction(cancelAction)
+        
+        let logintAction: UIAlertAction = UIAlertAction(title: "芝麻开门", style: .Default) { action -> Void in
+            self.openOverSubmit(annotation.id!, answer: (answerField?.text)!)
+        }
+        alertController.addAction(logintAction)
+        
+        alertController.addTextFieldWithConfigurationHandler { textField -> Void in
+            answerField = textField
+            textField.placeholder = annotation.answerTip
+        }
+        
+        alertController.show()
+        
+    }
+    
+    
+    private func getDummyAnnotations() -> Array<ARAnnotation>
+    {
+        var annotations: [ARAnnotation] = []
+        
+        for i in 0.stride(to: self.viewModel.annotationArray.count, by: 1) {
+            let annotation = ARAnnotation()
+            let myAnnotation = self.viewModel.annotationArray[i]
+            annotation.location = CLLocation(latitude: myAnnotation.original_coordinate!.latitude, longitude: myAnnotation.original_coordinate!.longitude)
+            annotation.imageUrl = myAnnotation.url
+            annotation.title = myAnnotation.title
+            annotation.id = myAnnotation.id
+            annotation.fromId = myAnnotation.fromId
+            annotation.msgId = myAnnotation.id
+            annotation.question = myAnnotation.question
+            annotation.answerTip = myAnnotation.answerTip
+            annotations.append(annotation)
+        }
+        
+        return annotations
+    }
+    
+    func showARViewController()
+    {
+        // Check if device has hardware needed for augmented reality
+        let result = ARViewController.createCaptureSession()
+        if result.error != nil
+        {
+            let message = result.error?.userInfo["description"] as? String
+            let alert = UIAlertController(title: "知道", message: message, preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // Create random annotations around center point    //@TODO
+        //FIXME: set your initial position here, this is used to generate random POIs
+        
+        let dummyAnnotations = self.getDummyAnnotations()
+        
+        // Present ARViewController
+        let arViewController = ARViewController()
+        arViewController.debugEnabled = false
+        arViewController.dataSource = self
+        arViewController.maxDistance = 0
+        arViewController.maxVisibleAnnotations = 100
+        arViewController.maxVerticalLevel = 5
+        arViewController.headingSmoothingFactor = 0.05
+        arViewController.trackingManager.userDistanceFilter = 25
+        arViewController.trackingManager.reloadDistanceFilter = 75
+        arViewController.setAnnotations(dummyAnnotations)
+        self.presentViewController(arViewController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func buttonTap(sender: AnyObject)
+    {
+        showARViewController()
+    }
+    
+    
     func openOverSubmit(id:String, answer:String) {        
         
         msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
@@ -164,6 +260,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
             }
         }
     }
+    
     
     /**
      图标列表
@@ -401,5 +498,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
+    
+    
     
 }

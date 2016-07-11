@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
 		BF15FB721CFB30F800FD7A15 /* MessageInfoViewGetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */; };
+		BF2431631D33F51700411405 /* ExUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2431621D33F51700411405 /* ExUIAlertController.swift */; };
 		BF2EFBD51CD6D89F0089EFCC /* MessagesCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */; };
 		BF2EFBD81CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */; };
 		BF2EFBDC1CD6E3A00089EFCC /* MessagesGetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */; };
@@ -103,7 +104,6 @@
 		BF9F9B311CC4804D00795464 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B251CC4804D00795464 /* UserInfoViewController.swift */; };
 		BF9F9B321CC4804D00795464 /* ViewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */; };
 		BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = BF9F9B331CC4808400795464 /* Localizable.stringsdict */; };
-		BFA6D36F1D329EFC007BD79E /* UNAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6D36E1D329EFC007BD79E /* UNAlertView.swift */; };
 		BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */; };
 		BFAD40B41D2F8281004F9BB2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAD40B31D2F8281004F9BB2 /* Constant.swift */; };
 		BFC762F91D321A0600D421D1 /* ARAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F41D321A0600D421D1 /* ARAnnotation.swift */; };
@@ -111,7 +111,6 @@
 		BFC762FB1D321A0600D421D1 /* ARConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F61D321A0600D421D1 /* ARConfiguration.swift */; };
 		BFC762FC1D321A0600D421D1 /* ARTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F71D321A0600D421D1 /* ARTrackingManager.swift */; };
 		BFC762FD1D321A0600D421D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F81D321A0600D421D1 /* ARViewController.swift */; };
-		BFCA5CD91D32457800DEB827 /* ExtensionCenterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA5CD81D32457800DEB827 /* ExtensionCenterMain.swift */; };
 		BFCCF8E61CF5EC0B004491B9 /* MessageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
@@ -130,6 +129,7 @@
 /* Begin PBXFileReference section */
 		37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewGetController.swift; path = MVC/C/MessageInfoViewGetController.swift; sourceTree = "<group>"; };
+		BF2431621D33F51700411405 /* ExUIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExUIAlertController.swift; path = common/utils/ExUIAlertController.swift; sourceTree = "<group>"; };
 		BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesCenterViewController.swift; path = MVC/C/MessagesCenterViewController.swift; sourceTree = "<group>"; };
 		BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSendTableTableViewController.swift; path = MVC/C/MessagesSendTableTableViewController.swift; sourceTree = "<group>"; };
 		BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesGetTableViewController.swift; path = MVC/C/MessagesGetTableViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +231,6 @@
 		BF9F9B251CC4804D00795464 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfoViewController.swift; path = MVC/C/UserInfoViewController.swift; sourceTree = "<group>"; };
 		BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewImageViewController.swift; path = MVC/C/ViewImageViewController.swift; sourceTree = "<group>"; };
 		BF9F9B331CC4808400795464 /* Localizable.stringsdict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.stringsdict; name = Localizable.stringsdict; path = recource/Localizable.stringsdict; sourceTree = "<group>"; };
-		BFA6D36E1D329EFC007BD79E /* UNAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UNAlertView.swift; path = ThirdParty/updateSelf/UNAlertView.swift; sourceTree = "<group>"; };
 		BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MVC/C/MainViewController.swift; sourceTree = "<group>"; };
 		BFAD40B31D2F8281004F9BB2 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = common/net/Constant.swift; sourceTree = "<group>"; };
 		BFB0C2661C746B0700A7BD67 /* SMSSDK-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMSSDK-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -240,7 +239,6 @@
 		BFC762F61D321A0600D421D1 /* ARConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARConfiguration.swift; path = ThirdParty/AR/ARConfiguration.swift; sourceTree = "<group>"; };
 		BFC762F71D321A0600D421D1 /* ARTrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARTrackingManager.swift; path = ThirdParty/AR/ARTrackingManager.swift; sourceTree = "<group>"; };
 		BFC762F81D321A0600D421D1 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARViewController.swift; path = ThirdParty/AR/ARViewController.swift; sourceTree = "<group>"; };
-		BFCA5CD81D32457800DEB827 /* ExtensionCenterMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionCenterMain.swift; path = MVC/C/ExtensionCenterMain.swift; sourceTree = "<group>"; };
 		BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewController.swift; path = MVC/C/MessageInfoViewController.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -336,6 +334,7 @@
 				BF9F9AD41CC47DDA00795464 /* JWTTools.swift */,
 				BF9F9AD51CC47DDA00795464 /* MapHelper.swift */,
 				BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */,
+				BF2431621D33F51700411405 /* ExUIAlertController.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -499,7 +498,6 @@
 				BFA96C5B1CDF1E15005C3BEA /* MainViewController.swift */,
 				BF9F9B201CC4804D00795464 /* LoginViewController.swift */,
 				BF9F9B1B1CC4804D00795464 /* CenterMain.swift */,
-				BFCA5CD81D32457800DEB827 /* ExtensionCenterMain.swift */,
 				BF9F9B1C1CC4804D00795464 /* CenterViewController.swift */,
 				BF9F9B1D1CC4804D00795464 /* ChatViewController.swift */,
 				BF9F9B1E1CC4804D00795464 /* FriendsViewController.swift */,
@@ -574,7 +572,6 @@
 				BF9F9AE41CC47E9B00795464 /* UIButtonType.swift */,
 				BF9F9AE51CC47E9B00795464 /* UICircleImageView.swift */,
 				BF9F9AE61CC47E9B00795464 /* UIImageColors.swift */,
-				BFA6D36E1D329EFC007BD79E /* UNAlertView.swift */,
 			);
 			name = updateSelf;
 			sourceTree = "<group>";
@@ -785,7 +782,6 @@
 				BFAD40B41D2F8281004F9BB2 /* Constant.swift in Sources */,
 				BF9F9AED1CC47E9B00795464 /* Toucan.swift in Sources */,
 				BF9F9AEA1CC47E9B00795464 /* DatePickerDialog.swift in Sources */,
-				BFCA5CD91D32457800DEB827 /* ExtensionCenterMain.swift in Sources */,
 				BF9F9B021CC47F5400795464 /* FriendViewModel.swift in Sources */,
 				BF45B6791C6C38760027F63D /* FeelingClient.xcdatamodeld in Sources */,
 				BF9F9AD01CC47D9300795464 /* NetApiAlamofire.swift in Sources */,
@@ -798,7 +794,6 @@
 				BF9F9AF71CC47EF900795464 /* Friend.swift in Sources */,
 				BFA96C5C1CDF1E15005C3BEA /* MainViewController.swift in Sources */,
 				BF50C4401CF18F3F00B70E09 /* ExString.swift in Sources */,
-				BFA6D36F1D329EFC007BD79E /* UNAlertView.swift in Sources */,
 				BF40F5BF1D321D1F0056CEE4 /* DebugMapViewController.swift in Sources */,
 				BF9F9AFA1CC47F2900795464 /* CustomAnnotation.swift in Sources */,
 				BF9F9AF81CC47EF900795464 /* Message.swift in Sources */,
@@ -853,6 +848,7 @@
 				BFC762FD1D321A0600D421D1 /* ARViewController.swift in Sources */,
 				BF9F9AF61CC47EF900795464 /* AccountModel.swift in Sources */,
 				BF9F9B291CC4804D00795464 /* ChatViewController.swift in Sources */,
+				BF2431631D33F51700411405 /* ExUIAlertController.swift in Sources */,
 				BF9F9ACC1CC47D7B00795464 /* Range.swift in Sources */,
 				BF9F9B2D1CC4804D00795464 /* OpenMapViewController.swift in Sources */,
 			);

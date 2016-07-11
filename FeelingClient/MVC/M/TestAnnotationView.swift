@@ -15,7 +15,8 @@ public class TestAnnotationView: ARAnnotationView, UIGestureRecognizerDelegate
     public var titleLabel: UILabel?
     public var infoButton: UIButton?
     public var imageView: UIImageView?
-    let msg: MessageApi = MessageApi.defaultMessages
+    
+    weak var delegate: AnnotationProtocol?
     
     override public func didMoveToSuperview()
     {
@@ -28,7 +29,7 @@ public class TestAnnotationView: ARAnnotationView, UIGestureRecognizerDelegate
     
     func loadUi()
     {
-        // Title label
+        // Title label        
         self.titleLabel?.removeFromSuperview()
         let label = UILabel()
         label.font = UIFont.systemFontOfSize(10)
@@ -101,53 +102,13 @@ public class TestAnnotationView: ARAnnotationView, UIGestureRecognizerDelegate
         self.layoutUi()
     }
     
-    public func tapGesture()
-    {
-        if let annotation = self.annotation
-        {
-            
-            let answerField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-            
-            let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-            view.addSubview(answerField)
-            let alertView = UNAlertView(title: "回答问题", message: annotation.question!)
-            
-            alertView.messageAlignment = NSTextAlignment.Left
-            alertView.buttonAlignment  = UNButtonAlignment.Vertical
-            
-            alertView.addSubview(view)
-            
-            alertView.addButton("芝麻开门",
-                                action: {
-                                    self.openOverSubmit(annotation.id!,answer: (answerField.text)!)
-            })
-            
-            alertView.addButton("取消",
-                                action: {
-                                    alertView.dismissAlert()
-            })
-            alertView.show()
-            
-            
-        }
+    public func tapGesture() {
+        delegate?.showAnnotationInfo(self.annotation!)
     }
     
-    public func openOverSubmit(id:String, answer:String) {
-        msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
-            switch (r) {
-            case .Success(let r):
-                //                self.msgscrentId = r as! String;
-                //                self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
-                //                self.performSegueWithIdentifier("openOver", sender: self)
-                //                self.mapView.removeAnnotation((self.selectedView?.annotation)!)
-                break;
-            case .Failure(let msg):
-                //                self.view.makeToast(msg as! String, duration: 1, position: .Center)
-                break;
-            }
-        }
-    }
-    
-    
-    
+}
+
+
+protocol AnnotationProtocol: class {
+    func showAnnotationInfo(annotation: ARAnnotation)
 }
