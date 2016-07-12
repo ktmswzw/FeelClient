@@ -47,6 +47,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
     
+    let arViewController = ARViewController()
     let msg: MessageApi = MessageApi.defaultMessages
     
     
@@ -77,7 +78,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         
         //地图初始化
         self.locationManager.delegate = self
-        self.locationManager.distanceFilter = 1;
+        self.locationManager.distanceFilter = 1
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.requestWhenInUseAuthorization()
@@ -147,21 +148,27 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         
     }
     
-    
     func ar(arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView
     {
         // Annotation views should be lightweight views, try to avoid xibs and autolayout all together.
         let annotationView = TestAnnotationView()
         annotationView.frame = CGRect(x: 0,y: 0,width: 200,height: 50)
         annotationView.delegate = self
-        return annotationView;
+        return annotationView
     }
     
-    
     func showAnnotationInfo(annotation: ARAnnotation) {
+        
+        
+        //为后面的页面跳转提供参数
+        self.targetLocation = CLLocation(latitude: annotation.coordinate!.latitude, longitude: annotation.coordinate!.longitude)
+        self.targetDistanceLocation = CLLocation(latitude: annotation.location!.coordinate.latitude, longitude: annotation.location!.coordinate.longitude)
+        self.viewModel.fromId = annotation.fromId!
+        self.viewModel.address = annotation.address!
+        
         var answerField: UITextField?
         
-        let alertController: UIAlertController = UIAlertController(title: "你最机智", message: annotation.question, preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "机智的你赶紧的", message: annotation.question, preferredStyle: .Alert)
         
         let cancelAction: UIAlertAction = UIAlertAction(title: "取消", style: .Cancel) { action -> Void in
             print("Pushed CANCEL")
@@ -169,7 +176,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         alertController.addAction(cancelAction)
         
         let logintAction: UIAlertAction = UIAlertAction(title: "芝麻开门", style: .Default) { action -> Void in
-            self.openOverSubmit(annotation.id!, answer: (answerField?.text)!)
+            self.openOverAnnotation(annotation.id!, answer: (answerField?.text)!)
         }
         alertController.addAction(logintAction)
         
@@ -191,11 +198,13 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
             let annotation = ARAnnotation()
             let myAnnotation = self.viewModel.annotationArray[i]
             annotation.location = CLLocation(latitude: myAnnotation.original_coordinate!.latitude, longitude: myAnnotation.original_coordinate!.longitude)
+            annotation.coordinate = myAnnotation.coordinate
             annotation.imageUrl = myAnnotation.url
             annotation.title = myAnnotation.title
             annotation.id = myAnnotation.id
             annotation.fromId = myAnnotation.fromId
             annotation.msgId = myAnnotation.id
+            annotation.address = myAnnotation.address
             annotation.question = myAnnotation.question
             annotation.answerTip = myAnnotation.answerTip
             annotations.append(annotation)
@@ -224,7 +233,6 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         let dummyAnnotations = self.getDummyAnnotations()
         
         // Present ARViewController
-        let arViewController = ARViewController()
         arViewController.debugEnabled = false
         arViewController.dataSource = self
         arViewController.maxDistance = 0
@@ -244,23 +252,70 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     }
     
     
+    
     func openOverSubmit(id:String, answer:String) {        
         
         msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
             switch (r) {
             case .Success(let r):
-                self.msgscrentId = r as! String;
+                self.msgscrentId = r as! String
                 self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
                 self.performSegueWithIdentifier("openOver", sender: self)
                 self.mapView.removeAnnotation((self.selectedView?.annotation)!)
-                break;
+                break
             case .Failure(let msg):
                 self.view.makeToast(msg as! String, duration: 1, position: .Center)
-                break;
+                break
             }
         }
     }
     
+    func openOverAnnotation(id:String, answer:String) {
+        
+        msg.verifyMsg(id, answer: answer) { (r:BaseApi.Result) in
+            switch (r) {
+            case .Success(let r):
+                self.msgscrentId = r as! String
+                let annotation = self.getOneMyAnnotation(id)//当前
+                self.mapView.removeAnnotation(annotation)//移除
+                var ans = self.arViewController.getAnnotations()
+                ans.removeAtIndex(self.getOneARAnnotation(id,ans: ans))//移除
+                self.performSegueWithIdentifier("openOver", sender: self)
+                self.arViewController.closeButtonTap()
+                break
+            case .Failure(let msg):
+                let alert = UIAlertController(title: "Oh, No", message: msg as? String, preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "再试一试", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(cancelAction)
+                alert.show()
+                break
+            }
+        }
+    }
+    
+    func getOneMyAnnotation(id:String) -> MyAnnotation{
+        var myAnnotation:MyAnnotation = MyAnnotation()
+        for i in 0.stride(to: self.viewModel.annotationArray.count, by: 1) {
+            
+            let inAnnotation = self.viewModel.annotationArray[i]
+            if inAnnotation.id == id {
+                myAnnotation = inAnnotation
+            }
+        }
+        return myAnnotation
+    }
+    
+    
+    func getOneARAnnotation(id:String,ans: [ARAnnotation]) -> Int{
+        var indexOf = 0
+        for i in 0.stride(to: ans.count, by: 1) {
+            let inAnnotation = ans[i]
+            if inAnnotation.id == id {
+                indexOf = i
+            }
+        }
+        return indexOf
+    }
     
     /**
      图标列表
@@ -317,7 +372,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        selectedView = view;
+        selectedView = view
         
         if let pin = view.annotation as? MyAnnotation {
             viewModel.msgId = pin.id as String
@@ -332,8 +387,6 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
             }
             self.targetLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude)
             self.targetDistanceLocation = CLLocation(latitude: pin.original_coordinate!.latitude, longitude: pin.original_coordinate!.longitude)
-            
-            
             
             let detailView = NSBundle.mainBundle().loadNibNamed("point", owner: self, options: nil)[0] as! PointUIView
             detailView.delegate = self
@@ -406,6 +459,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
@@ -441,7 +495,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
                 self.mapView.region = region
                 self.isOk = true
                 self.locationManager.stopUpdatingLocation()
-                self.locationManager.delegate = nil;
+                self.locationManager.delegate = nil
                 
                 self.searchMsg()
             })

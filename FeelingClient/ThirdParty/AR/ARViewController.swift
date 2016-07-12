@@ -268,6 +268,7 @@ public class ARViewController: UIViewController, ARTrackingManagerDelegate
     internal func closeButtonTap()
     {
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        
     }
     
     public override func prefersStatusBarHidden() -> Bool
@@ -433,7 +434,7 @@ public class ARViewController: UIViewController, ARTrackingManagerDelegate
         }
     }
     
-    private func updateAnnotationsForCurrentHeading()
+    public func updateAnnotationsForCurrentHeading()
     {
         //===== Removing views not in viewport, adding those that are. Also removing annotations view vertical level > maxVerticalLevel
         let degreesDelta = Double(degreesPerScreen)

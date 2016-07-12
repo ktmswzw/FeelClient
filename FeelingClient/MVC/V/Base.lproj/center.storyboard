@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tuk-qf-jys">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -68,16 +70,15 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="530" y="293" width="50" height="30"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK" customClass="AnimatableButton" customModule="IBAnimatable">
+                                <rect key="frame" x="530" y="513" width="50" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.45235589430000001" blue="0.94844095689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="8MJ-dw-Nly"/>
-                                    <constraint firstAttribute="height" constant="30" id="XJB-RB-bTk"/>
+                                    <constraint firstAttribute="width" constant="50" id="0f3-vU-YIF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="AR">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.91498154401779175" green="0.37833490967750549" blue="0.73496383428573608" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -98,14 +99,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="top" secondItem="zpX-Kc-Vep" secondAttribute="top" id="3Ty-F2-qpF"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="3zp-fa-kiP"/>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="centerY" secondItem="8CY-GM-Klr" secondAttribute="centerY" id="4Ja-cB-GmM"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="leading" secondItem="zpX-Kc-Vep" secondAttribute="leading" id="6F3-ia-f23"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="trailing" secondItem="zpX-Kc-Vep" secondAttribute="trailing" id="Leb-sJ-qEa"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="MRz-a0-qRg"/>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="NBQ-kw-CoC"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="baseline" secondItem="zpX-Kc-Vep" secondAttribute="firstBaseline" id="R2Y-YW-MCR"/>
                             <constraint firstAttribute="trailing" secondItem="8CY-GM-Klr" secondAttribute="trailing" id="VfI-uu-18h"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="Xpi-sa-EeK"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="firstBaseline" secondItem="zpX-Kc-Vep" secondAttribute="baseline" id="dzR-Yh-ecZ"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="lrW-gv-GWo"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="centerX" secondItem="W1O-31-f7T" secondAttribute="centerX" id="pdl-UW-W8B"/>
                             <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="zpX-Kc-Vep" secondAttribute="bottom" constant="8" symbolic="YES" id="qPY-3H-QRX"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="8" symbolic="YES" id="wcF-qP-bik"/>

@@ -17,10 +17,13 @@ public class ARAnnotation: NSObject
     public var imageUrl: String?
     public var id : String?
     public var question :String?
+    public var address: String?
     public var answerTip: String?    
     public var msgId: String?
     public var fromId: String?
     /// Location of annotation
+    
+    public var coordinate: CLLocationCoordinate2D?
     public var location: CLLocation?
     /// View for annotation. It is set inside ARViewController after fetching view from dataSource.
     internal(set) public var annotationView: ARAnnotationView?

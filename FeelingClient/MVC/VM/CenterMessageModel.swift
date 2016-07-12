@@ -119,15 +119,16 @@ public class MessageViewModel {
                             
                             oneAnnotation.original_coordinate = CLLocationCoordinate2DMake(msg.y, msg.x)
                             oneAnnotation.coordinate = CLLocationCoordinate2DMake(msg.y, msg.x).toMars()// 转换火星地图
-                            oneAnnotation.title =  "寄给：\(msg.to)"
+                            oneAnnotation.title =  "\(msg.from)"
                             oneAnnotation.question = "问题：\(msg.question)"
                             oneAnnotation.id = msg.id
                             oneAnnotation.url = msg.avatar
+                            oneAnnotation.address = msg.address
                             oneAnnotation.fromId = msg.fromId
                             oneAnnotation.answerTip = msg.answerTip
                             oneAnnotation.type = msg.type
                             
-                                self.annotationArray.append(oneAnnotation)
+                            self.annotationArray.append(oneAnnotation)
                         }
                         map.addAnnotations(self.annotationArray)                        
                         Chirp.sharedManager.playSound(fileName: "got.wav")

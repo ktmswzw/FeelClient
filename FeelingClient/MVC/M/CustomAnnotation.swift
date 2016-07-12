@@ -15,6 +15,7 @@ class MyAnnotation: MKPointAnnotation {
     var fromId : String?
     var question :String?
     var answerTip: String?
+    var address: String?
     var original_coordinate: CLLocationCoordinate2D?
     var type = 0
 }
