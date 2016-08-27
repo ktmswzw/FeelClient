@@ -20,6 +20,7 @@ class FriendBean: BaseModel {
         id <- map["id"]
         keyUserId <- map["key_user_id"]
         remark <- map["remark"]
+        phone <- map["phone"]
         avatar <- map["avatar"]
         motto <- map["motto"]
         user <- map["user"]
@@ -29,6 +30,8 @@ class FriendBean: BaseModel {
     var id: String = ""
     
     var keyUserId = ""
+    
+    var phone = ""
     
     var grouping = "";
     /**

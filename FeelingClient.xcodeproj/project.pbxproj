@@ -17,6 +17,7 @@
 		BF2EFBE41CD706180089EFCC /* MessageRecivedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBE31CD706180089EFCC /* MessageRecivedViewCell.swift */; };
 		BF2EFBE71CD708750089EFCC /* MessageSendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBE51CD708750089EFCC /* MessageSendViewCell.swift */; };
 		BF2EFBE81CD708750089EFCC /* MessageSendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2EFBE61CD708750089EFCC /* MessageSendViewCell.xib */; };
+		BF34B0741D712EC900B55194 /* arbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BF34B0731D712EC900B55194 /* arbutton.png */; };
 		BF40F5BA1D321C1D0056CEE4 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F5B91D321C1D0056CEE4 /* CAPSPageMenu.swift */; };
 		BF40F5BC1D321C500056CEE4 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F5BB1D321C500056CEE4 /* RadarView.swift */; };
 		BF40F5BF1D321D1F0056CEE4 /* DebugMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF40F5BE1D321D1F0056CEE4 /* DebugMapViewController.swift */; };
@@ -111,6 +112,9 @@
 		BFC762FB1D321A0600D421D1 /* ARConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F61D321A0600D421D1 /* ARConfiguration.swift */; };
 		BFC762FC1D321A0600D421D1 /* ARTrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F71D321A0600D421D1 /* ARTrackingManager.swift */; };
 		BFC762FD1D321A0600D421D1 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC762F81D321A0600D421D1 /* ARViewController.swift */; };
+		BFCA5E2C1D70853A00C0D62C /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCA5E2B1D70853A00C0D62C /* background.png */; };
+		BFCA5E321D7085B700C0D62C /* earth.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCA5E311D7085B700C0D62C /* earth.png */; };
+		BFCA5E341D708D2900C0D62C /* AFTERSOUND.png in Resources */ = {isa = PBXBuildFile; fileRef = BFCA5E331D708D2900C0D62C /* AFTERSOUND.png */; };
 		BFCCF8E61CF5EC0B004491B9 /* MessageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */; };
 		BFE8904B1C782B6B00429E9E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */; };
 		BFE8904D1C782B7300429E9E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE8904C1C782B7300429E9E /* CoreTelephony.framework */; };
@@ -137,6 +141,7 @@
 		BF2EFBE31CD706180089EFCC /* MessageRecivedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageRecivedViewCell.swift; path = MVC/Cells/MessageRecivedViewCell.swift; sourceTree = "<group>"; };
 		BF2EFBE51CD708750089EFCC /* MessageSendViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageSendViewCell.swift; path = MVC/Cells/MessageSendViewCell.swift; sourceTree = "<group>"; };
 		BF2EFBE61CD708750089EFCC /* MessageSendViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageSendViewCell.xib; path = MVC/Cells/MessageSendViewCell.xib; sourceTree = "<group>"; };
+		BF34B0731D712EC900B55194 /* arbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arbutton.png; sourceTree = "<group>"; };
 		BF40F5B91D321C1D0056CEE4 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAPSPageMenu.swift; path = ThirdParty/updateSelf/CAPSPageMenu.swift; sourceTree = "<group>"; };
 		BF40F5BB1D321C500056CEE4 /* RadarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadarView.swift; path = common/utils/RadarView.swift; sourceTree = "<group>"; };
 		BF40F5BE1D321D1F0056CEE4 /* DebugMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebugMapViewController.swift; path = ThirdParty/AR/Debug/DebugMapViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +244,9 @@
 		BFC762F61D321A0600D421D1 /* ARConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARConfiguration.swift; path = ThirdParty/AR/ARConfiguration.swift; sourceTree = "<group>"; };
 		BFC762F71D321A0600D421D1 /* ARTrackingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARTrackingManager.swift; path = ThirdParty/AR/ARTrackingManager.swift; sourceTree = "<group>"; };
 		BFC762F81D321A0600D421D1 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARViewController.swift; path = ThirdParty/AR/ARViewController.swift; sourceTree = "<group>"; };
+		BFCA5E2B1D70853A00C0D62C /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		BFCA5E311D7085B700C0D62C /* earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = earth.png; sourceTree = "<group>"; };
+		BFCA5E331D708D2900C0D62C /* AFTERSOUND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AFTERSOUND.png; sourceTree = "<group>"; };
 		BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewController.swift; path = MVC/C/MessageInfoViewController.swift; sourceTree = "<group>"; };
 		BFE8904A1C782B6B00429E9E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BFE8904C1C782B7300429E9E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -388,6 +396,10 @@
 		BF40F5C91D321E1D0056CEE4 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				BF34B0731D712EC900B55194 /* arbutton.png */,
+				BFCA5E331D708D2900C0D62C /* AFTERSOUND.png */,
+				BFCA5E311D7085B700C0D62C /* earth.png */,
+				BFCA5E2B1D70853A00C0D62C /* background.png */,
 				BF40F5CA1D321E440056CEE4 /* hdar_close.png */,
 				BF40F5CB1D321E440056CEE4 /* hdar_close@2x.png */,
 				BF40F5CC1D321E440056CEE4 /* hdar_close@3x.png */,
@@ -688,18 +700,22 @@
 				BF9F9B161CC47FB300795464 /* login.storyboard in Resources */,
 				BF2EFBE81CD708750089EFCC /* MessageSendViewCell.xib in Resources */,
 				BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */,
+				BF34B0741D712EC900B55194 /* arbutton.png in Resources */,
 				BF40F5C61D321DAF0056CEE4 /* got.wav in Resources */,
 				BF8116DF1CE7122800212982 /* Localizable.strings in Resources */,
 				BF45B67E1C6C38760027F63D /* LaunchScreen.storyboard in Resources */,
+				BFCA5E2C1D70853A00C0D62C /* background.png in Resources */,
 				BF8116E81CE7136A00212982 /* center.storyboard in Resources */,
 				BF9F9B351CC4808400795464 /* Localizable.stringsdict in Resources */,
 				BF40F5C71D321DAF0056CEE4 /* no.wav in Resources */,
 				BF9F9B191CC47FB300795464 /* self.storyboard in Resources */,
 				BF40F5C81D321DAF0056CEE4 /* send.wav in Resources */,
+				BFCA5E341D708D2900C0D62C /* AFTERSOUND.png in Resources */,
 				BF9F9B151CC47FB300795464 /* friends.storyboard in Resources */,
 				BF45B67B1C6C38760027F63D /* Assets.xcassets in Resources */,
 				BF2EFBE21CD705BD0089EFCC /* MessageRecived.xib in Resources */,
 				BF9F9B141CC47FB300795464 /* chat.storyboard in Resources */,
+				BFCA5E321D7085B700C0D62C /* earth.png in Resources */,
 				BF9F9B1A1CC47FB300795464 /* point.xib in Resources */,
 				BF40F5CE1D321E440056CEE4 /* hdar_close@2x.png in Resources */,
 				BF9F9B171CC47FB300795464 /* main.storyboard in Resources */,

@@ -16,13 +16,10 @@ class RegisterViewController: AnimatableViewController,UITextFieldDelegate{
     @IBOutlet var getCodesButton: AnimatableButton!
     
     @IBOutlet var codes: AnimatableTextField!
-    @IBOutlet var verifyCodesButton: AnimatableButton!
     @IBOutlet var password: AnimatableTextField!
     @IBOutlet var registerButton: AnimatableButton!
     
     var viewModel:LoginUserInfoViewModel!
-    
-    var realPhone: String = ""
     
     let database = SwiftyDB(databaseName: "UserInfo")
     var userinfo: UserInfo!
@@ -35,7 +32,6 @@ class RegisterViewController: AnimatableViewController,UITextFieldDelegate{
         
         viewModel = LoginUserInfoViewModel(delegate: self)
         self.getCodesButton.disable()
-        self.verifyCodesButton.disable()
         self.registerButton.disable()
         // Do any additional setup after loading the view.
     }
@@ -68,31 +64,32 @@ class RegisterViewController: AnimatableViewController,UITextFieldDelegate{
         }
     }
     
-    @IBAction func verify(sender: UIButton) {
-        SMSSDK.commitVerificationCode(codes.text, phoneNumber: username.text, zone: "86") { (error : NSError!) -> Void in
-            if(error == nil){
-                self.view.makeToast("验证成功", duration: 1, position: .Center)
-                self.username.enabled = false
-                self.realPhone = self.username.text!
-            }else{
-                self.view.makeToast("验证失败", duration: 1, position: .Center)
-            }
-        }
-    }
+    
     
     @IBAction func register(sender: AnyObject) {
+        if codes.notEmpty {
+            SMSSDK.commitVerificationCode(codes.text, phoneNumber: username.text, zone: "86") { (error : NSError!) -> Void in
+                if(error == nil){
+                    self.view.makeToast("验证成功", duration: 1, position: .Center)
+                    self.username.enabled = false
+                }else{
+                    self.view.makeToast("验证失败", duration: 1, position: .Center)
+                }
+            }
+        }
+        else {
+            
+            self.view.makeToast("请输入验证码", duration: 2, position: .Center)
+            return
+        }
         
         if username.text != "" && password.text != ""
         {
-            if self.realPhone != self.username.text! {
-                self.view.makeToast("手机号已更换，请修改", duration: 2, position: .Center)
-                return
-            }
             if !self.password.validatePassword() {
                 self.view.makeToast("密码必选大于6位数小于18的数字或字符", duration: 2, position: .Center)
             }
             else {
-                self.viewModel.userName = self.realPhone
+                self.viewModel.userName = username.text!
                 self.viewModel.password = password.text!.md5()
                 registerDelegate()
             }
@@ -116,15 +113,9 @@ class RegisterViewController: AnimatableViewController,UITextFieldDelegate{
             self.getCodesButton.disable()
         }
     }
-    @IBAction func editingVerifyChanged(sender: AnyObject) {
-        if codes.notEmpty {
-            self.verifyCodesButton.enable()
-        } else {
-            self.verifyCodesButton.disable()
-        }
-    }
+    
     @IBAction func editingRegisterChanged(sender: AnyObject) {
-        if password.notEmpty && realPhone.length != 0 {
+        if password.notEmpty && username.notEmpty {
             self.registerButton.enable()
         } else {
             self.registerButton.disable()
@@ -170,7 +161,7 @@ extension RegisterViewController: LoginUserModelDelegate {
                 print("\(msg)")
                 
                 self.view.hideToastActivity()
-                self.view.makeToast("服务器离家出走", duration: 1, position: .Center)
+                self.view.makeToast("账号已注册", duration: 1, position: .Center)
                 
                 break;
             }

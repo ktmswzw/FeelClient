@@ -17,14 +17,11 @@ var imageViewSelf = UIImageView(image: UIImage(named: "agirl"))
 
 class SelfViewController: FormViewController {
     
+    var isUpdateImg = false
     var viewModel: UserInfoViewModel!
-    
     var images = [UIImage]()
-    
     let database = SwiftyDB(databaseName: "UserInfo")
-    
     var userinfo = UserInfo()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设置"
@@ -46,10 +43,10 @@ class SelfViewController: FormViewController {
             +++ Section()
             <<< PhoneRow("phone"){ $0.title = "手机"
                 $0.disabled = true                }
-            <<< TextRow("realname") {
-                $0.title = "姓名"
-                $0.placeholder = "真实姓名"
-            }
+            //            <<< TextRow("realname") {
+            //                $0.title = "姓名"
+            //                $0.placeholder = "真实姓名"
+            //            }
             <<< TextRow("nickname") {$0.title = "昵称"
                 $0.placeholder = "朋友或亲人对你的昵称"
             }
@@ -84,7 +81,9 @@ class SelfViewController: FormViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        updateInfo()
+        if(!isUpdateImg) {
+            updateInfo()
+        }
     }
     
     func updateInfo() {
@@ -153,7 +152,7 @@ class SelfViewController: FormViewController {
         if let nickname = form.rowByTag("nickname")?.baseValue as? String {
             viewModel.nickname = nickname
         }
-        if let motto = form.rowByTag("motto")?.baseValue as? String {
+        if let motto = form.rowByTag("mommo")?.baseValue as? String {
             viewModel.motto = motto
         }
         
@@ -175,7 +174,7 @@ class SelfViewController: FormViewController {
                 }
                 
                 RCIM.sharedRCIM().refreshUserInfoCache(RCUserInfo(userId: self.viewModel.user_id, name: self.viewModel.nickname, portrait: self.viewModel.avatar), withUserId: self.viewModel.user_id)
-                
+                self.isUpdateImg = false
                 break;
             case .Failure(_):
                 self.navigationItem.rightBarButtonItem?.enabled = true
@@ -228,6 +227,7 @@ class SelfViewController: FormViewController {
         let imageAction = UIAlertAction(title: "相册", style: UIAlertActionStyle.Default) { (action) -> Void in
             let libraryViewController = CameraViewController.imagePickerViewController(true) { image, asset in
                 if  image != nil {
+                    self.isUpdateImg = true
                     imageViewSelf.image = image
                     self.images.removeAll()
                     self.images.append(image!)
@@ -242,6 +242,7 @@ class SelfViewController: FormViewController {
         let cameraokAction = UIAlertAction(title: "拍摄", style: UIAlertActionStyle.Default ) { (action) -> Void in
             let cameraViewController = CameraViewController(croppingEnabled: true, allowsLibraryAccess: true) { [weak self] image, asset in
                 if  image != nil {
+                    self!.isUpdateImg = true
                     imageViewSelf.image = image
                     self!.images.removeAll()
                     self!.images.append(image!)

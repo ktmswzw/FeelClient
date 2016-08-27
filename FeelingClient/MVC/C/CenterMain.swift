@@ -42,7 +42,9 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
     let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
     
+    @IBOutlet weak var addBar: UIBarButtonItem!
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    @IBOutlet weak var searchBar: UIBarButtonItem!
     
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
@@ -90,7 +92,16 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
             .subscribeNext { [weak self] in self?.performSegueWithIdentifier("send", sender: self) }
             .addDisposableTo(disposeBag)
         
+        addBar.rx_tap
+            .subscribeNext { [weak self] in self?.performSegueWithIdentifier("send", sender: self) }
+            .addDisposableTo(disposeBag)
+        
+        
         findMoreButton.rx_tap
+            .subscribeNext { [weak self] in self?.searchMsg() }
+            .addDisposableTo(disposeBag)
+        
+        searchBar.rx_tap
             .subscribeNext { [weak self] in self?.searchMsg() }
             .addDisposableTo(disposeBag)
         
@@ -441,7 +452,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     {
         radar?.isStart = false
         findMoreButton.enabled = true
-        findMoreButton.hidden = false
+        //findMoreButton.hidden = false
         tempView.removeFromSuperview()
     }
     

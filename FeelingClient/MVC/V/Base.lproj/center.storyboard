@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tuk-qf-jys">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tuk-qf-jys">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +20,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8CY-GM-Klr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1O-31-f7T" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <button hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1O-31-f7T" customClass="AnimatableButton" customModule="IBAnimatable">
                                 <rect key="frame" x="275" y="72" width="50" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -46,7 +44,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-Kc-Vep" customClass="AnimatableButton" customModule="IBAnimatable">
+                            <button hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-Kc-Vep" customClass="AnimatableButton" customModule="IBAnimatable">
                                 <rect key="frame" x="275" y="513" width="50" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.45235589430000001" blue="0.94844095689999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -70,28 +68,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="530" y="513" width="50" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.45235589430000001" blue="0.94844095689999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK">
+                                <rect key="frame" x="530" y="508" width="50" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="0f3-vU-YIF"/>
+                                    <constraint firstAttribute="width" constant="50" id="J77-fI-4jU"/>
+                                    <constraint firstAttribute="height" constant="35" id="SP5-GK-nc8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="AR">
-                                    <color key="titleColor" red="0.91498154401779175" green="0.37833490967750549" blue="0.73496383428573608" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationType" value="Squeeze"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <state key="normal" backgroundImage="arbutton.png"/>
                                 <connections>
                                     <action selector="buttonTap:" destination="k7f-3U-IcX" eventType="touchUpInside" id="24F-xr-OqE"/>
                                 </connections>
@@ -99,32 +83,46 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="top" secondItem="zpX-Kc-Vep" secondAttribute="top" id="3Ty-F2-qpF"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="bottom" secondItem="naD-eG-rnO" secondAttribute="top" id="3zp-fa-kiP"/>
+                            <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="TFN-do-4wK" secondAttribute="bottom" constant="8" symbolic="YES" id="5qZ-IR-7Ay"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="leading" secondItem="zpX-Kc-Vep" secondAttribute="leading" id="6F3-ia-f23"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="444" id="GtN-lr-rQP"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="trailing" secondItem="zpX-Kc-Vep" secondAttribute="trailing" id="Leb-sJ-qEa"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" id="MRz-a0-qRg"/>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="baseline" secondItem="zpX-Kc-Vep" secondAttribute="firstBaseline" id="R2Y-YW-MCR"/>
+                            <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="TFN-do-4wK" secondAttribute="bottom" constant="228" id="Prd-6A-WRW"/>
+                            <constraint firstItem="TFN-do-4wK" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="VMK-TO-DMv"/>
                             <constraint firstAttribute="trailing" secondItem="8CY-GM-Klr" secondAttribute="trailing" id="VfI-uu-18h"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="leading" secondItem="Y0K-0B-yDm" secondAttribute="leading" id="Xpi-sa-EeK"/>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="firstBaseline" secondItem="zpX-Kc-Vep" secondAttribute="baseline" id="dzR-Yh-ecZ"/>
-                            <constraint firstItem="TFN-do-4wK" firstAttribute="trailing" secondItem="Y0K-0B-yDm" secondAttribute="trailingMargin" id="lrW-gv-GWo"/>
                             <constraint firstItem="8CY-GM-Klr" firstAttribute="centerX" secondItem="W1O-31-f7T" secondAttribute="centerX" id="pdl-UW-W8B"/>
                             <constraint firstItem="naD-eG-rnO" firstAttribute="top" secondItem="zpX-Kc-Vep" secondAttribute="bottom" constant="8" symbolic="YES" id="qPY-3H-QRX"/>
                             <constraint firstItem="W1O-31-f7T" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="8" symbolic="YES" id="wcF-qP-bik"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Prd-6A-WRW"/>
+                                <exclude reference="GtN-lr-rQP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" image="send" id="m87-yF-hbL"/>
                     <navigationItem key="navigationItem" title="发现" id="lTY-dc-LDc">
                         <barButtonItem key="backBarButtonItem" id="bgA-fX-xqW">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="kSA-fa-0BZ">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ePM-JZ-jbv">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addBar" destination="kSA-fa-0BZ" id="sz9-VD-sv1"/>
                         <outlet property="addNewButton" destination="W1O-31-f7T" id="e84-Fj-JSN"/>
                         <outlet property="findMoreButton" destination="zpX-Kc-Vep" id="h1x-on-iph"/>
                         <outlet property="mapView" destination="8CY-GM-Klr" id="jjZ-dy-jH6"/>
+                        <outlet property="searchBar" destination="ePM-JZ-jbv" id="bna-Ew-wji"/>
                         <segue destination="Uzy-mh-CyE" kind="show" identifier="openOver" id="SSh-Gp-jh4"/>
                         <segue destination="csP-8S-KOZ" kind="show" identifier="send" id="Jps-mJ-b4E"/>
                     </connections>
@@ -311,10 +309,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kga-aj-kue">
                                 <rect key="frame" x="0.0" y="280" width="600" height="45"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="可选" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ze0-K6-kfb">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ze0-K6-kfb">
                                         <rect key="frame" x="104" y="8" width="488" height="29"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="phonePad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收信人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="65" translatesAutoresizingMaskIntoConstraints="NO" id="Z5a-hC-Fhd">
                                         <rect key="frame" x="8" y="8" width="88" height="29"/>
@@ -757,6 +755,7 @@
     <resources>
         <image name="ReceiverVoiceNodePlaying" width="12" height="17"/>
         <image name="add_photo" width="38" height="41"/>
+        <image name="arbutton.png" width="200" height="161"/>
         <image name="record" width="28" height="44"/>
         <image name="send" width="24" height="24"/>
     </resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oep-RU-AZT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Oep-RU-AZT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -68,7 +68,7 @@
                                         <rect key="frame" x="0.0" y="121" width="560" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.45235589427901779" blue="0.94844095685840712" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="登陆">
+                                        <state key="normal" title="确定">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -87,7 +87,7 @@
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhS-Y0-UN8">
                                 <rect key="frame" x="20" y="82" width="560" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIND U MEMORISE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录回音" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ynr-Cz-286">
                                         <rect key="frame" x="0.0" y="38" width="560" height="45"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="40"/>
                                         <color key="textColor" red="0.99561554193496704" green="0.99680274724960327" blue="0.99975711107254028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,16 +107,38 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrw-nP-22C">
+                                <rect key="frame" x="520" y="562" width="60" height="30"/>
+                                <state key="normal" title="随便看看">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerDervice" destination="Oep-RU-AZT" eventType="touchUpInside" id="bLt-MJ-SMX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="So3-xv-2E8">
+                                <rect key="frame" x="20" y="562" width="30" height="30"/>
+                                <state key="normal" title="注册">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showReg" destination="Oep-RU-AZT" eventType="touchUpInside" id="8Oq-cg-qVh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="top" secondItem="9WW-tc-v7g" secondAttribute="bottom" constant="62" id="1DJ-ji-QZf"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="So3-xv-2E8" secondAttribute="leading" id="BnV-wh-xk9"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="bJg-yT-rx4" secondAttribute="leading" id="Fln-Yd-5jq"/>
+                            <constraint firstItem="LH4-NU-pi9" firstAttribute="top" secondItem="hrw-nP-22C" secondAttribute="bottom" constant="8" symbolic="YES" id="PvH-b9-uEe"/>
                             <constraint firstItem="bJg-yT-rx4" firstAttribute="centerY" secondItem="F5S-vp-eLo" secondAttribute="centerY" id="UwF-l2-LgK"/>
                             <constraint firstItem="bJg-yT-rx4" firstAttribute="top" secondItem="hhS-Y0-UN8" secondAttribute="bottom" constant="8" symbolic="YES" id="avG-LA-wdK"/>
+                            <constraint firstItem="LH4-NU-pi9" firstAttribute="top" secondItem="So3-xv-2E8" secondAttribute="bottom" constant="8" symbolic="YES" id="ghK-Qs-M5L"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="leading" secondItem="F5S-vp-eLo" secondAttribute="leadingMargin" id="hFZ-0t-T3H"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="F5S-vp-eLo" secondAttribute="trailingMargin" id="hlL-DO-zT4"/>
                             <constraint firstItem="hhS-Y0-UN8" firstAttribute="trailing" secondItem="bJg-yT-rx4" secondAttribute="trailing" id="tse-Kb-N9h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hrw-nP-22C" secondAttribute="trailing" id="xnL-0E-VYr"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

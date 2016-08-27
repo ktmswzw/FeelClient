@@ -93,12 +93,23 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
                     if list.count > 0 {
                         let userinfoDB = list[0] as UserInfo
                         userinfoDB.avatar = userinfo.avatar
+                        userinfoDB.phone = userinfo.phone
                         userinfoDB.nickname = userinfo.remark
+                        userinfoDB.motto = userinfo.motto
                         self.database.asyncAddObject(userinfoDB) { (result) -> Void in
                             if let error = result.error {
                                 self.view.makeToast("保存失败\(error)", duration: 2, position: .Center)
                             }
                         }
+                    }
+                    else{
+                        let userinfoDB:UserInfo = UserInfo()
+                        userinfoDB.avatar = userinfo.avatar
+                        userinfoDB.phone = userinfo.phone
+                        userinfoDB.nickname = userinfo.remark
+                        userinfoDB.motto = userinfo.motto
+                        userinfoDB.id = userinfo.user
+                        self.database.addObject(userinfoDB, update: true)
                     }
                     
                 }

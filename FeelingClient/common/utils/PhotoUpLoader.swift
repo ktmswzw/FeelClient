@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AlamofireImage
 
 class PhotoUpLoader:BaseApi {
     private var uploadMgr: TXYUploadManager!;
@@ -66,9 +67,10 @@ class PhotoUpLoader:BaseApi {
     
     
     func getPathZip(image: UIImage) -> NSData{
-        let resizedAndMaskedImage = Toucan(image: image).resize(CGSize(width: 800, height: 800), fitMode: Toucan.Resize.FitMode.Clip).image
-        guard let data = UIImageJPEGRepresentation(resizedAndMaskedImage,0.5) else {//jpg
-            return UIImagePNGRepresentation(resizedAndMaskedImage)! //png
+        let size = CGSize(width: 400.0, height: 400.0)
+        let scaledImage = image.af_imageScaledToSize(size)
+        guard let data = UIImageJPEGRepresentation(scaledImage,0.5) else {//jpg
+            return UIImagePNGRepresentation(scaledImage)! //png
         }
         return data
     }

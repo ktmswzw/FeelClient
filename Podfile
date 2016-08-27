@@ -25,6 +25,7 @@ pod 'MOBFoundation_IDFA'
 pod 'SMSSDK'
 #网络图片获取及缓存
 pod 'HanekeSwift'
+pod 'AlamofireImage', '~> 2.0'
 #pod 'Gifu'
 #视频播放
 pod 'VideoSplashKit'

@@ -18,7 +18,6 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
     @IBOutlet var username: AnimatableTextField!
     @IBOutlet var password: AnimatableTextField!
     
-    var actionButton: ActionButton!
     let database = SwiftyDB(databaseName: "UserInfo")
     var viewModel:LoginUserInfoViewModel!
     let url = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("0900", ofType: "mp4")!)
@@ -42,27 +41,27 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         
         self.contentURL = url
         self.restartForeground = true
-        
-        
-        let lookAnyWhere = ActionButtonItem(title: "随便看看", image: UIImage(named: "address")!)
-        lookAnyWhere.action = { item in
-            self.registerDervice()
-        }
-        let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
-        register.action = { item in
-            self.performSegueWithIdentifier("register", sender: self)
-        }
-        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "readfire")!)
-        forget.action = { item in
-            self.view.makeToast("老板没给发薪，程序员罢工了", duration: 1, position: .Center)
-        }
-        
-        actionButton = ActionButton(attachedToView: self.view, items: [register,lookAnyWhere,forget])
-        actionButton.action = { button in button.toggleMenu() }
-        actionButton.setImage(UIImage(named: "new"), forState: .Normal)
-        actionButton.backgroundColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0 )
-        
-        
+        //        
+        //        
+        //        let lookAnyWhere = ActionButtonItem(title: "随便看看", image: UIImage(named: "address")!)
+        //        lookAnyWhere.action = { item in
+        //            self.registerDervice()
+        //        }
+        //        let register = ActionButtonItem(title: "注册帐号", image: UIImage(named: "self")!)
+        //        register.action = { item in
+        //            self.performSegueWithIdentifier("register", sender: self)
+        //        }
+        //        let forget = ActionButtonItem(title: "忘记密码", image: UIImage(named: "readfire")!)
+        //        forget.action = { item in
+        //            self.view.makeToast("老板没给发薪，程序员罢工了", duration: 1, position: .Center)
+        //        }
+        //        
+        //        actionButton = ActionButton(attachedToView: self.view, items: [register,lookAnyWhere,forget])
+        //        actionButton.action = { button in button.toggleMenu() }
+        //        actionButton.setImage(UIImage(named: "new"), forState: .Normal)
+        //        actionButton.backgroundColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 0 )
+        //        
+        //
         
         username.delegate = self
         password.delegate = self
@@ -71,7 +70,12 @@ class LoginViewController: VideoSplashViewController,UITextFieldDelegate {
         
     }
     
-    func registerDervice()
+    
+    @IBAction func showReg() {
+        self.performSegueWithIdentifier("register", sender: self)
+    }
+    
+    @IBAction func registerDervice()
     {
         self.view.makeToastActivity(.Center)
         

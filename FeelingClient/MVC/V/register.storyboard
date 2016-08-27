@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sa7-TK-OBg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sa7-TK-OBg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -90,26 +90,9 @@
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-gu-Bdf">
                                         <rect key="frame" x="0.0" y="61" width="560" height="60"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-jj-26h" customClass="AnimatableButton" customModule="IBAnimatable">
-                                                <rect key="frame" x="440" y="0.0" width="120" height="60"/>
-                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="120" id="BrT-AF-1GK"/>
-                                                    <constraint firstAttribute="height" constant="60" id="M9H-X9-5Jv"/>
-                                                </constraints>
-                                                <state key="normal" title="验证">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="verify:" destination="Sa7-TK-OBg" eventType="touchUpInside" id="zxb-ae-eZ4"/>
-                                                </connections>
-                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机获取的验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xm6-Hl-4VM" customClass="AnimatableTextField" customModule="IBAnimatable">
-                                                <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="tFI-p2-G3C"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                                 <userDefinedRuntimeAttributes>
@@ -124,28 +107,16 @@
                                                         <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="editingVerifyChanged:" destination="Sa7-TK-OBg" eventType="editingChanged" id="vTp-wS-6Td"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="xlY-jj-26h" firstAttribute="centerY" secondItem="bcU-gu-Bdf" secondAttribute="centerY" id="0jH-CH-x70"/>
-                                            <constraint firstItem="xlY-jj-26h" firstAttribute="centerX" secondItem="bcU-gu-Bdf" secondAttribute="centerX" id="KgJ-Rk-bmw"/>
-                                            <constraint firstItem="Xm6-Hl-4VM" firstAttribute="leading" secondItem="bcU-gu-Bdf" secondAttribute="leading" id="LEh-gX-vMt"/>
-                                            <constraint firstAttribute="trailing" secondItem="xlY-jj-26h" secondAttribute="trailing" id="O1E-IC-vyR"/>
-                                            <constraint firstItem="xlY-jj-26h" firstAttribute="leading" secondItem="Xm6-Hl-4VM" secondAttribute="trailing" id="WfG-3j-md2"/>
-                                            <constraint firstItem="xlY-jj-26h" firstAttribute="height" secondItem="Xm6-Hl-4VM" secondAttribute="height" id="aVg-HV-3FV"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xm6-Hl-4VM" secondAttribute="bottom" id="9XW-fk-ojK"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xm6-Hl-4VM" secondAttribute="trailing" id="AR4-hz-GWa"/>
+                                            <constraint firstItem="Xm6-Hl-4VM" firstAttribute="top" secondItem="bcU-gu-Bdf" secondAttribute="top" id="CTT-5d-FQv"/>
+                                            <constraint firstItem="Xm6-Hl-4VM" firstAttribute="leading" secondItem="bcU-gu-Bdf" secondAttribute="leading" id="Fub-dG-x6y"/>
                                             <constraint firstAttribute="height" constant="60" id="cIC-sq-etR"/>
-                                            <constraint firstItem="xlY-jj-26h" firstAttribute="centerY" secondItem="Xm6-Hl-4VM" secondAttribute="centerY" id="pGQ-19-2ew"/>
-                                            <constraint firstItem="Xm6-Hl-4VM" firstAttribute="centerY" secondItem="bcU-gu-Bdf" secondAttribute="centerY" id="rbJ-o4-wVz"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="KgJ-Rk-bmw"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bki-xE-f06">
                                         <rect key="frame" x="0.0" y="121" width="560" height="1"/>
@@ -197,11 +168,11 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsM-Tt-Ykp" customClass="AnimatableButton" customModule="IBAnimatable">
-                                <rect key="frame" x="20" y="28" width="46" height="30"/>
+                                <rect key="frame" x="20" y="28" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="X8a-ke-6Zy"/>
+                                    <constraint firstAttribute="width" constant="80" id="X8a-ke-6Zy"/>
                                 </constraints>
-                                <state key="normal" title="返回">
+                                <state key="normal" title="返回登录">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -263,7 +234,6 @@
                         <outlet property="password" destination="ivD-UR-c6E" id="T8s-TZ-3Bn"/>
                         <outlet property="registerButton" destination="17J-t5-UOg" id="UdQ-9x-alx"/>
                         <outlet property="username" destination="9cF-Jj-UUl" id="MNi-lN-JTe"/>
-                        <outlet property="verifyCodesButton" destination="xlY-jj-26h" id="y6B-sE-Qlk"/>
                         <segue destination="qBz-zm-mRI" kind="show" identifier="registerIn" id="GWj-wS-yPo"/>
                     </connections>
                 </viewController>

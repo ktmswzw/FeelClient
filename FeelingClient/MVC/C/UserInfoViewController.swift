@@ -34,7 +34,7 @@ class UserInfoViewController: FormViewController {
         let image = UIImage(named: "agirl")
         let blurredImage = image!.imageByApplyingBlurWithRadius(50)
         self.view.layer.contents = blurredImage.CGImage
-        var tmp = ""
+        //        var tmp = ""
         
         self.navigationItem.title = "用户信息"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(UserInfoViewController.saveFriend))
@@ -49,10 +49,10 @@ class UserInfoViewController: FormViewController {
             let userinfo = list[0]
             imageViewFriend.hnk_setImageFromURL(NSURL(string:userinfo.avatar)!)
             
-            if userinfo.register {
-                tmp = userinfo.phone
-            }
-            
+//            if userinfo.register {
+//                tmp = userinfo.phone
+//            }
+//            
             form = Section() {
                 $0.header = HeaderFooterView<EurekaFriendView>(HeaderFooterProvider.Class)
                 }
@@ -62,16 +62,15 @@ class UserInfoViewController: FormViewController {
                     $0.title = "备注"
                     $0.value = self.friend.remark
                 }
-                <<< PhoneRow("phone"){
-                    $0.title = "手机"
-                    $0.disabled = true
-                    $0.value = tmp
-                }
-                <<< TextRow("realname") {
-                    $0.title = "姓名"
-                    $0.disabled = true
-                    $0.placeholder = "真实姓名"
-                }
+                //                <<< PhoneRow("phone"){
+                //                    $0.title = "手机"
+                //                    $0.value = tmp
+                //                }
+                //                <<< TextRow("realname") {
+                //                    $0.title = "姓名"
+                //                    $0.disabled = true
+                //                    $0.placeholder = "真实姓名"
+                //                }
                 <<< TextRow("nickname") {
                     $0.title = "昵称"
                     $0.value = userinfo.nickname
