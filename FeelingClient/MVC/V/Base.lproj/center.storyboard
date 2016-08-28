@@ -114,6 +114,7 @@
                     <connections>
                         <outlet property="addBar" destination="kSA-fa-0BZ" id="sz9-VD-sv1"/>
                         <outlet property="addNewButton" destination="W1O-31-f7T" id="e84-Fj-JSN"/>
+                        <outlet property="arButton" destination="TFN-do-4wK" id="3mc-CP-CPv"/>
                         <outlet property="findMoreButton" destination="zpX-Kc-Vep" id="h1x-on-iph"/>
                         <outlet property="mapView" destination="8CY-GM-Klr" id="jjZ-dy-jH6"/>
                         <outlet property="searchBar" destination="ePM-JZ-jbv" id="bna-Ew-wji"/>

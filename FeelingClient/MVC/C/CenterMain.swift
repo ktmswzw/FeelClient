@@ -41,10 +41,12 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
     var coachMarksController: CoachMarksController?
     let profileSectionText = "写一封信寄给你的亲人或者朋友，让TA来此地，身临其境的感觉你对TA的思恋"
     let handleText = "搜索你的亲人或者朋友寄给你的信，或者周围有感触的奇妙地点"
+    let arText = "通过AR方式体验另一种触碰"
     
     @IBOutlet weak var addBar: UIBarButtonItem!
     let userDefaults = NSUserDefaults.standardUserDefaults()
     @IBOutlet weak var searchBar: UIBarButtonItem!
+    @IBOutlet var arButton: UIButton!
     
     let nextButtonText = "好"
     var disposeBag = DisposeBag()
@@ -539,12 +541,12 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         return 2
     }
     
+    
+    
     func coachMarksController(coachMarksController: CoachMarksController, coachMarksForIndex index: Int) -> CoachMark {
         switch(index) {
         case 0:
-            return coachMarksController.coachMarkForView(self.addNewButton)
-        case 1:
-            return coachMarksController.coachMarkForView(self.findMoreButton)
+            return coachMarksController.coachMarkForView(self.arButton)
         default:
             return coachMarksController.coachMarkForView()
         }
@@ -556,10 +558,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         
         switch(index) {
         case 0:
-            coachViews.bodyView.hintLabel.text = self.profileSectionText
-            coachViews.bodyView.nextLabel.text = self.nextButtonText
-        case 1:
-            coachViews.bodyView.hintLabel.text = self.handleText
+            coachViews.bodyView.hintLabel.text = self.arText
             coachViews.bodyView.nextLabel.text = self.nextButtonText
         default: break
         }

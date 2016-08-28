@@ -18,7 +18,7 @@ class MainViewController: UITabBarController, LoginUserModelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        sleep(2)
+        sleep(1)
         viewModel = LoginUserInfoViewModel(delegate: self)
         // Do any additional setup after loading the view.
     }

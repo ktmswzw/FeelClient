@@ -31,7 +31,7 @@ class FriendsViewController: UITableViewController ,UISearchBarDelegate{
         
         viewModel = FriendViewModel(delegate: self)
         
-        self.title = "好友"
+        self.title = "通信录"
         
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.search.rx_text
