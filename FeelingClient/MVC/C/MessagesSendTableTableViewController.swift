@@ -8,24 +8,13 @@
 
 import UIKit
 import Foundation
-import XLPagerTabStrip
 
-class MessagesSendTableTableViewController: UITableViewController,MessageViewModelDelegate,IndicatorInfoProvider {
+class MessagesSendTableTableViewController: UITableViewController,MessageViewModelDelegate {
     
     let msg: Messages = Messages.defaultMessages
     
     var msgs = [MessageBean]()
     
-    var itemInfo = IndicatorInfo(title: "View")
-    
-    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-        self.itemInfo = itemInfo
-        super.init(style: style)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
@@ -40,6 +29,7 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         //设置菊花转的颜色
         refreshControl!.tintColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
         
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         //往tableView添加刷新控件
         self.tableView.addSubview(refreshControl!)
         
@@ -94,8 +84,6 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         return msgs.count
     }
     
-    var coordinate = CLLocationCoordinate2D()
-    var original_coordinate = CLLocationCoordinate2D()
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : MessageSendViewCell = tableView.dequeueReusableCellWithIdentifier("MessageSendViewCell") as! MessageSendViewCell
@@ -113,10 +101,6 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     }
     
     
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo
-    }
-    
     
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -124,33 +108,32 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     }
     
     
-    //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        self.performSegueWithIdentifier("shows", sender: indexPath);
-    //    }
-    //    
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        if segue.identifier == "shows" {
-    //            print(1)
-    //        }
-    //            
-    //        else  if segue.identifier == "openOver2" {
-    //            if let indexPath = self.tableView.indexPathForSelectedRow {
-    //                let bean = msgs[indexPath.row] as MessageBean
-    //                let viewController = segue.destinationViewController as! OpenMapViewController
-    //                
-    //                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
-    //                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
-    //                viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
-    //                viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
-    //                
-    //                viewController.fromId = bean.fromId
-    //                viewController.msgscrentId = bean.messagessSecretId
-    //                viewController.address = bean.address
-    //                viewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-    //                viewController.navigationItem.leftItemsSupplementBackButton = true
-    //            }
-    //        }
-    //    }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("shows", sender: indexPath);
+    }
+    
+    var coordinate = CLLocationCoordinate2D()
+    var original_coordinate = CLLocationCoordinate2D()
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "shows" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let bean = msgs[indexPath.row] as MessageBean
+                let viewController = segue.destinationViewController as! OpenMapViewController
+                
+                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
+                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
+                viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+                viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
+                
+                viewController.fromId = bean.fromId
+                viewController.msgscrentId = bean.messagessSecretId
+                viewController.address = bean.address
+                viewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                viewController.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+    }
     
     
     

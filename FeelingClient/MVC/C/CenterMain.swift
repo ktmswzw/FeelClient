@@ -460,6 +460,20 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if self.navigationController != nil{
+            // 在后台
+        }else{
+            // 已关闭
+            // 触发 deinit
+            self.mapView = nil
+            self.view = nil
+            
+        }
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }

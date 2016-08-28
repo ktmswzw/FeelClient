@@ -10,7 +10,6 @@
 		43AECBC75386581642FD9250 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F433E2F3517659A39AEF6A /* Pods.framework */; };
 		BF15FB721CFB30F800FD7A15 /* MessageInfoViewGetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */; };
 		BF2431631D33F51700411405 /* ExUIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2431621D33F51700411405 /* ExUIAlertController.swift */; };
-		BF2EFBD51CD6D89F0089EFCC /* MessagesCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */; };
 		BF2EFBD81CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */; };
 		BF2EFBDC1CD6E3A00089EFCC /* MessagesGetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */; };
 		BF2EFBE21CD705BD0089EFCC /* MessageRecived.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2EFBE11CD705BD0089EFCC /* MessageRecived.xib */; };
@@ -135,7 +134,6 @@
 		37513FA2EAA0D2E1F66CA656 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BF15FB711CFB30F800FD7A15 /* MessageInfoViewGetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageInfoViewGetController.swift; path = MVC/C/MessageInfoViewGetController.swift; sourceTree = "<group>"; };
 		BF2431621D33F51700411405 /* ExUIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExUIAlertController.swift; path = common/utils/ExUIAlertController.swift; sourceTree = "<group>"; };
-		BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesCenterViewController.swift; path = MVC/C/MessagesCenterViewController.swift; sourceTree = "<group>"; };
 		BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSendTableTableViewController.swift; path = MVC/C/MessagesSendTableTableViewController.swift; sourceTree = "<group>"; };
 		BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesGetTableViewController.swift; path = MVC/C/MessagesGetTableViewController.swift; sourceTree = "<group>"; };
 		BF2EFBE11CD705BD0089EFCC /* MessageRecived.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageRecived.xib; path = MVC/Cells/MessageRecived.xib; sourceTree = "<group>"; };
@@ -522,7 +520,6 @@
 				BF9F9B241CC4804D00795464 /* SelfViewController.swift */,
 				BF9F9B251CC4804D00795464 /* UserInfoViewController.swift */,
 				BF9F9B261CC4804D00795464 /* ViewImageViewController.swift */,
-				BF2EFBD41CD6D89F0089EFCC /* MessagesCenterViewController.swift */,
 				BF2EFBD61CD6DDFF0089EFCC /* MessagesSendTableTableViewController.swift */,
 				BF2EFBDA1CD6E3A00089EFCC /* MessagesGetTableViewController.swift */,
 				BFCCF8E51CF5EC0B004491B9 /* MessageInfoViewController.swift */,
@@ -838,7 +835,6 @@
 				BF9F9B271CC4804D00795464 /* CenterMain.swift in Sources */,
 				BF9F9AC41CC47D7B00795464 /* Character.swift in Sources */,
 				BF2EFBE41CD706180089EFCC /* MessageRecivedViewCell.swift in Sources */,
-				BF2EFBD51CD6D89F0089EFCC /* MessagesCenterViewController.swift in Sources */,
 				BFC762FB1D321A0600D421D1 /* ARConfiguration.swift in Sources */,
 				BF9F9B2F1CC4804D00795464 /* RegisterViewController.swift in Sources */,
 				BF9F9AF01CC47E9B00795464 /* UIImageColors.swift in Sources */,

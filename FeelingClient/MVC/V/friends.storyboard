@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--好友-->
+        <!--通信录-->
         <scene sceneID="tUr-c7-Fcn">
             <objects>
                 <tableViewController id="VJR-Pg-D6y" customClass="FriendsViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +104,7 @@
                             <outlet property="delegate" destination="VJR-Pg-D6y" id="SzN-D4-ar3"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" tag="2" title="好友" image="friends" id="gSf-CS-iqq"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="通信录" image="friends" id="gSf-CS-iqq"/>
                     <navigationItem key="navigationItem" id="RLU-ro-hKY"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -161,7 +161,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkW-ld-t8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="326"/>
+            <point key="canvasLocation" x="655" y="276"/>
         </scene>
     </scenes>
     <resources>

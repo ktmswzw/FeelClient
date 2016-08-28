@@ -12,24 +12,12 @@ import IBAnimatable
 
 import MapKit
 import Foundation
-import XLPagerTabStrip
 
-class MessagesGetTableViewController: UITableViewController,MessageViewModelDelegate,IndicatorInfoProvider {
+class MessagesGetTableViewController: UITableViewController,MessageViewModelDelegate {
     
     let msg: Messages = Messages.defaultMessages
     
     var msgs = [MessageBean]()
-    var itemInfo = IndicatorInfo(title: "View")
-    
-    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-        self.itemInfo = itemInfo
-        super.init(style: style)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,24 +88,32 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
     var coordinate = CLLocationCoordinate2D()
     var original_coordinate = CLLocationCoordinate2D()
     
+    
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if msgs.count > 0 {
-            let bean = msgs[indexPath.row] as MessageBean
-            //            let nib = MessageInfoGetViewController()//需要跳转的viewcontroller
-            
-            let viewController =  OpenMapViewController()
-            coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
-            coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
-            viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
-            viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
-            
-            viewController.fromId = bean.fromId
-            viewController.msgscrentId = bean.messagessSecretId
-            viewController.address = bean.address
-            //            nib.msg = bean
-            self.presentViewController(viewController, animated:true, completion: nil)
+        self.performSegueWithIdentifier("shows", sender: indexPath);
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "shows" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let bean = msgs[indexPath.row] as MessageBean
+                let viewController = segue.destinationViewController as! OpenMapViewController
+                
+                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
+                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
+                viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+                viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
+                
+                viewController.fromId = bean.fromId
+                viewController.msgscrentId = bean.messagessSecretId
+                viewController.address = bean.address
+                viewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                viewController.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
+    
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -142,11 +138,6 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
      return true
      }
      */
-    
-    func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo
-    }
-    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60.0

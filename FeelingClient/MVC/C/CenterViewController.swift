@@ -66,7 +66,7 @@ class CenterViewController: AnimatableViewController,MessageViewModelDelegate , 
         self.photoCollectionView.dataSource = self
         
         recordButton.addTarget(self, action: #selector(CenterViewController.recordClick(_:)), forControlEvents: .TouchDown)
-                
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(CenterViewController.playAction))
         selfImage.userInteractionEnabled = true
         selfImage.addGestureRecognizer(tapGestureRecognizer)
@@ -123,11 +123,11 @@ class CenterViewController: AnimatableViewController,MessageViewModelDelegate , 
             }
         }
     }
-
+    
     
     func setUpVoicePlayIndicatorImageView() {
         let images =  NSArray(objects: UIImage(named: "ReceiverVoiceNodePlaying001")!, UIImage(named: "ReceiverVoiceNodePlaying002")!, UIImage(named: "ReceiverVoiceNodePlaying003")!)
-            selfImage.image = UIImage(named: "ReceiverVoiceNodePlaying")
+        selfImage.image = UIImage(named: "ReceiverVoiceNodePlaying")
         
         selfImage.animationImages = (images as! [UIImage])
     }
@@ -157,16 +157,16 @@ class CenterViewController: AnimatableViewController,MessageViewModelDelegate , 
     }
     
     @IBAction func sendMsg(sender: AnyObject) {
-//        if !self.address.notEmpty {
-//            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
-//            return
-//        }
+        //        if !self.address.notEmpty {
+        //            self.view.makeToast("定位中，请开启GPS，或在空旷地带，以精确定位", duration: 2, position: .Center)
+        //            return
+        //        }
         
-//        if !self.openUser.notEmpty {
-//            self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
-//            return
-//        }
-//        
+        //        if !self.openUser.notEmpty {
+        //            self.view.makeToast("开启人必须填写", duration: 2, position: .Center)
+        //            return
+        //        }
+        //        
         if self.textView.text.length == 0 {
             self.view.makeToast("必须填写内容", duration: 2, position: .Center)
             return
@@ -182,7 +182,19 @@ class CenterViewController: AnimatableViewController,MessageViewModelDelegate , 
         
         
     }
-    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if self.navigationController != nil{
+            // 在后台
+        }else{
+            // 已关闭
+            // 触发 deinit
+            self.mapView = nil
+            self.view = nil
+            
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

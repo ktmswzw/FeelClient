@@ -97,7 +97,19 @@ class OpenMapViewController: UIViewController, OpenMessageModelDelegate , MKMapV
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeTransit]  // 3
         mapItem.openInMapsWithLaunchOptions(launchOptions)  // 4
     }
-    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if self.navigationController != nil{
+            // 在后台
+        }else{
+            // 已关闭
+            // 触发 deinit
+            self.mapView = nil
+            self.view = nil
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
