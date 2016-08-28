@@ -64,12 +64,20 @@ class SelfViewController: FormViewController {
                 
             }
             
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "通信录"
+                }  .onCellSelection({ (cell, row) in
+                    self.performSegueWithIdentifier("friends", sender: nil);
+                })
+            
             +++ Section("版本1.0")
             <<< ButtonRow() { (row: ButtonRow) -> Void in
                 row.title = "退出"
                 }  .onCellSelection({ (cell, row) in
                     self.exitAppAction()
                 })
+        
+        
         
         
         self.viewModel.sex = userinfo.sex

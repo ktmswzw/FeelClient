@@ -38,7 +38,6 @@ pod 'RxBlocking'
 pod 'RxAlamofire'
 #引导
 pod 'Instructions'
-pod 'XLPagerTabStrip'
 #表单
 pod 'Eureka'
 #音频播放

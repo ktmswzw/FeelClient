@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--设置-->
+        <!--我-->
         <scene sceneID="9k6-vh-PLq">
             <objects>
                 <viewController id="25T-P7-b6Q" customClass="SelfViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,16 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="设置" image="sys" id="Wia-m2-7ft"/>
-                    <navigationItem key="navigationItem" title="设置" id="DaA-WB-wgS"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="我" image="self" id="Wia-m2-7ft"/>
+                    <navigationItem key="navigationItem" title="我" id="DaA-WB-wgS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="2lV-9J-5tK" kind="presentation" identifier="login" modalPresentationStyle="overFullScreen" id="jCY-qF-RCM"/>
+                        <segue destination="6Jd-q8-w4y" kind="show" identifier="friends" id="Fbd-g4-kQO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TAb-Vf-jNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1865" y="16"/>
+        </scene>
+        <!--friends-->
+        <scene sceneID="EA1-Jg-nxS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="friends" id="6Jd-q8-w4y" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ija-iH-XTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2031.5" y="449"/>
         </scene>
         <!--login-->
         <scene sceneID="XRs-mP-2S0">
@@ -34,7 +43,7 @@
                 <viewControllerPlaceholder storyboardName="login" id="2lV-9J-5tK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Dp-2r-Wba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="445"/>
+            <point key="canvasLocation" x="1677" y="449"/>
         </scene>
         <!--设置-->
         <scene sceneID="Xic-87-zIs">
@@ -63,6 +72,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="self" width="22" height="22"/>
         <image name="sys" width="24" height="24"/>
     </resources>
 </document>

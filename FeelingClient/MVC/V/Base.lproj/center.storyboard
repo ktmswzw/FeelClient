@@ -68,14 +68,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-do-4wK">
                                 <rect key="frame" x="530" y="72" width="50" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="J77-fI-4jU"/>
                                     <constraint firstAttribute="height" constant="35" id="SP5-GK-nc8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" backgroundImage="arbutton.png"/>
+                                <state key="normal" backgroundImage="arbutton.png">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="buttonTap:" destination="k7f-3U-IcX" eventType="touchUpInside" id="24F-xr-OqE"/>
                                 </connections>
