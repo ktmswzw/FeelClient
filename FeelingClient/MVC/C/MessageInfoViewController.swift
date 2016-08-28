@@ -37,7 +37,6 @@ class MessageInfoViewController: FormViewController {
                 $0.value = msg.content
             }
             
-            
             <<< TextRow("question") {
                 $0.title = "问题"
                 $0.disabled = true

@@ -42,7 +42,8 @@ class SelfViewController: FormViewController {
             
             +++ Section()
             <<< PhoneRow("phone"){ $0.title = "手机"
-                $0.disabled = true                }
+                $0.disabled = true
+            }
             //            <<< TextRow("realname") {
             //                $0.title = "姓名"
             //                $0.placeholder = "真实姓名"

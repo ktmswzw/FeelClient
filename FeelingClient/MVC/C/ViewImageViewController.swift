@@ -16,8 +16,20 @@ class ViewImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.contentMode = UIViewContentMode.ScaleAspectFill
         imageView.hnk_setImageFromURL(NSURL(string:imageUrl)!)
-        // Do any additional setup after loading the view.
+        
+    }
+    @IBAction func saveImage(sender: AnyObject) {
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(ViewImageViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject) {
+        if error != nil {
+            self.view.makeToast("保存失败", duration: 2, position: .Center)
+        } else {
+            self.view.makeToast("保存成功", duration: 2, position: .Center)
+        }
     }
     
     override func didReceiveMemoryWarning() {

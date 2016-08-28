@@ -352,19 +352,8 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
                 annotationView!.canShowCallout = true
                 if let pin = annotation as? MyAnnotation {
                     let two:UIImage
-                    //                    if pin.type == 0 {
-                    two = UIImage(named: "pin")!
-                    //                    }
-                    //                    else {
-                    //                        two = UIImage(named: "pin_color")!
-                    //                    }
-                    
+                    two = UIImage(named: "pin_color")!
                     let fetcher = NetworkFetcher<UIImage>(URL: NSURL(string: pin.url!)!)
-                    //                    cache.fetch(fetcher: fetcher).onSuccess { image in
-                    //                        annotationView?.image =  Toucan(image: image).maskWithEllipse(borderWidth: 3, borderColor: UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 )).image
-                    //                    }
-                    
-                    //                    
                     cache.fetch(fetcher: fetcher).onSuccess { image in
                         //annotationView?.image = image
                         annotationView?.image = getPin(image, two: two)

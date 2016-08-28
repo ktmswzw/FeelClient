@@ -10,7 +10,7 @@ import Foundation
 import Photos
 import UIKit
 import ObjectMapper
-
+//import AlamofireImage
 
 func getImageFromPHAsset(asset: PHAsset) -> UIImage {
     let manager = PHImageManager.defaultManager()
@@ -34,52 +34,42 @@ func getAssetThumbnail(asset: PHAsset) -> UIImage {
     return thumbnail
 }
 
-func mergeImages (forgroundImage : UIImage, backgroundImage : UIImage) -> UIImage {
-    
-    let bottomImage = forgroundImage
-    let topImage = backgroundImage
-    
-    let size = forgroundImage.size
-    
-    let forsize = backgroundImage.size
-    
-    UIGraphicsBeginImageContext(size)
-    
-    let areaSize = CGRect(x: 0, y: 0, width: size.width , height: size.height )
-    bottomImage.drawInRect(areaSize)
-    
-    
-    let topSize = CGRect(x: (size.width - forsize.width) / 2  , y: (size.height - forsize.height) / 2 - 7, width: forsize.width , height: forsize.height )
-    topImage.drawInRect(topSize, blendMode: .Normal, alpha: 1.0)
-    
-    let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
-    
-    UIGraphicsEndImageContext()
-    
-    return newImage
-    
-}
-
 func getPin(one: UIImage,two: UIImage) -> UIImage {
-    let myImage:UIImage = Toucan(image: one).resize(CGSizeMake(40.0, 40.0)).image
-    let backgrounpImage:UIImage =   Toucan(image: two).resize(CGSizeMake(42.0, 56.0)).image
-    let frontImage =  Toucan(image: myImage).maskWithEllipse(borderWidth: 2, borderColor: UIColor ( red: 0.0, green: 0.4784, blue: 1.0, alpha: 1.0 )).image
+    let myImage = imageResize(one, sizeChange: CGSize(width: 40.0, height: 40.0))
+    let backgrounpImage = imageResize(two, sizeChange: CGSize(width: 40.0, height: 49))
+    
+    let frontImage =  Toucan(image: myImage).maskWithEllipse(borderWidth: 1, borderColor: UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )).image
+    
+    //        let frontImage = myImage.af_imageRoundedIntoCircle();
     let newImage = mergeImages(backgrounpImage ,backgroundImage: frontImage )
     return newImage
 }
 
 
 func imageResize (image:UIImage, sizeChange:CGSize)-> UIImage{
-    
-    let hasAlpha = true
-    let scale: CGFloat = 0.0 // Use scale factor of main screen
-    
-    UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+    UIGraphicsBeginImageContextWithOptions(sizeChange, false, 0.0)
     image.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
     
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
     return scaledImage
 }
+
+
+func mergeImages (forgroundImage : UIImage, backgroundImage : UIImage) -> UIImage {
+    let bottomImage = forgroundImage
+    let topImage = backgroundImage
+    let size = forgroundImage.size
+    let forsize = backgroundImage.size
+    UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+    let areaSize = CGRect(x: 0, y: 0, width: size.width , height: size.height )
+    bottomImage.drawInRect(areaSize)
+    let topSize = CGRect(x: (size.width - forsize.width) / 2  , y: (size.height - forsize.height) / 2 - 5, width: forsize.width , height: forsize.height )
+    topImage.drawInRect(topSize)
+    let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return newImage
+}
+
 
 let YUN = "http://habit-10005997.image.myqcloud.com";
 

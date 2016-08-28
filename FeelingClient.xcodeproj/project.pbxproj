@@ -39,6 +39,7 @@
 		BF50C4401CF18F3F00B70E09 /* ExString.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43C1CF18F3F00B70E09 /* ExString.swift */; };
 		BF50C4411CF18F3F00B70E09 /* RecordIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50C43D1CF18F3F00B70E09 /* RecordIndicatorView.swift */; };
 		BF5D8B401C705916002964D8 /* FeelingClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D8B3F1C705916002964D8 /* FeelingClientTests.swift */; };
+		BF6C64821D72A80F00C770AE /* open.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6C64811D72A80F00C770AE /* open.storyboard */; };
 		BF8116DF1CE7122800212982 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8116E11CE7122800212982 /* Localizable.strings */; };
 		BF8116E81CE7136A00212982 /* center.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8116EA1CE7136A00212982 /* center.storyboard */; };
 		BF8B5F261CDEC1B200A76470 /* CustomNotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */; };
@@ -169,6 +170,7 @@
 		BF5D8B411C705916002964D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF5ED5DA1CFD61C500F1C105 /* TXYBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXYBase.h; sourceTree = "<group>"; };
 		BF5ED5DB1CFD61C500F1C105 /* TXYUploadManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXYUploadManager.h; sourceTree = "<group>"; };
+		BF6C64811D72A80F00C770AE /* open.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = open.storyboard; path = MVC/V/open.storyboard; sourceTree = "<group>"; };
 		BF8116E01CE7122800212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF8116E91CE7136A00212982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/center.storyboard; sourceTree = "<group>"; };
 		BF8B5F251CDEC1B200A76470 /* CustomNotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomNotificationHandler.swift; path = common/utils/CustomNotificationHandler.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				BF9F9B101CC47FB300795464 /* register.storyboard */,
 				BF9F9B111CC47FB300795464 /* self.storyboard */,
 				BF9D93DE1CD4ADF500BDC20D /* messages.storyboard */,
+				BF6C64811D72A80F00C770AE /* open.storyboard */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6C64821D72A80F00C770AE /* open.storyboard in Resources */,
 				BF9F9B161CC47FB300795464 /* login.storyboard in Resources */,
 				BF2EFBE81CD708750089EFCC /* MessageSendViewCell.xib in Resources */,
 				BF9D93DF1CD4ADF500BDC20D /* messages.storyboard in Resources */,

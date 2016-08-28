@@ -14,7 +14,7 @@ import Foundation
 import XLPagerTabStrip
 
 class MessagesGetTableViewController: UITableViewController,MessageViewModelDelegate,IndicatorInfoProvider {
-        
+    
     let msg: Messages = Messages.defaultMessages
     
     var msgs = [MessageBean]()
@@ -55,6 +55,9 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
         self.msg.querySendAndRecived(false, page: 1, size: 1000, completeHander: { (r: BaseApi.Result) in
             switch (r) {
             case .Success(let value):
+                if self.msgs.count != 0 {
+                    self.msgs.removeAll()
+                }
                 self.msgs =  value as! [MessageBean]
                 self.tableView.reloadData()
                 self.navigationController?.view.hideToastActivity()
@@ -70,9 +73,6 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if refreshControl!.refreshing {
-            if msgs.count != 0 {
-                msgs.removeAll()
-            }
             getMessages()
             refreshControl!.endRefreshing()
         }

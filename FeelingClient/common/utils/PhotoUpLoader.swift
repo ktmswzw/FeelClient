@@ -69,7 +69,7 @@ class PhotoUpLoader:BaseApi {
     func getPathZip(image: UIImage) -> NSData{
         let size = CGSize(width: 400.0, height: 400.0)
         let scaledImage = image.af_imageScaledToSize(size)
-        guard let data = UIImageJPEGRepresentation(scaledImage,0.5) else {//jpg
+        guard let data = UIImageJPEGRepresentation(scaledImage,0.7) else {//jpg
             return UIImagePNGRepresentation(scaledImage)! //png
         }
         return data
