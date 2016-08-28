@@ -12,7 +12,9 @@ import Eureka
 
 
 class MessageInfoViewController: FormViewController {
-
+    
+    @IBOutlet var button: UIButton!
+    
     var msg: MessageBean!
     
     let msgApi: MessageApi = MessageApi.defaultMessages
@@ -20,9 +22,9 @@ class MessageInfoViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.title = "信息"
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
-       // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        //        self.navigationItem.title = "信息"
+        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MessageInfoViewController.close))
+        // self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         form =  Section("信息")
             <<< TextRow("to"){ $0.title = "收件人"
@@ -30,7 +32,7 @@ class MessageInfoViewController: FormViewController {
                 $0.value = msg.to
             }
             
-        
+            
             <<< TextAreaRow("content") {
                 $0.title = "内容"
                 $0.placeholder = "内容"
@@ -67,6 +69,12 @@ class MessageInfoViewController: FormViewController {
                 }  .onCellSelection({ (cell, row) in
                     self.close()
                 })
+            
+            <<< ButtonRow() { (row: ButtonRow) -> Void in
+                row.title = "详情"
+                }  .onCellSelection({ (cell, row) in
+                    self.performSegueWithIdentifier("nnnn", sender: nil);
+                })
     }
     
     func dropMessage(id: String)
@@ -88,13 +96,18 @@ class MessageInfoViewController: FormViewController {
     {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "nnnn" {
+            print(1)
+        }
+        
+    }
 }
 
 

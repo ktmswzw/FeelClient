@@ -10,6 +10,7 @@ import UIKit
 
 import IBAnimatable
 
+import MapKit
 import Foundation
 import XLPagerTabStrip
 
@@ -96,12 +97,25 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
         return msgs.count
     }
     
+    var coordinate = CLLocationCoordinate2D()
+    var original_coordinate = CLLocationCoordinate2D()
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if msgs.count > 0 {
             let bean = msgs[indexPath.row] as MessageBean
-            let nib = MessageInfoGetViewController()//需要跳转的viewcontroller
-            nib.msg = bean
-            self.presentViewController(nib, animated:true, completion: nil)
+            //            let nib = MessageInfoGetViewController()//需要跳转的viewcontroller
+            
+            let viewController =  OpenMapViewController()
+            coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
+            coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
+            viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+            viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
+            
+            viewController.fromId = bean.fromId
+            viewController.msgscrentId = bean.messagessSecretId
+            viewController.address = bean.address
+            //            nib.msg = bean
+            self.presentViewController(viewController, animated:true, completion: nil)
         }
     }
     

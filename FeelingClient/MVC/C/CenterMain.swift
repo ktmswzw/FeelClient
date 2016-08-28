@@ -270,7 +270,7 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
             switch (r) {
             case .Success(let r):
                 self.msgscrentId = r as! String
-                self.view.makeToast("验证成功，前往该地100米之内将开启你们的秘密", duration: 1, position: .Center)
+                self.view.makeToast("验证成功，前往该地100米之内将开启TA的秘密", duration: 1, position: .Center)
                 self.performSegueWithIdentifier("openOver", sender: self)
                 self.mapView.removeAnnotation((self.selectedView?.annotation)!)
                 break

@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3v-Lf-459" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3151" y="471"/>
+            <point key="canvasLocation" x="3071" y="138"/>
         </scene>
         <!--Messages Send Table Table View Controller-->
         <scene sceneID="td9-Pw-VwA">
@@ -66,10 +66,32 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6gJ-rs-7oo"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Aea-Me-Sg3">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iy8-Nc-ArF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="471"/>
+            <point key="canvasLocation" x="3781" y="138"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QvT-9C-PBg">
+            <objects>
+                <viewController id="ABz-r5-i9T" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pP7-ly-cdO"/>
+                        <viewControllerLayoutGuide type="bottom" id="wh6-Fc-ZEN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YdW-CK-DpS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dHZ-Wk-PMA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aOk-iK-sDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5439" y="641"/>
         </scene>
         <!--Messages Get Table View Controller-->
         <scene sceneID="9pJ-pe-9g7">
@@ -94,10 +116,13 @@
                             <outlet property="delegate" destination="WKq-ec-UV7" id="I5e-dU-cGb"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Qto-Vp-u6r">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hm6-KA-4pN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="1195"/>
+            <point key="canvasLocation" x="3071" y="903"/>
         </scene>
         <!--信件-->
         <scene sceneID="OqJ-7Q-IVx">
@@ -117,7 +142,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="No7-VN-6ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2485" y="471"/>
+            <point key="canvasLocation" x="2405" y="138"/>
         </scene>
     </scenes>
     <resources>

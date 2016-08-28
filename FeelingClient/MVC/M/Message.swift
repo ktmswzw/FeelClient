@@ -40,6 +40,8 @@ class MessageBean: BaseModel {
         type <- map["type"]
         tryCount <- map["tryCount"]
         state <- map["state"]
+        messagessSecretId <- map["messagess_secret_id"]
+        
         
         
     }
@@ -78,7 +80,7 @@ class MessageBean: BaseModel {
     var type = 0 //信件类型 1寄给自己 0 所有人
     var state = 1
     var tryCount: Int = 0
-    
+    var messagessSecretId = ""
 }
 //坐标点
 class GeoJsonPoint:BaseModel {

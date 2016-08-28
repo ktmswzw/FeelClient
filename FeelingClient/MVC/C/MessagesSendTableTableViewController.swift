@@ -94,28 +94,8 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
         return msgs.count
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if msgs.count > 0 {
-            let bean = msgs[indexPath.row] as MessageBean
-            let nib = MessageInfoViewController()//需要跳转的viewcontroller
-            nib.msg = bean
-            self.presentViewController(nib, animated:true, completion: nil)
-            
-            
-            //            self.performSegueWithIdentifier("infoMessage", sender: self)
-            
-            
-            
-            //            let viewController =  OpenMapViewController()
-            //            viewController.targetDistanceLocation = self.targetDistanceLocation
-            //            viewController.targetLocation = self.targetLocation
-            //            viewController.fromId = self.viewModel.fromId
-            //            viewController.msgscrentId = self.msgscrentId
-            //            viewController.address = self.viewModel.address
-            
-        }
-    }
-    
+    var coordinate = CLLocationCoordinate2D()
+    var original_coordinate = CLLocationCoordinate2D()
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : MessageSendViewCell = tableView.dequeueReusableCellWithIdentifier("MessageSendViewCell") as! MessageSendViewCell
@@ -133,13 +113,6 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     }
     
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
     func indicatorInfoForPagerTabStrip(pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
@@ -151,17 +124,34 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     }
     
     
-    // MARK: - Navigation
+    //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //        self.performSegueWithIdentifier("shows", sender: indexPath);
+    //    }
+    //    
+    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    //        if segue.identifier == "shows" {
+    //            print(1)
+    //        }
+    //            
+    //        else  if segue.identifier == "openOver2" {
+    //            if let indexPath = self.tableView.indexPathForSelectedRow {
+    //                let bean = msgs[indexPath.row] as MessageBean
+    //                let viewController = segue.destinationViewController as! OpenMapViewController
+    //                
+    //                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
+    //                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
+    //                viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+    //                viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
+    //                
+    //                viewController.fromId = bean.fromId
+    //                viewController.msgscrentId = bean.messagessSecretId
+    //                viewController.address = bean.address
+    //                viewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+    //                viewController.navigationItem.leftItemsSupplementBackButton = true
+    //            }
+    //        }
+    //    }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "infoMessage" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                let object = msgs[indexPath.row] as MessageBean
-                (segue.destinationViewController as! MessageInfoViewController).msg = object
-            }
-        }
-    }
     
     
 }
