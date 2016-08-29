@@ -139,9 +139,9 @@ class CenterMain: UIViewController, CoachMarksControllerDataSource,OpenOverProto
         dispatch_async(dispatch_get_main_queue()) {
             UIApplication.sharedApplication().applicationIconBadgeNumber = Constant.messagecountAPNS + Constant.messagecount
             if Constant.messagecountAPNS != 0 {
-                self.tabBarController?.tabBar.items![0].badgeValue = "\(Constant.messagecountAPNS)"
+                self.tabBarController?.tabBar.items![1].badgeValue = "\(Constant.messagecountAPNS)"
             } else {
-                self.tabBarController?.tabBar.items![0].badgeValue = nil
+                self.tabBarController?.tabBar.items![1].badgeValue = nil
             }
         }
     }

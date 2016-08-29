@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--聊天-->
+        <!--Chat View Controller-->
         <scene sceneID="q18-xy-sps">
             <objects>
                 <viewController storyboardIdentifier="chat" id="XgY-6Z-pPg" customClass="ChatViewController" customModule="FeelingClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,10 +30,9 @@
                             <constraint firstItem="6h2-ZG-BHC" firstAttribute="centerY" secondItem="Trd-kY-nmW" secondAttribute="centerY" id="AY8-oF-nrQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="聊天" image="chat" id="Pdz-Wu-zwA"/>
                     <navigationItem key="navigationItem" id="Sv4-Yu-fbd"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6z-Sg-yrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,9 +42,10 @@
         <scene sceneID="Hjw-e3-cPc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9x7-ZC-qCi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="消息" image="chat" id="Vge-vN-mcQ"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="消息" image="chat" id="Vge-vN-mcQ"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Of-np-WNE" customClass="DesignableNavigationBar" customModule="IBAnimatable">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

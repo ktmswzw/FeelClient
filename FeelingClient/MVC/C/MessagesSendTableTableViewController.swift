@@ -18,7 +18,7 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        
+        self.navigationItem.title = "发出"
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
@@ -67,6 +67,10 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
     }
     
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,6 +100,8 @@ class MessagesSendTableTableViewController: UITableViewController,MessageViewMod
             }
             cell.tryCount.text = "次数：\(bean.tryCount)"
             cell.question.text = bean.question
+            cell.date.text = bean.createDate
+            
         }
         return cell
     }

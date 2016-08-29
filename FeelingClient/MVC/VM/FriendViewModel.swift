@@ -60,7 +60,8 @@ public class FriendViewModel:BaseApi {
     
     
     func remark(id:String,name:String,completeHander:CompletionHandlerType){
-        NetApi().makeCallBean(Alamofire.Method.POST, section: "friend/remark/\(id)/\(name)", headers: headers, params: params as? [String:AnyObject]) { (res:Response<UserInfo, NSError>) in
+        params = ["name":name]
+        NetApi().makeCallBean(Alamofire.Method.POST, section: "friend/remark/\(id)", headers: headers, params: params as? [String : AnyObject]) { (res:Response<UserInfo, NSError>) in
             switch (res.result) {
             case .Success(let value):
                 completeHander(Result.Success(value))

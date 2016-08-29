@@ -37,9 +37,12 @@ class MessageBean: BaseModel {
         point <- map["point"]
         fromId <- map["fromId"]
         avatar <- map["avatar"]
+        createDate <- map["create_date"]
+        updateDate <- map["update_date"]
         type <- map["type"]
         tryCount <- map["tryCount"]
         state <- map["state"]
+        aimId <- map["aimId"]
         messagessSecretId <- map["messagess_secret_id"]
         
         
@@ -72,6 +75,7 @@ class MessageBean: BaseModel {
     var fromId = ""
     var avatar = "" //头像地址
     var address = ""
+    var aimId = ""
     //问题
     var question: String = ""
     var answer: String = ""
@@ -80,6 +84,8 @@ class MessageBean: BaseModel {
     var type = 0 //信件类型 1寄给自己 0 所有人
     var state = 1
     var tryCount: Int = 0
+    var createDate = ""
+    var updateDate = ""
     var messagessSecretId = ""
 }
 //坐标点

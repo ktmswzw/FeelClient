@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,10 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北岸的🐦在看雨吗？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="N3w-t8-xbV">
-                        <rect key="frame" x="8" y="8" width="246" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="VEd-KX-UXs"/>
-                        </constraints>
+                        <rect key="frame" x="8" y="8" width="156" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -32,7 +31,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Ah-pgc">
                         <rect key="frame" x="8" y="31" width="49" height="24"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="49" id="zbF-W0-4Jp"/>
+                            <constraint firstAttribute="width" constant="49" id="H6w-x0-dNy"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,25 +46,38 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-08-01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QA-aK-SvQ">
+                        <rect key="frame" x="172" y="12" width="82" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="82" id="djX-Xq-n6M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="N3w-t8-xbV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7si-G5-CuY"/>
-                    <constraint firstItem="TTx-X2-jW0" firstAttribute="leading" secondItem="JOu-Ah-pgc" secondAttribute="trailing" constant="8" symbolic="YES" id="ASR-vf-sh2"/>
-                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="bottom" secondItem="TTx-X2-jW0" secondAttribute="bottom" id="AWf-LE-cPp"/>
-                    <constraint firstItem="ccP-cK-mGd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="E6G-Vl-Y37"/>
-                    <constraint firstItem="ccP-cK-mGd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="Juv-O7-Of2"/>
-                    <constraint firstItem="ccP-cK-mGd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="L4r-ph-56W"/>
-                    <constraint firstItem="ccP-cK-mGd" firstAttribute="leading" secondItem="TTx-X2-jW0" secondAttribute="trailing" constant="8" symbolic="YES" id="NYd-X3-Ghf"/>
-                    <constraint firstItem="N3w-t8-xbV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Opj-YL-L1o"/>
-                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="top" secondItem="TTx-X2-jW0" secondAttribute="top" id="UDi-Nt-66v"/>
-                    <constraint firstItem="ccP-cK-mGd" firstAttribute="leading" secondItem="N3w-t8-xbV" secondAttribute="trailing" constant="8" symbolic="YES" id="Vwc-il-zGc"/>
-                    <constraint firstItem="TTx-X2-jW0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oT8-Ws-ZpH"/>
-                    <constraint firstItem="TTx-X2-jW0" firstAttribute="bottom" secondItem="ccP-cK-mGd" secondAttribute="bottom" id="tc3-uh-MFD"/>
-                    <constraint firstItem="N3w-t8-xbV" firstAttribute="leading" secondItem="JOu-Ah-pgc" secondAttribute="leading" id="xhc-kl-10e"/>
-                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="top" secondItem="N3w-t8-xbV" secondAttribute="bottom" constant="2" id="yMe-6B-pGh"/>
+                    <constraint firstItem="N3w-t8-xbV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="47y-FC-2hU"/>
+                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="top" secondItem="TTx-X2-jW0" secondAttribute="top" id="5o6-AK-Nso"/>
+                    <constraint firstItem="ccP-cK-mGd" firstAttribute="leading" secondItem="TTx-X2-jW0" secondAttribute="trailing" constant="8" symbolic="YES" id="Dn8-W5-rrp"/>
+                    <constraint firstItem="TTx-X2-jW0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Iso-I6-YTV"/>
+                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="bottom" secondItem="TTx-X2-jW0" secondAttribute="bottom" id="Q9P-jZ-UXc"/>
+                    <constraint firstItem="N3w-t8-xbV" firstAttribute="leading" secondItem="JOu-Ah-pgc" secondAttribute="leading" id="TFl-6F-L56"/>
+                    <constraint firstItem="ccP-cK-mGd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="Tly-5d-ioQ"/>
+                    <constraint firstItem="N3w-t8-xbV" firstAttribute="baseline" secondItem="5QA-aK-SvQ" secondAttribute="baseline" id="VrU-xc-kbF"/>
+                    <constraint firstItem="5QA-aK-SvQ" firstAttribute="baseline" secondItem="N3w-t8-xbV" secondAttribute="firstBaseline" id="eEH-kB-SyR"/>
+                    <constraint firstItem="5QA-aK-SvQ" firstAttribute="leading" secondItem="N3w-t8-xbV" secondAttribute="trailing" constant="8" symbolic="YES" id="hqL-3t-kE3"/>
+                    <constraint firstItem="TTx-X2-jW0" firstAttribute="bottom" secondItem="ccP-cK-mGd" secondAttribute="bottom" id="hsk-7g-ZLM"/>
+                    <constraint firstItem="JOu-Ah-pgc" firstAttribute="top" secondItem="N3w-t8-xbV" secondAttribute="bottom" constant="2" id="lCo-L8-noX"/>
+                    <constraint firstItem="N3w-t8-xbV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mC2-k7-7GN"/>
+                    <constraint firstItem="ccP-cK-mGd" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="mmG-em-A6A"/>
+                    <constraint firstItem="ccP-cK-mGd" firstAttribute="leading" secondItem="5QA-aK-SvQ" secondAttribute="trailing" constant="8" symbolic="YES" id="rFr-zz-Mwh"/>
+                    <constraint firstItem="TTx-X2-jW0" firstAttribute="leading" secondItem="JOu-Ah-pgc" secondAttribute="trailing" constant="8" symbolic="YES" id="s5u-1d-JXw"/>
+                    <constraint firstItem="ccP-cK-mGd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tKl-yB-8mW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="date" destination="5QA-aK-SvQ" id="hfG-pY-Y14"/>
                 <outlet property="imagesMe" destination="ccP-cK-mGd" id="8dD-Ar-bpT"/>
                 <outlet property="name" destination="TTx-X2-jW0" id="b0t-s2-XuE"/>
                 <outlet property="question" destination="N3w-t8-xbV" id="F5z-fa-BUP"/>

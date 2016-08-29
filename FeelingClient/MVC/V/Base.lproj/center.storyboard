@@ -98,7 +98,6 @@
                             <constraint firstItem="W1O-31-f7T" firstAttribute="top" secondItem="uHW-gC-ibA" secondAttribute="bottom" constant="8" symbolic="YES" id="wcF-qP-bik"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="发现" image="send" id="m87-yF-hbL"/>
                     <navigationItem key="navigationItem" title="发现" id="lTY-dc-LDc">
                         <barButtonItem key="backBarButtonItem" id="bgA-fX-xqW">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,7 +109,6 @@
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addBar" destination="kSA-fa-0BZ" id="sz9-VD-sv1"/>
                         <outlet property="addNewButton" destination="W1O-31-f7T" id="e84-Fj-JSN"/>
@@ -528,12 +526,13 @@
             </objects>
             <point key="canvasLocation" x="5193" y="-86"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--发现-->
         <scene sceneID="pK5-XH-8QE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tuk-qf-jys" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="发现" image="send" id="AQS-9f-WfI"/>
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5GY-7f-tuf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

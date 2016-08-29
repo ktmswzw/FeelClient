@@ -16,6 +16,7 @@ class MessageRecivedViewCell: UITableViewCell {
     @IBOutlet var question: UILabel!
     @IBOutlet var address: UILabel!
     @IBOutlet var isArrivalImg: UIImageView!
+    @IBOutlet var date: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

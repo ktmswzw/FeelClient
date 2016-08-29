@@ -17,9 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="我" image="self" id="Wia-m2-7ft"/>
                     <navigationItem key="navigationItem" title="我" id="DaA-WB-wgS"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="2lV-9J-5tK" kind="presentation" identifier="login" modalPresentationStyle="overFullScreen" id="jCY-qF-RCM"/>
                         <segue destination="6Jd-q8-w4y" kind="show" identifier="friends" id="Fbd-g4-kQO"/>
@@ -45,13 +44,14 @@
             </objects>
             <point key="canvasLocation" x="1677" y="449"/>
         </scene>
-        <!--设置-->
+        <!--我-->
         <scene sceneID="Xic-87-zIs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rc3-oE-rRP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="sys" id="YEy-Ca-TU2"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="我" image="self" id="YEy-Ca-TU2"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vew-cD-9tC" customClass="DesignableNavigationBar" customModule="IBAnimatable">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -73,6 +73,5 @@
     </scenes>
     <resources>
         <image name="self" width="22" height="22"/>
-        <image name="sys" width="24" height="24"/>
     </resources>
 </document>

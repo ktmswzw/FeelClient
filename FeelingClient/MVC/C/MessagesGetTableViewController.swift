@@ -34,6 +34,9 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
         //往tableView添加刷新控件
         self.tableView.addSubview(refreshControl!)
         
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.navigationItem.title = "收到"
         self.tableView.registerNib(UINib(nibName: "MessageRecived", bundle: nil), forCellReuseIdentifier: "MessageRecivedViewCell")
         getMessages()
     }
@@ -68,6 +71,10 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
     }
     
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -100,7 +107,7 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
                 let bean = msgs[indexPath.row] as MessageBean
                 let viewController = segue.destinationViewController as! OpenMapViewController
                 
-                coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
+                original_coordinate = CLLocationCoordinate2DMake(bean.y, bean.x);
                 coordinate = CLLocationCoordinate2DMake(bean.y, bean.x).toMars();
                 viewController.targetLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
                 viewController.targetDistanceLocation = CLLocation(latitude: self.original_coordinate.latitude, longitude: self.original_coordinate.longitude)
@@ -127,6 +134,10 @@ class MessagesGetTableViewController: UITableViewController,MessageViewModelDele
         }
         cell.address.text = bean.address
         cell.question.text = bean.question
+        cell.date.text = bean.updateDate
+        if bean.aimId == jwt.userId {
+            cell.isArrivalImg.image = UIImage(named: "attention")
+        }
         return cell
     }
     

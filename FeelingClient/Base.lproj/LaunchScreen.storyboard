@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,36 +16,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="9Js-rX-1HT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.2470588235" green="0.50588235290000005" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="earth.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ff4-d4-Ee8">
-                                <rect key="frame" x="125" y="75" width="350" height="350"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人生只若如初见" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKP-s9-sVO">
+                                <rect key="frame" x="241" y="571" width="119" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="1os-Gq-Dxl"/>
-                                    <constraint firstAttribute="width" constant="350" id="lnc-De-Sim"/>
+                                    <constraint firstAttribute="width" constant="119" id="OSQ-9w-uqR"/>
+                                    <constraint firstAttribute="height" constant="21" id="bD2-Rm-Vtm"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AFTERSOUND.png" translatesAutoresizingMaskIntoConstraints="NO" id="bp3-bX-KGU">
-                                <rect key="frame" x="200" y="400" width="200" height="200"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bD2-Rm-Vtm"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eO9-t7-Jt8">
+                                <rect key="frame" x="132" y="177" width="137" height="167"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Mee-bE-nye"/>
-                                    <constraint firstAttribute="width" constant="200" id="d2Z-Ig-HIf"/>
+                                    <constraint firstAttribute="height" constant="167" id="FuS-Wq-UvS"/>
+                                    <constraint firstAttribute="width" constant="137" id="z0n-P9-InK"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="140"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39f-ET-mF7">
+                                <rect key="frame" x="331" y="317" width="137" height="167"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="167" id="ZOc-3Y-uuk"/>
+                                    <constraint firstAttribute="width" constant="137" id="qJL-cv-r1i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="140"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.24705882352941178" green="0.50588235294117645" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Ff4-d4-Ee8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9DH-ed-dUs"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="9Js-rX-1HT" secondAttribute="bottom" id="FME-cw-m9L"/>
-                            <constraint firstItem="bp3-bX-KGU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Tio-y7-Bbw"/>
-                            <constraint firstItem="9Js-rX-1HT" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Y0W-JG-hf2"/>
-                            <constraint firstItem="Ff4-d4-Ee8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="gpA-EC-kcZ"/>
-                            <constraint firstItem="9Js-rX-1HT" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="imv-4A-j3V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9Js-rX-1HT" secondAttribute="trailing" constant="-20" id="k1a-tQ-pEy"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="bp3-bX-KGU" secondAttribute="bottom" id="lq3-Ra-xU8"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="cKP-s9-sVO" secondAttribute="bottom" constant="8" symbolic="YES" id="5gr-nJ-Hkn"/>
+                            <constraint firstItem="39f-ET-mF7" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="100" id="5ub-yC-Mfb"/>
+                            <constraint firstItem="cKP-s9-sVO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Jpi-H9-sMJ"/>
+                            <constraint firstItem="cKP-s9-sVO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QhW-YB-aug"/>
+                            <constraint firstItem="eO9-t7-Jt8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-40" id="RLL-Ow-jlt"/>
+                            <constraint firstItem="eO9-t7-Jt8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-100" id="eeI-MO-5GO"/>
+                            <constraint firstItem="39f-ET-mF7" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="100" id="vW4-bq-m1N"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="cKP-s9-sVO" secondAttribute="bottom" constant="8" symbolic="YES" id="w98-g0-Fou"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5gr-nJ-Hkn"/>
+                                <exclude reference="QhW-YB-aug"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
@@ -55,9 +77,4 @@
             <point key="canvasLocation" x="4" y="372"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="AFTERSOUND.png" width="300" height="300"/>
-        <image name="background.png" width="1000" height="1000"/>
-        <image name="earth.png" width="1000" height="1000"/>
-    </resources>
 </document>
